@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html >
 <head>
@@ -38,6 +39,10 @@ Pat
             <a href="" id="customer_login_link">Log in</a>
             <span class="vertical-divider"></span>
             <a href="" id="customer_register_link">Sign up</a>
+            
+            
+            
+            
           
         </span>
       </div>
@@ -169,24 +174,23 @@ Pat
 <h1 class="small--text-center">Create Account</h1>
 
 <div class="form-register form-vertical">
-  <form method="post" action="/account" id="create_customer" accept-charset="UTF-8"><input type="hidden" name="form_type" value="create_customer"><input type="hidden" name="utf8" value="✓">
-
+  <form method="post" action="signupbackend.php" >
     
 
     <label for="FirstName" class="label--hidden">First Name</label>
-    <input type="text" name="customer[first_name]" id="FirstName" placeholder="First Name" autocapitalize="words" autofocus="">
+    <input type="text" name="firstname"  placeholder="First Name" autocapitalize="words" autofocus="">
 
     <label for="LastName" class="label--hidden">Last Name</label>
-    <input type="text" name="customer[last_name]" id="LastName" placeholder="Last Name" autocapitalize="words">
+    <input type="text" name="lastname"  placeholder="Last Name" autocapitalize="words">
 
     <label for="Email" class="label--hidden">Email</label>
-    <input type="email" name="customer[email]" id="Email" class="" placeholder="Email" autocorrect="off" autocapitalize="off">
+    <input type="email" name="email"  class="" placeholder="Email" autocorrect="off" autocapitalize="off">
 
     <label for="CreatePassword" class="label--hidden">Password</label>
-    <input type="password" name="customer[password]" id="CreatePassword" class="" placeholder="Password">
+    <input type="password" name="password"  class="" placeholder="Password">
 
     <p>
-      <input type="submit" value="Create" class="btn">
+      <input type="submit" name="submit" value="Create" >
     </p>
   </form>
 </div>
