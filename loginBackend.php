@@ -16,7 +16,7 @@
     $_SESSION['login_user'] = $email;
     header("location: products.html");
     }else{
-        echo "wrong password back to test again  ";
+    header("location: login.php?check=".urlencode("PasswordInvalid"));
     }
   }
  ?>
