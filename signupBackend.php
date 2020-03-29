@@ -71,7 +71,7 @@ echo"sadasd";
 
     $stmt->close();
 
-   header("location: login.php");
+   header("location: login.html");
     
 }
 
