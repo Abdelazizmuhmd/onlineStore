@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html >
 <head>
@@ -179,22 +178,22 @@ Pat
     </div>
 
     <div id="CustomerLoginForm" class="form-vertical">
-      <form method="post" action="/account/login" id="customer_login" accept-charset="UTF-8"><input type="hidden" name="form_type" value="customer_login"><input type="hidden" name="utf8" value="✓">
+      <form method="post" action="loginBackend.php" id="customer_login" accept-charset="UTF-8"><input type="hidden" name="form_type" value="customer_login"><input type="hidden" name="utf8" value="✓">
 
         <h1 class="small--text-center">Login</h1>
 
         
 
         <label for="CustomerEmail" class="label--hidden">Email</label>
-        <input type="email" name="customer[email]" id="CustomerEmail" class="" placeholder="Email" autocorrect="off" autocapitalize="off" autofocus="">
+        <input type="email" name="email" id="CustomerEmail" class="" placeholder="Email" autocorrect="off" autocapitalize="off" autofocus="">
 
         
           <label for="CustomerPassword" class="label--hidden">Password</label>
-          <input type="password" value="" name="customer[password]" id="CustomerPassword" class="" placeholder="Password">
+          <input type="password" value="" name="password" id="CustomerPassword" class="" placeholder="Password">
         
 
         <p>
-          <input type="submit" class="btn" value="Sign In">
+          <input type="submit" name="signin" class="btn" value="Sign In">
         </p>
         <p><a href="/account/register" id="customer_register_link">Sign up</a></p>
         
