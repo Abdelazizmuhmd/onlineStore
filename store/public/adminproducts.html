@@ -7,7 +7,7 @@
     <title>
       Products
     </title>
-    <link href="../css/orders.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../css/adminProducts.css" rel="stylesheet" type="text/css" media="all" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -23,20 +23,49 @@
     <div id="contain">
       <div class="card" id="filterz">
         <div id="orders" class="card-header">
-          <b> Products </b>
+          <b> Menu </b>
         </div>
         <div class="card-body" id="bod">
-        
-            category Name : men 
-            sub category  : hoodie
-            
-            
+  
+
+  <h4>Categories </h4> 
+  <select name="category" placeholder="Enter Category" id="combBox" class="form-control" required>
+    <option>Men</option>
+    <option>Women</option>
+    <option >Kids</option>
+  </select>
+  <button id="Topbutton">Edit</button>
+  <button id="Topbutton" data-toggle="modal" data-target="#myModal">Add</button>
+  <button id="Topbutton">Delete</button>
+
+
+
         </div>
+  <div class="card-body" id="bod">
+
+  <h4>Sub <br>Category </h4>
+  <select name="Subcategory" placeholder="Enter Sub Category" id="combBox2" class="form-control" required>
+    <option>Hoodies</option>
+    <option>T-shirts</option>
+    <option >Trousers</option>
+  </select>
+  <button id="Topbutton">Edit</button>
+  <button id="Topbutton" data-toggle="modal" data-target="#myModal">Add</button>
+  <button id="Topbutton">Delete</button>
+</div>
+
+<div class="card-body" id="bod">
+   
+  <h4 id="subleft">Category : Men</h4>
+  <h4 id="subleft">Sub Category : Hoodies</h4>
+ 
+</div>
       </div>
     </div>
     <br />
     <br />
     <div id="container">
+      <center><b>Products</b></center>
       <div id="table">
         <table id="Display">
           <tr>
@@ -102,5 +131,31 @@
         </table>
       </div>
     </div>
+
+
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">New Category</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <input type="text" name="add"  class="form-control" placeholder="Add">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
   </body>
 </html>
