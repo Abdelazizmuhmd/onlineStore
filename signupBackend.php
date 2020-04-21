@@ -1,6 +1,5 @@
 <?php
 
-
 if (isset($_POST['submit'])) {
  
 if(strlen($_POST['firstname'])<5){
