@@ -2,11 +2,10 @@
 class validation{
     
 function removeSpaces($value){
+    
 $value=trim(preg_replace('/\s+/', ' ',$value));
     
-
 }
-            
 
     //accept space in it 
 function validateString($value,$min,$max){
@@ -22,12 +21,15 @@ function validateString($value,$min,$max){
 
             
             
-function validateMixedString($value,){
-    
+function validateMixedString($value){
+        
     $value=removeSpaces($value);
-    
     validateLength($value,$min,$max);
 
+    
+}
+function filterOutput($value){
+    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
             
@@ -38,9 +40,10 @@ function validateNumber($value,$min,$max){
     if(!is_numeric($value)){
         header("location: erro.html");
     }
-    
-    
+
 }
+
+
             
             
 function validateLength($value,$min,$max){
