@@ -7,8 +7,9 @@ class category extends Model
     private $name;
     private $id;
     private $subCategories;
-    function __construct()
+    function __construct($name)
     {
+        $this->name =$name;
     }
     function setName($name)
     {
@@ -26,6 +27,7 @@ class category extends Model
     {
       return $this->id;
     }
+    
     function readSubCategories($id)
     {
       $sql = "SELECT * FROM categorydetails inner join subcategory where cetegoryid :id";
