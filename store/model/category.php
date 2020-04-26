@@ -36,7 +36,7 @@ class category extends Model
       $this->db->execute();
         if ($this->db->numRows > 0){
           $this->subCategories = array();
-          while ($row = $this->db->fetch()) {
+          while ($row = $this->db->getdata()) {
             array_push($this->readSubCategories, new subcategory($row["id"],$row["name"]));
           }
         }
@@ -46,7 +46,7 @@ class category extends Model
     }
     function insertCategory($name)
     {
-      $sql = "INSERT into category(name) values (:name)";
+      $sql = "INSERT into category(name) values(:name)";
       $this->db->query($sql);
       $this->db->bind(':name',$name);
       $this->db->execute();
