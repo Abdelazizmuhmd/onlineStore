@@ -1,5 +1,5 @@
 <?php
-class validation{
+abstract class validation{
     
 function removeSpaces($value){
     
@@ -8,7 +8,7 @@ $value=trim(preg_replace('/\s+/', ' ',$value));
 }
 
     //accept space in it 
-function validateString($value,$min,$max){
+function validateStringWithSpace($value,$min,$max){
     
     $value=removeSpaces($value);
     
@@ -18,6 +18,17 @@ function validateString($value,$min,$max){
         header("location: erro.html");
     }
 }
+function validateString($value,$min,$max){
+    
+    $value=removeSpaces($value);
+    
+    validateLength($value,$min,$max);
+    
+    if(!ctype_alpha($value)){
+        header("location: erro.html");
+    }
+}
+
 
             
             
@@ -28,6 +39,7 @@ function validateMixedString($value){
 
     
 }
+
 function filterOutput($value){
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }

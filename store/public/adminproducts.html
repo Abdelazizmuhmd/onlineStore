@@ -17,6 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <br />
@@ -54,6 +55,41 @@
   <button id="Topbutton">Delete</button>
 </div>
 
+
+<div class="card-body" id="bod">
+  <h4>Product</h4>
+</div>
+
+<div class="card-body" id="bod">
+
+
+   <table class="table table-bordered"><br><br>
+  
+
+   <tr>
+            <td>  Name<input type="text" name="productName" class="form-control" id="" placeholder="Enter Product Name"></td>
+            <td>  Code<input type="text" name="productCode" class="form-control" id="" placeholder="Enter Product Code">
+</td>
+      <td>profit<input type="text" name="productProfit" class="form-control" id="" placeholder="Enter Product profit"></td>
+
+         
+          </tr>
+
+          <tr>
+      <td>Description<input type="text" name="productDescription" class="form-control" id="" placeholder="Enter Product Description"></td>
+      <td>Weight<input type="text" name="productWeight" class="form-control" id="" placeholder="Enter Product Weight"></td>
+              <td>Cost<input type="text" name="productCost" class="form-control" id="" placeholder="Enter Product Cost"></td>
+
+          </tr>
+    </table>
+
+</div>
+
+<div class="card-body" id="bod">
+  <button id="addColor" data-toggle="modal" data-target="#myModal2">Add Color</button>
+   <button id="addProduct" >Add Product</button>
+</div>
+
 <div class="card-body" id="bod">
    
   <h4 id="subleft">Category : Men</h4>
@@ -64,17 +100,17 @@
     </div>
     <br />
     <br />
+
+
     <div id="container">
       <center><b>Products</b></center>
       <div id="table">
-        <table id="Display">
-          <tr>
-            <th>
-              <input type="checkbox" />
-                                   <label for="vehicle1"> image</label>
-            </th>
+        <table class="table table-bordered"><br><br>
+    <tr>
+            <th>image</th>
             <th>name</th>
             <th>price</th>
+            <th>code</th>
             <th>description</th>
             <th>color</th>
             <th>SQ</th>
@@ -82,53 +118,70 @@
             <th>LQ</th>
             <th>XLQ</th>
             <th>XXLQ</th>
+            <th>XXXLQ</th>
 
 
-            <th>Action</th>
-          </tr>
-          <tr>
-            <td><input type="checkbox" /> <label>Micheal Townly</label></td>
+            <th>Edit</th>
+            <th>Delete</th>
+    </tr>
+
+   <tr>
+            <td><label>Micheal Townly</label></td>
             <td>Jan 24, 2020</td>
             <td>Delivered</td>
+            <td>pat1243</td>
             <td>76 Mohanat street, Hovebeach,NY</td>
             <td>15.00</td>
-                          <td>15.00</td>
             <td>15.00</td>
-            <td>15.00</td>            <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
             <td>15.00</td>
 
 
             <td><a id="button" href="">Edit</a></td>
+            <td><a id="button" href=""><i class="fa fa-trash"></i></a></td>
           </tr>
+
           <tr>
-            <td><input type="checkbox" /> <label>Arthur Kallenhal</label></td>
+            <td><label>Micheal Townly</label></td>
             <td>Jan 24, 2020</td>
             <td>Delivered</td>
+            <td>pat1243</td>
             <td>76 Mohanat street, Hovebeach,NY</td>
             <td>15.00</td>
-                          <td>15.00</td>
             <td>15.00</td>
             <td>15.00</td>
             <td>15.00</td>
-                          <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
 
 
             <td><a id="button" href="">Edit</a></td>
+            <td><a id="button" href=""><i class="fa fa-trash"></i></a></td>
           </tr>
+
           <tr>
-            <td><input type="checkbox" /> <label>Micheal Townly</label></td>
+            <td><label>Micheal Townly</label></td>
             <td>Jan 24, 2020</td>
             <td>Delivered</td>
+            <td>pat1243</td>
             <td>76 Mohanat street, Hovebeach,NY</td>
-            <td>$15.00</td>     
             <td>15.00</td>
             <td>15.00</td>
             <td>15.00</td>
-            <td>15.00</td>                 
             <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
+
+
             <td><a id="button" href="">Edit</a></td>
+            <td><a id="button" href=""><i class="fa fa-trash"></i></a></td>
           </tr>
-        </table>
+    </table>
       </div>
     </div>
 
@@ -146,6 +199,62 @@
         </div>
         <div class="modal-body">
             <input type="text" name="add"  class="form-control" placeholder="Add">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+   <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">New Product</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+
+          <center><h4><i class="fa fa-upload" aria-hidden="true"></i>
+      <input type="file" id="image" name="image[]" multiple></h4></center>        <hr class="new2">
+
+        </div>
+
+        <div class="modal-body">
+
+        <h4>Color</h4><input type="text" name="productColor" class="form-control" id="" placeholder="Enter Product Color">
+        <table class="table table-bordered"><br>
+  
+
+   <tr>
+      <h4>Sizes</h4>
+      <td>Small<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter Small Size" name="small"></td>
+      <td>  Medium<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter Medium Size" name="medium"></td>
+      <td> Large<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter Large Size" name="large"></td>
+
+         
+    </tr>
+
+    <tr>
+      <td> xLarge<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter xlarge Size" name="xlarge"></td>
+      <td> 2xLarge<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter 2xlarge Size" name="2xlarge"></td>
+      <td>3xLarge<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter 3xlarge Size" name="3xlarge"></td>
+
+    </tr>
+    </table>
+      <center><button id="finalProductAdd">Add</button></center>
+
+        
+      
+       
+       
+       
+        
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

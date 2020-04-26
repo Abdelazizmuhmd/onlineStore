@@ -8,6 +8,9 @@ class Database
     private $password;
     private $dbname;
     
+    
+    
+    
     private $conn;
     private $result;
     public $sql;
@@ -37,9 +40,10 @@ class Database
 
     
     //prepare sql query
-    public function query()
+    public function query($sql)
     { 
      $this->stmt = $this->dbh->prepare($sql);
+        
     }
 
     //execute sql query
