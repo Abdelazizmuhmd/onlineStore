@@ -22,14 +22,10 @@ class Database
       }
 
    public function connect(){
-    $dsn= "mysql:host=".$this->$servername.";dbname=".$this->$dbname;
-    $options = array(
-        PDO::ATTR_PERSISTENT => true,// if there is a connection that is already open use it.
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION//pdo will throw a pdo exception
-    );
+    $dsn= "mysql:host=".$this->$servername.";dbname=".$this->$dbname; 
     try {
-    $conn = new PDO($dsn, $username, $password,$options);
-    //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = new PDO($dsn, $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
     }
     catch(PDOException $e)
@@ -56,13 +52,17 @@ class Database
     public function getdata()
     {
         $this->execute();
-        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     //get the number of row returned
     public function numRows()
     {
         return $this->stmt->rowCount();
+    }
+    public function bind($param,$value)
+    {
+        $stmt->bindParam($param,$value);
     }
 
     //get number of rows changed or affected by query
