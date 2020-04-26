@@ -17,7 +17,6 @@ function validateStringWithSpace($value,$min,$max){
     if(!ctype_alpha(str_replace(" ","",$value)))
         header("location: erro.html");
     }
-}
 function validateString($value,$min,$max){
     
     $value=removeSpaces($value);

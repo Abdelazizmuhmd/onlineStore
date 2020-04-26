@@ -1,5 +1,5 @@
 <?php
-  require_once(__ROOT__ . "model/Model.php");
+  require_once("../other/Model.php");
 ?>
 <?php 
 class category extends Model
@@ -7,8 +7,8 @@ class category extends Model
     private $name;
     private $id;
     private $subCategories;
-    function __construct($name)
-    {
+    function __construct($name="")
+    {   $this->connect();
         $this->name =$name;
     }
     function setName($name)
@@ -30,11 +30,11 @@ class category extends Model
     
     function readSubCategories($id)
     {
-      $sql = "SELECT * FROM categorydetails inner join subcategory where cetegoryid :id";
+      $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id";
       $this->db->query($sql);
       $this->db->bind(':id',$id);
       $this->db->execute();
-        if ($this->db->numRows > 0){
+        if ($this->db->numRows() > 0){
           $this->subCategories = array();
           while ($row = $this->db->getdata()) {
             array_push($this->readSubCategories, new subcategory($row["id"],$row["name"]));
@@ -50,7 +50,7 @@ class category extends Model
       $this->db->query($sql);
       $this->db->bind(':name',$name);
       $this->db->execute();
-      if ($this->db->numRows > 0){
+      if ($this->db->numRows() > 0){
         return true;
       }
       else
@@ -75,7 +75,7 @@ class category extends Model
       $this->db->query($sql);
       $this->db->bind(':id',$id);
       $this->db->execute();
-      if ($this->db->numRows > 0){
+      if ($this->db->numRows() > 0){
         return true;
       }
       else

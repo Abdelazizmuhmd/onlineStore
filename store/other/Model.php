@@ -4,7 +4,7 @@ require_once("../database/validation.php");
 
 abstract class Model{
     protected $db;
-    protected $validation
+    protected $validation;
 
     public function connect(){
       
