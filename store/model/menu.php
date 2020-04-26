@@ -32,3 +32,12 @@ public function getCategories(){
 
 ?>
 
+
+
+<?php
+
+$m =  new menu();
+$m->getCategories();
+
+
+?>
