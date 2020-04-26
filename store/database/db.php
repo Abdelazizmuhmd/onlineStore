@@ -22,10 +22,14 @@ class Database
       }
 
    public function connect(){
-    $dsn= "mysql:host=".$this->$servername.";dbname=".$this->$dbname; 
+    $dsn= "mysql:host=".$this->$servername.";dbname=".$this->$dbname;
+    $options = array(
+        PDO::ATTR_PERSISTENT => true,// if there is a connection that is already open use it.
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION//pdo will throw a pdo exception
+    );
     try {
-    $conn = new PDO($dsn, $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = new PDO($dsn, $username, $password,$options);
+    //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
     }
     catch(PDOException $e)
