@@ -56,7 +56,7 @@ class Database
     public function getdata()
     {
         $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+        return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     //get the number of row returned
