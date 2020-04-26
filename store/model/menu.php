@@ -17,27 +17,14 @@ public function getCategories(){
     $this->db->execute();
     if ($this->db->numRows()>0){
     while($row = $this->db->getdata()){
-    //array_push($this->categories, new category($row["id"],$row["name"]));
-     echo  $row['id'];
-        
+    array_push($this->categories, new category($row["id"],$row["name"]));
         }
     }    
     
 }
     
     
-    
-    
+   
 }
-
-?>
-
-
-
-<?php
-
-$m =  new menu();
-$m->getCategories();
-
 
 ?>
