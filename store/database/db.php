@@ -16,7 +16,7 @@ class Database
     function __construct() {
         $this->servername = DB_SERVER;
         $this->username = DB_USER;
-        $this->password = DB_PASS;
+        $this->password = null;
         $this->dbname = DB_DATABASE;
         $this->connect();
         
@@ -48,7 +48,10 @@ class Database
     $this->stmt = $this->conn->prepare($sql);
         
     }
-
+    public function bind($param,$value)
+    {
+    $this->stmt->bindParam($param,$value);
+    }
     //execute sql query
     public function execute()
     {
