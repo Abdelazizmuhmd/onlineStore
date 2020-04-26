@@ -8,9 +8,7 @@ class Database
     private $password;
     private $dbname;
     
-    
-    
-    
+    private $stmt;
     private $conn;
     private $result;
     public $sql;
@@ -25,10 +23,15 @@ class Database
       }
 
    public function connect(){
-    $dsn= "mysql:host=".$this->$servername.";dbname=".$this->$dbname; 
+
+    $dsn= "mysql:host=".$this->servername.";dbname=".$this->dbname;
+    $options = array(
+        PDO::ATTR_PERSISTENT => true,// if there is a connection that is already open use it.
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION//pdo will throw a pdo exception
+    );
     try {
-    $conn = new PDO($dsn, $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $this->conn = new PDO($dsn,$this->username,$this->password,$options);
+    //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
     }
     catch(PDOException $e)
@@ -42,7 +45,7 @@ class Database
     //prepare sql query
     public function query($sql)
     { 
-     $this->stmt = $this->dbh->prepare($sql);
+    $this->stmt = $this->conn->prepare($sql);
         
     }
 
@@ -55,8 +58,7 @@ class Database
     //get all data in form of objects
     public function getdata()
     {
-        $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+        return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     //get the number of row returned
@@ -72,7 +74,7 @@ class Database
     //get number of rows changed or affected by query
     public function lastInsertedId()
     {
-        return $this->dbh->lastInsertId();
+        return $this->conn->lastInsertId();
     }
 }
 ?>
