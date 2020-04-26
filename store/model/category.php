@@ -9,7 +9,6 @@ class category extends Model
     private $subCategories;
     function __construct()
     {
-        $this->db->connect();
     }
     function setName($name)
     {
@@ -42,6 +41,43 @@ class category extends Model
         else {
           return false;
         }
+    }
+    function insertCategory($name)
+    {
+      $sql = "INSERT into category(name) values (:name)";
+      $this->db->query($sql);
+      $this->db->bind(':name',$name);
+      $this->db->execute();
+      if ($this->db->numRows > 0){
+        return true;
+      }
+      else
+       echo "THERE WAS AN ERROR";
+    }
+    function updateCategory($id,$name)
+    {
+      $sql = "UPDATE category set name = :name where id = :id";
+      $this->db->query($sql);
+      $this->db->bind(':name',$name);
+      $this->db->bind(':id',$id);
+      $this->db->execute();
+      if ($this->db->numRows > 0){
+        return true;
+      }
+      else
+       echo "THERE WAS AN ERROR";
+    }
+    function deleteCategory($id)
+    {
+      $sql = "delete from category where id = :id";
+      $this->db->query($sql);
+      $this->db->bind(':id',$id);
+      $this->db->execute();
+      if ($this->db->numRows > 0){
+        return true;
+      }
+      else
+       echo "THERE WAS AN ERROR";
     }
 }
 ?>
