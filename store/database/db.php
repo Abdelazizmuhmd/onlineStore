@@ -69,11 +69,6 @@ class Database
     {
         return $this->stmt->rowCount();
     }
-    public function bind($param,$value)
-    {
-        $stmt->bindParam($param,$value);
-    }
-
     //get number of rows changed or affected by query
     public function lastInsertedId()
     {
