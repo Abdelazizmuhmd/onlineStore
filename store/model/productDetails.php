@@ -135,7 +135,7 @@ class productDetails extends Model{
 
 
   $s=serialize($result_arr);
-  $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,imageUrl) VALUES(:productid,:color,:s,:m,:xl,:xxl,:xxxl,:s)";
+  $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,imageUrl) VALUES(:productid,:color,:s,:m,:xl,:xxl,:xxxl,:imageUrl)";
 
         
         $this->db->query($query);
