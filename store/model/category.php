@@ -37,7 +37,8 @@ class category extends Model
         if ($this->db->numRows() > 0){
           $this->subCategories = array();
           while ($row = $this->db->getdata()) {
-            array_push($this->readSubCategories, new subcategory($row["id"],$row["name"]));
+            //array_push($this->readSubCategories, new subcategory($row["id"],$row["name"]));
+            echo $row['id'].$row['name'];
           }
         }
         else {
@@ -48,6 +49,7 @@ class category extends Model
     {
       $sql = "INSERT into category(name) values(:name)";
       $this->db->query($sql);
+      $name = $this->validation->validateString($name,1,20);
       $this->db->bind(':name',$name);
       $this->db->execute();
       if ($this->db->numRows() > 0){
@@ -60,6 +62,7 @@ class category extends Model
     {
       $sql = "UPDATE category set name = :name where id = :id";
       $this->db->query($sql);
+      $name = $this->validation->validateString($name,1,20);
       $this->db->bind(':name',$name);
       $this->db->bind(':id',$id);
       $this->db->execute();
