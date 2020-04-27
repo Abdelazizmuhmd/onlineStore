@@ -91,10 +91,10 @@ class order extends Model{
         $this->db->execute();
 
 
-      $orderid=$this->db->lastInsertedId();
-      $length = count($array);
+        $orderid=$this->db->lastInsertedId();
+        $length = count($array);
 
-    for ($i = 0; $i < $length; $i++) {
+        for ($i = 0; $i < $length; $i++) {
 
 
          $this->connect();

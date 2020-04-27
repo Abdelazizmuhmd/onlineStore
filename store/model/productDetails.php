@@ -117,7 +117,7 @@ class productDetails extends Model{
 
   		$this->connect();
 
-
+   //controller
   		$countfiles = count($_FILES['Imagearray']['name']);
  		$result_arr = [];
  		
