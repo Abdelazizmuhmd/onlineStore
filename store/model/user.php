@@ -1,5 +1,8 @@
 <?php
-class user{
+require_once("Model.php");
+?>
+<?php
+class user extends Model{
     private $firstName;
     private $id;
     private $lastName;  
