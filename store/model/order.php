@@ -91,7 +91,6 @@ class order extends Model{
 
 			   $productid=$array($i);
 			   $sql = "INSERT INTO orderdetails (orderid,productid) VALUES ('$orderid','$productid')";
-       		   $this->connect();
   			   $this->db->query($sql);
     	       $this->db->execute();
 
