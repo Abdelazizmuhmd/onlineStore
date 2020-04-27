@@ -117,21 +117,22 @@ class productDetails extends Model{
 
   		$this->connect();
 
-   //controller
-  		$countfiles = count($_FILES['Imagearray']['name']);
+  		
+/*controller*/
+    $countfiles = count($_FILES['Imagearray']['name']);
  		$result_arr = [];
  		
- 		// Looping all files
- 		for($i=0;$i<$countfiles;$i++){
+ 		
+ 		for($i=0;$i<$countfiles;$i++){// Looping all files
 
   				$filename = $_FILES['Imagearray']['name'][$i];
   				array_push($result_arr, $filename);
 
-  				// Upload file
-  				move_uploaded_file($_FILES['Imagearray']['tmp_name'][$i],'../images/'.$filename);
+  				
+  				move_uploaded_file($_FILES['Imagearray']['tmp_name'][$i],'../images/'.$filename);// Upload file
 
  		}
-  
+/*controller*/
 
 
   $s=serialize($result_arr);
