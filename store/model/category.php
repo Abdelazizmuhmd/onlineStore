@@ -1,5 +1,5 @@
 <?php
-  require_once("../other/Model.php");
+  require_once("Model.php");
 ?>
 <?php 
 class category extends Model
@@ -7,7 +7,8 @@ class category extends Model
     private $name;
     private $id;
     private $subCategories;
-    function __construct($id,$name="")
+
+    function __construct($id,$name)
     {   
         $this->id=$id;
         $this->name =$name;
@@ -38,9 +39,10 @@ class category extends Model
       $this->db->execute();
         if ($this->db->numRows() > 0){
           $this->subCategories = array();
-          while ($row = $this->db->getdata()) {
+          $row = $this->db->getdata(); 
+          for($i=0;$i<$this->db->numRows();$i++){
             //array_push($this->readSubCategories, new subcategory($row["id"],$row["name"]));
-            echo $row['id'].$row['name'];
+            echo $row[$i]->id.$row[$i]->name;
           }
         }
         else {
@@ -87,4 +89,6 @@ class category extends Model
        echo "THERE WAS AN ERROR";
     }
 }
+$c = new category(3,'lol');
+$c->readSubCategories(3);
 ?>
