@@ -61,7 +61,7 @@ class Database
     //get all data in form of objects
     public function getdata()
     {
-        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     //get the number of row returned

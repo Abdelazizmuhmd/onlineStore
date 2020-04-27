@@ -2,12 +2,12 @@
   require_once("../other/Model.php");
 ?>
 <?php 
-class category extends Model
+class subCategory extends Model
 {
     private $name;
     private $id;
-    private $subCategories;
-    function __construct($id,$name="")
+    private $products;
+    function __construct($id,$name)
     {   $this->connect();
         $this->$id = $id;
         $this->name =$name;
@@ -22,21 +22,21 @@ class category extends Model
     }
     function setID($id)
     {
-      $this->id = $id;
+      $this->id = $id;   
     }
     function getID()
     {
       return $this->id;
     }
     
-    function readSubCategories($id)
+    function readProducts($id)
     {
-      $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id";
+      $sql = "SELECT product.id,name FROM subcategorydetails inner join product on productdetails.productid = product.id where productid = :id";
       $this->db->query($sql);
       $this->db->bind(':id',$id);
       $this->db->execute();
         if ($this->db->numRows() > 0){
-          $this->subCategories = array();
+          $this->products = array();
           while ($row = $this->db->getdata()) {
             //array_push($this->readSubCategories, new subcategory($row["id"],$row["name"]));
             echo $row['id'].$row['name'];
@@ -46,9 +46,9 @@ class category extends Model
           return false;
         }
     }
-    function insertCategory($name)
+    function insertProduct($name)
     {
-      $sql = "INSERT into category(name) values(:name)";
+      $sql = "INSERT into product(name) values(:name)";
       $this->db->query($sql);
       $name = $this->validation->validateString($name,1,20);
       $this->db->bind(':name',$name);
@@ -59,9 +59,9 @@ class category extends Model
       else
        echo "THERE WAS AN ERROR";
     }
-    function updateCategory($id,$name)
+    function updateProduct($id,$name)
     {
-      $sql = "UPDATE category set name = :name where id = :id";
+      $sql = "UPDATE product set name = :name where id = :id";
       $this->db->query($sql);
       $name = $this->validation->validateString($name,1,20);
       $this->db->bind(':name',$name);
@@ -75,7 +75,7 @@ class category extends Model
     }
     function deleteCategory($id)
     {
-      $sql = "delete from category where id = :id";
+      $sql = "delete from product where id = :id";
       $this->db->query($sql);
       $this->db->bind(':id',$id);
       $this->db->execute();
@@ -86,4 +86,7 @@ class category extends Model
        echo "THERE WAS AN ERROR";
     }
 }
+
+$s = subCategory (1,'lol');
+$s->readProducts(1)
 ?>
