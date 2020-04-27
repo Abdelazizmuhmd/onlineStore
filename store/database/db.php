@@ -74,5 +74,8 @@ class Database
     {
         return $this->conn->lastInsertId();
     }
+    public function close(){
+        return $this->
+    }
 }
 ?>

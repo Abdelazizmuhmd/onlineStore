@@ -1,9 +1,10 @@
 <?php
-abstract class validation{
+class validation{
     
 function removeSpaces($value){
     
 $value=trim(preg_replace('/\s+/', ' ',$value));
+    return $value;
     
 }
 
@@ -11,12 +12,14 @@ $value=trim(preg_replace('/\s+/', ' ',$value));
 function validateStringWithSpace($value,$min,$max){
     
     $value=removeSpaces($value);
-    
     validateLength($value,$min,$max);
-    
-    if(!ctype_alpha(str_replace(" ","",$value)))
+    if(!ctype_alpha(str_replace(" ","",$value))){
         header("location: erro.html");
     }
+    return $value;
+    
+    }
+    
 function validateString($value,$min,$max){
     
     $value=removeSpaces($value);
@@ -26,17 +29,19 @@ function validateString($value,$min,$max){
     if(!ctype_alpha($value)){
         header("location: erro.html");
     }
+        return $value;
+
 }
 
 
-            
             
 function validateMixedString($value){
         
     $value=removeSpaces($value);
     validateLength($value,$min,$max);
 
-    
+   return $value;
+
 }
 
 function filterOutput($value){
@@ -51,6 +56,7 @@ function validateNumber($value,$min,$max){
     if(!is_numeric($value)){
         header("location: erro.html");
     }
+
 
 }
 

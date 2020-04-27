@@ -7,9 +7,10 @@ class category extends Model
     private $name;
     private $id;
     private $subCategories;
-    function __construct($id,$name="")
-    {   $this->connect();
-        $this->$id = $id;
+
+    function __construct($id,$name)
+    {   
+        $this->id=$id;
         $this->name =$name;
     }
     function setName($name)
@@ -31,6 +32,7 @@ class category extends Model
     
     function readSubCategories($id)
     {
+      $this->connect();
       $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id";
       $this->db->query($sql);
       $this->db->bind(':id',$id);
@@ -47,7 +49,7 @@ class category extends Model
         }
     }
     function insertCategory($name)
-    {
+    { $this->connect();
       $sql = "INSERT into category(name) values(:name)";
       $this->db->query($sql);
       $name = $this->validation->validateString($name,1,20);
@@ -60,7 +62,7 @@ class category extends Model
        echo "THERE WAS AN ERROR";
     }
     function updateCategory($id,$name)
-    {
+    { $this->connect();
       $sql = "UPDATE category set name = :name where id = :id";
       $this->db->query($sql);
       $name = $this->validation->validateString($name,1,20);
@@ -74,7 +76,7 @@ class category extends Model
        echo "THERE WAS AN ERROR";
     }
     function deleteCategory($id)
-    {
+    { $this->connect();
       $sql = "delete from category where id = :id";
       $this->db->query($sql);
       $this->db->bind(':id',$id);
