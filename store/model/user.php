@@ -2,7 +2,8 @@
 require_once("Model.php");
 ?>
 <?php
-class user extends Model{
+class user extends Model
+{
     private $firstName;
     private $id;
     private $lastName;  
