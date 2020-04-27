@@ -78,9 +78,16 @@ class order extends Model{
    
    function makeOrder ($userid,$comment,$status,$createdytime,$array()){
 
-        $sql = "INSERT INTO order (userid,comment,status,createdtime) VALUES ('$userid','$comment','$status','createdytime')";
-        $this->connect();
-  		$this->db->query($sql);
+   		$this->connect();
+
+        $sqlOrder = "INSERT INTO order (userid,comment,status,createdtime) VALUES (:userid,:comment:,:status,:createdytime)";
+        
+  		$this->db->query($sqlOrder);
+  		$this->db->bind(':userid,',$userid);
+      	$this->db->bind(':comment',$comment);
+      	$this->db->bind(':status',$status);
+      	$this->db->bind(':createdytime',$createdytime);
+
     	$this->db->execute();
 
 
@@ -89,9 +96,22 @@ class order extends Model{
 
 		for ($i = 0; $i < $length; $i++) {
 
+
+			   $this->connect();
+
 			   $productid=$array($i);
+<<<<<<< HEAD
 			   $sql = "INSERT INTO orderdetails (orderid,productid) VALUES ('$orderid','$productid')";
   			   $this->db->query($sql);
+=======
+
+			   $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productid) VALUES (:orderid ,:productid)";
+
+  			   $this->db->query($sqlOrderDetails);
+  			   $this->db->bind(':orderid',$orderid);
+      		   $this->db->bind(':productid',$productid);
+
+>>>>>>> 219bcaa8910f73e7f9a9b0dda145461c0c165f07
     	       $this->db->execute();
 
   		}
