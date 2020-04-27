@@ -13,9 +13,9 @@ class productDetails extends Model{
   private $xxl;
   private $xxxl;
   private $sold;
-  protected $array();
+  protected $Imagearray();
 
-  function __construct ($productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$array()) {
+  function __construct ($productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray()) {
     $this->connect();
         $this->productid =$productid;
         $this->color =$color;
@@ -25,7 +25,7 @@ class productDetails extends Model{
         $this->xxl =$xxl;
         $this->xxxl =$xxxl;
         $this->sold =$sold;
-        $this->array =$array();
+        $this->Imagearray =$Imagearray();
 
   }
 
@@ -102,12 +102,56 @@ class productDetails extends Model{
 
 
 
-  	function setArray($array()){
-      $this->array() = $array();
+  	function setArray($Imagearray()){
+      $this->Imagearray() = $Imagearray();
   	}
 
   	function getArray(){
-      return $this->array();
+      return $this->Imagearray();
   	}
+
+  	
+
+
+  	function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray()){
+
+  		$this->connect();
+
+
+  		$countfiles = count($_FILES['Imagearray']['name']);
+ 		$result_arr = [];
+ 		
+ 		// Looping all files
+ 		for($i=0;$i<$countfiles;$i++){
+
+  				$filename = $_FILES['Imagearray']['name'][$i];
+  				array_push($result_arr, $filename);
+
+  				// Upload file
+  				move_uploaded_file($_FILES['Imagearray']['tmp_name'][$i],'../images/'.$filename);
+
+ 		}
+  
+
+
+  $s=serialize($result_arr);
+  $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,imageUrl) VALUES(:productid,:color,:s,:m,:xl,:xxl,:xxxl,:s)";
+
+        
+        $this->db->query($query);
+        $this->db->bind(':productid,',$productid);
+        $this->db->bind(':color',$color);
+        $this->db->bind(':s',$s);
+        $this->db->bind(':m',$m);
+        $this->db->bind(':xl',$xl);
+        $this->db->bind(':xxl',$xxl);
+        $this->db->bind(':xxxl',$xxxl);
+        $this->db->bind(':imageUrl',$s);
+
+        $this->db->execute();
+
+  	}
+
+
 
 }
