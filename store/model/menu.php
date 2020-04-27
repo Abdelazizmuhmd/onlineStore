@@ -8,8 +8,10 @@ protected $categories;
 function __construct() {
 }
     
-
-public function getCategories(){
+public function getcategories(){
+    return $categories();
+}
+public function fillCategoriesArray(){
     $this->categories = array();
     $sql="select id,name from category";
     $this->connect();
@@ -21,6 +23,7 @@ public function getCategories(){
         }
     }    
     
+
 }
     
     
