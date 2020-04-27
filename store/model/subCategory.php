@@ -41,7 +41,10 @@ class subCategory extends Model
           $row = $this->db->getdata();
           $n = $this->db->numRows();
           for($i = 0;$i<$n;$i++)
-            {   echo $row[$i]->name;
+            {
+              
+              
+                echo $row[$i]->name;
                 echo '<br>';
                 $sql = "SELECT productdetails.id,color,s,m,l,xl,xxl,xxl,sold from productdetails where productid = ".$row[$i]->id." ";
                 $this->db->query($sql);
