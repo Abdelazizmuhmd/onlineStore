@@ -82,10 +82,20 @@ class order extends Model{
         $this->connect();
   		$this->db->query($sql);
     	$this->db->execute();
-    	$this->db->lastInsertedId();
 
 
-   }
+    	$orderid=$this->db->lastInsertedId();
+    	$length = count($array);
+
+		for ($i = 0; $i < $length; $i++) {
+
+			   $productid=$array($i);
+			   $sql = "INSERT INTO orderdetails (orderid,productid) VALUES ('$orderid','$productid')";
+       		   $this->connect();
+  			   $this->db->query($sql);
+    	       $this->db->execute();
+
+  		}
 
 
  
