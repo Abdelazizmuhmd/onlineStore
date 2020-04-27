@@ -4,20 +4,20 @@ require_once("Model.php");
 
 
 class order extends Model{
-	
-	private $userid;
-	private $comment;
-	private $status;
-	private $createdytime;
-	protected $array();
+  
+  private $userid;
+  private $comment;
+  private $status;
+  private $createdytime;
+  protected $array();
 
-	function __construct ($userid,$comment,$status,$createdytime,$array()) {
-		$this->connect();
+  function __construct ($userid,$comment,$status,$createdytime,$array()) {
+    $this->connect();
         $this->userid =$userid;
         $this->comment =$comment;
         $this->status =$status;
         $this->createdytime =$createdytime;
-	}
+  }
 
 
     function setUserid($userid){
@@ -71,47 +71,44 @@ class order extends Model{
       return $this->array();
     }
 
-	
+  
 
 
 
    
    function makeOrder ($userid,$comment,$status,$array()){
 
-   		$this->connect();
+        $this->connect();
 
         $sqlOrder = "INSERT INTO order (userid,comment,status,createdtime) VALUES (:userid,:comment:,:status)";
         
-  		$this->db->query($sqlOrder);
-  		$this->db->bind(':userid,',$userid);
-      	$this->db->bind(':comment',$comment);
-      	$this->db->bind(':status',$status);
-      	
+        $this->db->query($sqlOrder);
+        $this->db->bind(':userid,',$userid);
+        $this->db->bind(':comment',$comment);
+        $this->db->bind(':status',$status);
 
-    	$this->db->execute();
-
-
-    	$orderid=$this->db->lastInsertedId();
-    	$length = count($array);
-
-		for ($i = 0; $i < $length; $i++) {
+        $this->db->execute();
 
 
-			   $this->connect();
+      $orderid=$this->db->lastInsertedId();
+      $length = count($array);
 
-			   $productid=$array($i);
-			   $sql = "INSERT INTO orderdetails (orderid,productid) VALUES ('$orderid','$productid')";
-  			   $this->db->query($sql);
+    for ($i = 0; $i < $length; $i++) {
 
-			   $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productid) VALUES (:orderid ,:productid)";
 
-  			   $this->db->query($sqlOrderDetails);
-  			   $this->db->bind(':orderid',$orderid);
-      		   $this->db->bind(':productid',$productid);
+         $this->connect();
 
-    	       $this->db->execute();
+         $productid=$array($i);
 
-  		}
+         $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productid) VALUES (:orderid ,:productid)";
+
+           $this->db->query($sqlOrderDetails);
+           $this->db->bind(':orderid',$orderid);
+           $this->db->bind(':productid',$productid);
+
+           $this->db->execute();
+
+      }
 
 
  
