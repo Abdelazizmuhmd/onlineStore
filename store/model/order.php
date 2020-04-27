@@ -17,6 +17,7 @@ class order extends Model{
         $this->comment =$comment;
         $this->status =$status;
         $this->createdytime =$createdytime;
+        $this->array =$array();
   }
 
 
