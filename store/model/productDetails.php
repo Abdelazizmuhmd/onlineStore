@@ -117,21 +117,25 @@ function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
      /* controller
      
   		$countfiles = count($_FILES['Imagearray']['name']);
+  		
+    $countfiles = count($_FILES['Imagearray']['name']);
  		$result_arr = [];
  		
- 		// Looping all files
- 		for($i=0;$i<$countfiles;$i++){
+ 		
+ 		for($i=0;$i<$countfiles;$i++){// Looping all files
 
   				$filename = $_FILES['Imagearray']['name'][$i];
   				array_push($result_arr, $filename);
 
-  				// Upload file
-  				move_uploaded_file($_FILES['Imagearray']['tmp_name'][$i],'../images/'.$filename);
+  				
+  				move_uploaded_file($_FILES['Imagearray']['tmp_name'][$i],'../images/'.$filename);// Upload file
 
  		}*/
 
   $Imagearray=serialize($Imagearray);
   $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,imageUrl) VALUES(:productid,:color,:s,:m,:xl,:xxl,:xxxl,:imageUrls)";
+ 		
+
 
         $this->db->query($query);
         $this->db->bind(':productid,',$productid);
