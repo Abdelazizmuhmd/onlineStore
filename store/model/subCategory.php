@@ -48,6 +48,7 @@ class subCategory extends Model
           for($i = 0;$i<$n;$i++)
           {
               $this->products[]=new product($row[$i]->productid);
+           
               
               
           }}
