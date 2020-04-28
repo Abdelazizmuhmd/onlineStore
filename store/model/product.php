@@ -20,6 +20,12 @@ function __construct($productId){
 static function insert($name,$code,$profit,$description,$productDetails){
       $this->connect();
       $sql = "INSERT into product(name,code,cost,profit,description,weight) values(:name,:code,:cost,:profit,:description,:weight)";
+      $this->db->bind(':name',$name);
+      $this->db->bind(':code',$code);
+      $this->db->bind(':$profit',$profit);
+      $this->db->bind(':description,',$description);
+      $this->db->bind(':weight,',$weight);
+    
       $this->db->query($sql);
       $this->db->execute();
       $productid=$this->lastInsertedId();
@@ -33,12 +39,19 @@ static function insert($name,$code,$profit,$description,$productDetails){
 //delete()
     
     
-    static function update($productid,$productdetailid,$name,$code,$profit,$description,$weight,color,s,m,l,xl,xxl,xxxl,imageurls){
+    static function update($productid,$productdetailid,$name,$code,$profit,$description,$weight,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls){
       $this->connect();
       $sql = "update product  set name= :name ,code= :code ,cost=:cost ,profit=:profit,description=:description,weight=:weight  where id = :id";
-        
-        
-        
+     $this->db->bind(':name',$name);
+     $this->db->bind(':code',$code);
+     $this->db->bind(':$profit',$profit);
+     $this->db->bind(':description,',$description);
+     $this->db->bind(':weight,',$weight);
+     $this->db->bind(':id,',$productid);
+     productDetails::update($productdetailid,,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
+
+
+    
         
       $this->db->query($sql);
       $this->db->execute();
@@ -81,10 +94,24 @@ function readProduct($productid){
          
     }
     
+    
+    
+    
+    
+    
 }
     
     
-    
+function deleteProduct($productid){
+    sql="DELETE FROM productdetails WHERE productid=:productid";
+    $this->db->query($sql);
+    $this->db->bind(':productid',$productid);
+    $this->db->execute();
+    productDetails::delete($productid);
+
+
+
+}
 
 
     
