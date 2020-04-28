@@ -110,7 +110,7 @@ class productDetails extends Model{
   	
 
 
-function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
+static  function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
 
   		$this->connect();
 
@@ -176,15 +176,12 @@ function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
 
 
 
-    function delete ($id){
-
+   static function delete ($productid){
        $this->connect();
-      $queryDelete = "DELETE FROM productdetails where id = :id";
-    
-
+      $queryDelete = "DELETE FROM productdetails where productid = :id";
 
         $this->db->query($queryDelete);
-        $this->db->bind(':id,',$id);
+        $this->db->bind(':productid',$productid);
 
         $this->db->execute();
 
