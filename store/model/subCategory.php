@@ -8,9 +8,10 @@ class subCategory extends Model
     private $id;
     private $products;
     function __construct($id,$name)
-    {   $this->connect();
+    {   
         $this->$id = $id;
         $this->name =$name;
+        $this->readProducts();
     }
     function setName($name)
     {
@@ -29,20 +30,19 @@ class subCategory extends Model
       return $this->id;
     }
     
+    
     function readProducts($subcategoryId)
-    {
+    { $this->connect();
       $sql = "SELECT product.id,name,cost,profit,description,weight FROM subcategorydetails
        inner join product on subcategorydetails.productid = product.id where subcategorydetails.subcategoryid = :id";
       $this->db->query($sql);
       $this->db->bind(':id',$id);
       $this->db->execute();
       if ($this->db->numRows() > 0){
-          
           $row = $this->db->getdata();
           $n = $this->db->numRows();
           for($i = 0;$i<$n;$i++)
-            {
-              
+          {
               $product = new $product($productId);
               $this->products[]=$product;
               
@@ -50,7 +50,7 @@ class subCategory extends Model
           }}
     }
     
-    function insertSubCategory($name)
+ static  function insertSubCategory($name)
     {
       $sql = "INSERT into subcategory(name) values(:name)";
       $this->db->query($sql);
@@ -63,7 +63,7 @@ class subCategory extends Model
       else
        echo "THERE WAS AN ERROR";
     }
-    function updateSubCategory($id,$name)
+  static  function updateSubCategory($id,$name)
     {
       $sql = "UPDATE subcategory set name = :name where id = :id";
       $this->db->query($sql);
@@ -77,7 +77,7 @@ class subCategory extends Model
       else
        echo "THERE WAS AN ERROR";
     }
-    function deleteCategory($id)
+ static   function deleteCategory($id)
     {
       $sql = "delete from subcategory where id = :id";
       $this->db->query($sql);

@@ -3,7 +3,7 @@
 require_once("Modal.php")
 require_once("productdetails.php");
 class product extents modal{
-protected product $id
+protected $productid
 protected $name;
 protected $code;
 protected $cost;
@@ -15,6 +15,11 @@ protected $productDetails;
 function __construct($productId){
  $this->readProduct($productId);
 }    
+    
+    
+// insert()
+//delete()
+//update()
     
 function readProduct($productid){
     

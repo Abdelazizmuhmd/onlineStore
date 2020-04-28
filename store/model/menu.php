@@ -6,6 +6,7 @@ protected $categories;
 
 
 function __construct() {
+    $this->fillCategoriesArray();
 }
     
 public function getcategories(){

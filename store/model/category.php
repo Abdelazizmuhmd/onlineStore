@@ -12,6 +12,7 @@ class category extends Model
     {   
         $this->id=$id;
         $this->name =$name;
+        $this->readSubCategories();
     }
     function setName($name)
     {
@@ -41,15 +42,15 @@ class category extends Model
           $this->subCategories = array();
           $row = $this->db->getdata(); 
           for($i=0;$i<$this->db->numRows();$i++){
-            //array_push($this->readSubCategories, new subcategory($row["id"],$row["name"]));
-            echo $row[$i]->id.$row[$i]->name;
+              $this->subCategories[]=new subCategory($row["id"],$row["name"]);
+              
           }
         }
         else {
           return false;
         }
     }
-    function insertCategory($name)
+   static function insertCategory($name)
     { $this->connect();
       $sql = "INSERT into category(name) values(:name)";
       $this->db->query($sql);
@@ -62,7 +63,7 @@ class category extends Model
       else
        echo "THERE WAS AN ERROR";
     }
-    function updateCategory($id,$name)
+   static function  updateCategory($id,$name)
     { $this->connect();
       $sql = "UPDATE category set name = :name where id = :id";
       $this->db->query($sql);
@@ -76,7 +77,7 @@ class category extends Model
       else
        echo "THERE WAS AN ERROR";
     }
-    function deleteCategory($id)
+   static  function deleteCategory($id)
     { $this->connect();
       $sql = "delete from category where id = :id";
       $this->db->query($sql);
