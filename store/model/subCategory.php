@@ -10,9 +10,9 @@ class subCategory extends Model
     private $products;
     function __construct($id,$name)
     {   
-        $this->$id = $id;
+        $this->id = $id;
         $this->name =$name;
-        $this->readProducts();
+        $this->readProducts($this->id);
     }
     function setName($name)
     {
@@ -30,22 +30,24 @@ class subCategory extends Model
     {
       return $this->id;
     }
-    
+    function getProducts(){
+        return $this->products;
+    }
     
     function readProducts($subcategoryId)
-    { $this->connect();
+    {  
+        $this->connect();
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails
         where subcategorydetails.subcategoryid = :id";
       $this->db->query($sql);
-      $this->db->bind(':id',$id);
+      $this->db->bind(':id',$subcategoryId);
       $this->db->execute();
       if ($this->db->numRows() > 0){
           $row = $this->db->getdata();
           $n = $this->db->numRows();
           for($i = 0;$i<$n;$i++)
           {
-              $product = new product($productId);
-              $this->products[]=$product;
+              $this->products[]=new product($row[$i]->productid);
               
               
           }}

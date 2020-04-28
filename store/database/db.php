@@ -32,7 +32,7 @@ class Database
     try {
     $this->conn = new PDO($dsn,$this->username,$this->password,$options);
     //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
+   // echo "Connected successfully";
     }
     catch(PDOException $e)
     {

@@ -4,6 +4,7 @@ require_once("Model.php");
 
 
 class productDetails extends Model{
+  protected $id;
   private $productid;
   private $color;
   private $s;
@@ -12,9 +13,10 @@ class productDetails extends Model{
   private $xxl;
   private $xxxl;
   private $sold;
-  protected $Imagearray();
+  protected $Imagearray;
     
-  function __construct ($productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray) {
+  function __construct ($id,$productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray) {
+        $this->id = $id;
         $this->productid =$productid;
         $this->color =$color;
         $this->s =$s;
@@ -23,7 +25,7 @@ class productDetails extends Model{
         $this->xxl =$xxl;
         $this->xxxl =$xxxl;
         $this->sold =$sold;
-        $this->Imagearray =unserialize($Imagearray());
+        $this->Imagearray =$Imagearray;
   }
 
 
@@ -89,8 +91,8 @@ class productDetails extends Model{
 
 
 
-   function setSold($sold()){
-      $this->sold = $sold();
+   function setSold($sold){
+      $this->sold = $sold;
    }
 
    function getSold(){
@@ -99,8 +101,8 @@ class productDetails extends Model{
 
 
 
-  	function setArray($Imagearray()){
-      $this->Imagearray() = $Imagearray();
+  	function setArray($Imagearray){
+      $this->Imagearray = $Imagearray;
   	}
 
   	function getArray(){
@@ -112,25 +114,7 @@ class productDetails extends Model{
 
 static  function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
 
-  		$this->connect();
-
-     /* controller
-     
-  		$countfiles = count($_FILES['Imagearray']['name']);
-  		
-    $countfiles = count($_FILES['Imagearray']['name']);
- 		$result_arr = [];
- 		
- 		
- 		for($i=0;$i<$countfiles;$i++){// Looping all files
-
-  				$filename = $_FILES['Imagearray']['name'][$i];
-  				array_push($result_arr, $filename);
-
-  				
-  				move_uploaded_file($_FILES['Imagearray']['tmp_name'][$i],'../images/'.$filename);// Upload file
-
- 		}*/
+  $this->connect();
   $Imagearray=serialize($Imagearray);
   $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,imageUrl) VALUES(:productid,:color,:s,:m,:xl,:xxl,:xxxl,:imageUrls)";
  		

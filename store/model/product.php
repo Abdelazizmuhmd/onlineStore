@@ -1,9 +1,9 @@
 
 <?php
-require_once("Modal.php")
+require_once("Model.php");
 require_once("productdetails.php");
-class product extents modal{
-protected $productid
+class product extends model{
+protected $productid;
 protected $name;
 protected $code;
 protected $cost;
@@ -11,6 +11,10 @@ protected $profit;
 protected $description;
 protected $productDetails;
 
+    
+function getName(){
+    return $this->name;
+}
     
 function __construct($productId){
  $this->readProduct($productId);
@@ -48,7 +52,7 @@ static function insert($name,$code,$profit,$description,$productDetails){
      $this->db->bind(':description,',$description);
      $this->db->bind(':weight,',$weight);
      $this->db->bind(':id,',$productid);
-     productDetails::update($productdetailid,,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
+     productDetails::update($productdetailid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
 
 
     
@@ -66,29 +70,29 @@ static function insert($name,$code,$profit,$description,$productDetails){
 //update()
     
 function readProduct($productid){
-    
-     sql="select * from product where id = :id";
+    $this->connect();
+     $sql="select * from product where id = :id";
      $this->db->query($sql);
      $this->db->bind(':id',$productid);
      $this->db->execute();
      if ($this->db->numRows() > 0){
-     $product = $this->db->getdata()
-     $this->id = $product->id;
-     $this->name = $product->name;
-     $this->code = $product->code;
-     $this->cost = $product->cost;
-     $this->profit =$product->profit;
-     $this->description =$product->description;
-     $this->weight =$product->weight;
+     $product = $this->db->getdata();
+     $this->id = $product[0]->id;
+     $this->name = $product[0]->name;
+     $this->code = $product[0]->code;
+     $this->cost = $product[0]->cost;
+     $this->profit =$product[0]->profit;
+     $this->description =$product[0]->description;
+     $this->weight =$product[0]->weight;
      }
-    $sql="select * from productdetails where productid = :id"
+    $sql="select * from productdetails where productid = :id";
     $this->db->query($sql);
     $this->db->bind(':id',$productid);
     $this->db->execute();
     if ($this->db->numRows() > 0){
-    $productDetailsObject = $this->db->getdata()
+    $productDetailsObject = $this->db->getdata();
     foreach ($productDetailsObject as $value){
-    $productdetails = new productdetails($value->id,$value->productid,$value->color,$value->s,$value->m,$value->l,$value->xl,$value->xxl,$value->xxxl,$value->sold,$value->imageurls)
+    $productdetails = new productdetails($value->id,$value->productid,$value->color,$value->s,$value->m,$value->l,$value->xl,$value->xxl,$value->xxxl,$value->sold,$value->imageUrl);
     $this->productDetails[] = $productdetails;
     }     
          
@@ -97,13 +101,11 @@ function readProduct($productid){
     
     
     
-    
-    
 }
     
     
 function deleteProduct($productid){
-    sql="DELETE FROM productdetails WHERE productid=:productid";
+    $sql="DELETE FROM productdetails WHERE productid=:productid";
     $this->db->query($sql);
     $this->db->bind(':productid',$productid);
     $this->db->execute();
@@ -122,40 +124,4 @@ function deleteProduct($productid){
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-
-}
 ?>

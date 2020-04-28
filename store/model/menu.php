@@ -1,6 +1,8 @@
 
 <?php
 require_once("Model.php");
+require_once("category.php");
+
 class menu extends Model {
 protected $categories;
 
@@ -10,7 +12,7 @@ function __construct() {
 }
     
 public function getcategories(){
-    return $categories();
+    return $this->categories;
 }
 public function fillCategoriesArray(){
     $this->categories = array();
@@ -19,8 +21,8 @@ public function fillCategoriesArray(){
     $this->db->query($sql);
     $this->db->execute();
     if ($this->db->numRows()>0){
-     categories = $this->db->getdata();
-    foreach (categories as $value) {
+     $categories = $this->db->getdata();
+    foreach ($categories as $value) {
         $this->categories[]=new category($value->id,$value->name);
   
     }

@@ -13,7 +13,10 @@ class category extends Model
     {   
         $this->id=$id;
         $this->name =$name;
-        $this->readSubCategories();
+        $this->readSubCategories($this->id);
+    }
+    function getSubcategories(){
+     return    $this->subCategories;
     }
     function setName($name)
     {
@@ -43,13 +46,11 @@ class category extends Model
           $this->subCategories = array();
           $row = $this->db->getdata(); 
           for($i=0;$i<$this->db->numRows();$i++){
-              $this->subCategories[]=new subCategory($row["id"],$row["name"]);
+              $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name);
               
           }
         }
-        else {
-          return false;
-        }
+        
     }
    static function insertCategory($name)
     { $this->connect();
