@@ -151,13 +151,25 @@ function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
   	}
 
 
+<<<<<<< HEAD
    static function update($productdetailid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray){
       $Imagearray=serialize($Imagearray);
       $this->connect();
       $queryUpdate = "UPDATE productdetails set  color = :color, s=:s, m=:m,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl,sold=:sold,imageUrl=:imageUrls where id =:productdetailsid";
+=======
+    function update($id,$productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray){
+
+      $this->connect();
+      $queryUpdate = "UPDATE productdetails set productid = :productid, color = :color, s=:s, m=:m,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl,sold=:sold,imageUrl=:imageUrls where id =:id";
+>>>>>>> 0966f8fd54d4162876cef0d9a346217cde56c911
     
 
         $this->db->query($queryUpdate);
+<<<<<<< HEAD
+=======
+        $this->db->bind(':id,',$id);
+        $this->db->bind(':productid,',$productid);
+>>>>>>> 0966f8fd54d4162876cef0d9a346217cde56c911
         $this->db->bind(':color',$color);
         $this->db->bind(':s',$s);
         $this->db->bind(':m',$m);
@@ -166,6 +178,23 @@ function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
         $this->db->bind(':xxxl',$xxxl);
         $this->db->bind(':sold',$sold);
         $this->db->bind(':imageUrls',$Imagearray);
+
+        $this->db->execute();
+
+    }
+
+
+
+
+    function delete ($id){
+
+       $this->connect();
+      $queryDelete = "DELETE FROM productdetails where id = :id";
+    
+
+
+        $this->db->query($queryDelete);
+        $this->db->bind(':id,',$id);
 
         $this->db->execute();
 
