@@ -3,6 +3,7 @@
 require_once("Modal.php")
 require_once(prod)
 class product extents modal{
+protected product $id
 protected $name;
 protected $code;
 protected $cost;
@@ -18,14 +19,12 @@ protected $productDetails;
     $this->profit = $profit;
     $this->description = $description;
     $this->weight = $weight;
-    $this->productDetailsArray =array();
-    $this->productDetailsArray = $productDetailsArray;
+    $this->productDetails =array();
+    $this->productDetails= $productDetailsArray;
 
   }    
     
-
-    
-function getspecificproduct($id){
+function readProduct($productid){
     
      sql="select * from product where id = :id";
      $this->db->query($sql);
@@ -33,23 +32,69 @@ function getspecificproduct($id){
      $this->db->execute();
      if ($this->db->numRows() > 0){
      $product = $this->db->getdata()
+     $this->id = $product->id;
      $this->name = $product->name;
      $this->code = $product->code;
      $this->cost = $product->cost;
      $this->profit =$product->profit;
      $this->description =$product->description;
      $this->weight =$product->weight;
-     $productDetails()
-         
-   
-         
-         
-         
-         
-         
      }
+    $sql="select * from productdetails where id = :id"
+    $this->db->query($sql);
+    $this->db->bind(':id',$id);
+    $this->db->execute();
+    if ($this->db->numRows() > 0){
+    $productDetailsObject = $this->db->getdata()
+    foreach ($productDetailsObject as $value){
+    $productdetails = new productdetails($value->id,$value->productid,$value->color,$value->s,$value->m,$value->l,$value->xl,$value->xxl,$value->xxxl,$value->sold,$value->imageurls)
+    $this->productDetails[] = $productdetails;
+    }     
+         
+    }
     
 }
+
+    
+    
+    
+    
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
     
 
 

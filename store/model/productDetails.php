@@ -4,7 +4,6 @@ require_once("Model.php");
 
 
 class productDetails extends Model{
-
   private $productid;
   private $color;
   private $s;
@@ -14,9 +13,8 @@ class productDetails extends Model{
   private $xxxl;
   private $sold;
   protected $Imagearray();
-
-  function __construct ($productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray()) {
-    $this->connect();
+    
+  function __construct ($productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray) {
         $this->productid =$productid;
         $this->color =$color;
         $this->s =$s;
@@ -25,8 +23,7 @@ class productDetails extends Model{
         $this->xxl =$xxl;
         $this->xxxl =$xxxl;
         $this->sold =$sold;
-        $this->Imagearray =$Imagearray();
-
+        $this->Imagearray =unserialize($Imagearray());
   }
 
 
@@ -113,11 +110,12 @@ class productDetails extends Model{
   	
 
 
-  	function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray()){
+function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
 
   		$this->connect();
 
-   //controller
+     /* controller
+     
   		$countfiles = count($_FILES['Imagearray']['name']);
  		$result_arr = [];
  		
@@ -130,14 +128,11 @@ class productDetails extends Model{
   				// Upload file
   				move_uploaded_file($_FILES['Imagearray']['tmp_name'][$i],'../images/'.$filename);
 
- 		}
-  
+ 		}*/
 
+  $Imagearray=serialize($Imagearray);
+  $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,imageUrl) VALUES(:productid,:color,:s,:m,:xl,:xxl,:xxxl,:imageUrls)";
 
-  $s=serialize($result_arr);
-  $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,imageUrl) VALUES(:productid,:color,:s,:m,:xl,:xxl,:xxxl,:s)";
-
-        
         $this->db->query($query);
         $this->db->bind(':productid,',$productid);
         $this->db->bind(':color',$color);
@@ -146,7 +141,7 @@ class productDetails extends Model{
         $this->db->bind(':xl',$xl);
         $this->db->bind(':xxl',$xxl);
         $this->db->bind(':xxxl',$xxxl);
-        $this->db->bind(':imageUrl',$s);
+        $this->db->bind(':imageUrls',$Imagearray);
 
         $this->db->execute();
 
