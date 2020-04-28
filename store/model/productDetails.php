@@ -152,14 +152,15 @@ function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
   	}
 
 
-    function update($productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray){
+    function update($id,$productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray){
 
       $this->connect();
-      $queryUpdate = "UPDATE productdetails set productid = :productid, color = :color, s=:s, m=:m,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl,sold=:sold,imageUrl=:imageUrls where productid =:productid";
+      $queryUpdate = "UPDATE productdetails set productid = :productid, color = :color, s=:s, m=:m,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl,sold=:sold,imageUrl=:imageUrls where id =:id";
     
 
 
         $this->db->query($queryUpdate);
+        $this->db->bind(':id,',$id);
         $this->db->bind(':productid,',$productid);
         $this->db->bind(':color',$color);
         $this->db->bind(':s',$s);
@@ -169,6 +170,23 @@ function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
         $this->db->bind(':xxxl',$xxxl);
         $this->db->bind(':sold',$sold);
         $this->db->bind(':imageUrls',$Imagearray);
+
+        $this->db->execute();
+
+    }
+
+
+
+
+    function delete ($id){
+
+       $this->connect();
+      $queryDelete = "DELETE FROM productdetails where id = :id";
+    
+
+
+        $this->db->query($queryDelete);
+        $this->db->bind(':id,',$id);
 
         $this->db->execute();
 
