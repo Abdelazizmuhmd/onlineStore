@@ -17,17 +17,15 @@ function __construct($productId){
 }    
     
     
-static function($name,$code,$profit,$description,$productDetails){
-     $this->connect();
+static function insert($name,$code,$profit,$description,$productDetails){
+      $this->connect();
       $sql = "INSERT into product(name,code,cost,profit,description,weight) values(:name,:code,:cost,:profit,:description,:weight)";
       $this->db->query($sql);
       $this->db->execute();
       $productid=$this->lastInsertedId();
       foreach($productDetails as $productdetail){
-        productdetails::insert($productdetail->)
+        productdetails::insert($productid,$productdetail->color,$productdetail->s,$productdetail->m,$productdetail->l,$productdetail->xl,$productdetail->xxl,$productdetail->xxxl,$productdetail->imageArray);
        
-          
-          
       }
     
 }    
@@ -35,7 +33,22 @@ static function($name,$code,$profit,$description,$productDetails){
 //delete()
     
     
+    static function update($productid,$productdetailid,$name,$code,$profit,$description,$weight,color,s,m,l,xl,xxl,xxxl,imageurls){
+      $this->connect();
+      $sql = "update product  set name= :name ,code= :code ,cost=:cost ,profit=:profit,description=:description,weight=:weight  where id = :id";
+        
+        
+        
+        
+      $this->db->query($sql);
+      $this->db->execute();
+      $productid=$this->lastInsertedId();
+      foreach($productDetails as $productdetail){
+        productdetails::insert($productid,$productdetail->color,$productdetail->s,$productdetail->m,$productdetail->l,$productdetail->xl,$productdetail->xxl,$productdetail->xxxl,$productdetail->imageArray);
+       
+      }
     
+}   
     
 //update()
     

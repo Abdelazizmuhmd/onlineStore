@@ -151,15 +151,13 @@ function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
   	}
 
 
-    function update($productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray){
-
+   static function update($productdetailid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray){
+      $Imagearray=serialize($Imagearray);
       $this->connect();
-      $queryUpdate = "UPDATE productdetails set productid = :productid, color = :color, s=:s, m=:m,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl,sold=:sold,imageUrl=:imageUrls where productid =:productid";
+      $queryUpdate = "UPDATE productdetails set  color = :color, s=:s, m=:m,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl,sold=:sold,imageUrl=:imageUrls where id =:productdetailsid";
     
 
-
         $this->db->query($queryUpdate);
-        $this->db->bind(':productid,',$productid);
         $this->db->bind(':color',$color);
         $this->db->bind(':s',$s);
         $this->db->bind(':m',$m);
