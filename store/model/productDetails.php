@@ -131,7 +131,6 @@ function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
   				move_uploaded_file($_FILES['Imagearray']['tmp_name'][$i],'../images/'.$filename);// Upload file
 
  		}*/
-
   $Imagearray=serialize($Imagearray);
   $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,imageUrl) VALUES(:productid,:color,:s,:m,:xl,:xxl,:xxxl,:imageUrls)";
  		

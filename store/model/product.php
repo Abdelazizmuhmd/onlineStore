@@ -17,15 +17,33 @@ function __construct($productId){
 }    
     
     
-// insert()
+static function($name,$code,$profit,$description,$productDetails){
+     $this->connect();
+      $sql = "INSERT into product(name,code,cost,profit,description,weight) values(:name,:code,:cost,:profit,:description,:weight)";
+      $this->db->query($sql);
+      $this->db->execute();
+      $productid=$this->lastInsertedId();
+      foreach($productDetails as $productdetail){
+        productdetails::insert($productdetail->)
+       
+          
+          
+      }
+    
+}    
+    
 //delete()
+    
+    
+    
+    
 //update()
     
 function readProduct($productid){
     
      sql="select * from product where id = :id";
      $this->db->query($sql);
-     $this->db->bind(':id',$id);
+     $this->db->bind(':id',$productid);
      $this->db->execute();
      if ($this->db->numRows() > 0){
      $product = $this->db->getdata()
@@ -37,9 +55,9 @@ function readProduct($productid){
      $this->description =$product->description;
      $this->weight =$product->weight;
      }
-    $sql="select * from productdetails where id = :id"
+    $sql="select * from productdetails where productid = :id"
     $this->db->query($sql);
-    $this->db->bind(':id',$id);
+    $this->db->bind(':id',$productid);
     $this->db->execute();
     if ($this->db->numRows() > 0){
     $productDetailsObject = $this->db->getdata()
@@ -51,6 +69,10 @@ function readProduct($productid){
     }
     
 }
+    
+    
+    
+
 
     
     
