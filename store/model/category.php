@@ -1,5 +1,6 @@
 <?php
   require_once("Model.php");
+  require_once("subCategory.php");
 ?>
 <?php 
 class category extends Model

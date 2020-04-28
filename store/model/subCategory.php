@@ -1,5 +1,6 @@
 <?php
   require_once("Model.php");
+  require_once("product.php");
 ?>
 <?php 
 class subCategory extends Model
@@ -33,8 +34,8 @@ class subCategory extends Model
     
     function readProducts($subcategoryId)
     { $this->connect();
-      $sql = "SELECT product.id,name,cost,profit,description,weight FROM subcategorydetails
-       inner join product on subcategorydetails.productid = product.id where subcategorydetails.subcategoryid = :id";
+      $sql = "SELECT subcategorydetails.productid FROM subcategorydetails
+        where subcategorydetails.subcategoryid = :id";
       $this->db->query($sql);
       $this->db->bind(':id',$id);
       $this->db->execute();
@@ -43,7 +44,7 @@ class subCategory extends Model
           $n = $this->db->numRows();
           for($i = 0;$i<$n;$i++)
           {
-              $product = new $product($productId);
+              $product = new product($productId);
               $this->products[]=$product;
               
               
@@ -91,6 +92,6 @@ class subCategory extends Model
     }
 }
 
-$s = new subCategory (1,'lol');
-$s->readProducts(1)
+//$s = new subCategory (1,'lol');
+//$s->readProducts(1)
 ?>
