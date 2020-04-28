@@ -54,11 +54,10 @@ class subCategory extends Model
           }}
     }
     
- static  function insertSubCategory($name)
+   function insertSubCategory($name)
     {
       $sql = "INSERT into subcategory(name) values(:name)";
       $this->db->query($sql);
-      $name = $this->validation->validateString($name,1,20);
       $this->db->bind(':name',$name);
       $this->db->execute();
       if ($this->db->numRows() > 0){

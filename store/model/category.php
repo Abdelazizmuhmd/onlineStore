@@ -52,11 +52,11 @@ class category extends Model
         }
         
     }
-   static function insertCategory($name)
-    { $this->connect();
+     function insertCategory($name)
+    { 
+      $this->connect();
       $sql = "INSERT into category(name) values(:name)";
       $this->db->query($sql);
-      $name = $this->validation->validateString($name,1,20);
       $this->db->bind(':name',$name);
       $this->db->execute();
       if ($this->db->numRows() > 0){

@@ -9,6 +9,7 @@ protected $code;
 protected $cost;
 protected $profit;
 protected $description;
+protected $weight;
 protected $productDetails;
 
     
@@ -19,24 +20,32 @@ function getName(){
 function __construct($productId){
  $this->readProduct($productId);
 }    
+function getProductDetails(){
+    return $this->productDetails;
+}
     
-    
-static function insert($name,$code,$profit,$description,$productDetails){
+ function insertProduct($name,$code,$cost,$profit,$description,$weight,$productDetails){
+
       $this->connect();
       $sql = "INSERT into product(name,code,cost,profit,description,weight) values(:name,:code,:cost,:profit,:description,:weight)";
+      $this->db->query($sql);
       $this->db->bind(':name',$name);
       $this->db->bind(':code',$code);
-      $this->db->bind(':$profit',$profit);
-      $this->db->bind(':description,',$description);
-      $this->db->bind(':weight,',$weight);
-    
-      $this->db->query($sql);
+      $this->db->bind(':cost',$cost);
+      $this->db->bind(':profit',$profit);
+      $this->db->bind(':description',$description);
+      $this->db->bind(':weight',$weight);
       $this->db->execute();
-      $productid=$this->lastInsertedId();
+     
+      $productid=$this->db->lastInsertedId();
       foreach($productDetails as $productdetail){
-        productdetails::insert($productid,$productdetail->color,$productdetail->s,$productdetail->m,$productdetail->l,$productdetail->xl,$productdetail->xxl,$productdetail->xxxl,$productdetail->imageArray);
+          
+          
+          
+        $this->productDetails[0]->insert($productid,$productdetail['color'],$productdetail['s'],$productdetail['m'],$productdetail['l'],$productdetail['xl'],$productdetail['xxl'],$productdetail['xxxl'],$productdetail['img']);
        
       }
+     echo"dsad";
     
 }    
     

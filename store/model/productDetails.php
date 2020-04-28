@@ -112,25 +112,26 @@ class productDetails extends Model{
   	
 
 
-static  function insert($productid,$color,$s,$m,$xl,$xxl,$xxxl,$Imagearray){
-
+  function insert($productid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$Imagearray){
   $this->connect();
   $Imagearray=serialize($Imagearray);
-  $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,imageUrl) VALUES(:productid,:color,:s,:m,:xl,:xxl,:xxxl,:imageUrls)";
+      $soldini=0;
+  $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,sold,imageUrl) VALUES(:productid,:color,:s,:m,:l,:xl,:xxl,:xxxl,:sold,:imageUrls)";
  		
-
-
         $this->db->query($query);
-        $this->db->bind(':productid,',$productid);
+      
+        $this->db->bind(':productid',$productid);
         $this->db->bind(':color',$color);
         $this->db->bind(':s',$s);
         $this->db->bind(':m',$m);
+        $this->db->bind(':l',$l);
         $this->db->bind(':xl',$xl);
         $this->db->bind(':xxl',$xxl);
         $this->db->bind(':xxxl',$xxxl);
+        $this->db->bind(':sold',$soldini);
         $this->db->bind(':imageUrls',$Imagearray);
-
         $this->db->execute();
+
 
   	}
 
