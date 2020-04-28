@@ -38,7 +38,6 @@ class subCategory extends Model
       $this->db->execute();
       if ($this->db->numRows() > 0){
           
-          $this->products = array();
           $row = $this->db->getdata();
           $n = $this->db->numRows();
           for($i = 0;$i<$n;$i++)
@@ -50,6 +49,7 @@ class subCategory extends Model
               
           }}
     }
+    
     function insertSubCategory($name)
     {
       $sql = "INSERT into subcategory(name) values(:name)";

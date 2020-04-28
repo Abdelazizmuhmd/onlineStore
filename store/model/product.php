@@ -1,7 +1,7 @@
 
 <?php
 require_once("Modal.php")
-require_once(prod)
+require_once("productdetails.php");
 class product extents modal{
 protected product $id
 protected $name;
@@ -12,17 +12,9 @@ protected $description;
 protected $productDetails;
 
     
- function __construct($name="",$code="",$cost="",$profit="",$description="",$weight="",$productDetailsArray=[]){
-    $this->name = $name;
-    $this->code = $code;
-    $this->cost = $cost;
-    $this->profit = $profit;
-    $this->description = $description;
-    $this->weight = $weight;
-    $this->productDetails =array();
-    $this->productDetails= $productDetailsArray;
-
-  }    
+function __construct($productId){
+ $this->readProduct($productId);
+}    
     
 function readProduct($productid){
     
