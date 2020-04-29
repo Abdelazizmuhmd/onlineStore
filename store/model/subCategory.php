@@ -40,7 +40,7 @@ class subCategory extends Model
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails
         where subcategorydetails.subcategoryid = :id";
       $this->db->query($sql);
-      $this->db->bind(':id',$subcategoryId);
+      $this->db->bind(':id',$subcategoryId,PDO::PARAM_INT);
       $this->db->execute();
       if ($this->db->numRows() > 0){
           $row = $this->db->getdata();
@@ -58,7 +58,7 @@ class subCategory extends Model
     {
       $sql = "INSERT into subcategory(name) values(:name)";
       $this->db->query($sql);
-      $this->db->bind(':name',$name);
+      $this->db->bind(':name',$name,PDO::PARAM_STR);
       $this->db->execute();
       if ($this->db->numRows() > 0){
         return true;
@@ -66,31 +66,30 @@ class subCategory extends Model
       else
        echo "THERE WAS AN ERROR";
     }
-  static  function updateSubCategory($id,$name)
+    function updateSubCategory($id,$name)
     {
+    
+
       $sql = "UPDATE subcategory set name = :name where id = :id";
       $this->db->query($sql);
-      $name = $this->validation->validateString($name,1,20);
-      $this->db->bind(':name',$name);
-      $this->db->bind(':id',$id);
+      $this->db->bind(':id',$id,PDO::PARAM_INT);
+      $this->db->bind(':name',$name,PDO::PARAM_STR);
       $this->db->execute();
-      if ($this->db->numRows > 0){
-        return true;
-      }
-      else
-       echo "THERE WAS AN ERROR";
+     
     }
- static   function deleteCategory($id)
+    function deleteSubCategory()
     {
+      $sql = "delete from categorydetails where id = :id";
+      $this->db->query($sql);
+      $this->db->bind(':id',$this->id,PDO::PARAM_INT);
+      $this->db->execute();
+          
+        
       $sql = "delete from subcategory where id = :id";
       $this->db->query($sql);
-      $this->db->bind(':id',$id);
+      $this->db->bind(':id',$this->id,PDO::PARAM_INT);
       $this->db->execute();
-      if ($this->db->numRows() > 0){
-        return true;
-      }
-      else
-       echo "THERE WAS AN ERROR";
+      
     }
 }
 

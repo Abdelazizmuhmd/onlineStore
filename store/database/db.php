@@ -48,9 +48,10 @@ class Database
     $this->stmt = $this->conn->prepare($sql);
         
     }
-    public function bind($param,$value)
+    public function bind($param,$value,$options)
     {
-    $this->stmt->bindParam($param,$value);
+        
+    $this->stmt->bindParam($param,$value,$options);
     }
     //execute sql query
     public function execute()

@@ -120,39 +120,43 @@ class productDetails extends Model{
  		
         $this->db->query($query);
       
-        $this->db->bind(':productid',$productid);
-        $this->db->bind(':color',$color);
-        $this->db->bind(':s',$s);
-        $this->db->bind(':m',$m);
-        $this->db->bind(':l',$l);
-        $this->db->bind(':xl',$xl);
-        $this->db->bind(':xxl',$xxl);
-        $this->db->bind(':xxxl',$xxxl);
-        $this->db->bind(':sold',$soldini);
-        $this->db->bind(':imageUrls',$Imagearray);
+        $this->db->bind(':productid',$productid,PDO::PARAM_INT);
+        $this->db->bind(':color',$color,PDO::PARAM_STR);
+        $this->db->bind(':s',$s,PDO::PARAM_INT);
+        $this->db->bind(':m',$m,PDO::PARAM_INT);
+        $this->db->bind(':l',$l,PDO::PARAM_INT);
+        $this->db->bind(':xl',$xl,PDO::PARAM_INT);
+        $this->db->bind(':xxl',$xxl,PDO::PARAM_INT);
+        $this->db->bind(':xxxl',$xxxl,PDO::PARAM_INT);
+        $this->db->bind(':sold',$soldini,PDO::PARAM_INT);
+        $this->db->bind(':imageUrls',$Imagearray,PDO::PARAM_STR);
         $this->db->execute();
 
 
   	}
 
+   
+    
+    
 
-   static function update($productdetailid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray){
+    function update($productdetailid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray){
       $Imagearray=serialize($Imagearray);
       $this->connect();
       $queryUpdate = "UPDATE productdetails set  color = :color, s=:s, m=:m,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl,sold=:sold,imageUrl=:imageUrls where id =:productdetailsid";
    
 
         $this->db->query($queryUpdate);
-        $this->db->bind(':id,',$id);
-        $this->db->bind(':productid,',$productid);
-        $this->db->bind(':color',$color);
-        $this->db->bind(':s',$s);
-        $this->db->bind(':m',$m);
-        $this->db->bind(':xl',$xl);
-        $this->db->bind(':xxl',$xxl);
-        $this->db->bind(':xxxl',$xxxl);
-        $this->db->bind(':sold',$sold);
-        $this->db->bind(':imageUrls',$Imagearray);
+        
+        $this->db->bind(':productdetailsid',$productdetailid,PDO::PARAM_INT);
+        
+        $this->db->bind(':color',$color,PDO::PARAM_STR);
+        $this->db->bind(':s',$s,PDO::PARAM_INT);
+        $this->db->bind(':m',$m,PDO::PARAM_INT);
+        $this->db->bind(':xl',$xl,PDO::PARAM_INT);
+        $this->db->bind(':xxl',$xxl,PDO::PARAM_INT);
+        $this->db->bind(':xxxl',$xxxl,PDO::PARAM_INT);
+        $this->db->bind(':sold',$sold,PDO::PARAM_INT);
+        $this->db->bind(':imageUrls',$Imagearray,PDO::PARAM_STR);
 
         $this->db->execute();
 
@@ -161,12 +165,12 @@ class productDetails extends Model{
 
 
 
-   static function delete ($productid){
+    function delete (){
        $this->connect();
-      $queryDelete = "DELETE FROM productdetails where productid = :id";
+       $queryDelete = "DELETE FROM productdetails where id = :productdetailsid";
 
         $this->db->query($queryDelete);
-        $this->db->bind(':productid',$productid);
+        $this->db->bind(':productdetailsid',$this->id,PDO::PARAM_INT);
 
         $this->db->execute();
 

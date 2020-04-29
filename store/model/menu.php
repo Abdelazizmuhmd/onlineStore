@@ -4,6 +4,7 @@ require_once("Model.php");
 require_once("category.php");
 
 class menu extends Model {
+    
 protected $categories;
 
 
@@ -31,6 +32,22 @@ public function fillCategoriesArray(){
     
 
 }
+    
+    function deleteCategory($categoryId)
+        
+    {
+        
+        $length=count($this->categories);
+        $i=0;
+        for($i;$i<$length;$i++){
+            
+            if($this->categories[$i]->getId()==$categoryId){
+                
+             $this->categories[$i]->deleteCategory();   
+                
+            }   
+        }
+    }
     
     
    

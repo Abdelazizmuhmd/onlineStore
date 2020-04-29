@@ -29,12 +29,12 @@ function getProductDetails(){
       $this->connect();
       $sql = "INSERT into product(name,code,cost,profit,description,weight) values(:name,:code,:cost,:profit,:description,:weight)";
       $this->db->query($sql);
-      $this->db->bind(':name',$name);
-      $this->db->bind(':code',$code);
-      $this->db->bind(':cost',$cost);
-      $this->db->bind(':profit',$profit);
-      $this->db->bind(':description',$description);
-      $this->db->bind(':weight',$weight);
+      $this->db->bind(':name',$name,PDO::PARAM_STR);
+      $this->db->bind(':code',$code,PDO::PARAM_STR);
+      $this->db->bind(':cost',$cost,PDO::PARAM_INT);
+      $this->db->bind(':profit',$profit,PDO::PARAM_INT);
+      $this->db->bind(':description',$description,PDO::PARAM_STR);
+      $this->db->bind(':weight',$weight,PDO::PARAM_INT);
       $this->db->execute();
      
       $productid=$this->db->lastInsertedId();
@@ -45,34 +45,41 @@ function getProductDetails(){
         $this->productDetails[0]->insert($productid,$productdetail['color'],$productdetail['s'],$productdetail['m'],$productdetail['l'],$productdetail['xl'],$productdetail['xxl'],$productdetail['xxxl'],$productdetail['img']);
        
       }
-     echo"dsad";
     
 }    
     
 //delete()
+   
     
     
-    static function update($productid,$productdetailid,$name,$code,$profit,$description,$weight,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls){
+     function update($productid,$productdetailid,$name,$code,$cost,$profit,$description,$weight,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls){
+
       $this->connect();
-      $sql = "update product  set name= :name ,code= :code ,cost=:cost ,profit=:profit,description=:description,weight=:weight  where id = :id";
-     $this->db->bind(':name',$name);
-     $this->db->bind(':code',$code);
-     $this->db->bind(':$profit',$profit);
-     $this->db->bind(':description,',$description);
-     $this->db->bind(':weight,',$weight);
-     $this->db->bind(':id,',$productid);
-     productDetails::update($productdetailid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
+      $sql = "update product  set name= :name ,code= :code ,cost=:cost ,profit=:profit,description=:description,weight=:weight where id = :id";
+                  $this->db->query($sql);
+
+      $this->db->bind(':name',$name,PDO::PARAM_STR);
+
+      $this->db->bind(':code',$code,PDO::PARAM_STR);
+
+         
+      $this->db->bind(':cost',$cost,PDO::PARAM_INT);
+
+      $this->db->bind(':profit',$profit,PDO::PARAM_INT);
 
 
-    
-        
-      $this->db->query($sql);
+         
+      $this->db->bind(':description',$description,PDO::PARAM_STR);
+      $this->db->bind(':weight',$weight,PDO::PARAM_INT);
+      $this->db->bind(':id',$productid,PDO::PARAM_INT);
+
+         
       $this->db->execute();
-      $productid=$this->lastInsertedId();
-      foreach($productDetails as $productdetail){
-        productdetails::insert($productid,$productdetail->color,$productdetail->s,$productdetail->m,$productdetail->l,$productdetail->xl,$productdetail->xxl,$productdetail->xxxl,$productdetail->imageArray);
-       
-      }
+        
+      $this->productDetails[0]->update($productdetailid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
+        
+     
+         
     
 }   
     
@@ -82,7 +89,7 @@ function readProduct($productid){
     $this->connect();
      $sql="select * from product where id = :id";
      $this->db->query($sql);
-     $this->db->bind(':id',$productid);
+     $this->db->bind(':id',$productid,PDO::PARAM_INT);
      $this->db->execute();
      if ($this->db->numRows() > 0){
      $product = $this->db->getdata();
@@ -96,7 +103,7 @@ function readProduct($productid){
      }
     $sql="select * from productdetails where productid = :id";
     $this->db->query($sql);
-    $this->db->bind(':id',$productid);
+    $this->db->bind(':id',$productid,PDO::PARAM_INT);
     $this->db->execute();
     if ($this->db->numRows() > 0){
     $productDetailsObject = $this->db->getdata();
@@ -113,12 +120,17 @@ function readProduct($productid){
 }
     
     
-function deleteProduct($productid){
-    $sql="DELETE FROM productdetails WHERE productid=:productid";
+function deleteProduct(){
+    $sql="DELETE FROM subcategorydetails WHERE id=:productid";
     $this->db->query($sql);
-    $this->db->bind(':productid',$productid);
+    $this->db->bind(':productid',$this->id,PDO::PARAM_INT);
     $this->db->execute();
-    productDetails::delete($productid);
+    
+    
+    $sql="DELETE FROM product WHERE id=:productid";
+    $this->db->query($sql);
+    $this->db->bind(':productid',$this->id,PDO::PARAM_INT);
+    $this->db->execute();
 
 
 
