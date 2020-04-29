@@ -162,19 +162,22 @@ class productDetails extends Model{
 
     }
 
+    
 
-
-
-    function delete (){
-       $this->connect();
-       $queryDelete = "DELETE FROM productdetails where id = :productdetailsid";
-
-        $this->db->query($queryDelete);
-        $this->db->bind(':productdetailsid',$this->id,PDO::PARAM_INT);
-
-        $this->db->execute();
-
+    
+    function delete ($productDetails){
+      $this->connect();
+      $sql = "update productdetails set isdeleted=1 where id=:id";
+      $this->db->query($sql);
+      $this->db->bind(':id',$productDetails,PDO::PARAM_INT);
+      $this->db->execute();
     }
+    
+    
+    
+    
+    
+    
 
 
 

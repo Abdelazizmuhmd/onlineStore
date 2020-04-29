@@ -17,7 +17,7 @@ public function getcategories(){
 }
 public function fillCategoriesArray(){
     $this->categories = array();
-    $sql="select id,name from category";
+    $sql="select id,name from category where isdeleted=0";
     $this->connect();
     $this->db->query($sql);
     $this->db->execute();
@@ -33,23 +33,7 @@ public function fillCategoriesArray(){
 
 }
     
-    function deleteCategory($categoryId)
-        
-    {
-        
-        $length=count($this->categories);
-        $i=0;
-        for($i;$i<$length;$i++){
-            
-            if($this->categories[$i]->getId()==$categoryId){
-                
-             $this->categories[$i]->deleteCategory();   
-                
-            }   
-        }
-    }
-    
-    
+
    
 }
 

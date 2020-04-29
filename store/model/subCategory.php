@@ -35,16 +35,24 @@ class subCategory extends Model
     }
     
     function readProducts($subcategoryId)
-    {  
+    {       
         $this->connect();
+
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails
-        where subcategorydetails.subcategoryid = :id";
+        where subcategorydetails.subcategoryid = :id and isdeleted = 0";
+        
       $this->db->query($sql);
       $this->db->bind(':id',$subcategoryId,PDO::PARAM_INT);
       $this->db->execute();
+        
+                
+        
       if ($this->db->numRows() > 0){
+                    
           $row = $this->db->getdata();
+
           $n = $this->db->numRows();
+
           for($i = 0;$i<$n;$i++)
           {
               $this->products[]=new product($row[$i]->productid);
@@ -77,17 +85,13 @@ class subCategory extends Model
       $this->db->execute();
      
     }
-    function deleteSubCategory()
+    function deleteSubCategory($subcategoryid)
     {
-      $sql = "delete from categorydetails where id = :id";
-      $this->db->query($sql);
-      $this->db->bind(':id',$this->id,PDO::PARAM_INT);
-      $this->db->execute();
-          
-        
-      $sql = "delete from subcategory where id = :id";
-      $this->db->query($sql);
-      $this->db->bind(':id',$this->id,PDO::PARAM_INT);
+      $this->connect();
+      $sql = "update subcategory set isdeleted=1 where id=:id";
+              $this->db->query($sql);
+
+      $this->db->bind(':id',$subcategoryid,PDO::PARAM_INT);
       $this->db->execute();
       
     }

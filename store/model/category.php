@@ -38,7 +38,8 @@ class category extends Model
     function readSubCategories($id)
     {
       $this->connect();
-      $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id";
+      $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id and subcategory.isdeleted = 0 ";
+        
       $this->db->query($sql);
       $this->db->bind(':id',$id,PDO::PARAM_INT);
       $this->db->execute();
@@ -75,37 +76,16 @@ class category extends Model
      
     }
     
-function deleteCategory()   
-{      
-
-    foreach($this->subCategories as $subCategory) {
-        
-    $products=$subCategory->getProducts();
-        
-    foreach($products as $product){
-        
-    $productdetails = $product->getProductDetails();
-        
-    foreach($productdetails as $productdetail){
-        
-       
-        $productdetail->delete();      
-        
-     }  
-        $product->deleteProduct();
-        
-        
-     }
-        $subCategory->deleteSubCategory();
-        
-     }
+function deleteCategory($categoryId)   
+{     
     
       $this->connect();
-      $sql = "delete from category where id = :id";
-      $this->db->query($sql);
-      $this->db->bind(':id',$this->id,PDO::PARAM_INT);
+      $sql = "update category set isdeleted=1 where id=:id";
+          $this->db->query($sql);
+
+      $this->db->bind(':id',$categoryId,PDO::PARAM_INT);
+    
       $this->db->execute();
-     
  
 }
     

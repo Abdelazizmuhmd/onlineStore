@@ -86,11 +86,14 @@ function getProductDetails(){
 //update()
     
 function readProduct($productid){
+    echo "this is is".$productid;
+    echo"<br>";
     $this->connect();
-     $sql="select * from product where id = :id";
+     $sql="select * from product where id = :id and isdeleted = 0" ;
      $this->db->query($sql);
      $this->db->bind(':id',$productid,PDO::PARAM_INT);
      $this->db->execute();
+    echo $this->db->numRows();
      if ($this->db->numRows() > 0){
      $product = $this->db->getdata();
      $this->id = $product[0]->id;
@@ -101,7 +104,7 @@ function readProduct($productid){
      $this->description =$product[0]->description;
      $this->weight =$product[0]->weight;
      }
-    $sql="select * from productdetails where productid = :id";
+    $sql="select * from productdetails where productid = :id and isdeleted = 0 ";
     $this->db->query($sql);
     $this->db->bind(':id',$productid,PDO::PARAM_INT);
     $this->db->execute();
@@ -120,18 +123,18 @@ function readProduct($productid){
 }
     
     
-function deleteProduct(){
-    $sql="DELETE FROM subcategorydetails WHERE id=:productid";
-    $this->db->query($sql);
-    $this->db->bind(':productid',$this->id,PDO::PARAM_INT);
-    $this->db->execute();
-    
-    
-    $sql="DELETE FROM product WHERE id=:productid";
-    $this->db->query($sql);
-    $this->db->bind(':productid',$this->id,PDO::PARAM_INT);
-    $this->db->execute();
+function deleteProduct($productID){
+     $this->connect();
+      $sql = "update product set isdeleted=1 where id=:id";
+          $this->db->query($sql);
 
+      $this->db->bind(':id',$productID,PDO::PARAM_INT);
+      $this->db->execute();
+    
+     $sql = "update subcategorydetails set isdeleted=1 where productid=:id";
+          $this->db->query($sql);
+      $this->db->bind(':id',$productID,PDO::PARAM_INT);
+      $this->db->execute();
 
 
 }
