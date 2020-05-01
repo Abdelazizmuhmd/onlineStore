@@ -17,14 +17,30 @@ function getName(){
     return $this->name;
 }
     
-function __construct($productId){
+function __construct()
+    {
+        $a = func_get_args();
+        $i = func_num_args();
+        if (method_exists($this,$f='__construct'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+function __construct0(){
+$this->productDetails=new productDetails();
+}    
+    
+    
+function __construct1($productId){
  $this->readProduct($productId);
 }    
+    
+    
+    
 function getProductDetails(){
     return $this->productDetails;
 }
     
- function insertProduct($name,$code,$cost,$profit,$description,$weight,$productDetails){
+ function insertProduct($name,$code,$cost,$profit,$description,$weight,$productDetails,$subcategoryid){
 
       $this->connect();
       $sql = "INSERT into product(name,code,cost,profit,description,weight) values(:name,:code,:cost,:profit,:description,:weight)";
@@ -36,15 +52,23 @@ function getProductDetails(){
       $this->db->bind(':description',$description,PDO::PARAM_STR);
       $this->db->bind(':weight',$weight,PDO::PARAM_INT);
       $this->db->execute();
-     
       $productid=$this->db->lastInsertedId();
-      foreach($productDetails as $productdetail){
-          
-          
-          
+     
+     
+      foreach($productDetails as $productdetail){     
         $this->productDetails[0]->insert($productid,$productdetail['color'],$productdetail['s'],$productdetail['m'],$productdetail['l'],$productdetail['xl'],$productdetail['xxl'],$productdetail['xxxl'],$productdetail['img']);
        
       }
+     
+      $sql = "INSERT into subcategoryid(subcategoryid,categoryid) values(:subcategoryid,:productid)";
+      $this->db->query($sql);
+      $this->db->bind(':subcategoryid',$subcategoryid,PDO::PARAM_INT);
+      $this->db->bind(':productid',$productid,PDO::PARAM_INT);
+      $this->db->execute();
+     
+     
+     
+     
     
 }    
     
@@ -86,14 +110,11 @@ function getProductDetails(){
 //update()
     
 function readProduct($productid){
-    echo "this is is".$productid;
-    echo"<br>";
     $this->connect();
      $sql="select * from product where id = :id and isdeleted = 0" ;
      $this->db->query($sql);
      $this->db->bind(':id',$productid,PDO::PARAM_INT);
      $this->db->execute();
-    echo $this->db->numRows();
      if ($this->db->numRows() > 0){
      $product = $this->db->getdata();
      $this->id = $product[0]->id;

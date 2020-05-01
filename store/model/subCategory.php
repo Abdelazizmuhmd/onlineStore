@@ -8,12 +8,30 @@ class subCategory extends Model
     private $name;
     private $id;
     private $products;
-    function __construct($id,$name)
+    
+    
+    
+    function __construct()
+    {
+        $a = func_get_args();
+        $i = func_num_args();
+        if (method_exists($this,$f='__construct'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+    
+       function __construct0()
+    {  
+        $this->products[]= new product();
+    }
+    
+    function __construct2($id,$name)
     {   
         $this->id = $id;
         $this->name =$name;
         $this->readProducts($this->id);
     }
+    
     function setName($name)
     {
       $this->name = $name;
@@ -62,18 +80,26 @@ class subCategory extends Model
           }}
     }
     
-   function insertSubCategory($name)
-    {
+   function insertSubCategory($categoryid,$name)
+    { $this->connect();
       $sql = "INSERT into subcategory(name) values(:name)";
       $this->db->query($sql);
       $this->db->bind(':name',$name,PDO::PARAM_STR);
       $this->db->execute();
-      if ($this->db->numRows() > 0){
-        return true;
-      }
-      else
-       echo "THERE WAS AN ERROR";
+      $subcategoryid=$this->db->lastInsertedId();
+     
+      $sql = "INSERT into categorydetails(subcategoryid,categoryid) values(:subcategoryid,:categoryid)";
+      $this->db->query($sql);
+      $this->db->bind(':subcategoryid',$subcategoryid,PDO::PARAM_INT);
+      $this->db->bind(':categoryid',$categoryid,PDO::PARAM_INT);
+
+      $this->db->execute();
+     
+     
+     
+    
     }
+    
     function updateSubCategory($id,$name)
     {
     
@@ -97,6 +123,11 @@ class subCategory extends Model
     }
 }
 
-//$s = new subCategory (1,'lol');
-//$s->readProducts(1)
+
+
+
+
+
+
+
 ?>

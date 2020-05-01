@@ -9,7 +9,7 @@ protected $categories;
 
 
 function __construct() {
-    $this->fillCategoriesArray();
+   $this->categories[]=new category();
 }
     
 public function getcategories(){

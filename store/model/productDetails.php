@@ -15,7 +15,21 @@ class productDetails extends Model{
   private $sold;
   protected $Imagearray;
     
-  function __construct ($id,$productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray) {
+function __construct()
+    {
+        $a = func_get_args();
+        $i = func_num_args();
+        if (method_exists($this,$f='__construct'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+    
+function __construct0(){
+}    
+    
+    
+    
+  function __construct10($id,$productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray) {
         $this->id = $id;
         $this->productid =$productid;
         $this->color =$color;

@@ -9,12 +9,29 @@ class category extends Model
     private $id;
     private $subCategories;
 
-    function __construct($id,$name)
+    
+      function __construct()
+    {
+        $a = func_get_args();
+        $i = func_num_args();
+        if (method_exists($this,$f='__construct'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+    function __construct0()
+    {
+        
+     $this->subCategories[] = new subCategory();
+        
+    }
+    
+    function __construct2($id,$name)
     {   
         $this->id=$id;
         $this->name =$name;
         $this->readSubCategories($this->id);
     }
+    
     function getSubcategories(){
      return    $this->subCategories;
     }
