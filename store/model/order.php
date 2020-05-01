@@ -9,15 +9,15 @@ class order extends Model{
   private $comment;
   private $status;
   private $createdytime;
-  protected $array();
+  protected $products;
 
-  function __construct ($userid,$comment,$status,$createdytime,$array()) {
-    $this->connect();
+  function __construct ($userid,$comment,$status,$createdytime,$products) {
+        $this->connect();
         $this->userid =$userid;
         $this->comment =$comment;
         $this->status =$status;
         $this->createdytime =$createdytime;
-        $this->array =$array();
+        $this->products =$products;
   }
 
 
@@ -69,28 +69,27 @@ class order extends Model{
     }
 
     function getArray(){
-      return $this->array();
+      return $this->array;
     }
 
    
-   function getorder($userid){
-        $this->connect();
-       
-        $status = "pedding";
-       
-        $sqlOrder = "select order()";
-        
-        $this->db->query($sqlOrder);
-        $this->db->bind(':userid,',$userid);
-        $this->db->bind(':comment',$comment);
-        $this->db->bind(':status',$status);
+function getorder($id){
+    
 
-        $this->db->execute();
        
-   }
+}
+function gerorderdetails($usertype,$orderid){
+    $this->getorder();
+    $sql="select  productid from orderdetails  where id =:orderid";
+    $this->db->query($sql);
+    $this->db->bind(':orderid,',$orderid);
+    $this->db->execute();
+    $this->products[]=new product($this->getdata()->id);
+    
+}
 
-   
-   function makeOrder ($userid,$comment,$productsids){
+
+function makeOrder ($userid,$comment,$productsids){
 
         $this->connect();
        
@@ -104,6 +103,7 @@ class order extends Model{
         $this->db->bind(':status',$status);
 
         $this->db->execute();
+    
 
 
         $orderid=$this->db->lastInsertedId();
@@ -126,9 +126,10 @@ class order extends Model{
 
       }
 
-
- 
-
 }
+    
+    
+    
+    
 
 ?>

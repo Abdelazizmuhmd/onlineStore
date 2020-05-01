@@ -13,7 +13,22 @@ class user extends Model
     private $apartmant;
     private $city;
     private $userType;
-    function __construct($id,$firstName="",$lastName="",$email="",$phone="",$adress="",$apartmant="",$city="",$userType="")
+    function __construct()
+    {
+        $a = func_get_args();
+        $i = func_num_args();
+        if (method_exists($this,$f='__construct'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+     
+   function __construct0()
+    {   
+    
+
+    }
+    
+    function __construct9($id,$firstName="",$lastName="",$email="",$phone="",$adress="",$apartmant="",$city="",$userType="")
     {   
         $this->id=$id;
         $this->fristName =$firstName;
@@ -26,6 +41,21 @@ class user extends Model
         $this->userType =$userType;
 
     }
+    function insertUser(){
+        
+    }
+    
+    function deleteUser(){
+        
+    }
+    
+    function updateUser(){
+        
+    }
+    function getuser(){
+        
+    }
+    
     function setID($id)
     {
         $this->id =$id;
