@@ -24,13 +24,16 @@ class category extends Model
      $this->subCategories[] = new subCategory();
         
     }
+
     
-    function __construct2($id,$name)
+    function __construct3($id,$name,$subcategoryid)
     {   
         $this->id=$id;
         $this->name =$name;
-        $this->readSubCategories($this->id);
+        $this->readSubCategories($this->id,$subcategoryid);
     }
+
+
     
     function getSubcategories(){
      return    $this->subCategories;
@@ -52,7 +55,7 @@ class category extends Model
       return $this->id;
     }
 
-    function readSubCategories($id)
+    function readSubCategories($id,$subcategoryid)
     {
       $this->connect();
       $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id and subcategory.isdeleted = 0 ";
@@ -64,12 +67,33 @@ class category extends Model
           $this->subCategories = array();
           $row = $this->db->getdata(); 
           for($i=0;$i<$this->db->numRows();$i++){
-              $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name);
+
+              //$flag if =1 load the products if 0 don't loag products only name
+              if(!$subcategoryid){
+                  
+              if($subcategoryid==$row[$i]->id){
+              $flag=1;
+              $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name,$flag);
+              }
+              else{
+              $flag=0;
+              $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name,$flag);
+              }
+              }
+              else{
+                  
+              $flag=1;
+              $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name,$flag);
+                  
+              }
+              
               
           }
         }
-        
+
     }
+    
+
      function insertCategory($name)
     { 
       $this->connect();

@@ -67,8 +67,6 @@ function getProductDetails(){
       $this->db->execute();
      
      
-     
-     
     
 }    
     

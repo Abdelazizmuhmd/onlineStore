@@ -72,16 +72,31 @@ class order extends Model{
       return $this->array();
     }
 
-  
+   
+   function getorder($userid){
+        $this->connect();
+       
+        $status = "pedding";
+       
+        $sqlOrder = "select order()";
+        
+        $this->db->query($sqlOrder);
+        $this->db->bind(':userid,',$userid);
+        $this->db->bind(':comment',$comment);
+        $this->db->bind(':status',$status);
 
-
+        $this->db->execute();
+       
+   }
 
    
-   function makeOrder ($userid,$comment,$status,$array()){
+   function makeOrder ($userid,$comment,$productsids){
 
         $this->connect();
-
-        $sqlOrder = "INSERT INTO order (userid,comment,status,createdtime) VALUES (:userid,:comment:,:status)";
+       
+        $status = "pedding";
+       
+        $sqlOrder = "INSERT INTO order (userid,comment,status) VALUES (:userid,:comment:,:status)";
         
         $this->db->query($sqlOrder);
         $this->db->bind(':userid,',$userid);

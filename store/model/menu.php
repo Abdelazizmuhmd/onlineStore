@@ -15,7 +15,7 @@ function __construct() {
 public function getcategories(){
     return $this->categories;
 }
-public function fillCategoriesArray(){
+public function getAllCategoriesDetails($subcategoryid=""){
     $this->categories = array();
     $sql="select id,name from category where isdeleted=0";
     $this->connect();
@@ -24,17 +24,17 @@ public function fillCategoriesArray(){
     if ($this->db->numRows()>0){
      $categories = $this->db->getdata();
     foreach ($categories as $value) {
-        $this->categories[]=new category($value->id,$value->name);
-  
+        $this->categories[]=new category($value->id,$value->name,$subcategoryid);
     }
     }  
-    
-    
-
 }
+
+
+    
+    
+    
     
 
-   
 }
 
 ?>

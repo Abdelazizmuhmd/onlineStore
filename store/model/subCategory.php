@@ -25,11 +25,15 @@ class subCategory extends Model
         $this->products[]= new product();
     }
     
-    function __construct2($id,$name)
+
+ 
+     function __construct3($id,$name,$flag)
     {   
         $this->id = $id;
         $this->name =$name;
-        $this->readProducts($this->id);
+        if($flag==1){
+        $this->readProducts($this->id);        
+        }
     }
     
     function setName($name)

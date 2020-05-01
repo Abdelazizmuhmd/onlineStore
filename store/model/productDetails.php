@@ -16,20 +16,21 @@ class productDetails extends Model{
   protected $Imagearray;
     
 function __construct()
-    {
+{
         $a = func_get_args();
         $i = func_num_args();
         if (method_exists($this,$f='__construct'.$i)) {
             call_user_func_array(array($this,$f),$a);
         }
-    }
+}
     
 function __construct0(){
+    
 }    
     
     
     
-  function __construct10($id,$productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray) {
+function __construct10($id,$productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray) {
         $this->id = $id;
         $this->productid =$productid;
         $this->color =$color;
@@ -40,7 +41,7 @@ function __construct0(){
         $this->xxxl =$xxxl;
         $this->sold =$sold;
         $this->Imagearray =$Imagearray;
-  }
+}
 
 
   function setProductid($productid){
