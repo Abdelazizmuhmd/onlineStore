@@ -10,6 +10,8 @@ class order extends Model{
   private $status;
   private $createdytime;
   protected $products;
+  private $createdtime;
+  protected $products;
 
   function __construct ($userid,$comment,$status,$createdytime,$products) {
         $this->connect();
@@ -126,6 +128,16 @@ function makeOrder ($userid,$comment,$productsids){
 
       }
 
+      function readOrders ($id){
+          $sql = "select comment,status,creadtedtime from order where id = :id";
+          $this->db->query($sqlOrderDetails);
+          $this->db->bind(':id',$id)
+          $this->db->execute();
+          $row = $this->db->getdata();
+          $this->comment = $row[0]->comment;
+          $this->status = $row[0]->status;
+          $this->createdtime = $row[0]->getCreatedtime;
+      }
 }
     
     
