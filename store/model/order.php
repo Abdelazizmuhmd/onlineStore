@@ -75,11 +75,7 @@ class order extends Model{
     }
 
    
-function getorder($id){
-    
 
-       
-}
 function gerorderdetails($usertype,$orderid){
     $this->getorder();
     $sql="select  productid from orderdetails  where id =:orderid";
@@ -128,7 +124,7 @@ function makeOrder ($userid,$comment,$productsids){
 
       }
 
-      function readOrders ($id){
+      function readOrder($id){
           $sql = "select comment,status,creadtedtime from order where id = :id";
           $this->db->query($sqlOrderDetails);
           $this->db->bind(':id',$id)
