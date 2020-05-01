@@ -8,7 +8,7 @@ class order extends Model{
   private $userid;
   private $comment;
   private $status;
-  private $createdytime;
+  private $createdtime;
   protected $array();
 
   function __construct ($userid,$comment,$status,$createdytime,$array()) {
@@ -125,10 +125,16 @@ class order extends Model{
            $this->db->execute();
 
       }
-
-
- 
-
+      function readOrders ($id){
+          $sql = "select comment,status,creadtedtime from order where id = :id";
+          $this->db->query($sqlOrderDetails);
+          $this->db->bind(':id',$id)
+          $this->db->execute();
+          $row = $this->db->getdata();
+          $this->comment = $row[0]->comment;
+          $this->status = $row[0]->status;
+          $this->createdtime = $row[0]->getCreatedtime;
+      }
 }
 
 ?>
