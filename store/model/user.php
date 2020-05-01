@@ -24,23 +24,21 @@ class user extends Model
      
    function __construct0()
     {   
-    
+       
 
     }
     
-    function __construct9($id,$firstName="",$lastName="",$email="",$phone="",$adress="",$apartmant="",$city="",$userType="")
-    {   
-        $this->id=$id;
-        $this->fristName =$firstName;
-        $this->lastName =$lastName;
-        $this->email =$email;
-        $this->phone =$phone;
-        $this->adress =$adress;
-        $this->apartmant =$apartmant;
-        $this->city =$city;
-        $this->userType =$userType;
-
+    function login(){
+        
     }
+    function signup(){
+        
+    }
+    
+    function updateUser(){
+        
+    }
+
     function insertUser(){
         
     }

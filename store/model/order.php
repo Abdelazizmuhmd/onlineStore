@@ -13,13 +13,8 @@ class order extends Model{
   private $createdtime;
   protected $products;
 
-  function __construct ($userid,$comment,$status,$createdytime,$products) {
-        $this->connect();
-        $this->userid =$userid;
-        $this->comment =$comment;
-        $this->status =$status;
-        $this->createdytime =$createdytime;
-        $this->products =$products;
+function __construct($id) {
+      $this->readOrder($id);
   }
 
 
@@ -76,7 +71,7 @@ class order extends Model{
 
    
 
-function gerorderdetails($usertype,$orderid){
+function gerorderdetails($orderid){
     $this->getorder();
     $sql="select  productid from orderdetails  where id =:orderid";
     $this->db->query($sql);
@@ -134,6 +129,18 @@ function makeOrder ($userid,$comment,$productsids){
           $this->status = $row[0]->status;
           $this->createdtime = $row[0]->getCreatedtime;
       }
+    
+    function delete ($orderid){
+        $this->connect();
+        $sql = "update order set isdeleted=1 where id=:id";
+        $this->db->query($sql);
+        $this->db->bind(':id',$orderid,PDO::PARAM_INT);
+        $this->db->execute();
+     }
+    
+    
+    
+    
 }
     
     
