@@ -59,6 +59,7 @@ function getProductDetails(){
         $this->productDetails[0]->insert($productid,$productdetail['color'],$productdetail['s'],$productdetail['m'],$productdetail['l'],$productdetail['xl'],$productdetail['xxl'],$productdetail['xxxl'],$productdetail['img']);
        
       }
+     
       $sql = "INSERT into subcategorydetails(subcategoryid,productid) values(:subcategoryid,:productid)";
       $this->db->query($sql);
       $this->db->bind(':subcategoryid',$subcategoryid,PDO::PARAM_INT);

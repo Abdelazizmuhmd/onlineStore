@@ -70,14 +70,17 @@ class user extends Model
         $this->db->execute();
     } 
         
-    function guestsignup($firstName,$lastName,$address,$apartmant,$city,$email){
+    function guestsignup($firstName,$lastName,$address,$apartment,$city,$email){
                 $this->connect();
 
-        $sql = "insert into user(firstname,lastname,address,apartmant,city,email,Usertype) values(:firstname,:lastname,:apartmant,:city,:address,:email,:usertype)";
+        $sql = "insert into user(firstname,lastname,address,apartmant,city,email,Usertype) values(:firstname,:lastname,:apartment,:city,:address,:email,:usertype)";
         $this->db->query($sql);
-        $this->db->bind(':firstname',$firstname,PDO::PARAM_STR);
-        $this->db->bind(':lastname',$lastname,PDO::PARAM_STR);
+        $this->db->bind(':firstname',$firstName,PDO::PARAM_STR);
+        $this->db->bind(':lastname',$lastName,PDO::PARAM_STR);
         $this->db->bind(':address',$address,PDO::PARAM_STR);
+        $this->db->bind(':email',$email,PDO::PARAM_STR);
+        $this->db->bind(':apartment',$apartment,PDO::PARAM_STR);
+        $this->db->bind(':city',$city,PDO::PARAM_STR);
         $this->db->bind(':email',$email,PDO::PARAM_STR);
         $this->db->bind(':usertype',"guest",PDO::PARAM_STR);
         $this->db->execute();
