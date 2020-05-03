@@ -1,5 +1,7 @@
 <?php
 require_once("Model.php");
+require_once("order.php");
+ 
 ?>
 <?php
 class user extends Model
@@ -9,50 +11,109 @@ class user extends Model
     private $lastName;  
     private $email;
     private $phone;
-    private $adress;  
+    private $address;  
     private $apartmant;
     private $city;
     private $userType;
-    function __construct()
-    {
-        $a = func_get_args();
-        $i = func_num_args();
-        if (method_exists($this,$f='__construct'.$i)) {
-            call_user_func_array(array($this,$f),$a);
+    private $orders;
+
+    
+    function getorders($userId){
+    $sql = "select id from order where userid=:userid";
+    $this->db->query($sql);
+    $this->db->bind(':userid',$userId,PDO::PARAM_INT);
+    $this->db->execute();
+    $row = $this->db->getdata();
+    if ($this->db->numRows() > 0){
+    foreach($row as order){
+    $this->orders[]=new order(order->id);
+    }
+    }
+    }
+    
+    function makeorder($userid,$comment,$productsid){
+    order=new order($userid,$comment,$productsid);
+    }
+    
+    
+    function login($email,$password){
+        $sql = "select id from user where email=:email,password=:password";
+        $this->db->query($sql);
+        $this->db->bind(':password',$email,PDO::PARAM_STR);
+        $this->db->bind(':email',$password,PDO::PARAM_STR);        
+        $this->db->execute();
+        $row = $this->db->getdata();
+        if ($this->db->numRows() > 0){
+        $this->getuser($row[0]->id);
+        }
+        
+    }
+        
+    function updateAddress($id,$address,$apartmant,$city){
+        $sql = "update user set address=:address,apartmant=:apartmant,city=:city where id=:id";
+        $this->db->query($sql);
+        $this->db->bind(':id',$id,PDO::PARAM_INT);
+        $this->db->bind(':address',$address,PDO::PARAM_STR);
+        $this->db->bind(':apartmant',$apartmant,PDO::PARAM_STR);
+        $this->db->bind(':city',$city,PDO::PARAM_STR);
+        $this->db->execute();
+    } 
+        
+    function guestsignup($firstName,$lastName,$address,$apartmant,$city,$email){
+        $sql = "insert into user(firstname,lastname,address,apartmant,city,email,Usertype) values(:firstname,:lastname,:apartmant,:city,:address,:email,:usertype)";
+        $this->db->query($sql);
+        $this->db->bind(':firstname',$firstname,PDO::PARAM_STR);
+        $this->db->bind(':lastname',$lastname,PDO::PARAM_STR);
+        $this->db->bind(':address',$address,PDO::PARAM_STR);
+        $this->db->bind(':email',$email,PDO::PARAM_STR);
+        $this->db->bind(':usertype',"guest",PDO::PARAM_STR);
+        $this->db->execute();
+        $id=$this->db->lastInsertedId();
+        $this->getuser($id);
+    }
+    function signup($firstname,$lastname,$password,$email){
+        $password=sha1($password);
+        $sql = "insert into user(firstname,lastname,password,email,Usertype) values(:firstname,:lastname,:password,:email,:usertype)";
+        $this->db->query($sql);
+        $this->db->bind(':firstname',$firstname,PDO::PARAM_STR);
+        $this->db->bind(':lastname',$lastname,PDO::PARAM_STR);
+        $this->db->bind(':password',$password,PDO::PARAM_STR);
+        $this->db->bind(':email',$email,PDO::PARAM_STR);
+        $this->db->bind(':usertype',"client",PDO::PARAM_STR);
+        $this->db->execute();
+        $id=$this->db->lastInsertedId();
+        $this->getuser($id);
+    }
+    
+
+    function getuser($id){
+        $sql = "select * from user where id=:id";
+        $this->db->query($sql);
+        $this->db->bind(':id',$id,PDO::PARAM_INT)
+        $this->db->execute();
+        $row = $this->db->getdata();
+        if ($this->db->numRows() > 0){
+            
+        $this->id = $row[0]->id;
+        $this->firstname=$row[0]->firstname;
+        $this->lastname=$row[0]->lastname;
+        $this->email=$row[0]->email;
+        $this->phone=$row[0]->phone;
+        $this->address=$row[0]->address;
+        $this->city=$row[0]->city;
+        $this->apartmant=$row[0]->apartmant;
+        $this->usertype=$row[0]->usertype;
+
         }
     }
-     
-   function __construct0()
-    {   
-       
-
+    function deleteuser($id){
+        $sql = "update  user set isdeleted=1 where id=:id";
+        $this->db->query($sql);
+        $this->db->bind(':id',$id,PDO::PARAM_INT)
+        $this->db->execute();
+    
     }
     
-    function login(){
-        
-    }
-    function signup(){
-        
-    }
-    
-    function updateUser(){
-        
-    }
-
-    function insertUser(){
-        
-    }
-    
-    function deleteUser(){
-        
-    }
-    
-    function updateUser(){
-        
-    }
-    function getuser(){
-        
-    }
     
     function setID($id)
     {

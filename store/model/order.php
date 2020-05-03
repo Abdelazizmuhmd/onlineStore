@@ -12,9 +12,20 @@ class order extends Model{
   protected $products;
   private $createdtime;
   protected $products;
-
-function __construct($id) {
+    
+function __construct()
+    {
+        $a = func_get_args();
+        $i = func_num_args();
+        if (method_exists($this,$f='__construct'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+function __construct1($id) {
       $this->readOrder($id);
+  }
+function __construct3($userid,$comment,$productsids) {
+    $this->makeorder($userid,$comment,$productsids);
   }
 
 
