@@ -1,11 +1,6 @@
 <?php 
 require_once("user.php");
-
 $user =new user();
 var_dump($user);
-$user->signup("ahmed","mohamed","test123","adasd@gmail.com");
-
-
-
-
+echo $user->makeorder(1,"commeant","pedding",array(81));
 ?>

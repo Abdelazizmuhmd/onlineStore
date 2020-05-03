@@ -8,9 +8,8 @@ class order extends Model{
   private $userid;
   private $comment;
   private $status;
-  private $createdytime;
-  protected $products;
   private $createdtime;
+  private $products;
     
 function __construct()
     {
@@ -23,8 +22,8 @@ function __construct()
 function __construct1($id) {
       $this->readOrder($id);
   }
-function __construct3($userid,$comment,$productsids) {
-    $this->makeorder($userid,$comment,$productsids);
+function __construct4($userid,$comment,$status,$productsids) {
+    $this->makeorder($userid,$comment,$status,$productsids);
   }
 
 
@@ -96,17 +95,14 @@ function makeOrder ($userid,$comment,$status,$productsids){
 
         $this->connect();
        
-        $status = "pedding";
        
-        $sqlOrder = "INSERT INTO order (userid,comment,status) VALUES (:userid,:comment:,:status)";
+        $sqlOrder = "INSERT INTO `order` (userid,comment,status) VALUES (:userid,:comment,:status)";
         
         $this->db->query($sqlOrder);
-        $this->db->bind(':userid,',$userid);
-        $this->db->bind(':comment',$comment);
-        $this->db->bind(':status',$status);
-
+        $this->db->bind(':userid',$userid,PDO::PARAM_INT);
+        $this->db->bind(':comment',$comment,PDO::PARAM_STR);
+        $this->db->bind(':status',$status,PDO::PARAM_STR);
         $this->db->execute();
-    
 
 
         $orderid=$this->db->lastInsertedId();
@@ -117,32 +113,34 @@ function makeOrder ($userid,$comment,$status,$productsids){
 
          $this->connect();
 
-         $productid=$array($i);
+         $productid=$productsids[$i];
 
          $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productid) VALUES (:orderid ,:productid)";
 
            $this->db->query($sqlOrderDetails);
-           $this->db->bind(':orderid',$orderid);
-           $this->db->bind(':productid',$productid);
+           $this->db->bind(':orderid',$orderid,PDO::PARAM_INT);
+           $this->db->bind(':productid',$productid,PDO::PARAM_INT);
 
            $this->db->execute();
 
       }}
 
       function readOrder($id){
-          $sql = "select comment,status,creadtedtime from order where id = :id";
-          $this->db->query($sqlOrderDetails);
-          $this->db->bind(':id',$id);
+          $this->connect();
+          $sql = "select id,comment,status,createdtime from `order` where id = :id";
+          $this->db->query($sql);
+          $this->db->bind(':id',$id,PDO::PARAM_INT);
           $this->db->execute();
           $row = $this->db->getdata();
+          $this->id=$row[0]->id;
           $this->comment = $row[0]->comment;
           $this->status = $row[0]->status;
-          $this->createdtime = $row[0]->getCreatedtime;
+          $this->createdtime = $row[0]->createdtime;
       }
     
     function delete ($orderid){
         $this->connect();
-        $sql = "update order set isdeleted=1 where id=:id";
+        $sql = "update `order` set isdeleted=1 where id=:id";
         $this->db->query($sql);
         $this->db->bind(':id',$orderid,PDO::PARAM_INT);
         $this->db->execute();

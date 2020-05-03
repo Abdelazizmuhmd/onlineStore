@@ -15,18 +15,19 @@ class user extends Model
     private $apartmant;
     private $city;
     private $userType;
-    private $orders;
+    public $orders;
 
     function __construct(){
         
     }
     function getorders($userId){
-                $this->connect();
-
-    $sql = "select id from order where userid=:userid";
+    $this->connect();
+    $sql = "select id from `order` where userid=:userid";
     $this->db->query($sql);
     $this->db->bind(':userid',$userId,PDO::PARAM_INT);
     $this->db->execute();
+        
+        
     $row = $this->db->getdata();
     if ($this->db->numRows() > 0){
     foreach($row as $order){
@@ -35,22 +36,24 @@ class user extends Model
     }
     }
     
-    function makeorder($userid,$comment,$productsid){
-    $order=new order($userid,$comment,$productsid);
+    function makeorder($userid,$comment,$status,$productsid){
+    $order=new order($userid,$comment,$status,$productsid);
     }
     
     
     function login($email,$password){
-                $this->connect();
-
-        $sql = "select id from user where email=:email,password=:password";
+        $password=sha1($password);
+        $this->connect();
+        $sql = "select id from user where email=:email and password=:password";
         $this->db->query($sql);
-        $this->db->bind(':password',$email,PDO::PARAM_STR);
-        $this->db->bind(':email',$password,PDO::PARAM_STR);        
+        $this->db->bind(':password',$password,PDO::PARAM_STR);
+        $this->db->bind(':email',$email,PDO::PARAM_STR);       
         $this->db->execute();
         $row = $this->db->getdata();
         if ($this->db->numRows() > 0){
         $this->getuser($row[0]->id);
+        }else{
+            echo"wrong data";
         }
         
     }
