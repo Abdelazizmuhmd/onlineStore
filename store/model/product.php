@@ -26,7 +26,7 @@ function __construct()
         }
     }
 function __construct0(){
-$this->productDetails=new productDetails();
+$this->productDetails[]=new productDetails();
 }    
     
     
@@ -59,8 +59,7 @@ function getProductDetails(){
         $this->productDetails[0]->insert($productid,$productdetail['color'],$productdetail['s'],$productdetail['m'],$productdetail['l'],$productdetail['xl'],$productdetail['xxl'],$productdetail['xxxl'],$productdetail['img']);
        
       }
-     
-      $sql = "INSERT into subcategoryid(subcategoryid,categoryid) values(:subcategoryid,:productid)";
+      $sql = "INSERT into subcategorydetails(subcategoryid,productid) values(:subcategoryid,:productid)";
       $this->db->query($sql);
       $this->db->bind(':subcategoryid',$subcategoryid,PDO::PARAM_INT);
       $this->db->bind(':productid',$productid,PDO::PARAM_INT);

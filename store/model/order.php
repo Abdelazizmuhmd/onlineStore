@@ -11,7 +11,6 @@ class order extends Model{
   private $createdytime;
   protected $products;
   private $createdtime;
-  protected $products;
     
 function __construct()
     {
@@ -72,8 +71,8 @@ function __construct3($userid,$comment,$productsids) {
 
 
 
-    function setArray($array()){
-      $this->array() = $array();
+    function setArray($array){
+      $this->$products = $array;
     }
 
     function getArray(){
@@ -93,7 +92,7 @@ function gerorderdetails($orderid){
 }
 
 
-function makeOrder ($userid,$comment,$productsids){
+function makeOrder ($userid,$comment,$status,$productsids){
 
         $this->connect();
        
@@ -111,7 +110,7 @@ function makeOrder ($userid,$comment,$productsids){
 
 
         $orderid=$this->db->lastInsertedId();
-        $length = count($array);
+        $length = count($productsids);
 
         for ($i = 0; $i < $length; $i++) {
 
@@ -128,12 +127,12 @@ function makeOrder ($userid,$comment,$productsids){
 
            $this->db->execute();
 
-      }
+      }}
 
       function readOrder($id){
           $sql = "select comment,status,creadtedtime from order where id = :id";
           $this->db->query($sqlOrderDetails);
-          $this->db->bind(':id',$id)
+          $this->db->bind(':id',$id);
           $this->db->execute();
           $row = $this->db->getdata();
           $this->comment = $row[0]->comment;
