@@ -92,7 +92,7 @@ function gerorderdetails($orderid){
 }
 
 
-function makeOrder ($userid,$comment,$productsids){
+function makeOrder ($userid,$comment,$status,$productsids){
 
         $this->connect();
        
@@ -110,7 +110,7 @@ function makeOrder ($userid,$comment,$productsids){
 
 
         $orderid=$this->db->lastInsertedId();
-        $length = count($array);
+        $length = count($productsids);
 
         for ($i = 0; $i < $length; $i++) {
 

@@ -17,8 +17,12 @@ class user extends Model
     private $userType;
     private $orders;
 
-    
+    function __construct(){
+        
+    }
     function getorders($userId){
+                $this->connect();
+
     $sql = "select id from order where userid=:userid";
     $this->db->query($sql);
     $this->db->bind(':userid',$userId,PDO::PARAM_INT);
@@ -37,6 +41,8 @@ class user extends Model
     
     
     function login($email,$password){
+                $this->connect();
+
         $sql = "select id from user where email=:email,password=:password";
         $this->db->query($sql);
         $this->db->bind(':password',$email,PDO::PARAM_STR);
@@ -50,6 +56,8 @@ class user extends Model
     }
         
     function updateAddress($id,$address,$apartmant,$city){
+                $this->connect();
+
         $sql = "update user set address=:address,apartmant=:apartmant,city=:city where id=:id";
         $this->db->query($sql);
         $this->db->bind(':id',$id,PDO::PARAM_INT);
@@ -60,6 +68,8 @@ class user extends Model
     } 
         
     function guestsignup($firstName,$lastName,$address,$apartmant,$city,$email){
+                $this->connect();
+
         $sql = "insert into user(firstname,lastname,address,apartmant,city,email,Usertype) values(:firstname,:lastname,:apartmant,:city,:address,:email,:usertype)";
         $this->db->query($sql);
         $this->db->bind(':firstname',$firstname,PDO::PARAM_STR);
@@ -72,6 +82,7 @@ class user extends Model
         $this->getuser($id);
     }
     function signup($firstname,$lastname,$password,$email){
+        $this->connect();
         $password=sha1($password);
         $sql = "insert into user(firstname,lastname,password,email,Usertype) values(:firstname,:lastname,:password,:email,:usertype)";
         $this->db->query($sql);
@@ -87,6 +98,8 @@ class user extends Model
     
 
     function getuser($id){
+                $this->connect();
+
         $sql = "select * from user where id=:id";
         $this->db->query($sql);
         $this->db->bind(':id',$id,PDO::PARAM_INT);
@@ -106,6 +119,8 @@ class user extends Model
         }
     }
     function deleteuser($id){
+                $this->connect();
+
         $sql = "update  user set isdeleted=1 where id=:id";
         $this->db->query($sql);
         $this->db->bind(':id',$id,PDO::PARAM_INT);
