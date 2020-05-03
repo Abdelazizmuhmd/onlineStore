@@ -15,11 +15,9 @@ class user extends Model
     private $apartmant;
     private $city;
     private $userType;
-    public $orders;
+    private $orders;
 
-    function __construct(){
-        
-    }
+  
     function getorders($userId){
     $this->connect();
     $sql = "select id from `order` where userid=:userid";
@@ -34,6 +32,10 @@ class user extends Model
     $this->orders[]=new order($order->id);
     }
     }
+    }
+    function getorderdetails($orderid){
+     $this->orders[]= new order();
+     $this->orders[0]->getorderdetails($orderid);
     }
     
     function makeorder($userid,$comment,$status,$productsid){
@@ -71,8 +73,7 @@ class user extends Model
     } 
         
     function guestsignup($firstName,$lastName,$address,$apartment,$city,$email){
-                $this->connect();
-
+        $this->connect();
         $sql = "insert into user(firstname,lastname,address,apartmant,city,email,Usertype) values(:firstname,:lastname,:apartment,:city,:address,:email,:usertype)";
         $this->db->query($sql);
         $this->db->bind(':firstname',$firstName,PDO::PARAM_STR);

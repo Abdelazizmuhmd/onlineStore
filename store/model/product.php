@@ -70,7 +70,6 @@ function getProductDetails(){
     
 }    
     
-//delete()
    
     
     
@@ -105,7 +104,6 @@ function getProductDetails(){
     
 }   
     
-//update()
     
 function readProduct($productid){
     $this->connect();
