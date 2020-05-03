@@ -107,7 +107,7 @@ class subCategory extends Model
     function updateSubCategory($id,$name)
     {
     
-
+      $this->connect();
       $sql = "UPDATE subcategory set name = :name where id = :id";
       $this->db->query($sql);
       $this->db->bind(':id',$id,PDO::PARAM_INT);
@@ -119,8 +119,7 @@ class subCategory extends Model
     {
       $this->connect();
       $sql = "update subcategory set isdeleted=1 where id=:id";
-              $this->db->query($sql);
-
+      $this->db->query($sql);
       $this->db->bind(':id',$subcategoryid,PDO::PARAM_INT);
       $this->db->execute();
       

@@ -58,7 +58,7 @@ class category extends Model
     function readSubCategories($id,$subcategoryid)
     {
       $this->connect();
-      $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id and subcategory.isdeleted = 0 ";
+      $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id and subcategory.isdeleted = 0";
         
       $this->db->query($sql);
       $this->db->bind(':id',$id,PDO::PARAM_INT);
@@ -111,8 +111,8 @@ class category extends Model
     { $this->connect();
       $sql = "UPDATE category set name = :name where id = :id";
       $this->db->query($sql);
-      $this->db->bind(':name',$name,PDO::PARAM_INT);
-      $this->db->bind(':id',$id);
+      $this->db->bind(':name',$name,PDO::PARAM_STR);
+      $this->db->bind(':id',$id,PDO::PARAM_INT);
       $this->db->execute();
      
     }

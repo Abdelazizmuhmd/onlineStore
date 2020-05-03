@@ -1,11 +1,11 @@
 <?php
 require_once("Model.php");
 require_once("order.php");
- 
 ?>
 <?php
 class user extends Model
 {
+    
     private $firstName;
     private $id;
     private $lastName;  
@@ -17,26 +17,32 @@ class user extends Model
     private $userType;
     private $orders;
 
-    
+    function __construct(){
+        
+    }
     function getorders($userId){
+                $this->connect();
+
     $sql = "select id from order where userid=:userid";
     $this->db->query($sql);
     $this->db->bind(':userid',$userId,PDO::PARAM_INT);
     $this->db->execute();
     $row = $this->db->getdata();
     if ($this->db->numRows() > 0){
-    foreach($row as order){
-    $this->orders[]=new order(order->id);
+    foreach($row as $order){
+    $this->orders[]=new order($order->id);
     }
     }
     }
     
     function makeorder($userid,$comment,$productsid){
-    order=new order($userid,$comment,$productsid);
+    $order=new order($userid,$comment,$productsid);
     }
     
     
     function login($email,$password){
+                $this->connect();
+
         $sql = "select id from user where email=:email,password=:password";
         $this->db->query($sql);
         $this->db->bind(':password',$email,PDO::PARAM_STR);
@@ -50,6 +56,8 @@ class user extends Model
     }
         
     function updateAddress($id,$address,$apartmant,$city){
+                $this->connect();
+
         $sql = "update user set address=:address,apartmant=:apartmant,city=:city where id=:id";
         $this->db->query($sql);
         $this->db->bind(':id',$id,PDO::PARAM_INT);
@@ -59,12 +67,17 @@ class user extends Model
         $this->db->execute();
     } 
         
-    function guestsignup($firstName,$lastName,$address,$apartmant,$city,$email){
-        $sql = "insert into user(firstname,lastname,address,apartmant,city,email,Usertype) values(:firstname,:lastname,:apartmant,:city,:address,:email,:usertype)";
+    function guestsignup($firstName,$lastName,$address,$apartment,$city,$email){
+                $this->connect();
+
+        $sql = "insert into user(firstname,lastname,address,apartmant,city,email,Usertype) values(:firstname,:lastname,:apartment,:city,:address,:email,:usertype)";
         $this->db->query($sql);
-        $this->db->bind(':firstname',$firstname,PDO::PARAM_STR);
-        $this->db->bind(':lastname',$lastname,PDO::PARAM_STR);
+        $this->db->bind(':firstname',$firstName,PDO::PARAM_STR);
+        $this->db->bind(':lastname',$lastName,PDO::PARAM_STR);
         $this->db->bind(':address',$address,PDO::PARAM_STR);
+        $this->db->bind(':email',$email,PDO::PARAM_STR);
+        $this->db->bind(':apartment',$apartment,PDO::PARAM_STR);
+        $this->db->bind(':city',$city,PDO::PARAM_STR);
         $this->db->bind(':email',$email,PDO::PARAM_STR);
         $this->db->bind(':usertype',"guest",PDO::PARAM_STR);
         $this->db->execute();
@@ -72,6 +85,7 @@ class user extends Model
         $this->getuser($id);
     }
     function signup($firstname,$lastname,$password,$email){
+        $this->connect();
         $password=sha1($password);
         $sql = "insert into user(firstname,lastname,password,email,Usertype) values(:firstname,:lastname,:password,:email,:usertype)";
         $this->db->query($sql);
@@ -87,9 +101,11 @@ class user extends Model
     
 
     function getuser($id){
+                $this->connect();
+
         $sql = "select * from user where id=:id";
         $this->db->query($sql);
-        $this->db->bind(':id',$id,PDO::PARAM_INT)
+        $this->db->bind(':id',$id,PDO::PARAM_INT);
         $this->db->execute();
         $row = $this->db->getdata();
         if ($this->db->numRows() > 0){
@@ -103,17 +119,16 @@ class user extends Model
         $this->city=$row[0]->city;
         $this->apartmant=$row[0]->apartmant;
         $this->usertype=$row[0]->usertype;
-
         }
     }
     function deleteuser($id){
+                $this->connect();
+
         $sql = "update  user set isdeleted=1 where id=:id";
         $this->db->query($sql);
-        $this->db->bind(':id',$id,PDO::PARAM_INT)
+        $this->db->bind(':id',$id,PDO::PARAM_INT);
         $this->db->execute();
-    
     }
-    
     
     function setID($id)
     {
