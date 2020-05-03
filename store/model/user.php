@@ -1,11 +1,11 @@
 <?php
 require_once("Model.php");
 require_once("order.php");
- 
 ?>
 <?php
 class user extends Model
 {
+    
     private $firstName;
     private $id;
     private $lastName;  
@@ -25,14 +25,14 @@ class user extends Model
     $this->db->execute();
     $row = $this->db->getdata();
     if ($this->db->numRows() > 0){
-    foreach($row as order){
-    $this->orders[]=new order(order->id);
+    foreach($row as $order){
+    $this->orders[]=new order($order->id);
     }
     }
     }
     
     function makeorder($userid,$comment,$productsid){
-    order=new order($userid,$comment,$productsid);
+    $order=new order($userid,$comment,$productsid);
     }
     
     
@@ -89,7 +89,7 @@ class user extends Model
     function getuser($id){
         $sql = "select * from user where id=:id";
         $this->db->query($sql);
-        $this->db->bind(':id',$id,PDO::PARAM_INT)
+        $this->db->bind(':id',$id,PDO::PARAM_INT);
         $this->db->execute();
         $row = $this->db->getdata();
         if ($this->db->numRows() > 0){
@@ -103,17 +103,14 @@ class user extends Model
         $this->city=$row[0]->city;
         $this->apartmant=$row[0]->apartmant;
         $this->usertype=$row[0]->usertype;
-
         }
     }
     function deleteuser($id){
         $sql = "update  user set isdeleted=1 where id=:id";
         $this->db->query($sql);
-        $this->db->bind(':id',$id,PDO::PARAM_INT)
+        $this->db->bind(':id',$id,PDO::PARAM_INT);
         $this->db->execute();
-    
     }
-    
     
     function setID($id)
     {
