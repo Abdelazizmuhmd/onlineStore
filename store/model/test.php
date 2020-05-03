@@ -1,10 +1,8 @@
 <?php 
-require_once("user.php");
+require_once("menu.php");
 
-$user =new user();
-var_dump($user);
-$user->signup("ahmed","mohamed","test123","adasd@gmail.com");
-
+$menu = new menu();
+$menu->getAllCategoriesDetails();
 
 
 
