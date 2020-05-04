@@ -56,7 +56,7 @@ class category extends Model
     }
 
     function readSubCategories($id,$subcategoryid)
-    {
+    { $this->subCategories[]=array();
       $this->connect();
       $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id and subcategory.isdeleted = 0";
         
@@ -82,7 +82,7 @@ class category extends Model
               }
               else{
                   
-              $flag=1;
+              $flag=0;
               $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name,$flag);
                   
               }

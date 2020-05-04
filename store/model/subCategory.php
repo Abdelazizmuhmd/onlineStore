@@ -56,18 +56,22 @@ class subCategory extends Model
         return $this->products;
     }
     
+    function readOneProduct($id){  
+        $this->products[]=array();
+        $this->products[]=new product($id);
+        
+    }
+    
     function readProducts($subcategoryId)
-    {       
+    {   $productid=0; 
         $this->connect();
-
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails
         where subcategorydetails.subcategoryid = :id and isdeleted = 0";
-        
       $this->db->query($sql);
       $this->db->bind(':id',$subcategoryId,PDO::PARAM_INT);
       $this->db->execute();
-        
-                
+       
+       
         
       if ($this->db->numRows() > 0){
                     
@@ -76,8 +80,9 @@ class subCategory extends Model
           $n = $this->db->numRows();
 
           for($i = 0;$i<$n;$i++)
-          {
-              $this->products[]=new product($row[$i]->productid);
+          {   $productid=$row[$i]->productid;
+           
+              $this->products[]=new product($productid);
            
               
               
