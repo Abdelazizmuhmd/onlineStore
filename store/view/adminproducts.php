@@ -44,7 +44,8 @@ function products(){
             <td><a id='button' href=''><i class='fa fa-trash'></i></a></td>
           </tr>";
      }
-}
+ }
+ return $str;
 }
 }
 ?>
