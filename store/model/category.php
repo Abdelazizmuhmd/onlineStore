@@ -24,6 +24,12 @@ class category extends Model
      $this->subCategories[] = new subCategory();
         
     }
+      
+    function __construct3($id,$name,$flag)
+    {   
+        $this->id=$id;
+        $this->name =$name;
+    }
 
     
     function __construct2($id,$name)
