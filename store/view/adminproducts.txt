@@ -1,14 +1,22 @@
 adminproducts(){
 
+
+catarr= $this->modal->getcategories();
+
 function categoryoutput(){
 
   <option>Men</option>
 }
 
+subarr=$this->modal->getcategories()[0]->getsubcategories();
+
 function subcategoryoutput(){
 
   <option>Men</option>
 }
+
+
+productarr=$this->categories[0]->getsubCategories()[0]->getproducts();
 
 function products(){
 <tr>
