@@ -1,6 +1,6 @@
 <?php
 require_once("Controller.php");
-class userOrder extends Controller{
+class userOrderController extends Controller{
  public function getOrders(){
      $userid = $_REQUEST['userid'];
      $this->model->getorders($userid);
@@ -16,6 +16,7 @@ public function updateOrder(){
 }
     
 public funtion getuser(){
+
     $userid=$_REQUEST['userid'];
     $this->modal->getuser($userid);
     
