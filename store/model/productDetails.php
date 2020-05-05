@@ -74,6 +74,14 @@ function __construct10($id,$productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagear
   function getSmall(){
       return $this->s;
   }
+  function setMedium($m){
+    $this->s = $m;
+}
+
+
+function getMedium(){
+    return $this->m;
+}
 
 
    function setXl($xl){

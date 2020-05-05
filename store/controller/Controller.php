@@ -1,5 +1,5 @@
 <?php
-require_once("../modal/Modal.php");
+require_once("../model/Model.php");
 abstract class Controller
 {
     protected $model;
