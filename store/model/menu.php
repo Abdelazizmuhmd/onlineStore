@@ -12,7 +12,7 @@ function __construct() {
    $this->categories[]=new category();
 }
     
-public function getcategories(){
+public function getCategories(){
     return $this->categories;
 }
 public function getAllCategoriesDetails($subcategoryid=""){
