@@ -23,11 +23,11 @@ function products(){
   $str ="";
   for ($i = 1;$i<count($productarr);$i++)
   {  $details = $productarr[$i]->getProductDetails();
-     $img = $details->getArray()[0];
+     //$img = $details->getArray()[0];
     for($j = 0;$j<count($details);$j++)
      {
          $str .= "<tr>
-            <td><img src=".$img." style='width
+            <td><img src=".$details[$j]->getArray()[0]." style='width
             :50px;height:50px;position: relative;'></td>
             <td><label>".$productarr[$i]->getName()."</label></td>
             <td>".$productarr[$i]->getCost()."</td>
