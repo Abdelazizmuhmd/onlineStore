@@ -46,6 +46,7 @@ function readProducts(){
     
 
 function  insertProduct(){
+    
     $this->modal->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->insertProduct();
     
 }

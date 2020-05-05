@@ -57,7 +57,6 @@ class subCategory extends Model
     }
     
     function readOneProduct($id){  
-        $this->products[]=array();
         $this->products[]=new product($id);
         
     }
