@@ -55,7 +55,7 @@ function  insertProduct(){
     $weight = $_REQUEST['weight'];
     $productDetails = $_REQUEST['productDetails'];
     $subcategoryid = $_REQUEST['subcategoryid'];
-    $this->modal->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->insertProduct();
+    $this->modal->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->insertProduct($name,$code,$cost,$profit,$description,$weight,$productDetails,$subcategoryid);
     
 }
     
@@ -78,11 +78,13 @@ function  updateProduct(){
     $xxl= $_REQUEST['xxl'];
     $xxxl= $_REQUEST['xxxl'];
     $imageurls= $_REQUEST['imageurls'];
-    $this->modal->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->updateProduct();
+    $this->modal->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->updateProduct($productid,$productdetailid,$name,$code,$cost,$profit,$description,$weight,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
     
 }
 function  deleteProduct(){
-    $this->modal->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->updateProduct();
+
+    $productID = $_REQUEST['productID'];
+    $this->modal->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->updateProduct($productID);
     
 } 
     
