@@ -137,7 +137,7 @@ function getordersArray(){
         if ($this->db->numRows() > 0){
 
         $this->id = $row[0]->id;
-        echo $this->firstname=$row[0]->firstname;
+        $this->firstname=$row[0]->firstname;
         $this->lastname=$row[0]->lastname;
         $this->email=$row[0]->email;
         $this->phone=$row[0]->phone;
@@ -162,11 +162,11 @@ function getordersArray(){
     }
     function setfirstName($firstName)
     {
-        $this->fristName =$firstName;
+        $this->fristName =$firstname;
     }
     function setlastName($lastName)
     {
-        $this->lastName =$lastName;
+        $this->lastName =$lastname;
     }
     function setEmail($email)
     {
@@ -198,11 +198,11 @@ function getordersArray(){
     }
     function getfirstName()
     {
-      return $this->firstName ;
+      return $this->firstname ;
     }
     function getlastName()
     {
-      return $this->lastName;
+      return $this->lastname;
     }
     function getEmail()
     {
