@@ -1,0 +1,39 @@
+adminproducts(){
+
+function categoryoutput(){
+
+  <option>Men</option>
+}
+
+function subcategoryoutput(){
+
+  <option>Men</option>
+}
+
+function products(){
+<tr>
+            <td><label>Micheal Townly</label></td>
+            <td>Jan 24, 2020</td>
+            <td>Delivered</td>
+            <td>pat1243</td>
+            <td>76 Mohanat street, Hovebeach,NY</td>
+            <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
+            <td>15.00</td>
+
+
+            <td><a id="button" href="">Edit</a></td>
+            <td><a id="button" href=""><i class="fa fa-trash"></i></a></td>
+          </tr>
+
+}
+
+
+
+
+
+}

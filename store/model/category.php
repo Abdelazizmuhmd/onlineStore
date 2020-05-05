@@ -26,11 +26,11 @@ class category extends Model
     }
 
     
-    function __construct3($id,$name,$subcategoryid)
+    function __construct2($id,$name)
     {   
         $this->id=$id;
         $this->name =$name;
-        $this->readSubCategories($this->id,$subcategoryid);
+        $this->readSubCategories($this->id);
     }
 
 
@@ -55,7 +55,7 @@ class category extends Model
       return $this->id;
     }
 
-    function readSubCategories($id,$subcategoryid)
+    function readSubCategories($id)
     { 
       $this->connect();
       $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id and subcategory.isdeleted = 0";
@@ -68,24 +68,10 @@ class category extends Model
           $row = $this->db->getdata(); 
           for($i=0;$i<$this->db->numRows();$i++){
 
-              //$flag if =1 load the products if 0 don't loag products only name
-              if(!$subcategoryid){
+             
+             $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name);
                   
-              if($subcategoryid==$row[$i]->id){
-              $flag=1;
-              $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name,$flag);
-              }
-              else{
-              $flag=0;
-              $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name,$flag);
-              }
-              }
-              else{
-                  
-              $flag=0;
-              $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name,$flag);
-                  
-              }
+              
               
               
           }

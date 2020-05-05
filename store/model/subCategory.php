@@ -27,13 +27,11 @@ class subCategory extends Model
     
 
  
-     function __construct3($id,$name,$flag)
+     function __construct2($id,$name)
     {   
         $this->id = $id;
         $this->name =$name;
-        if($flag==1){
-        $this->readProducts($this->id);        
-        }
+        
     }
     
     function setName($name)

@@ -1,0 +1,204 @@
+
+menuView(){
+
+function MenuOutput(){
+
+ <ul id="Collapsible-2" class="site-nav__submenu site-nav__submenu--expanded" aria-hidden="false">
+                  <li class="site-nav--active">
+                      <a href="tee" class="site-nav__link" aria-current="page">Tee</a>
+                    </li>
+                  
+                
+                  
+                    <li >
+                      <a href="sweater" class="site-nav__link">Sweater</a>
+                    </li>
+                  
+                
+                  
+                    <li >
+                      <a href="hoodie" class="site-nav__link">Hoodie</a>
+                    </li>
+                  
+                
+                  
+                    <li >
+                      <a href="bag" class="site-nav__link">Bag</a>
+                    </li>
+                  
+                
+              </ul>
+
+
+}
+
+
+function productsOutput(){
+
+<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">
+  
+    <div class="supports-js" style="max-width: 600px; margin: 0 auto;">
+      <a href="" class="product__image-wrapper " style="padding-top:100.0%;" title="F*ck" data-image-link>
+          
+        <img class="product__image "
+             alt="first image"
+             style="max-width: 600px; max-height: 600px;"
+             src="images/d.jpg"
+             data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+             data-aspectratio="1.0"
+             data-sizes="auto"
+             data-image>
+          
+      </a>
+    </div>
+  
+
+
+  <div class="product__title product__title--card text-center">
+    <a href="">sport t-shirt</a>
+  </div>
+
+  
+
+  <div class="product__prices text-center">
+    
+
+      <span class="product__price">
+        
+          <span class="visually-hidden">Regular price</span>
+          €15,00
+        
+      </span>
+
+          <span class="badge badge--sale"><span>UP TO 50%</span></span>
+
+  </div>
+</div>
+}
+
+
+function productOut(){
+
+<div class="grid product-single">
+
+    <div class="grid__item medium-up--one-half">
+      
+        
+        
+
+
+
+        <div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js" >
+
+
+          <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 100%; position: relative; overflow: hidden;">
+              
+           <img  class="product-single__photo"  src="images/c.jpg" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">
+              
+      </div>
+          
+        </div>
+      
+        
+        
+
+
+        <ul class="product-single__thumbnails grid grid--uniform" id="ProductThumbs">
+            <li class="grid__item small--one-third medium-up--one-third">
+                <!--click here to put the img up -->
+              <a href="images/logo.png" class="product-single__thumbnail" >
+                <img src="images/logo.png" alt="Hmm">
+              </a>
+            </li>
+     
+          
+
+        </ul>
+      
+
+      
+    </div>
+
+    <div class="grid__item medium-up--one-half">
+      <div class="product-single__meta small--text-center">
+        <h1 class="product-single__title" itemprop="name">Hmm</h1>
+
+        
+
+        <div >
+
+
+          <p class="product-single__prices">
+            <span id="ProductPrice" class="product-single__price" value="30.0">€30,00</span>
+          </p>
+            
+            <div class="product-single__policies rte">Tax included. Delevered to your Door. 
+                
+                
+                
+</div>
+            <form method="post" action="/cart/add" id="product_form_4404356317218" accept-charset="UTF-8" class="product-form" enctype="multipart/form-data">
+             
+            <div class="selector-wrapper">
+                <label for="ProductSelect-product-template-option-0"> Color</label>
+                <select class="single-option-selector" data-option="option1" id="ProductSelect-product-template-option-0">
+                    <option value="White">White</option>
+                    <option value="Black">Black</option>
+                    <option value="Dark Heather">Dark Heather</option>
+                    <option value="Navy">Navy</option>
+                    <option value="Sport Grey">Sport Grey</option>
+                    <option value="Indigo Blue">Indigo Blue</option>
+                    <option value="Maroon">Maroon</option>
+                    <option value="Light Blue">Light Blue</option>
+                    <option value="Light Pink">Light Pink</option>
+                    <option value="Red">Red</option>
+                </select>
+                </div>
+                <div class="selector-wrapper">
+                    <label for="ProductSelect-product-template-option-1">Size</label>
+                    <select class="single-option-selector" data-option="option2" id="ProductSelect-product-template-option-1">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="2XL">2XL</option>
+                        <option value="3XL">3XL</option>
+                        <option value="4XL">4XL</option>
+                        <option value="5XL">5XL</option>
+                    </select></div>
+                
+            
+              <div class="product-single__quantity">
+                <label for="Quantity">Quantity</label>
+                <input type="number" id="Quantity" name="quantity" value="1" min="1">
+              </div>
+            
+
+          <div class="product-single__cart-submit-wrapper  product-form--full">
+              <button type="submit" name="add" id="AddToCart" class="btn product-single__cart-submit btn--full  btn--secondary" >
+                <span id="AddToCartText">Add to Cart</span>
+              </button>
+              
+              
+             
+              
+            </div>
+             
+          </form>
+
+        </div>
+
+
+}
+
+
+
+
+
+
+
+
+
+
+}
+

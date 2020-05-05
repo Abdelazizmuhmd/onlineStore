@@ -85,46 +85,12 @@ include("header.html");
 
 
 <div data-section-id="collection-template" data-section-type="collection-template" data-sort-enabled="true" data-tags-enabled="true">
-  <header class="grid">
-    <h1 class="grid__item small--text-center medium-up--one-third"> Tee</h1>
-
-    
-      <div class="collection-sorting grid__item medium-up--two-thirds medium-up--text-right small--text-center">
-        
-          
-        
-          <div class="collection-sorting__dropdown">
-            <label for="SortBy" class="label--hidden">Sort by</label>
-            
-            <select name="sort_by" id="SortBy" aria-describedby="a11y-refresh-page-message a11y-selection-message">
-              
-                <option value="manual">Featured</option>
-              
-                <option value="best-selling">Best selling</option>
-              
-                <option value="title-ascending" selected="selected">Alphabetically, A-Z</option>
-              
-                <option value="title-descending">Alphabetically, Z-A</option>
-              
-                <option value="price-ascending">Price, low to high</option>
-              
-                <option value="price-descending">Price, high to low</option>
-              
-                <option value="created-ascending">Date, old to new</option>
-              
-                <option value="created-descending">Date, new to old</option>
-              
-            </select>
-          </div>
-        
-      </div>
-    
-
-    
-  </header>
-
+  
   <div class="grid grid--uniform" role="list">
-
+      
+      
+      $view->productsout();
+<!--
 
 <div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">
   
@@ -164,7 +130,11 @@ include("header.html");
           <span class="badge badge--sale"><span>UP TO 50%</span></span>
 
   </div>
-</div><div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">
+</div>
+      -->
+      
+      
+      <div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">
   
     <div class="supports-js" style="max-width: 600px; margin: 0 auto;">
       <a href="" class="product__image-wrapper " style="padding-top:100.0%;" title="F*ck" data-image-link>
