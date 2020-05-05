@@ -15,10 +15,12 @@ public function updateOrder(){
     $this->model->updateorder($orderid,$status);
 }
     
-public funtion getuser(){
+public function getuser(){
 
-    $userid=$_REQUEST['userid'];
-    $this->modal->getuser($userid);
+
+	$userid = 1;
+    //$userid=$_REQUEST['userid'];
+    $this->model->getuser($userid);
     
 }
 }

@@ -135,9 +135,9 @@ function getordersArray(){
         $this->db->execute();
         $row = $this->db->getdata();
         if ($this->db->numRows() > 0){
-            
+
         $this->id = $row[0]->id;
-        $this->firstname=$row[0]->firstname;
+        echo $this->firstname=$row[0]->firstname;
         $this->lastname=$row[0]->lastname;
         $this->email=$row[0]->email;
         $this->phone=$row[0]->phone;
@@ -198,7 +198,7 @@ function getordersArray(){
     }
     function getfirstName()
     {
-      return $this->fristName ;
+      return $this->firstName ;
     }
     function getlastName()
     {
