@@ -14,5 +14,11 @@ public function updateOrder(){
     $status = $_REQUEST['status'];
     $this->model->updateorder($orderid,$status);
 }
+    
+public funtion getuser(){
+    $userid=$_REQUEST['userid'];
+    $this->modal->getuser($userid);
+    
+}
 }
 ?>
