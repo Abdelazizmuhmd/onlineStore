@@ -1,8 +1,8 @@
 ordersview(){
 
-functionOutputOrders(){
+function userOutput(){
 
-
+$this->modal->getname
 <div class="jumbotron">
                   <div class="row">
                     
@@ -25,16 +25,8 @@ functionOutputOrders(){
 
 
 
-function orderdetailsOutput(){
-<tr>
-<td align="center"><br>April 7, 2020</td>
-<td align="center"><br>Delivered <i class="fa fa-check" aria-hidden="true"></i></td>
-<td align="center"><br>Ismailia, ring road</td>
-<td align="center"><br>550 EGP <i class="fa fa-money" aria-hidden="true"></i></td>
-</tr>
 
-}
-
+products=$this->modal->getordersArray()[0]->getProducts();
 
 function productsout(){
 <tr><td align="center"><br>1</td>

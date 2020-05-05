@@ -74,8 +74,8 @@ function __construct4($userid,$comment,$status,$productsids) {
       $this->$products = $array;
     }
 
-    function getArray(){
-      return $this->array;
+    function getProducts(){
+      return $this->products;
     }
 
    

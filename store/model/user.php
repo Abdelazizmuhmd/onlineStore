@@ -44,6 +44,7 @@ function getordersArray(){
     }
     }
     }
+    
     function getorderdetails($orderid){
      $this->orders[]= new order();
      $this->orders[0]->getorderdetails($orderid);

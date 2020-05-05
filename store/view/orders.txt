@@ -1,9 +1,9 @@
 ordersview extent view{
 
-function orders(){
-
-
-  <td><input type="checkbox" /> <label>Micheal Townly</label></td>
+function ordersOutput(){
+orderArray=$this->modal-getordersArray();
+forloop(orderArray)
+  <td><input /> <label></label></td>
             <td>Jan 24, 2020</td>
             <td>Delivered</td>
             <td>76 Mohanat street, Hovebeach,NY</td>
