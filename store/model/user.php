@@ -16,15 +16,26 @@ class user extends Model
     private $city;
     private $userType;
     private $orders;
-
+ function __construct($id)
+    { 
+   $this->getuser($id);        
+    }
+function getordersArray(){
+    return $this->orders;
+}
   
     function getorders($userId){
+        if($userType!="admin"){
     $this->connect();
     $sql = "select id from `order` where userid=:userid";
     $this->db->query($sql);
     $this->db->bind(':userid',$userId,PDO::PARAM_INT);
-    $this->db->execute();
-        
+        }else{
+     $sql = "select id from `order` ";
+     $this->db->query($sql);
+        }
+            $this->db->execute();
+
         
     $row = $this->db->getdata();
     if ($this->db->numRows() > 0){
