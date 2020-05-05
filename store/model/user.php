@@ -16,7 +16,17 @@ class user extends Model
     private $city;
     private $userType;
     private $orders;
- function __construct($id)
+    function __construct()
+    {
+        $a = func_get_args();
+        $i = func_num_args();
+        if (method_exists($this,$f='__construct'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }
+function __construct0() {
+  }
+ function __construct1($id)
     { 
    $this->getuser($id);        
     }
