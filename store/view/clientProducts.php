@@ -1,6 +1,6 @@
 <?php
 
-require_once("View.php");
+require_once("../view/View.php");
 
 class clientProducts extends View{
 

@@ -136,8 +136,8 @@ function getordersArray(){
         if ($this->db->numRows() > 0){
 
         $this->id = $row[0]->id;
-        $this->firstname=$row[0]->firstname;
-        $this->lastname=$row[0]->lastname;
+        $this->firstName=$row[0]->firstname;
+        $this->lastName=$row[0]->lastname;
         $this->email=$row[0]->email;
         $this->phone=$row[0]->phone;
         $this->address=$row[0]->address;
@@ -201,7 +201,7 @@ function getordersArray(){
     }
     function getlastName()
     {
-      return $this->lastname;
+      return $this->lastName;
     }
     function getEmail()
     {
@@ -211,9 +211,9 @@ function getordersArray(){
     {
       return $this->phone;
     }
-    function getAdress()
+    function getAddress()
     {
-      return $this->adress;
+      return $this->address;
     }
     function getApartmant()
     {
@@ -227,18 +227,6 @@ function getordersArray(){
     {
       return $this->userType;
     }
-    
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

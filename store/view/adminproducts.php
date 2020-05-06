@@ -1,5 +1,5 @@
 <?php 
-require_once("View.php");
+require_once("../view/View.php");
 class adminproducts extends View{
 
 function categoryoutput(){
@@ -13,7 +13,7 @@ function categoryoutput(){
 function subcategoryoutput(){
   $str = "";
   $subarr = $this->model->getcategories()[0]->getsubcategories();
-  for($i = 1;$i<count($subarr);$i++)
+  for($i = 0;$i<count($subarr);$i++)
    $str .= "<option>".$subarr[$i]->getName()."</option>";
   return $str;
 }
@@ -21,7 +21,7 @@ function subcategoryoutput(){
 function products(){
   $productarr = $this->model->getcategories()[0]->getsubcategories()[0]->getproducts();
   $str ="";
-  for ($i = 1;$i<count($productarr);$i++)
+  for ($i = 0;$i<count($productarr);$i++)
   {  $details = $productarr[$i]->getProductDetails();
      //$img = $details->getArray()[0];
     for($j = 0;$j<count($details);$j++)

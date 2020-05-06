@@ -1,6 +1,6 @@
 <?php
 
-require_once("View.php");
+require_once("../view/View.php");
 
 class viewCheckOut extends View{
 
@@ -29,7 +29,7 @@ function userdetails(){
              <div  class='field field--required'>
                <label class='field__label' for='checkout_email'>Email</label>
                <div class='field__input-wrapper'>
-                 <input value=".this->model->getEmail()." autocapitalize='off' spellcheck='false' autocomplete='shipping email' data-trekkie-id='email_field' data-autofocus='true' data-backup='customer_email' aria-describedby='checkout-context-step-one error-for-email' aria-required='true' class='field__input' size='30' type='email' name='checkout[email]' id='checkout_email' />
+                 <input value=".$this->model->getEmail()." autocapitalize='off' spellcheck='false' autocomplete='shipping email' data-trekkie-id='email_field' data-autofocus='true' data-backup='customer_email' aria-describedby='checkout-context-step-one error-for-email' aria-required='true' class='field__input' size='30' type='email' name='checkout[email]' id='checkout_email' />
                </div>
    </div>        </div> 
    
@@ -67,7 +67,7 @@ function userdetails(){
      <div class='field--half field field--required' >
        <label class='field__label' >First name</label>
        <div class='field__input-wrapper'>
-         <input value=".this->model->getfirstName()."   class='field__input'  type='text'  />
+         <input value=".$this->model->getfirstName()."   class='field__input'  type='text'  />
        </div>
    </div>
                  
@@ -76,32 +76,25 @@ function userdetails(){
      <div class='field--half field field--required' >
        <label class='field__label' >Last name</label>
        <div class='field__input-wrapper'>
-         <input value=".this->model->getlastName()."   class='field__input' type='text' />
+         <input value=".$this->model->getlastName()."   class='field__input' type='text' />
        </div>
          
          
-         
-   </div>
-       <div  d class='field field--optional'>
-         <label class='field__label' >Company (optional)</label>
-         <div class='field__input-wrapper'>
-           <input value='Company (optional)'  class='field__input'  type='text'  />
-         </div>
-   </div>
+ 
                  
                  
                  
      <div  class='field field--required'>
        <label class='field__label'>Address</label>
        <div class='field__input-wrapper'>
-           <input value=".this->model->getAdress()." class='field__input'  type='text'  />
+           <input value=".$this->model->getAddress()." class='field__input'  type='text'  />
        </div>
      </div>
                  
        <div  class='field field--optional'>
          <label class='field__label' >Apartment, suite, etc. (optional)</label>
          <div class='field__input-wrapper'>
-           <input value=".this->model->getApartmant()."  class='field__input'  type='text'  />
+           <input value=".$this->model->getApartmant()."  class='field__input'  type='text'  />
          </div>  
    </div>
            <div class='field--third field field--required' >
@@ -118,7 +111,7 @@ function userdetails(){
      <div  class='field field--required'>
        <label class='field__label' >City</label>
        <div class='field__input-wrapper'>
-         <input value=".this->model->getCity()." class='field__input'  type='text'  />
+         <input value=".$this->model->getCity()." class='field__input'  type='text'  />
        </div>
    </div>
                  
@@ -131,7 +124,7 @@ function userdetails(){
        <div  class='field field--optional'>
          <label class='field__label' >Phone (optional)</label>
          <div class='field__input-wrapper field__input-wrapper--icon-right'>
-           <input value=".this->model->getPhone()."  class='field__input field__input--numeric'  type='tel' />
+           <input value=".$this->model->getPhone()."  class='field__input field__input--numeric'  type='tel' />
            <div class='field__icon'>
            
          </div>

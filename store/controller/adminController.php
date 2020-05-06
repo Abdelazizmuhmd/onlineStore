@@ -1,6 +1,13 @@
 <?php 
-require_once("Controller.php");
-adminController extends Controller{
+require_once("../controller/Controller.php");
+class adminController extends Controller{
+    
+    
+    
+function getAllCategoriesName(){
+    $this->model->getAllCategoriesName(1);
+    
+}
     
 function insertCategory(){
     $categoryName = $_REQUEST['Categoryname'];

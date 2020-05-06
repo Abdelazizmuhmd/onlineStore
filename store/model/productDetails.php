@@ -48,7 +48,9 @@ function __construct11($id,$productid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$sold,$Imag
 function getImages(){
     return $this->Imagearray;
 }    
-    
+ function getLarge(){
+     return $this->l;
+ }
 
   function setProductid($productid){
       $this->productid = $productid;
@@ -135,7 +137,7 @@ function getMedium(){
   	}
 
   	function getArray(){
-      return $this->Imagearray();
+      return $this->Imagearray;
   	}
 
   	

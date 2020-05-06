@@ -8,7 +8,7 @@
   $controller = new userOrderController($model);
   $controller->getuser();
   $controller->getOrderDetails();
-  $view = new clientProducts($controller, $model);
+  $view = new clientProducts($model, $controller);
 
   echo $view->output();
 ?>

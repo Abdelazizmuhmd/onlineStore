@@ -39,7 +39,6 @@ class category extends Model
         $this->readSubCategories($this->id);
     }
 
-
     
     function getSubcategories(){
      return    $this->subCategories;

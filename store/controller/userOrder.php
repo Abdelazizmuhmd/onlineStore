@@ -8,7 +8,7 @@ class userOrderController extends Controller{
      $this->model->getorders($userid);
  }
  public function getOrderDetails(){
- 	$orderid = 1;
+ 	$orderid = 10;
     //$orderid = $_REQUEST['orderid'];
     $this->model->getorderdetails($orderid);
 }

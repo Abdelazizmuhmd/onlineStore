@@ -9,7 +9,7 @@ public function  getAllCategoriesDetails(){
  public function readProduct(){
     $productid = 82;
 
-    // $productid = $_REQUEST['productid'];
+   //$productid = $_REQUEST['productid'];
 
     $this->model->getCategories()[0]->getSubcategories()[0]->readOneProduct($productid);
 
