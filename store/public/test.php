@@ -1,15 +1,13 @@
 <?php
-require_once("../model/menu.php");
-require_once("../controller/menuController.php");
-require_once("../View/menuView.php");
+require_once("../model/user.php");
 
 
-$model = new menu();
-$controller= new menuController($model);
-$controller->getAllCategoriesDetails();
-$view= new menuView($model,$controller);
 
 
+$user =new user();
+
+
+$user->makeorder(1,"dsdas","pedding",array(1));
 
 
 ?>

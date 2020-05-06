@@ -1,7 +1,7 @@
 
 <?php
-require_once("Model.php");
-require_once("category.php");
+require_once("../model/Model.php");
+require_once("../model/category.php");
 
 class menu extends Model {
     

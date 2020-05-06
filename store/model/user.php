@@ -1,6 +1,6 @@
 <?php
-require_once("Model.php");
-require_once("order.php");
+require_once("../model/Model.php");
+require_once("../model/order.php");
 ?>
 <?php
 class user extends Model
@@ -60,8 +60,8 @@ function getordersArray(){
      $this->orders[0]->getorderdetails($orderid);
     }
     
-    function makeorder($userid,$comment,$status,$productsid){
-    $order=new order($userid,$comment,$status,$productsid);
+    function makeorder($userid,$comment,$status,$productsdetailids){
+    $order=new order($userid,$comment,$status,$productsdetailids);
     }
     
     

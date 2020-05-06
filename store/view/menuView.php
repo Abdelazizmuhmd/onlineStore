@@ -29,6 +29,7 @@ class menuView extends View{
 
     function productsOutput(){
      $str=""; 
+
      $products=$this->model->getCategories()[0]->getSubcategories()[0]->getProducts();
        foreach($products as $i=>$product){
        if ($i>0){
@@ -63,7 +64,7 @@ class menuView extends View{
         echo $str;
     }
     }
-
+/*
     
     function readOneProduct(){
         $str="";
@@ -84,7 +85,7 @@ class menuView extends View{
         
         echo $str;
     }
-    
+    */
 
 }
 

@@ -22,8 +22,8 @@ function __construct()
 function __construct1($id) {
       $this->readOrder($id);
   }
-function __construct4($userid,$comment,$status,$productsids) {
-    $this->makeorder($userid,$comment,$status,$productsids);
+function __construct4($userid,$comment,$status,$productsdetailids) {
+    $this->makeorder($userid,$comment,$status,$productsdetailids);
   }
 
 
@@ -82,45 +82,44 @@ function __construct4($userid,$comment,$status,$productsids) {
 
 function getorderdetails($orderid){
     $this->connect();
-    $sql="select  productid from orderdetails  where id =:orderid";
+    $sql="select  productdetailid from orderdetails  where id =:orderid";
     $this->db->query($sql);
     $this->db->bind(':orderid',$orderid,PDO::PARAM_INT);
     $this->db->execute();
-    $idObject=$this->db->getdata();
-    $this->products[]=new product($idObject[0]->productid);
+    $iddetailObject=$this->db->getdata();
+    
+    $sql="select productid from productdetails where id =:productdetailid";
+    $this->db->query($sql);
+    $this->db->bind(':productdetailid',$iddetailObject,PDO::PARAM_INT);
+    $this->db->execute();
+    $productIdObject=$this->db->getdata();
+    
+    $this->products[]=new product($productIdObject[0]->productid,$iddetailObject[0]->productdetailid);
     
 }
 
 
-function makeOrder ($userid,$comment,$status,$productsids){
-
+function makeOrder ($userid,$comment,$status,$productsdetailids){
         $this->connect();
-       
-       
         $sqlOrder = "INSERT INTO `order` (userid,comment,status) VALUES (:userid,:comment,:status)";
-        
         $this->db->query($sqlOrder);
         $this->db->bind(':userid',$userid,PDO::PARAM_INT);
         $this->db->bind(':comment',$comment,PDO::PARAM_STR);
         $this->db->bind(':status',$status,PDO::PARAM_STR);
         $this->db->execute();
-
-
         $orderid=$this->db->lastInsertedId();
-        $length = count($productsids);
-
+    
+        $length = count($productsdetailids);
+    
         for ($i = 0; $i < $length; $i++) {
-
-
          $this->connect();
-
-         $productid=$productsids[$i];
-
-         $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productid) VALUES (:orderid ,:productid)";
-
+         $productdetailid=$productsdetailids[$i];
+            
+         $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productdetailid) VALUES (:orderid ,:productdetailid)";
+            
            $this->db->query($sqlOrderDetails);
            $this->db->bind(':orderid',$orderid,PDO::PARAM_INT);
-           $this->db->bind(':productid',$productid,PDO::PARAM_INT);
+           $this->db->bind(':productdetailid',$productdetailid,PDO::PARAM_INT);
 
            $this->db->execute();
 

@@ -30,9 +30,6 @@ Pat
 
 </head>
 
-    
-    
-    
 <body >
   <div>
     <a href="" class="announcement-bar announcement-bar--link">

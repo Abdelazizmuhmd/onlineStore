@@ -1,6 +1,6 @@
 <?php
-require_once("Model.php");
-require_once("productdetails.php");
+require_once("../model/Model.php");
+require_once("../model/productdetails.php");
 class product extends model{
 protected $productid;
 protected $name;
@@ -44,18 +44,50 @@ function __construct()
 function __construct0(){
 $this->productDetails[]=new productDetails();
 }    
+function __construct2($productid,$productdetailId){
+    $this->readoneProductDetail($productid,$productdetailId);
+
+}        
+function readoneProductDetail($productid,$productdetailId){
+     $this->connect();
+
+     $sql="select * from product where id = :productid and isdeleted = 0" ;
+     $this->db->query($sql);
+     $this->db->bind(':productid',$productid,PDO::PARAM_INT);
+     $this->db->execute();
+     if ($this->db->numRows() > 0){
+     $product = $this->db->getdata();
+     $this->id =$product[0]->id;
+     $this->name = $product[0]->name;
+     $this->code = $product[0]->code;
+     $this->cost = (int)$product[0]->cost;
+     $this->profit =(int)$product[0]->profit;
+     $this->description =$product[0]->description;
+     $this->weight =$product[0]->weight;}
+    $sql="select * from productdetails where id = :productdetailid and isdeleted = 0 ";
+    $this->db->query($sql);
+    $this->db->bind(':productdetailid',$productdetailId,PDO::PARAM_INT);
+    $this->db->execute();
+    if ($this->db->numRows() > 0){
+    $productDetailsObject = $this->db->getdata();
+    foreach ($productDetailsObject as $value){
+    $productdetails = new productdetails($value->id,$value->productid,$value->color,$value->s,$value->m,$value->l,$value->xl,$value->xxl,$value->xxxl,$value->sold,$value->imageUrl);
+    $this->productDetails[] = $productdetails;
+    }     
+         
+    }
+    
+    
+    
+    
+}
     
     
 function __construct1($productId){
  $this->readProduct($productId);
 }    
     
-     function getprofit(){
-        return $this->profit;
-    }
-    function getcost(){
-        return $this->cost;
-    }   
+  
     
 function getProductDetails(){
     return $this->productDetails;

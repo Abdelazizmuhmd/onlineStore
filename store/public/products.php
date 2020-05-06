@@ -6,7 +6,7 @@ require_once("../View/menuView.php");
 
 $model = new menu();
 $controller= new menuController($model);
-$controller->readProduct();
+$controller->readProducts();
 $controller->getAllCategoriesDetails();
 $view= new menuView($model,$controller);
 
@@ -41,7 +41,8 @@ Pat
   
 
 <?php
-include("header.html");
+     include("header.html");
+
 ?>
     <div class="grid__item  medium-up--two-fifths  small--one-half text-right">
       <a href="" class="site-header__cart">
@@ -83,6 +84,7 @@ include("header.html");
 
     <div class="grid">
 <?php
+
         include("menu.php");
 ?>
         
@@ -102,7 +104,8 @@ include("header.html");
   
   <div class="grid grid--uniform" role="list">
       <?php
-      $view->productsOutPut();
+
+      $view->productsOutput();
 ?>
 <!--
 
