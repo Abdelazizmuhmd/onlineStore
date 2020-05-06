@@ -3,8 +3,8 @@
     protected $model;
     protected $controller;
 
-    public function __construct($model, $controller) {
-        $this->controller=$controller;
+    public function __construct($controller, $model) {
+    	$this->controller = $controller;
         $this->model = $model;
     }
 	

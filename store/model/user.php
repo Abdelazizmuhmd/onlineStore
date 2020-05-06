@@ -134,7 +134,7 @@ function getordersArray(){
         $this->db->execute();
         $row = $this->db->getdata();
         if ($this->db->numRows() > 0){
-            
+
         $this->id = $row[0]->id;
         $this->firstname=$row[0]->firstname;
         $this->lastname=$row[0]->lastname;
@@ -165,7 +165,7 @@ function getordersArray(){
     }
     function setlastName($lastName)
     {
-        $this->lastName =$lastName;
+        $this->lastName =$lastname;
     }
     function setEmail($email)
     {
@@ -201,7 +201,7 @@ function getordersArray(){
     }
     function getlastName()
     {
-      return $this->lastName;
+      return $this->lastname;
     }
     function getEmail()
     {

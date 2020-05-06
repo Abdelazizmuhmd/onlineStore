@@ -80,6 +80,14 @@ function getImages(){
   function getSmall(){
       return $this->s;
   }
+  function setMedium($m){
+    $this->s = $m;
+}
+
+
+function getMedium(){
+    return $this->m;
+}
 
 
    function setXl($xl){

@@ -1,4 +1,3 @@
-
 <?php
 require_once("Model.php");
 require_once("productdetails.php");
@@ -16,7 +15,24 @@ protected $productDetails;
 function getName(){
     return $this->name;
 }
-    
+function getId(){
+    return $this->productid;
+}
+function getCode(){
+    return $this->code;
+}
+function getCost(){
+    return $this->cost;
+}
+function getProfit(){
+    return $this->profit;
+}
+function getDescription(){
+    return $this->description;
+}
+function getWeight(){
+    return $this->weight;
+} 
 function __construct()
     {
         $a = func_get_args();

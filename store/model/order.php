@@ -1,8 +1,8 @@
 <?php
 
-require_once("Model.php");
+require_once("../model/Model.php");
+require_once("../model/product.php");
 
-require_once("product.php");
 class order extends Model{
   
   private $userid;
@@ -59,12 +59,12 @@ function __construct4($userid,$comment,$status,$productsids) {
 
 
 
-    function setCreatedtime($createdytime){
-      $this->createdytime = $createdytime;
+    function setCreatedtime($createdtime){
+      $this->createdtime = $createdtime;
     }
 
     function getCreatedtime(){
-      return $this->createdytime;
+      return $this->createdtime;
     }
 
 
