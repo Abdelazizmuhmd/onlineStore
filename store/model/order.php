@@ -1,7 +1,7 @@
 <?php
 
 require_once("Model.php");
-
+require_once("product.php");
 
 class order extends Model{
   
@@ -80,13 +80,14 @@ function __construct4($userid,$comment,$status,$productsids) {
 
    
 
-function gerorderdetails($orderid){
-    $this->getorder();
+function getorderdetails($orderid){
+    $this->connect();
     $sql="select  productid from orderdetails  where id =:orderid";
     $this->db->query($sql);
-    $this->db->bind(':orderid,',$orderid);
+    $this->db->bind(':orderid',$orderid,PDO::PARAM_INT);
     $this->db->execute();
-    $this->products[]=new product($this->getdata()->id);
+    $idObject=$this->db->getdata();
+    $this->products[]=new product($idObject[0]->productid);
     
 }
 

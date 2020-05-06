@@ -7,6 +7,7 @@
   $model = new user();
   $controller = new userOrderController($model);
   $controller->getuser();
+  $controller->getOrderDetails();
   $view = new clientProducts($controller, $model);
 
   echo $view->output();
