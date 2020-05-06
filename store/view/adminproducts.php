@@ -47,5 +47,8 @@ function products(){
  }
  return $str;
 }
+function output(){
+
+}
 }
 ?>
