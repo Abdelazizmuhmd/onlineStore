@@ -1,3 +1,16 @@
+<?php
+
+require_once("../model/menu.php");
+require_once("../controller/menuController.php");
+require_once("../View/menuView.php");
+
+$model = new menu();
+$controller= new menuController($model);
+$controller->readProduct();
+$controller->getAllCategoriesDetails();
+$view= new menuView($model,$controller);
+
+?>
 <!doctype html>
 <html >
 <head>
@@ -9,10 +22,10 @@ Pat
     </title>
 
   <link href="../css/home.css" rel="stylesheet" type="text/css" media="all" /> 
-  <script src="js/j.js" type="text/javascript"></script>
-  <script src="js/s.js" type="text/javascript"></script>
-  <script src="js/home.js" type="text/javascript"></script>
-  <script src="js/j2.js" type="text/javascript"></script>
+  <script src="../js/j.js" type="text/javascript"></script>
+  <script src="../js/s.js" type="text/javascript"></script>
+  <script src="../js/home.js" type="text/javascript"></script>
+  <script src="../js/j2.js" type="text/javascript"></script>
 
     
 
@@ -70,8 +83,9 @@ include("header.html");
 
     <div class="grid">
 <?php
-        include("menu.html");
-        ?>
+        include("menu.php");
+?>
+        
 
       <main class="main-content grid__item medium-up--four-fifths" id="MainContent" role="main">
         
@@ -87,9 +101,9 @@ include("header.html");
 <div data-section-id="collection-template" data-section-type="collection-template" data-sort-enabled="true" data-tags-enabled="true">
   
   <div class="grid grid--uniform" role="list">
-      
-      
-      $view->productsout();
+      <?php
+      $view->productsOutPut();
+?>
 <!--
 
 <div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">
@@ -133,85 +147,7 @@ include("header.html");
 </div>
       -->
       
-      
-      <div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">
-  
-    <div class="supports-js" style="max-width: 600px; margin: 0 auto;">
-      <a href="" class="product__image-wrapper " style="padding-top:100.0%;" title="F*ck" data-image-link>
-          
-        <img class="product__image "
-             alt="img2"
-             style="max-width: 600px; max-height: 600px;"
-             src="images/b.jpg"
-             data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-             data-aspectratio="1.0"
-             data-sizes="auto"
-             data-image>
-          
-      </a>
-    </div>
-  
 
-
-  <div class="product__title product__title--card text-center">
-    <a href="">sport t-shirt</a>
-  </div>
-
-  
-
-  <div class="product__prices text-center">
-    
-
-      <span class="product__price">
-        
-          <span class="visually-hidden">Regular price</span>
-          €15,00
-        
-      </span>
-
-          <span class="badge badge--sale"><span>UP TO 50%</span></span>
-
-  </div>
-</div>
-<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">
-  
-    <div class="supports-js" style="max-width: 600px; margin: 0 auto;">
-      <a href="" class="product__image-wrapper " style="padding-top:100.0%;" title="F*ck" data-image-link>
-          
-        <img class="product__image "
-             alt="img3"
-             style="max-width: 600px; max-height: 600px;"
-             src="images/c.jpg"
-             data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-             data-aspectratio="1.0"
-             data-sizes="auto"
-             data-image>
-          
-      </a>
-    </div>
-  
-
-
-  <div class="product__title product__title--card text-center">
-    <a href="">sport t-shirt</a>
-  </div>
-
-  
-
-  <div class="product__prices text-center">
-    
-
-      <span class="product__price">
-        
-          <span class="visually-hidden">Regular price</span>
-          €15,00
-        
-      </span>
-
-          <span class="badge badge--sale"><span>UP TO 50%</span></span>
-
-  </div>
-</div>
 
 
 

@@ -1,6 +1,6 @@
 <?php
-  require_once("Model.php");
-  require_once("product.php");
+  require_once("../model/Model.php");
+  require_once("../model/product.php");
 ?>
 <?php 
 class subCategory extends Model
@@ -39,7 +39,7 @@ class subCategory extends Model
       $this->name = $name;
     }
     function getName()
-    {
+    { 
       return $this->name;
     }
     function setID($id)
@@ -55,34 +55,24 @@ class subCategory extends Model
     }
     
     function readOneProduct($id){  
-        $this->products[]=new product($id);
+        $this->products[0]=new product($id);
         
     }
     
     function readProducts($subcategoryId)
-    {   $productid=0; 
+    { //  $productid=0; 
         $this->connect();
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails
         where subcategorydetails.subcategoryid = :id and isdeleted = 0";
       $this->db->query($sql);
       $this->db->bind(':id',$subcategoryId,PDO::PARAM_INT);
-      $this->db->execute();
-       
-       
-        
+      $this->db->execute(); 
       if ($this->db->numRows() > 0){
-                    
           $row = $this->db->getdata();
-
           $n = $this->db->numRows();
-
           for($i = 0;$i<$n;$i++)
           {   $productid=$row[$i]->productid;
-           
               $this->products[]=new product($productid);
-           
-              
-              
           }}
     }
     

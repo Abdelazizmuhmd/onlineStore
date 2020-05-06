@@ -34,7 +34,12 @@ function __construct1($productId){
  $this->readProduct($productId);
 }    
     
-    
+     function getprofit(){
+        return $this->profit;
+    }
+    function getcost(){
+        return $this->cost;
+    }   
     
 function getProductDetails(){
     return $this->productDetails;
@@ -113,11 +118,11 @@ function readProduct($productid){
      $this->db->execute();
      if ($this->db->numRows() > 0){
      $product = $this->db->getdata();
-     $this->id = $product[0]->id;
+     $this->id =$product[0]->id;
      $this->name = $product[0]->name;
      $this->code = $product[0]->code;
-     $this->cost = $product[0]->cost;
-     $this->profit =$product[0]->profit;
+     $this->cost = (int)$product[0]->cost;
+     $this->profit =(int)$product[0]->profit;
      $this->description =$product[0]->description;
      $this->weight =$product[0]->weight;
      }

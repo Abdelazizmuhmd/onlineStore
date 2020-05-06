@@ -11,8 +11,11 @@
     </button>
     <div id="SiteNav" class="site-nav" role="menu">
       <ul class="list--nav">
-        
+          <?php
+             $view->menuOutput();
+?>
 <!-- repeat all that to add section-->
+          <!--
             <li class="site-nav--has-submenu site-nav__item">
               <button class="site-nav__link btn--link site-nav__collapse" aria-expanded="true" aria-controls="Collapsible-2">
                 Menu
@@ -20,8 +23,6 @@
               </button>
                 
                 
-                $view->menuOutput();
-                <!--
               <ul id="Collapsible-2" class="site-nav__submenu site-nav__submenu--expanded" aria-hidden="false">
                   <li class="site-nav--active">
                       <a href="tee" class="site-nav__link" aria-current="page">Tee</a>
@@ -47,9 +48,7 @@
                   
                 
               </ul>-->
-                
-            </li>
-          
+                 
 
       </ul>
       <ul class="list--inline social-links">

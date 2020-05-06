@@ -1,6 +1,5 @@
 <?php
-
-require_once("Model.php");
+require_once("../model/Model.php");
 
 
 class productDetails extends Model{
@@ -9,6 +8,7 @@ class productDetails extends Model{
   private $color;
   private $s;
   private $m;
+  private $l;
   private $xl;
   private $xxl;
   private $xxxl;
@@ -28,14 +28,15 @@ function __construct0(){
     
 }    
     
-    
-    
-function __construct10($id,$productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagearray) {
+
+function __construct11($id,$productid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$sold,$Imagearray) {
+        $Imagearray=unserialize($Imagearray);
         $this->id = $id;
         $this->productid =$productid;
         $this->color =$color;
         $this->s =$s;
         $this->m =$m;
+        $this->l=$l;
 		$this->xl =$xl;
         $this->xxl =$xxl;
         $this->xxxl =$xxxl;
@@ -43,6 +44,11 @@ function __construct10($id,$productid,$color,$s,$m,$xl,$xxl,$xxxl,$sold,$Imagear
         $this->Imagearray =$Imagearray;
 }
 
+    
+function getImages(){
+    return $this->Imagearray;
+}    
+    
 
   function setProductid($productid){
       $this->productid = $productid;

@@ -41,8 +41,7 @@ public function getAllCategoriesDetails(){
         $this->$this->categories[0]->readSubCategories($id);
         $this->categories[0]->getsubCategories()[0]->readProducts($id);
 
-                $flag=0;
-
+   $flag=0;
     foreach ($categories as $value) {
         $this->categories[]=new category($value->id,$value->name,$flag);
     }

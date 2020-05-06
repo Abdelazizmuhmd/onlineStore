@@ -74,7 +74,6 @@ class category extends Model
           $row = $this->db->getdata(); 
           for($i=0;$i<$this->db->numRows();$i++){
 
-             
              $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name);
                   
               

@@ -1,11 +1,11 @@
 <?php
-abstract class  View{
+ class  View{
     protected $model;
     protected $controller;
 
-    public function __construct($controller, $model) {
+    public function __construct($model, $controller) {
+        $this->controller=$controller;
         $this->model = $model;
     }
 	
-    public abstract function output();
 }?>

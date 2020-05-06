@@ -5,21 +5,25 @@ require_once("Controller.php");
 
 class menuController extends Controller{
 
+    
+public function  getAllCategoriesDetails(){
+    $this->model->getAllCategoriesDetails();
+}  
+    
  public function readProduct(){
+    $productid = 82;
 
-     $productid = $_REQUEST['productid'];
+    // $productid = $_REQUEST['productid'];
 
-     $this->model->readProduct($productid);
+    $this->model->getCategories()[0]->getSubcategories()[0]->readOneProduct($productid);
 
  }
-
-
-
  public function readProducts(){
    
-    $subcategoryId = $_REQUEST['subcategoryId'];
+     $subcategoryId=1;
+    //$subcategoryId = $_REQUEST['subcategoryId'];
 
-    $this->model->readProducts($subcategoryId);
+    $this->model->getCategories()[0]->getSubcategories()[0]->readProducts($subcategoryId);
 
  }
 

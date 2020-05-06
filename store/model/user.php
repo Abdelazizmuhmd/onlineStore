@@ -56,7 +56,7 @@ function getordersArray(){
     }
     
     function getorderdetails($orderid){
-     $this->orders[]= new order();
+     $this->orders[]= new order($orderid);
      $this->orders[0]->getorderdetails($orderid);
     }
     
@@ -128,7 +128,6 @@ function getordersArray(){
 
     function getuser($id){
                 $this->connect();
-
         $sql = "select * from user where id=:id";
         $this->db->query($sql);
         $this->db->bind(':id',$id,PDO::PARAM_INT);
@@ -162,7 +161,7 @@ function getordersArray(){
     }
     function setfirstName($firstName)
     {
-        $this->fristName =$firstName;
+        $this->firstName =$firstName;
     }
     function setlastName($lastName)
     {
@@ -198,7 +197,7 @@ function getordersArray(){
     }
     function getfirstName()
     {
-      return $this->fristName ;
+      return $this->firstName;
     }
     function getlastName()
     {
