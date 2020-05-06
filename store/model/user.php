@@ -35,7 +35,7 @@ function getordersArray(){
 }
   
     function getorders($userId){
-        if($userType!="admin"){
+    if($this->userType!="admin"){
     $this->connect();
     $sql = "select id from `order` where userid=:userid";
     $this->db->query($sql);
