@@ -58,7 +58,6 @@ function getordersArray(){
     function getorderdetails($orderid){
      $this->orders[]= new order($orderid);
      $this->orders[0]->getorderdetails($orderid);
-        //echo "Ana zh2t";
     }
     
     function makeorder($userid,$comment,$status,$productsid){

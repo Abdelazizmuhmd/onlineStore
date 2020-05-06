@@ -1,17 +1,27 @@
-ordersview extent view{
+<?php
 
-function ordersOutput(){
-orderArray=$this->modal-getordersArray();
-forloop(orderArray)
-  <td><input /> <label></label></td>
-            <td>Jan 24, 2020</td>
-            <td>Delivered</td>
-            <td>76 Mohanat street, Hovebeach,NY</td>
-            <td>$15.00</td>
-            <td><a id="button" href="">View</a></td>
+require_once("View.php");
+
+class ordersview extends view{
+
+function output(){
+
+$i=1;
+foreach($this->model->getordersArray() as $orders){
+  $str = "";
+            $str.=   "<td>".$i++."</td>";
+            $str.="<td>".$orders->getComment()."</td>";
+            $str.="<td>".$orders->getStatus()."</td>";
+            $str.="<td>".$orders->getCreatedtime()."</td>";
+            $str.="<td><a id='button' href=''>View</a></td>";
 
 }
 
 
+                      return $str;
 
 }
+
+}
+
+?>

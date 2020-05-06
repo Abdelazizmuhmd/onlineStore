@@ -35,21 +35,21 @@ $str.="<div class='jumbotron'>";
 
 
 
+$i=1;
+foreach($this->model->getordersArray()[0]->getProducts() as $products){
 
-//$products=$this->model->orders()[0]->getProducts();
-
-$str.="<tr><td align='center'><br>1</td>";
-$str.="<td align='center'><img width='80' height='100' src='images/t-shirt2.PNG'></td>";
-$str.="<td align='center'><br>Pat Sport T-shirt</td>";
-$str.="<td align='center'><br>P156982</td>";
-$str.="<td align='center'><br>2XL</td>";
-$str.="<td align='center'><br>3</td>";
-$str.="<td align='center'><br>Blue</td>";
-$str.="<td align='center'><br>150 grams</td>";
-$str.="<td align='center'><br>A simple cotton design embellished with a crew neck, short sleeves</td>";
-$str.="</tr>";
+$str.="<tr><td align='center'><br>".$i++."</td>";
+$str.="<td align='center'><img width='80' height='100' src='images/t-shirt2.PNG'></td>"; //Still NEED GET HERE
+$str.="<td align='center'><br>".$products->getName()."</td>";
+$str.="<td align='center'><br>".$products->getCode()."</td>";
+$str.="<td align='center'><br>2XL</td>"; //Still NEED GET SIZE HERE
+$str.="<td align='center'><br>3</td>"; //Still NEED GET Quantity HERE
+$str.="<td align='center'><br>".$products->getCost()."</td>"; //SHOULD BE HERE COLOR
+$str.="<td align='center'><br>".$products->getWeight()."</td>";
+$str.="<td align='center'><br>".$products->getDescription()."</td>";
 
 
+}$str.="</tr>";
                       return $str;
 }
 
