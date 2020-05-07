@@ -2,14 +2,16 @@
 
 require_once("../model/Model.php");
 require_once("../model/product.php");
+require_once("../model/orderproductdetails.php");
 
+ //test
 class order extends Model{
   
   private $userid;
   private $comment;
   private $status;
   private $createdtime;
-  private $products;
+  private productorderdetails;
     
 function __construct()
     {
@@ -22,8 +24,8 @@ function __construct()
 function __construct1($id) {
       $this->readOrder($id);
   }
-function __construct4($userid,$comment,$status,$productsdetailids) {
-    $this->makeorder($userid,$comment,$status,$productsdetailids);
+function __construct4($userid,$comment,$status,$productsdetails) {
+    $this->makeorder($userid,$comment,$status,$productsdetails);
   }
 
 
@@ -75,31 +77,33 @@ function __construct4($userid,$comment,$status,$productsdetailids) {
     }
 
     function getProducts(){
-      return $this->products;
+      return $this->productorderdetails;
     }
 
    
 
 function getorderdetails($orderid){
     $this->connect();
-    $sql="select  productdetailid from orderdetails  where id =:orderid";
+    $sql="select  productdetailid,size,quantity from orderdetails  where id =:orderid";
     $this->db->query($sql);
     $this->db->bind(':orderid',$orderid,PDO::PARAM_INT);
     $this->db->execute();
-    $iddetailObject=$this->db->getdata();
+    $dbobjects=$this->db->getdata();
+    foreach(dbobjects as dbobject){
+    $productdetailid=$dbobjects->id;
+    $productordersize=$dbobjects->size;
+    $productorderquantity= $dbobjects->quantity;
+    $this->productorderdetails[]=new productorderdetails($productdetailid,$productordersize,$productorderquantity);
+   
+    }
     
-    $sql="select productid from productdetails where id =:productdetailid";
-    $this->db->query($sql);
-    $this->db->bind(':productdetailid',$iddetailObject,PDO::PARAM_INT);
-    $this->db->execute();
-    $productIdObject=$this->db->getdata();
     
-    $this->products[]=new product($productIdObject[0]->productid,$iddetailObject[0]->productdetailid);
+    
     
 }
 
 
-function makeOrder ($userid,$comment,$status,$productsdetailids){
+function makeOrder ($userid,$comment,$status,$productsdetails){
         $this->connect();
         $sqlOrder = "INSERT INTO `order` (userid,comment,status) VALUES (:userid,:comment,:status)";
         $this->db->query($sqlOrder);
@@ -109,18 +113,23 @@ function makeOrder ($userid,$comment,$status,$productsdetailids){
         $this->db->execute();
         $orderid=$this->db->lastInsertedId();
     
-        $length = count($productsdetailids);
+        $length = count($productsdetails);
     
         for ($i = 0; $i < $length; $i++) {
+            // assiarray
          $this->connect();
-         $productdetailid=$productsdetailids[$i];
             
-         $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productdetailid) VALUES (:orderid ,:productdetailid)";
+         $productdetailid=$productsdetails[$i]['id'];
+         $productdetailsize=$productsdetails[$i]['size'];
+         $productdetailquantity=$productsdetails[$i]['quantity'];
+            
+         $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productdetailid,size,quantity) VALUES (:orderid ,:productdetailid,:size,:quantity)";
             
            $this->db->query($sqlOrderDetails);
            $this->db->bind(':orderid',$orderid,PDO::PARAM_INT);
            $this->db->bind(':productdetailid',$productdetailid,PDO::PARAM_INT);
-
+           $this->db->bind(':size',$productdetailsize,PDO::PARAM_STR);
+           $this->db->bind(':quantity',$productdetailquantity,PDO::PARAM_INT);
            $this->db->execute();
 
       }}

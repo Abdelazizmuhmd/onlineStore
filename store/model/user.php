@@ -30,10 +30,11 @@ function __construct0() {
     { 
    $this->getuser($id);        
     }
+    //test
 function getordersArray(){
     return $this->orders;
 }
-  
+   //test
     function getorders($userId){
     if($this->userType!="admin"){
     $this->connect();
@@ -55,13 +56,14 @@ function getordersArray(){
     }
     }
     
+     //test
     function getorderdetails($orderid){
      $this->orders[]= new order($orderid);
      $this->orders[0]->getorderdetails($orderid);
     }
-    
-    function makeorder($userid,$comment,$status,$productsdetailids){
-    $order=new order($userid,$comment,$status,$productsdetailids);
+    //test
+    function makeorder($userid,$comment,$status,$productdetails){
+    $order=new order($userid,$comment,$status,$productdetails);
     }
     
     

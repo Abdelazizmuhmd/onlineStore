@@ -2,6 +2,7 @@
 require_once("../view/View.php");
 class adminproducts extends View{
 
+/*
 function categoryoutput(){
   $str = "";
   $catarr = $this->model->getcategories();
@@ -10,13 +11,15 @@ function categoryoutput(){
   return $str;
 }
 
+
 function subcategoryoutput(){
   $str = "";
-  $subarr = $this->model->getcategories()[0]->getsubcategories();
+  $subarr = $this->model->getcategories()[]->getsubcategories();
   for($i = 0;$i<count($subarr);$i++)
    $str .= "<option>".$subarr[$i]->getName()."</option>";
   return $str;
 }
+*/
 
 function products(){
   $productarr = $this->model->getcategories()[0]->getsubcategories()[0]->getproducts();

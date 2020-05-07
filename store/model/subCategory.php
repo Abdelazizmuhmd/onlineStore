@@ -60,7 +60,7 @@ class subCategory extends Model
     }
     
     function readProducts($subcategoryId)
-    { //  $productid=0; 
+    {   $this->products[]=array(); 
         $this->connect();
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails
         where subcategorydetails.subcategoryid = :id and isdeleted = 0";

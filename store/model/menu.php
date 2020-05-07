@@ -16,7 +16,6 @@ public function getCategories(){
     return $this->categories;
 }
 public function getAllCategoriesDetails(){
-   
     $sql="select id,name from category where isdeleted=0";
     $this->connect();
     $this->db->query($sql);
@@ -28,9 +27,11 @@ public function getAllCategoriesDetails(){
     }
     }  
 }
+    
+    
 
-
- public function getAllCategoriesName($subid=""){
+/*
+ public function getAllCategoriesName($catid=""){
    
     $sql="select id,name from category where isdeleted=0";
     $this->connect();
@@ -38,20 +39,23 @@ public function getAllCategoriesDetails(){
     $this->db->execute();
     if ($this->db->numRows()>0){
         $categories = $this->db->getdata();
-        if($subid==""){
-            $catid=$categories[0]->id;
+        if($catid==""){
+        $catid=$categories[0]->id;
         }else{
-        $catid=$subid;}
+        $catid=$catid;
+        }
         $this->categories[0]->readSubCategories($catid);
+        
         $idsub=$this->categories[0]->getSubcategories()[0]->getID();
-        $this->categories[0]->getsubCategories()[0]->readProducts($idsub);s
-        $flag=0;
+        
+        $this->categories[0]->getsubCategories()[0]->readProducts($idsub);
+        $flag=0
         
     foreach ($categories as $value) {
         $this->categories[]=new category($value->id,$value->name,$flag);
     }
     }  
-}
+}*/
 
     
     

@@ -4,8 +4,8 @@ class adminController extends Controller{
     
     
     
-function getAllCategoriesName(){
-    $this->model->getAllCategoriesName(1);
+function getAllCategories(){
+    $this->model->getAllCategoriesDetails();
     
 }
     
