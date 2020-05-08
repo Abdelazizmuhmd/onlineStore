@@ -1,33 +1,12 @@
 <?php
 
-if(isset($_COOKIE['cook'])){  
-$return=$_COOKIE['cook'];
-$arr=json_decode($return, true);  
+$val=array('name'=>'Guru','country'=>'USA');
 
-}
-      
-if(isset($_POST['checkout'])){
-  header("location:checkout.php");
-}
 
- if(isset($_GET["action"]))  
- { 
- if($_GET["action"] == "delete")  
-      {  
-          foreach($arr as $key1 => $values){  
-                $id=$_GET['id'];
-                $id=intval($id);
-                $compare_id=$values['id'];
-                if($compare_id == $id){ 
-                        array_splice($arr,$key1,1);
-                    	$ar=json_encode($arr);
-	                    setcookie('cook',$ar);
-                    echo '<script>alert("Item Removed")</script>';  
-                    echo '<script>window.location="cart.php"</script>';  
-                }  
-           }  
-      }  
-    }
+  $ar=json_encode($val);
+  setcookie('cook',$ar);
+
+
 
 
 //echo $_COOKIE["cook"];
@@ -203,23 +182,16 @@ Pat
   <div class="grid__item">
     
       <h1 class="h2 visually-hidden">Shopping Cart</h1>
-
-      <form method="post" action="checkout.php" novalidate="" class="cart pf-form-processed">
+      <form action="/cart" method="post" novalidate="" class="cart pf-form-processed">
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7ZCRLW"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <?php
 if(isset($_COOKIE['cook'])){
 $return=$_COOKIE['cook'];
 $arr=json_decode($return, true);
-$sub_total=0;
 foreach($arr as $key1 => $values)
 {
-  //echo $key1.' : '.$values.'<br>';
-$total=$values['price']*$values['quantity'];
-$sub_total+=$values['price']*$values['quantity'];
-
-
-
+  echo $key1.' : '.$values.'<br>';
 
 echo "<table class='cart-table responsive-table table--no-border'>
           <thead class='cart__row cart__header-labels small--hide'>
@@ -239,29 +211,28 @@ echo "<table class='cart-table responsive-table table--no-border'>
 
                     <div id='CartImageWrapper--13760170131490' class='cart__image-wrapper supports-js'>
                       <a class='cart__image-container' href='/collections/all/products/im-fine-phr-2?variant=31415765139490' style='padding-top:100.0%;'>
-                        <img id='CartImage--13760170131490' class='cart__image' src='$values[image_url]' data-widths='[180, 230, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' data-aspectratio='1.0' data-sizes='auto' alt='I'm fine (phr.) - White / S' itemprop='image'>
+                        <img id='CartImage--13760170131490' class='cart__image' src='../images/c.jpg' data-widths='[180, 230, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' data-aspectratio='1.0' data-sizes='auto' alt='I'm fine (phr.) - White / S' itemprop='image'>
                       </a>
                     </div>
                 </td>
                 <td class='cart__table-cell--meta text-center large-up--text-left'>
                   <p>
-                    <a href='/products/im-fine-phr-2?variant=31415765139490'>Pat 2020</a>
-                      <br><small>$values[color_size]</small>
+                    <a href='/products/im-fine-phr-2?variant=31415765139490'>I'm fine (phr.)</a>
+                      <br><small>White / S</small>
                     </p><div class='hulkapps-reminder'></div>
                   <p></p>
 
                   <p class='txt--minor'>
-
-                    <a href='cart.php?action=delete&id=$values[id];' class='cart__remove'>Remove</a>
+                    <a href='/cart/change?line=1&amp;quantity=0' class='cart__remove'>Remove</a>
                   </p>
                 </td>
-                <td class='cart__table-cell--price medium-up--text-right' data-label='Price'><span class='hulkapps-cart-item-price' > $values[price] L.E </span>
+                <td class='cart__table-cell--price medium-up--text-right' data-label='Price'><span class='hulkapps-cart-item-price' >30,00 L.E </span>
 </td>
                 <td data-label='Quantity' class='medium-up--text-right cart__table-cell--quantity'>
-                  <span class='hulkapps-cart-item-line-price' > $values[quantity] </span></td>
+                  <span class='hulkapps-cart-item-line-price' >$values[name] </span></td>
 
 
-                <td data-label='Total' class='text-right cart__table-cell--line-price'><span class='hulkapps-cart-item-line-price'   >$total L.E</span></td>
+                <td data-label='Total' class='text-right cart__table-cell--line-price'><span class='hulkapps-cart-item-line-price'   >30,00 L.E </span></td>
               </tr>
           </tbody>
         </table>";
@@ -277,22 +248,14 @@ echo "<table class='cart-table responsive-table table--no-border'>
             </div>
             <div class="grid__item text-center large-up--one-half large-up--text-right"><p>
                 <span class="cart__subtotal-title h3">Subtotal</span>
-                <span class="cart__subtotal h3"><span class="hulkapps-cart-original-total"><?php 
-if(isset($_COOKIE['cook'])){  
- echo $sub_total; echo " L.E";
-
-}else{
-  echo "0.0 L.E";
-}
-  ?></span></span>
+                <span class="cart__subtotal h3"><span class="hulkapps-cart-original-total">30,00 L.E </span></span>
               </p><p class="cart__policies txt--emphasis rte">Tax included. Delivered to your door</p>
               <p>
               
                 <a class="btn btn--secondary" href="/collections/all">Continue shopping</a>
               </p>
               <p>
-
-                  <input type="submit" name="checkout" class="btn" value="Check Out">
+                <button type="submit" name="checkout" class="btn">Check Out</button>
               </p>
             </div>
           </div>

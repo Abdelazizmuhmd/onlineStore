@@ -6,7 +6,6 @@ class adminController extends Controller{
     
 function getAllCategories(){
     $this->model->getAllCategoriesDetails();
-    
 }
     
 function insertCategory(){
@@ -66,6 +65,10 @@ function  insertProduct(){
     $subcategoryid = $_REQUEST['subcategoryid'];
     $this->modal->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->insertProduct($name,$code,$cost,$profit,$description,$weight,$productDetails,$subcategoryid);
     
+}
+function showproducts(){
+$subcategoryid=$_REQUEST['subcategoryid'];
+$this->model->getCategories()[0]->getSubcategories()[0]->readProducts($subcategoryid);
 }
     
 function  updateProduct(){

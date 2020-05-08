@@ -24,6 +24,9 @@ function readproduct($productdetailid){
     $this->db->bind(':productdetailid',$productdetailid,PDO::PARAM_INT);
     $this->db->execute();
     $dbobjects=$this->db->getdata();
+    
+
+    
     $productid=$dbobjects[0]->productid;
     $this->productorderid = $productid;
     $this->product=new product($productid,$productdetailid);
