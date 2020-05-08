@@ -59,10 +59,11 @@ $view= new adminproductsView($model,$controller);
             
     ?>        
             
-  <button class="btn btn-primary" data-toggle="modal" target="#categoryEdit" style="width:140px;margin-left:50px;padding:10px;" >Edit Category</button>
+
+  <button class="btn btn-primary" data-toggle="modal" data-target="#categoryEdit" style="width:140px;margin-left:50px;padding:10px;" >Edit Category</button>
             
             
-  <button class="btn btn-primary" data-toggle="modal" style="width:140px;margin-left:50px;padding:10px;" data-target="#myModal">Add Category </button>
+  <button class="btn btn-primary" data-toggle="modal" style="width:140px;margin-left:50px;padding:10px;" data-target="#categoryAdd">Add Category </button>
             
   <button class="btn btn-primary" style="margin-left:50px;"><a href="#" style="color:white;" class="btn" onclick="return confirm('Are you sure you want to delete this item?');">Delete Category</a>
  </button>
@@ -78,8 +79,9 @@ $view= new adminproductsView($model,$controller);
       </select>
 
       
- <button class="btn btn-primary" style=" margin-left:50px;padding:10px;"> Edit SubCategory </button>
-  <button class="btn btn-primary" data-toggle="modal" style="margin-left:50px;padding:10px;" data-target="#myModal">Add SubCategory </button>
+
+ <button class="btn btn-primary" data-toggle="modal" style=" margin-left:50px;padding:10px;" data-target="#subCategoryEdit"> Edit SubCategory </button>
+  <button class="btn btn-primary" data-toggle="modal" style="margin-left:50px;padding:10px;" data-target="#subCategoryAdd">Add SubCategory </button>
   <button class="btn btn-primary" style="margin-left:50px;"><a href="#" style="color:white;" class="btn" onclick="return confirm('Are you sure you want to delete this item?');">Delete SubCategory</a></button>
 
 </div>
