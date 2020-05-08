@@ -402,7 +402,16 @@ $sub_total+=$values['price']*$values['quantity'];
   <th class="total-line__name" scope="row">Subtotal</th>
   <td class="total-line__price">
     <span class="order-summary__emphasis" data-checkout-subtotal-price-target="3000">
-      <?php echo $sub_total; echo" L.E";?>
+    
+    <?php 
+
+if(isset($_COOKIE['cook'])){  
+ echo $sub_total; echo " L.E";
+
+}else{
+  echo "0.0 L.E";
+}
+  ?>
     </span>
   </td>
 </tr>
@@ -439,7 +448,16 @@ $sub_total+=$values['price']*$values['quantity'];
       </th>
       <td class="total-line__price payment-due">
         <span class="payment-due__price" data-checkout-payment-due-target="3000">
-          <?php echo $sub_total; echo " L.E";?>
+       <?php   
+
+if(isset($_COOKIE['cook'])){  
+  
+ echo $sub_total; echo " L.E";
+
+}else{
+  echo "0.0 L.E";
+}
+  ?>
         </span>
       </td>
     </tr>
