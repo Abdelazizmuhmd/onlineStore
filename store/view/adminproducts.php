@@ -9,7 +9,9 @@ $str.='<select name="categories" id="combBox" class="form-control categories">';
 $str.='<option disabled selected value> -- select an option -- </option>
 ';
 foreach($categories as $i=>$category){
+    
 if($i>0){
+    
 $str.='<option value="'.$category->getId().'">'.$category->getName().'</option>';
 }}
 $str.='</select>';

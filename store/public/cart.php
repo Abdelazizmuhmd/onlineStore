@@ -1,9 +1,9 @@
 <?php
-      
 
 if(isset($_COOKIE['cook'])){  
 $return=$_COOKIE['cook'];
 $arr=json_decode($return, true);  
+
 }
       
 if(isset($_POST['checkout'])){
@@ -14,18 +14,16 @@ if(isset($_POST['checkout'])){
  { 
  if($_GET["action"] == "delete")  
       {  
-        
           foreach($arr as $key1 => $values){  
-
                 $id=$_GET['id'];
                 $id=intval($id);
                 $compare_id=$values['id'];
-
                 if($compare_id == $id){ 
-                     unset($arr[$key1]);
-                     echo $_COOKIE['cook'];  
-                     echo '<script>alert("Item Removed")</script>';  
-                     echo '<script>window.location="cart.php"</script>';  
+                        array_splice($arr,$key1,1);
+                    	$ar=json_encode($arr);
+	                    setcookie('cook',$ar);
+                    echo '<script>alert("Item Removed")</script>';  
+                    echo '<script>window.location="cart.php"</script>';  
                 }  
            }  
       }  
