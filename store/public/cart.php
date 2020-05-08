@@ -192,7 +192,9 @@ $arr=json_decode($return, true);
 foreach($arr as $key1 => $values)
 {
   //echo $key1.' : '.$values.'<br>';
-$total=$values['price']*$values['quantity'];
+$total+=$values['price']*$values['quantity'];
+
+
 echo "<table class='cart-table responsive-table table--no-border'>
           <thead class='cart__row cart__header-labels small--hide'>
 
