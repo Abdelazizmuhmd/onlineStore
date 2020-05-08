@@ -41,7 +41,8 @@ class category extends Model
 
     
     function getSubcategories(){
-     return    $this->subCategories;
+         return $this->subCategories;
+
     }
     function setName($name)
     {
@@ -61,8 +62,7 @@ class category extends Model
     }
 
     function readSubCategories($id)
-    { 
-      $this->connect();
+    { $this->connect();
       $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id and subcategory.isdeleted = 0";
         
       $this->db->query($sql);

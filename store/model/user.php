@@ -35,6 +35,7 @@ function getordersArray(){
     return $this->orders;
 }
    //test
+
     function getorders($userId){
     $this->connect();
     if($this->userType=="client" || $this->userType=="guest" ){

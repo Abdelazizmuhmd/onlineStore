@@ -1,6 +1,47 @@
 <?php 
 require_once("../view/View.php");
-class adminproducts extends View{
+class adminproductsView extends View{
+
+function getallcategories(){
+$str="";
+$categories = $this->model->getCategories();
+$str.='<select name="categories" id="combBox" class="form-control categories">';
+$str.='<option disabled selected value> -- select an option -- </option>
+';
+foreach($categories as $i=>$category){
+if($i>0){
+$str.='<option value="'.$category->getId().'">'.$category->getName().'</option>';
+}}
+$str.='</select>';
+$str.='<script>';
+$str.='$(document).ready(function() {';
+$str.='$(".categories").change(function() {';
+$str.=' var val = $(this).val();';
+$str.='if(1==0){}';
+
+foreach($categories as $u=>$category){
+ if($u>0){
+ $subcategories=$category->getSubcategories();     
+ $str.='else if (val == "'.$category->getId().'"){';
+ $str.='$(".subcategory").html("'; 
+if(is_iterable($subcategories)){
+ foreach($subcategories as $k=>$subcategory){
+ $str.='<option value='.$subcategory->getID().'>'.$subcategory->getName().'</option>';
+    } }
+
+  $str.='");}';
+
+}}
+
+$str.='});});';
+$str.='</script>';
+ 
+    return $str;
+}
+    
+  
+    
+
 
 /*
 function categoryoutput(){
@@ -50,8 +91,6 @@ function products(){
  }
  return $str;
 }
-function output(){
 
-}
 }
 ?>

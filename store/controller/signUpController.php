@@ -10,8 +10,6 @@ class signUpController extends Controller{
     $lastname = $_REQUEST['lastName']
     $password = $_REQUEST['password'];
     $email = $_REQUEST['email'];
-     
-
      $this->model->signup($firstname,$lastname,$password,$email);
 
  }
