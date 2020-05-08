@@ -24,7 +24,7 @@ $str.="<div class='jumbotron'>";
                              //$str.="<li><p><span class='glyphicon glyphicon-sort' style='width:50px;'></span>53</p></li>";
                              $str.="<li><p><span class='glyphicon glyphicon-envelope one' style='width:50px;'></span>Email : ".$this->model->getemail()."</p></li>";
 
-                             $str.="<li><p><span class='glyphicon glyphicon-map-marker one' style='width:50px;'></span> City : ".$this->model->getcity()."</p></li>";
+                             $str.="<li><p><span class='glyphicon glyphicon-map-marker one' style='width:50px;'></span> City : x ".$this->model->getcity()."</p></li>";
                            
                            $str.="</ul>";
                       $str.= "</div>";

@@ -50,7 +50,9 @@ function getordersArray(){
 
         
     $row = $this->db->getdata();
+    $this->orders[]=new order();
     if ($this->db->numRows() > 0){
+        
     foreach($row as $order){
     $this->orders[]=new order($order->id);
     }

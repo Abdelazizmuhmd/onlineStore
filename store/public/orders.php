@@ -82,7 +82,6 @@ require_once("../controller/userOrder.php");
                  if(count($model->getordersArray())>0)
                   echo $view->output();
                 ?>
-                </tr>
             </table>
         </div>
     </div>

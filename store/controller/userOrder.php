@@ -31,6 +31,7 @@ public function delete(){
     $orderid=$_REQUEST['orderid'];
 
     $this->model->getordersArray()[0]->delete($orderid);
+    header("location:../public/orders.php");
     
     
 }
