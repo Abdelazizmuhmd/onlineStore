@@ -2,7 +2,7 @@
 require_once("../model/model.php");
 require_once("../model/product.php");
  //test all
-class productorderdetails extents model{
+class productorderdetails extends model{
     
 private $productorderid;
 private $productdetailid;
@@ -24,9 +24,12 @@ function readproduct($productdetailid){
     $this->db->bind(':productdetailid',$productdetailid,PDO::PARAM_INT);
     $this->db->execute();
     $dbobjects=$this->db->getdata();
-    $productid=$dbobjects[0]->id;
-    $this->productorderid=$productid;
-    $this->$product=new product($productid,$productdetailid);
+    
+
+    
+    $productid=$dbobjects[0]->productid;
+    $this->productorderid = $productid;
+    $this->product=new product($productid,$productdetailid);
 }
 function getproduct(){
         return $this->product;

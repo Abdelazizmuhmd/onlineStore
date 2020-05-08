@@ -3,8 +3,8 @@ require_once("Controller.php");
 class userOrderController extends Controller{
  public function getOrders(){
 
- 	 $userid = 1;
-     //$userid = $_REQUEST['userid'];
+ 	 //$userid = 1;
+     $userid = $_REQUEST['userid'];
      $this->model->getorders($userid);
  }
  public function getOrderDetails(){
@@ -24,6 +24,17 @@ public function getuser(){
 	$userid = 1;
     //$userid=$_REQUEST['userid'];
     $this->model->getuser($userid);
+    
+}
+public function delete(){
+
+    $orderid=$_REQUEST['orderid'];
+    foreach($this->model->getordersArray() as $orders)
+    {
+     if ($orders->getId() == $orderid)
+      $orders->delete($orderid);
+    }
+    
     
 }
 }

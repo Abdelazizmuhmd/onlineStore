@@ -291,44 +291,62 @@
   <div class="order-summary__sections">
     <div class="order-summary__section order-summary__section--product-list">
   <div class="order-summary__section__content">
-    <table class="product-table">
-      <caption class="visually-hidden">Shopping cart</caption>
-      <thead class="product-table__header">
+
+      <?php
+if(isset($_COOKIE['cook'])){
+$return=$_COOKIE['cook'];
+$arr=json_decode($return, true);
+$sub_total=0;
+foreach($arr as $key1 => $values)
+{
+  //echo $key1.' : '.$values.'<br>';
+$total=$values['price']*$values['quantity'];
+$sub_total+=$values['price']*$values['quantity'];
+
+          echo"
+    <table class='product-table'>
+      <caption class='visually-hidden'>Shopping cart</caption>
+      <thead class='product-table__header'>
         <tr>
-          <th scope="col"><span class="visually-hidden">Product image</span></th>
-          <th scope="col"><span class="visually-hidden">Description</span></th>
-          <th scope="col"><span class="visually-hidden">Quantity</span></th>
-          <th scope="col"><span class="visually-hidden">Price</span></th>
+          <th scope='col'><span class='visually-hidden'>Product image</span></th>
+          <th scope='col'><span class='visually-hidden'>Description</span></th>
+          <th scope='col'><span class='visually-hidden'>Quantity</span></th>
+          <th scope='col'><span class='visually-hidden'>Price</span></th>
         </tr>
       </thead>
-      <tbody data-order-summary-section="line-items">
-      <!--
-          <tr class="product" data-product-id="4396731957282" data-variant-id="31415765139490" data-product-type="Sweater" data-customer-ready-visible>
-          <td class="product__image">
-            <div class="product-thumbnail ">
-  <div class="product-thumbnail__wrapper">
-    <img alt="I'm fine (phr.) - White / S" class="product-thumbnail__image" src="" />
+
+<tbody data-order-summary-section='line-items'>
+      
+          <tr class='product' data-product-id='4396731957282' data-variant-id='31415765139490' data-product-type='Sweater' data-customer-ready-visible>
+          <td class='product__image'>
+            <div class='product-thumbnail'>
+  <div class='product-thumbnail__wrapper'>
+    <img alt='pat 2020 - White / S' class='product-thumbnail__image' src='$values[image_url]' />
   </div>
-    <span class="product-thumbnail__quantity" aria-hidden="true">1</span>
+    <span class='product-thumbnail__quantity' aria-hidden='true'>$values[quantity]</span>
 </div>
 
           </td>
-          <th class="product__description" scope="row">
-            <span class="product__description__name order-summary__emphasis">I&#39;m fine (phr.)</span>
-            <span class="product__description__variant order-summary__small-text">White / S</span>
+          <th class='product__description' scope='row'>
+            <span class='product__description__name order-summary__emphasis'>pat 2020</span>
+            <span class='product__description__variant order-summary__small-text'>$values[color_size]</span>
 
 
           </th>
-          <td class="product__quantity visually-hidden">
+          <td class='product__quantity visually-hidden'>
             1
           </td>
-          <td class="product__price">
-            <span class="order-summary__emphasis">€30,00</span>
+          <td class='product__price'>
+            <span class='order-summary__emphasis'>$total L.E</span>
           </td>
         </tr>
--->
+
       </tbody>
-    </table>
+    </table>";
+}
+}
+     ?>
+
 
     <div class="order-summary__scroll-indicator" aria-hidden="true" tabindex="-1">
       Scroll for more items
@@ -384,7 +402,7 @@
   <th class="total-line__name" scope="row">Subtotal</th>
   <td class="total-line__price">
     <span class="order-summary__emphasis" data-checkout-subtotal-price-target="3000">
-      €30,00
+      <?php echo $sub_total; echo" L.E";?>
     </span>
   </td>
 </tr>
@@ -421,7 +439,7 @@
       </th>
       <td class="total-line__price payment-due">
         <span class="payment-due__price" data-checkout-payment-due-target="3000">
-          €30,00
+          <?php echo $sub_total; echo " L.E";?>
         </span>
       </td>
     </tr>

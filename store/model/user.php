@@ -35,10 +35,10 @@ function getordersArray(){
     return $this->orders;
 }
    //test
-function getorders($userId){
-    $this->getuser($userId);
-    if($this->userType!="admin"){
+
+    function getorders($userId){
     $this->connect();
+    if($this->userType=="client" || $this->userType=="guest" ){
     $sql = "select id from `order` where userid=:userid";
     $this->db->query($sql);
     $this->db->bind(':userid',$userId,PDO::PARAM_INT);
