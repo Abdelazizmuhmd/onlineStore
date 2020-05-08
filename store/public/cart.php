@@ -1,6 +1,10 @@
 <?php
-        
+      
 
+if(isset($_COOKIE['cook'])){  
+$return=$_COOKIE['cook'];
+$arr=json_decode($return, true);  
+}
       
 if(isset($_POST['checkout'])){
   header("location:checkout.php");
@@ -274,7 +278,14 @@ echo "<table class='cart-table responsive-table table--no-border'>
             </div>
             <div class="grid__item text-center large-up--one-half large-up--text-right"><p>
                 <span class="cart__subtotal-title h3">Subtotal</span>
-                <span class="cart__subtotal h3"><span class="hulkapps-cart-original-total"><?php echo $sub_total; echo " L.E";?></span></span>
+                <span class="cart__subtotal h3"><span class="hulkapps-cart-original-total"><?php 
+if(isset($_COOKIE['cook'])){  
+ echo $sub_total; echo " L.E";
+
+}else{
+  echo "0.0 L.E";
+}
+  ?></span></span>
               </p><p class="cart__policies txt--emphasis rte">Tax included. Delivered to your door</p>
               <p>
               
