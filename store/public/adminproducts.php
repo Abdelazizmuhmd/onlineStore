@@ -7,6 +7,9 @@ $model = new menu();
 $controller= new adminController($model);
 $controller->getAllCategories();
 //$controller->showproducts();
+if (isset($_GET['action']) && !empty($_GET['action'])) {
+  $controller->{$_GET['action']}();
+}
 $view= new adminproductsView($model,$controller);
 
 
@@ -55,9 +58,14 @@ $view= new adminproductsView($model,$controller);
      echo $view->getallcategories();
             
     ?>        
-  <button class="btn btn-primary" style="width:140px;margin-left:50px;padding:10px;"> Edit Category </button>
+            
+  <button class="btn btn-primary" data-toggle="modal" target="#categoryEdit" style="width:140px;margin-left:50px;padding:10px;" >Edit Category</button>
+            
+            
   <button class="btn btn-primary" data-toggle="modal" style="width:140px;margin-left:50px;padding:10px;" data-target="#myModal">Add Category </button>
-  <button class="btn btn-primary" style="width:140px;margin-left:50px;padding:10px;">Delete Category </button>
+            
+  <button class="btn btn-primary" style="margin-left:50px;"><a href="#" style="color:white;" class="btn" onclick="return confirm('Are you sure you want to delete this item?');">Delete Category</a>
+ </button>
 
 
 
@@ -68,10 +76,11 @@ $view= new adminproductsView($model,$controller);
 <select name="subcategory" id="combBox" class="form-control subcategory">
 
       </select>
+
       
-   <button class="btn btn-primary" style=" margin-left:50px;padding:10px;"> Edit SubCategory </button>
+ <button class="btn btn-primary" style=" margin-left:50px;padding:10px;"> Edit SubCategory </button>
   <button class="btn btn-primary" data-toggle="modal" style="margin-left:50px;padding:10px;" data-target="#myModal">Add SubCategory </button>
-  <button class="btn btn-primary" style="margin-left:50px;padding:10px;">Delete SubCategory </button>
+  <button class="btn btn-primary" style="margin-left:50px;"><a href="#" style="color:white;" class="btn" onclick="return confirm('Are you sure you want to delete this item?');">Delete SubCategory</a></button>
 
 </div>
 
@@ -175,10 +184,9 @@ $view= new adminproductsView($model,$controller);
 
 <div class="container">
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="categoryAdd" role="dialog">
     <div class="modal-dialog">
     
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">New Category</h4>
@@ -194,6 +202,97 @@ $view= new adminproductsView($model,$controller);
       
     </div>
   </div>
+    
+    
+      <div class="modal fade" id="categoryEdit" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Category</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <input type="text" name="add"  class="form-control" placeholder="Add">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+      <div class="modal fade" id="subCategoryEdit" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit SubCategory</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <input type="text" name="add"  class="form-control" placeholder="Add">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+    
+      <div class="modal fade" id="subCategoryAdd" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add SubCategory</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <input type="text" name="add"  class="form-control" placeholder="Add">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
    <div class="modal fade" id="myModal2" role="dialog">
     <div class="modal-dialog">
