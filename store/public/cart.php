@@ -1,12 +1,34 @@
 <?php
-
-$val=array(array("id"=>"35", "color_size"=>"black/xL", "quantity"=>"2","price"=>"70"),array("id"=>"2", "color_size"=>"white/3xl", "quantity"=>"4","price"=>"100"));
+$id=$_GET["id"]; //will be passed from product page
+$val=array(array('id'=>$id, "image_url"=>"../images/c.jpg","color_size"=>"black/xL", "quantity"=>"2","price"=>"70"),
+  array('id'=>$id,"image_url"=>"../images/b.jpg","color_size"=>"white/3xl", "quantity"=>"4","price"=>"100"));
 
 
   $ar=json_encode($val);
   setcookie('cook',$ar);
 
 
+ if(isset($_GET["action"]))  
+ { 
+ if($_GET["action"] == "delete")  
+      {  
+        $return=$_COOKIE['cook'];
+        $arr=json_decode($return, true);
+        $total=0;
+        $id=$_GET['id'];
+          foreach($arr as $key1 => $values)
+           {  
+
+                if($values['id'] == $id)  
+                {  
+                     echo "Khaloood";
+                     unset($arr[$key1]);  
+                     echo '<script>alert("Item Removed")</script>';  
+                     echo '<script>window.location="cart.php"</script>';  
+                }  
+           }  
+      }  
+    }
 
 
 //echo $_COOKIE["cook"];
@@ -189,10 +211,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 if(isset($_COOKIE['cook'])){
 $return=$_COOKIE['cook'];
 $arr=json_decode($return, true);
+$sub_total=0;
 foreach($arr as $key1 => $values)
 {
   //echo $key1.' : '.$values.'<br>';
-$total+=$values['price']*$values['quantity'];
+$total=$values['price']*$values['quantity'];
+$sub_total+=$values['price']*$values['quantity'];
+
+
 
 
 echo "<table class='cart-table responsive-table table--no-border'>
@@ -213,7 +239,7 @@ echo "<table class='cart-table responsive-table table--no-border'>
 
                     <div id='CartImageWrapper--13760170131490' class='cart__image-wrapper supports-js'>
                       <a class='cart__image-container' href='/collections/all/products/im-fine-phr-2?variant=31415765139490' style='padding-top:100.0%;'>
-                        <img id='CartImage--13760170131490' class='cart__image' src='../images/c.jpg' data-widths='[180, 230, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' data-aspectratio='1.0' data-sizes='auto' alt='I'm fine (phr.) - White / S' itemprop='image'>
+                        <img id='CartImage--13760170131490' class='cart__image' src='$values[image_url]' data-widths='[180, 230, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' data-aspectratio='1.0' data-sizes='auto' alt='I'm fine (phr.) - White / S' itemprop='image'>
                       </a>
                     </div>
                 </td>
@@ -225,7 +251,8 @@ echo "<table class='cart-table responsive-table table--no-border'>
                   <p></p>
 
                   <p class='txt--minor'>
-                    <a href='/cart/change?line=1&amp;quantity=0' class='cart__remove'>Remove</a>
+
+                    <a href='cart.php?action=delete&id=$values[id];' class='cart__remove'>Remove</a>
                   </p>
                 </td>
                 <td class='cart__table-cell--price medium-up--text-right' data-label='Price'><span class='hulkapps-cart-item-price' > $values[price] L.E </span>
@@ -250,7 +277,7 @@ echo "<table class='cart-table responsive-table table--no-border'>
             </div>
             <div class="grid__item text-center large-up--one-half large-up--text-right"><p>
                 <span class="cart__subtotal-title h3">Subtotal</span>
-                <span class="cart__subtotal h3"><span class="hulkapps-cart-original-total">30,00 L.E </span></span>
+                <span class="cart__subtotal h3"><span class="hulkapps-cart-original-total"><?php echo $sub_total;?></span></span>
               </p><p class="cart__policies txt--emphasis rte">Tax included. Delivered to your door</p>
               <p>
               
