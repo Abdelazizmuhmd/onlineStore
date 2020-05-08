@@ -25,7 +25,7 @@ public function getAllCategoriesDetails(){
     foreach ($categories as $value) {
         $this->categories[]=new category($value->id,$value->name);
     }
-    }  
+    } 
 }
     
     

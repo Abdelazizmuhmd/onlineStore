@@ -1,6 +1,7 @@
 <?php
   require_once("../model/Model.php");
   require_once("../model/product.php");
+
 ?>
 <?php 
 class subCategory extends Model
@@ -60,7 +61,8 @@ class subCategory extends Model
     }
     
     function readProducts($subcategoryId)
-    {   $this->products[]=array(); 
+    {  
+        unset($this->products);
         $this->connect();
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails
         where subcategorydetails.subcategoryid = :id and isdeleted = 0";

@@ -25,8 +25,8 @@ function readproduct($productdetailid){
     $this->db->execute();
     $dbobjects=$this->db->getdata();
     $productid=$dbobjects[0]->id;
-    $this->productorderid=$productorderid;
-    $this->$products=new product($productid,$productdetailid);
+    $this->productorderid=$productid;
+    $this->$product=new product($productid,$productdetailid);
 }
 function getproduct(){
         return $this->product;
