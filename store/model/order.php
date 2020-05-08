@@ -6,12 +6,12 @@ require_once("../model/orderproductdetails.php");
 
  //test
 class order extends Model{
-  
+  private $id;
   private $userid;
   private $comment;
   private $status;
   private $createdtime;
-  private productorderdetails;
+  private $productorderdetails;
     
 function __construct()
     {
@@ -22,6 +22,7 @@ function __construct()
         }
     }
 function __construct1($id) {
+      $this->id = $id;
       $this->readOrder($id);
   }
 function __construct4($userid,$comment,$status,$productsdetails) {
@@ -57,6 +58,9 @@ function __construct4($userid,$comment,$status,$productsdetails) {
     function getStatus(){
       return $this->status;
     }
+    function getId(){
+      return $this->id;
+    }
 
 
 
@@ -89,7 +93,7 @@ function getorderdetails($orderid){
     $this->db->bind(':orderid',$orderid,PDO::PARAM_INT);
     $this->db->execute();
     $dbobjects=$this->db->getdata();
-    foreach(dbobjects as dbobject){
+    foreach($dbobjects as $dbobject){
     $productdetailid=$dbobjects->id;
     $productordersize=$dbobjects->size;
     $productorderquantity= $dbobjects->quantity;
@@ -114,7 +118,7 @@ function makeOrder ($userid,$comment,$status,$productsdetails){
         $orderid=$this->db->lastInsertedId();
     
         $length = count($productsdetails);
-    
+        echo $length;
         for ($i = 0; $i < $length; $i++) {
             // assiarray
          $this->connect();
@@ -136,15 +140,18 @@ function makeOrder ($userid,$comment,$status,$productsdetails){
 
       function readOrder($id){
           $this->connect();
-          $sql = "select id,comment,status,createdtime from `order` where id = :id";
+          $sql = "select userid,id,comment,status,createdtime from `order` where id = :id and isdeleted = 0    ";
           $this->db->query($sql);
           $this->db->bind(':id',$id,PDO::PARAM_INT);
           $this->db->execute();
           $row = $this->db->getdata();
+          if($this->db->numRows()){
           $this->id=$row[0]->id;
           $this->comment = $row[0]->comment;
           $this->status = $row[0]->status;
           $this->createdtime = $row[0]->createdtime;
+          $this->userid = $row[0]->userid;
+          }
       }
     
     function delete ($orderid){
