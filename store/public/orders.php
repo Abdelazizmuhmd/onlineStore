@@ -79,8 +79,10 @@ require_once("../controller/userOrder.php");
                     <th>Delete</th>
                 </tr>
                 <?php
-                 echo $view->output();
+                 if(count($model->getordersArray())>0)
+                  echo $view->output();
                 ?>
+                </tr>
             </table>
         </div>
     </div>

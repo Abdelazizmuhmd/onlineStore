@@ -27,13 +27,10 @@ public function getuser(){
     
 }
 public function delete(){
-
+    
     $orderid=$_REQUEST['orderid'];
-    foreach($this->model->getordersArray() as $orders)
-    {
-     if ($orders->getId() == $orderid)
-      $orders->delete($orderid);
-    }
+
+    $this->model->getordersArray()[0]->delete($orderid);
     
     
 }

@@ -38,11 +38,11 @@ function getordersArray(){
     function getorders($userId){
     $this->connect();
     if($this->userType=="client" || $this->userType=="guest" ){
-    $sql = "select id from `order` where userid=:userid";
+    $sql = "select id from `order` where userid=:userid and isdeleted = 0";
     $this->db->query($sql);
     $this->db->bind(':userid',$userId,PDO::PARAM_INT);
         }else{
-     $sql = "select id from `order` ";
+     $sql = "select id from `order`where isdeleted = 0 ";
      $this->db->query($sql);
         }
             $this->db->execute();
