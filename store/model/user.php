@@ -17,7 +17,7 @@ class user extends Model
     private $userType;
     private $orders;
     function __construct()
-    {
+    {   $this->orders[]=new order();
         $a = func_get_args();
         $i = func_num_args();
         if (method_exists($this,$f='__construct'.$i)) {
@@ -50,7 +50,6 @@ function getordersArray(){
 
         
     $row = $this->db->getdata();
-    $this->orders[]=new order();
     if ($this->db->numRows() > 0){
         
     foreach($row as $order){
