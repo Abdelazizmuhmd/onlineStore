@@ -261,7 +261,7 @@ echo "<table class='cart-table responsive-table table--no-border'>
                   <span class='hulkapps-cart-item-line-price' > $values[quantity] </span></td>
 
 
-                <td data-label='Total' class='text-right cart__table-cell--line-price'><span class='hulkapps-cart-item-line-price'   >$total </span></td>
+                <td data-label='Total' class='text-right cart__table-cell--line-price'><span class='hulkapps-cart-item-line-price'   >$total L.E</span></td>
               </tr>
           </tbody>
         </table>";
@@ -277,7 +277,7 @@ echo "<table class='cart-table responsive-table table--no-border'>
             </div>
             <div class="grid__item text-center large-up--one-half large-up--text-right"><p>
                 <span class="cart__subtotal-title h3">Subtotal</span>
-                <span class="cart__subtotal h3"><span class="hulkapps-cart-original-total"><?php echo $sub_total;?></span></span>
+                <span class="cart__subtotal h3"><span class="hulkapps-cart-original-total"><?php echo $sub_total; echo " L.E";?></span></span>
               </p><p class="cart__policies txt--emphasis rte">Tax included. Delivered to your door</p>
               <p>
               
