@@ -1,25 +1,21 @@
 <?php
-$id=$_GET["id"]; //will be passed from product page
-$val=array(array('id'=>$id, "image_url"=>"../images/c.jpg","color_size"=>"black/xL", "quantity"=>"2","price"=>"70"),
-  array('id'=>$id,"image_url"=>"../images/b.jpg","color_size"=>"white/3xl", "quantity"=>"4","price"=>"100"));
+        
 
-
-  $ar=json_encode($val);
-  setcookie('cook',$ar);
-
+      
+if(isset($_POST['checkout'])){
+  header("location:checkout.php");
+}
 
  if(isset($_GET["action"]))  
  { 
  if($_GET["action"] == "delete")  
       {  
-        $return=$_COOKIE['cook'];
-        $arr=json_decode($return, true);
-        $total=0;
-        $id=$_GET['id'];
+        
           foreach($arr as $key1 => $values)
            {  
-
-                if($values['id'] == $id)  
+                $id=$_GET['id'];
+                $compare_id=$values['id'];
+                if( $compare_id== 1)  
                 {  
                      echo "Khaloood";
                      unset($arr[$key1]);  
@@ -204,7 +200,8 @@ Pat
   <div class="grid__item">
     
       <h1 class="h2 visually-hidden">Shopping Cart</h1>
-      <form action="/cart" method="post" novalidate="" class="cart pf-form-processed">
+
+      <form method="post" action="checkout.php" novalidate="" class="cart pf-form-processed">
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7ZCRLW"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <?php
@@ -284,7 +281,8 @@ echo "<table class='cart-table responsive-table table--no-border'>
                 <a class="btn btn--secondary" href="/collections/all">Continue shopping</a>
               </p>
               <p>
-                <button type="submit" name="checkout" class="btn">Check Out</button>
+
+                  <input type="submit" name="checkout" class="btn" value="Check Out">
               </p>
             </div>
           </div>
