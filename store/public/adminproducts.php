@@ -324,7 +324,7 @@ $view= new adminproductsView($model,$controller);
             </div>
 
     
-    
+    </div>
     
     
     
@@ -388,7 +388,6 @@ $view= new adminproductsView($model,$controller);
     </div>
   </div>
   
-</div>
 
 <script>
     
@@ -430,7 +429,17 @@ function showproducts(){
           });
        }
 </script> 
-    
+ <!--
+function addproductdetails(){
+    <script>
+var ahmed=""
+var text = '{"productdetails":[' + '{"color":"red","lastName":"Doe" }' + ']}';
+obj = JSON.parse(text);
+document.getElementById("demo").innerHTML =
+obj.productdetails[0].color + " " + obj.productdetails[0].lastName;
+}      
+
+-->
     
     
     

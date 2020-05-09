@@ -1,5 +1,4 @@
 <?php
-
 require_once("../model/menu.php");
 require_once("../controller/adminController.php");
 require_once("../View/adminproducts.php");
