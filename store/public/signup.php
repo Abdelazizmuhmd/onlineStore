@@ -1,37 +1,21 @@
 <?php
+require_once( "../model/user.php");
+require_once( "../controller/signUpController.php");
 
-if(isset($_COOKIE['cook'])){  
-$return=$_COOKIE['cook'];
-$arr=json_decode($return, true);  
+
+$model = new user();
+$controller = new signUpController($model);
+if(isset($_GET['action'])==='false'){
+    echo"bana says hi";
+}
+
+else if (isset($_GET['action']) && !empty($_GET['action'])){
+$controller->{$_GET['action']}();
+ header("location:login.php");
 
 }
-      
-if(isset($_POST['checkout'])){
-  header("location:checkout.php");
-}
-
- if(isset($_GET["action"]))  
- { 
- if($_GET["action"] == "delete")  
-      {  
-          foreach($arr as $key1 => $values){  
-                $id=$_GET['id'];
-                $id=intval($id);
-                $compare_id=$values['id'];
-                if($compare_id == $id){ 
-                        array_splice($arr,$key1,1);
-                    	$ar=json_encode($arr);
-	                    setcookie('cook',$ar);
-                    echo '<script>alert("Item Removed")</script>';  
-                    echo '<script>window.location="cart.php"</script>';  
-                }  
-           }  
-      }  
-    }
-
-
-//echo $_COOKIE["cook"];
 ?>
+<!doctype php>
 <html >
 <head>
   <meta charset="utf-8">
@@ -41,22 +25,25 @@ if(isset($_POST['checkout'])){
 Pat  
     </title>
 
-  <link href="../css/home.css" rel="stylesheet" type="text/css" media="all" /> 
-  <script src="js/j.js" type="text/javascript"></script>
-  <script src="js/s.js" type="text/javascript"></script>
-  <script src="js/home.js" type="text/javascript"></script>
-  <script src="js/j2.js" type="text/javascript"></script>
-
+<link rel="stylesheet" media="all" href="../../css/home.css" />  
+<script src="../../js/j.js" type="text/javascript"></script>
+  <script src="../../js/s.js" type="text/javascript"></script>
+  <script src="../../js/home.js" type="text/javascript"></script>
+  <script src="../../js/j2.js" type="text/javascript"></script> 
+  <script src="../../js/signUp.js" type="text/javascript" ></script> 
+ 
     
 
 </head>
 
     
-    
+
     
 <body >
+   
+
   <div>
-    <a href="" class="announcement-bar announcement-bar--link">
+    <a href="tee.html" class="announcement-bar announcement-bar--link">
     <p class="announcement-bar__message site-wrapper">WELCOME TO  PAT</p>
     </a>
   
@@ -70,6 +57,10 @@ Pat
             <a href="" id="customer_login_link">Log in</a>
             <span class="vertical-divider"></span>
             <a href="" id="customer_register_link">Sign up</a>
+            
+            
+            
+            
           
         </span>
       </div>
@@ -80,20 +71,7 @@ Pat
         <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-cart" viewBox="0 0 20 20"><path fill="#444" d="M18.936 5.564c-.144-.175-.35-.207-.55-.207h-.003L6.774 4.286c-.272 0-.417.089-.491.18-.079.096-.16.263-.094.585l2.016 5.705c.163.407.642.673 1.068.673h8.401c.433 0 .854-.285.941-.725l.484-4.571c.045-.221-.015-.388-.163-.567z"/><path fill="#444" d="M17.107 12.5H7.659L4.98 4.117l-.362-1.059c-.138-.401-.292-.559-.695-.559H.924c-.411 0-.748.303-.748.714s.337.714.748.714h2.413l3.002 9.48c.126.38.295.52.942.52h9.825c.411 0 .748-.303.748-.714s-.336-.714-.748-.714zM10.424 16.23a1.498 1.498 0 1 1-2.997 0 1.498 1.498 0 0 1 2.997 0zM16.853 16.23a1.498 1.498 0 1 1-2.997 0 1.498 1.498 0 0 1 2.997 0z"/></svg>
         <span class="small--hide">
           Cart
-          (<span id="CartCount">
-            <?php 
-
-            if(isset($_COOKIE['cook'])){  
-                
-                echo count($arr);
-
-            }else{
-              echo "0";
-            }
-
-            ?>
-   
- </span>)
+          (<span id="CartCount">0</span>)
         </span>
       </a>
     </div>
@@ -103,9 +81,9 @@ Pat
     
   <header style="height:115px;">
           <div id="HeaderLogoWrapper" class="supports-js" style="height:115px;">
-            <a href="" itemprop="url" style="padding-top:19.601328903654487%;  display: block;width:100px;height:100px;">
+             <a href="tee.html" itemprop="url" style="padding-top:19.601328903654487%;  display: block;width:100px;height:100px;"> 
               <img id="HeaderLogo" 
-                   src="images/logo.png"
+                   src="../../images/logo.png"
                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
                    data-aspectratio=""
                    data-sizes="auto"
@@ -130,7 +108,7 @@ Pat
 
     <div class="grid">
 
-      <div id="shopify-section-sidebar" class="shopify-section"><div data-section-id="sidebar" data-section-type="sidebar-section">
+      <div id="section-sidebar" class="section"><div data-section-id="sidebar" data-section-type="sidebar-section">
   <nav class="grid__item small--text-center medium-up--one-fifth" role="navigation">
     <hr class="hr--small medium-up--hide">
     <button id="ToggleMobileMenu" class="mobile-menu-icon medium-up--hide" aria-haspopup="true" aria-owns="SiteNav">
@@ -151,25 +129,25 @@ Pat
               </button>
               <ul id="Collapsible-2" class="site-nav__submenu site-nav__submenu--expanded" aria-hidden="false">
                   <li class="site-nav--active">
-                      <a href="" class="site-nav__link" aria-current="page">Tee</a>
+                      <a href="tee" class="site-nav__link" aria-current="page">Tee</a>
                     </li>
                   
                 
                   
                     <li >
-                      <a href="" class="site-nav__link">Sweater</a>
+                      <a href="sweater" class="site-nav__link">Sweater</a>
                     </li>
                   
                 
                   
                     <li >
-                      <a href="" class="site-nav__link">Hoodie</a>
+                      <a href="hoodie" class="site-nav__link">Hoodie</a>
                     </li>
                   
                 
                   
                     <li >
-                      <a href="" class="site-nav__link">Bag</a>
+                      <a href="bag" class="site-nav__link">Bag</a>
                     </li>
                   
                 
@@ -182,7 +160,7 @@ Pat
       <ul class="list--inline social-links">
         
           <li>
-            <a href="" title=" on Facebook">
+            <a href="" title="on Facebook">
               <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-facebook" viewBox="0 0 20 20"><path fill="#444" d="M18.05.811q.439 0 .744.305t.305.744v16.637q0 .439-.305.744t-.744.305h-4.732v-7.221h2.415l.342-2.854h-2.757v-1.83q0-.659.293-1t1.073-.342h1.488V3.762q-.976-.098-2.171-.098-1.634 0-2.635.964t-1 2.72V9.47H7.951v2.854h2.415v7.221H1.413q-.439 0-.744-.305t-.305-.744V1.859q0-.439.305-.744T1.413.81H18.05z"/></svg>
               <span class="icon__fallback-text">Facebook</span>
             </a>
@@ -210,114 +188,64 @@ Pat
           <hr class="hr--border-top small--hide">
         
         
-        <!-- /templates/cart.liquid -->
+        <!-- /templates/customers/register.liquid -->
+<h1 class="small--text-center">Create Account</h1>
 
-<div class="grid">
-  <div class="grid__item">
+<div class="form-register form-vertical">
+   <form method = "post" action="login.php?action=signUP" >
     
-      <h1 class="h2 visually-hidden">Shopping Cart</h1>
 
-      <form method="post" action="checkout.php" novalidate="" class="cart pf-form-processed">
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7ZCRLW"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<?php
-if(isset($_COOKIE['cook'])){
-$return=$_COOKIE['cook'];
-$arr=json_decode($return, true);
-$sub_total=0;
-foreach($arr as $key1 => $values)
-{
-  //echo $key1.' : '.$values.'<br>';
-$total=$values['price']*$values['quantity'];
-$sub_total+=$values['price']*$values['quantity'];
+    <label for="FirstName" class="label--hidden">First Name</label>
+    <input type="text" name="firstname" id="firstName"  placeholder="First Name" autocapitalize="words" autofocus="" maxlength="10">
 
+    <label for="LastName" class="label--hidden">Last Name</label>
+    <input type="text" name="lastname" id="lastName"  placeholder="Last Name" autocapitalize="words" maxlength="10">
 
+    <label for="Email" class="label--hidden">Email</label>
+    <input type="email" name="email" id="email"  class="" placeholder="Email" autocorrect="off" autocapitalize="off">
 
+    <label for="CreatePassword" class="label--hidden">Password</label>
+    <input type="password" name="password" id="password"  class="" placeholder="Password" maxlength="25">
 
-echo "<table class='cart-table responsive-table table--no-border'>
-          <thead class='cart__row cart__header-labels small--hide'>
-
-            <tr><th class='text-left cart__table-cell--image'>Product</th>
-            <th class='text-center cart__table-cell--meta'></th>
-            <th class='text-right cart__table-cell--price'>Price</th>
-            <th class='text-right cart__table-cell--quantity'>Quantity</th>
-            <th class='text-right cart__table-cell--line-price'>Total</th>
-          </tr></thead>
-          <tbody>
-            
-      <tr class='cart__row responsive-table__row'>
-      <td class='cart__table-cell--image small--text-center'>
-                  
-
-
-                    <div id='CartImageWrapper--13760170131490' class='cart__image-wrapper supports-js'>
-                      <a class='cart__image-container' href='/collections/all/products/im-fine-phr-2?variant=31415765139490' style='padding-top:100.0%;'>
-                        <img id='CartImage--13760170131490' class='cart__image' src='$values[image_url]' data-widths='[180, 230, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' data-aspectratio='1.0' data-sizes='auto' alt='I'm fine (phr.) - White / S' itemprop='image'>
-                      </a>
-                    </div>
-                </td>
-                <td class='cart__table-cell--meta text-center large-up--text-left'>
-                  <p>
-                    <a href='/products/im-fine-phr-2?variant=31415765139490'>Pat 2020</a>
-                      <br><small>$values[color_size]</small>
-                    </p><div class='hulkapps-reminder'></div>
-                  <p></p>
-
-                  <p class='txt--minor'>
-
-                    <a href='cart.php?action=delete&id=$values[id];' class='cart__remove'>Remove</a>
-                  </p>
-                </td>
-                <td class='cart__table-cell--price medium-up--text-right' data-label='Price'><span class='hulkapps-cart-item-price' > $values[price] L.E </span>
-</td>
-                <td data-label='Quantity' class='medium-up--text-right cart__table-cell--quantity'>
-                  <span class='hulkapps-cart-item-line-price' > $values[quantity] </span></td>
-
-
-                <td data-label='Total' class='text-right cart__table-cell--line-price'><span class='hulkapps-cart-item-line-price'   >$total L.E</span></td>
-              </tr>
-          </tbody>
-        </table>";
-
-        }
-}
-?>
-        <footer class="cart__footer">
-          <div class="grid">
-            <div class="grid__item large-up--one-half">
-              <label for="CartSpecialInstructions" class="label--block">Special instructions for seller</label>
-              <textarea name="note" id="CartSpecialInstructions" class="input--block cart__note"></textarea>
-            </div>
-            <div class="grid__item text-center large-up--one-half large-up--text-right"><p>
-                <span class="cart__subtotal-title h3">Subtotal</span>
-                <span class="cart__subtotal h3"><span class="hulkapps-cart-original-total"><?php 
-if(isset($_COOKIE['cook'])){  
- echo $sub_total; echo " L.E";
-
-}else{
-  echo "0.0 L.E";
-}
-  ?></span></span>
-              </p><p class="cart__policies txt--emphasis rte">Tax included. Delivered to your door</p>
-              <p>
-              
-                <a class="btn btn--secondary" href="/collections/all">Continue shopping</a>
-              </p>
-              <p>
-
-                  <input type="submit" name="checkout" class="btn" value="Check Out">
-              </p>
-            </div>
-          </div>
-        </footer>
-      </form>
-    
-  </div>
+    <p>
+      <input type="submit" name="submit" value="Create" onclick="return validateForm()" >
+    </p>
+  </form> 
+  
 </div>
 
       </main>
+    
+   
 </div>
 <hr>
 </div>  
+
 </body>
+<script>
+    
+    // function validateForm() {
+    //     var first = document.getElementById("firstName").value;
+    // if (first == "") {
+    //     alert("FristName must be filled out");
+    //     document.getElementById("fristName").style.borderColor = "red";
+    //     return false;
+    
+    //   }
+    
+    //   else if(first.length<5)
+    // {
+    //     alert("name id too short");
+    //     document.getElementById("name").style.borderColor = "red";
+    //     return false;
+    // }
+    
+  
+    // if (!first.match(/^[a-zA-Z]+$/)) 
+    //     {
+    //         alert('FristName Only alphabets are allowed');
+    //         return false;
+    //     }
+    // }
+    // </script>
 </html>

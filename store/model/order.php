@@ -88,15 +88,15 @@ function __construct4($userid,$comment,$status,$productsdetails) {
 
 function getorderdetails($orderid){
     $this->connect();
-    $sql="select  productdetailid,size,quantity from orderdetails  where id =:orderid";
+    $sql="select id,productdetailid,size,quantity from orderdetails  where orderid =:orderid";
     $this->db->query($sql);
     $this->db->bind(':orderid',$orderid,PDO::PARAM_INT);
     $this->db->execute();
     $dbobjects=$this->db->getdata();
     foreach($dbobjects as $dbobject){
-    $productdetailid=$dbobjects->id;
-    $productordersize=$dbobjects->size;
-    $productorderquantity= $dbobjects->quantity;
+    $productdetailid=$dbobject->productdetailid;
+    $productordersize=$dbobject->size;
+    $productorderquantity= $dbobject->quantity;
     $this->productorderdetails[]=new productorderdetails($productdetailid,$productordersize,$productorderquantity);
    
     }
