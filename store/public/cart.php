@@ -259,7 +259,7 @@ echo "<table class='cart-table responsive-table table--no-border'>
                 <td class='cart__table-cell--meta text-center large-up--text-left'>
                   <p>
                     <a href='/products/im-fine-phr-2?variant=31415765139490'>Pat 2020</a>
-                      <br><small>$values[color_size]</small>
+                      <br><small>$values[color] / $values[size]</small>
                     </p><div class='hulkapps-reminder'></div>
                   <p></p>
 

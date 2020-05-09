@@ -329,7 +329,7 @@ $sub_total+=$values['price']*$values['quantity'];
           </td>
           <th class='product__description' scope='row'>
             <span class='product__description__name order-summary__emphasis'>pat 2020</span>
-            <span class='product__description__variant order-summary__small-text'>$values[color_size]</span>
+            <span class='product__description__variant order-summary__small-text'>$values[color] / $values[size]</span>
 
 
           </th>
