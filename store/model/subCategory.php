@@ -32,6 +32,7 @@ class subCategory extends Model
     {   
         $this->id = $id;
         $this->name =$name;
+           $this->products[]= new product();
         
     }
     
@@ -62,7 +63,6 @@ class subCategory extends Model
     
     function readProducts($subcategoryId)
     {  
-        unset($this->products);
         $this->connect();
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails
         where subcategorydetails.subcategoryid = :id and isdeleted = 0";

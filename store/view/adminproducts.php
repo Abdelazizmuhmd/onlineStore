@@ -5,7 +5,7 @@ class adminproductsView extends View{
 function getallcategories(){
 $str="";
 $categories = $this->model->getCategories();
-$str.='<select name="categories" id="combBox" class="form-control categories">';
+$str.='<select name="categories" id="catselection" class="form-control categories combBox">';
 $str.='<option disabled selected value> -- select an option -- </option>
 ';
 foreach($categories as $i=>$category){
@@ -19,6 +19,10 @@ $str.='<script>';
 $str.='$(document).ready(function() {';
 $str.='$(".categories").change(function() {';
 $str.=' var val = $(this).val();';
+$str.='document.getElementById("editcatgoryid").value =val;';
+$str.='document.getElementById("deletecategoryid").value =val;';
+$str.='document.getElementById("categoryid").value =val;';
+
 $str.='if(1==0){}';
 
 foreach($categories as $u=>$category){
@@ -67,16 +71,19 @@ function subcategoryoutput(){
 function products(){
   $productarr = $this->model->getcategories()[0]->getsubcategories()[0]->getproducts();
   $str ="";
-  for ($i = 0;$i<count($productarr);$i++)
+    $length=count($productarr);
+  for ($i = 1;$i<$length;$i++)
   {  $details = $productarr[$i]->getProductDetails();
      //$img = $details->getArray()[0];
-    for($j = 0;$j<count($details);$j++)
+   $dlength=count($details);
+    for($j = 0;$j<$dlength;$j++)
      {
+        
          $str .= "<tr>
             <td><img src=".$details[$j]->getArray()[0]." style='width
             :50px;height:50px;position: relative;'></td>
             <td><label>".$productarr[$i]->getName()."</label></td>
-            <td>".$productarr[$i]->getCost()."</td>
+            <td>".(int)($productarr[$i]->getCost()+$productarr[$i]->getProfit())." L.E</td>
             <td>".$productarr[$i]->getCode()."</td>
             <td>".$productarr[$i]->getDescription()."</td>
             <td>".$details[$j]->getColor()."</td>

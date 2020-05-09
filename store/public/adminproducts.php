@@ -5,15 +5,12 @@ require_once("../View/adminproducts.php");
 
 $model = new menu();
 $controller= new adminController($model);
-$controller->getAllCategories();
-//$controller->showproducts();
 if (isset($_GET['action']) && !empty($_GET['action'])) {
   $controller->{$_GET['action']}();
 }
+$controller->getAllCategories();
+
 $view= new adminproductsView($model,$controller);
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -60,13 +57,17 @@ $view= new adminproductsView($model,$controller);
     ?>        
             
 
-  <button class="btn btn-primary" data-toggle="modal" data-target="#categoryEdit" style="width:140px;margin-left:50px;padding:10px;" >Edit Category</button>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#categoryEdit" style="width:140px;margin-left:50px;padding:10px;"  >Edit Category</button>
             
             
   <button class="btn btn-primary" data-toggle="modal" style="width:140px;margin-left:50px;padding:10px;" data-target="#categoryAdd">Add Category </button>
             
-  <button class="btn btn-primary" style="margin-left:50px;"><a href="#" style="color:white;" class="btn" onclick="return confirm('Are you sure you want to delete this item?');">Delete Category</a>
- </button>
+   <form action="../public/adminproducts.php?action=deletecategory" method="POST">
+    <input type="text" id="deletecategoryid" name="deletecategoryid" value="" hidden>
+  <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-primary" style="margin-left:50px;padding:10px;">Delete Category
+
+      </button>
+          </form>
 
 
 
@@ -74,15 +75,20 @@ $view= new adminproductsView($model,$controller);
   <div class="card-body" id="bod">
 
   <h4 style="font-size:20px;">SubCategory </h4>
-<select name="subcategory" id="combBox" class="form-control subcategory">
-
-      </select>
-
+<select name="subcategory" id="subselections" class="form-control subcategory combBox">
+    
+</select>
+ <button class="btn btn-primary" data-toggle="modal" style=" margin-left:50px;padding:10px;" data-target="#subCategoryEdit" onclick="getsubid()" > Edit SubCategory </button>
+  <button class="btn btn-primary" data-toggle="modal" style="margin-left:50px;padding:10px;" data-target="#subCategoryAdd" >Add SubCategory </button>
       
+      
+      
+  <form action="../public/adminproducts.php?action=deletesubcategory" method="POST">
+  <input type="text" id="deletesubcategoryid" name="deletesubcategoryid" value="" hidden>
+  <button type="submit" onclick="getsubidandconfirm()" class="btn btn-primary" style="margin-left:50px;padding:10px;">Delete SubCategory
 
- <button class="btn btn-primary" data-toggle="modal" style=" margin-left:50px;padding:10px;" data-target="#subCategoryEdit"> Edit SubCategory </button>
-  <button class="btn btn-primary" data-toggle="modal" style="margin-left:50px;padding:10px;" data-target="#subCategoryAdd">Add SubCategory </button>
-  <button class="btn btn-primary" style="margin-left:50px;"><a href="#" style="color:white;" class="btn" onclick="return confirm('Are you sure you want to delete this item?');">Delete SubCategory</a></button>
+      </button>
+          </form>
 
 </div>
 
@@ -133,10 +139,24 @@ $view= new adminproductsView($model,$controller);
       <center><b>Products</b></center>
         <div class="col-md-4 col-lg-2">
     </div>
-    <center>  <button class="btn btn-primary showproducts">Show Products</button></center> 
+  <!--<form action="../public/adminproducts.php?action=showproducts" method="POST">
 
+     <input type="text" id="subproductid" name="subproductid" hidden>
+          <center>  
+  <button type="button" class="btn btn-primary showproducts" onclick="getsubid(1)">Show Products</button></center> 
+      
+        </form>
+-->
+
+    <input type="text" id="subproductid" name="subproductid" hidden>
+          <center>  
+  <button type="button" class="btn btn-primary showproducts" onclick="getsubid(1)">Show Products</button>
+        </center> 
+
+        
+        
       <div id="table">
-        <table class="table table-bordered"><br><br>
+        <table class="table table-bordered" id="productstable"><br><br>
     <tr>
             <th>image</th>
             <th>name</th>
@@ -174,10 +194,11 @@ $view= new adminproductsView($model,$controller);
             <td><a id="button" href="">Edit</a></td>
             <td><a id="button" href=""><i class="fa fa-trash"></i></a></td>
           </tr>
--->
-
+-->             
+<?php 
+         echo $view->products();
           
-
+?>
          
     </table>
       </div>
@@ -195,10 +216,16 @@ $view= new adminproductsView($model,$controller);
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <input type="text" name="add"  class="form-control" placeholder="Add">
+            <form action="../public/adminproducts.php?action=addCategory" method="POST" id="addcategoryform">
+            <input type="text" name="newcategoryname"  class="form-control" placeholder="Category Name">
+            </form>
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            
+          <button type="submit" class="btn btn-primary"  form="addcategoryform">Add Catgory</button>
+            
+            
         </div>
       </div>
       
@@ -216,10 +243,15 @@ $view= new adminproductsView($model,$controller);
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <input type="text" name="add"  class="form-control" placeholder="Add">
+        <form action="../public/adminproducts.php?action=editCategory" method="POST" id="editcategory">
+            <input type="text" name="newcategoryname"  class="form-control" placeholder="New Name">
+                 <input type="text" value="" id="editcatgoryid" name="editcatgoryid" hidden>
+         </form>
+
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary"  form="editcategory">Save</button>
         </div>
       </div>
       
@@ -242,10 +274,16 @@ $view= new adminproductsView($model,$controller);
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <input type="text" name="add"  class="form-control" placeholder="Add">
+      
+        <form action="../public/adminproducts.php?action=editsubcategory" method="POST" id="editsubcategory">
+        <input type="text" name="newsubcategoryname" class="form-control" placeholder="New Name">
+        <input type="text" value="" id="editsubcatgoryid" name="editsubcatgoryid" hidden>
+         </form>
+
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary"  form="editsubcategory">Save</button>
         </div>
       </div>
       
@@ -266,19 +304,25 @@ $view= new adminproductsView($model,$controller);
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Add SubCategory</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <input type="text" name="add"  class="form-control" placeholder="Add">
+
+           <form action="../public/adminproducts.php?action=addsubcategory" method="POST" id="addsubcategoryform">
+               
+            <input type="text" name="subcategoryname"  class="form-control" placeholder="Category Name">
+               <input type="text" id="categoryid" hidden name="categoryid">
+            </form>
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+            
+          <button type="submit" class="btn btn-primary"  form="addsubcategoryform">Add Catgory</button>
       </div>
       
-    </div>
   </div>
-    
+            </div>
+
     
     
     
@@ -347,18 +391,52 @@ $view= new adminproductsView($model,$controller);
 </div>
 
 <script>
-      
-$('.showproducts').click(function() {
-    
- $('.categories').val(); 
     
     
-    
-});
+function getsubid(i=""){
+var Select = document.getElementById( "subselections" );
+document.getElementById("editsubcatgoryid").value= Select.options[ Select.selectedIndex ].value ;
+document.getElementById("subproductid").value= Select.options[ Select.selectedIndex ].value ; 
+    if(i==1){
+         showproducts();
+    }
+
+}
+function getsubidandconfirm(){
+if(confirm("are u sure want to delete this")){
+var Select = document.getElementById( "subselections" );
+document.getElementById("deletesubcategoryid").value= Select.options[ Select.selectedIndex ].value 
+    }else{
+        return false;
+    }
+  }
+
+
+
       
 </script>
+
+   <script >
+
+function showproducts(){
+     var subid = document.getElementById("subproductid").value;
+           $.ajax({
+            url: '../other/ajaxBackend.php',
+            type: 'POST',
+            data: {subid:subid},
+            success: function(response){
+            document.getElementById("productstable").innerHTML+=response;
+             }
+          });
+       }
+</script> 
+    
+    
+    
+    
+    
       
-      
+      </div>
       
   </body>
 
