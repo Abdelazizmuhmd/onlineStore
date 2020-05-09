@@ -49,17 +49,20 @@ require_once("../controller/userOrder.php");
                 <b> Orders </b>
             </div>
             <div class="card-body" id="bod">
+                <!--
                 <label id="slbl">Status:</label><select name="CardiologyPassword"
                     placeholder="Enter Cardiology Password" class="form-control" required id="stat">
                     <option></option>
                     <option></option>
                 </select>
                 <label id="plbl">Price:</label>
+                
                 <select name="CardiologyPassword" placeholder="Enter Cardiology Password" class="form-control" required
                     id="price">
                     <option></option>
                     <option></option>
                 </select>
+                -->
             </div>
         </div>
     </div>

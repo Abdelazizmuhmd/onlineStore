@@ -26,7 +26,6 @@ function readproduct($productdetailid){
     $dbobjects=$this->db->getdata();
     
 
-    
     $productid=$dbobjects[0]->productid;
     $this->productorderid = $productid;
     $this->product=new product($productid,$productdetailid);
@@ -43,7 +42,7 @@ function getproductordersize(){
     return $this->productordersize;
 }    
 function getproductorderquantity(){
-    return $this->$productorderquantity;
+    return $this->productorderquantity;
 }    
         
     

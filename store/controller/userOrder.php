@@ -8,14 +8,18 @@ class userOrderController extends Controller{
      $this->model->getorders($userid);
  }
  public function getOrderDetails(){
- 	$orderid = 10;
-    //$orderid = $_REQUEST['orderid'];
+    $orderid = $_REQUEST['orderid'];
     $this->model->getorderdetails($orderid);
 }
 public function updateOrder(){
     $orderid = $_REQUEST['orderid'];
     $status = $_REQUEST['status'];
     $this->model->updateorder($orderid,$status);
+}
+public function getOrder(){
+    $orderid=$_REQUEST['orderid'];
+    $this->model->getordersArray()[0]->readOrder($orderid);
+
 }
     
 public function getuser(){

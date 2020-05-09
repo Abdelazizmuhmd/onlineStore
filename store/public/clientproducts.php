@@ -27,11 +27,11 @@ require_once("../controller/userOrder.php");
      $id = $_GET['userid']; 
     $model = new user($id);
     $controller = new userOrderController($model);
+    $controller->getOrderDetails();
     $view = new clientProducts($model, $controller);
     if (isset($_GET['action']) && !empty($_GET['action'])) {
         $controller->{$_GET['action']}();
     }
-    echo $id;
     ?>
     <br>
     <div class="container">
@@ -79,18 +79,9 @@ require_once("../controller/userOrder.php");
             </th>
         </tr>
 
-        <!--
-<tr><td align="center"><br>1</td>
-<td align="center"><img width="80" height="100" src="images/t-shirt2.PNG"></td>
-<td align="center"><br>Pat Sport T-shirt</td>
-<td align="center"><br>P156982</td>
-<td align="center"><br>2XL</td>
-<td align="center"><br>3</td>
-<td align="center"><br>Blue</td>
-<td align="center"><br>150 grams</td>
-<td align="center"><br>A simple cotton design embellished with a crew neck, short sleeves</td>
-</tr>
--->
+        <?php
+       echo $view->productoutput();
+?>
     </table>
 
 

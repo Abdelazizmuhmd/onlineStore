@@ -7,7 +7,6 @@ class clientProducts extends View{
 function userOutput(){
 
 $orderArray = $this->model->getordersArray();
-echo $this->model->getfirstName();
 $str = "";
 $str.="<div class='jumbotron'>";
                 $str.="<div class='row'>";
@@ -37,14 +36,14 @@ $i=1;
 foreach($this->model->getordersArray()[0]->getProducts() as $products){
 
 $str.="<tr><td align='center'><br>".$i++."</td>";
-$str.="<td align='center'><img width='80' height='100' src='images/t-shirt2.PNG'></td>"; //Still NEED GET HERE
-$str.="<td align='center'><br>".$products->getName()."</td>";
-$str.="<td align='center'><br>".$products->getCode()."</td>";
-$str.="<td align='center'><br>2XL</td>"; //Still NEED GET SIZE HERE
-$str.="<td align='center'><br>3</td>"; //Still NEED GET Quantity HERE
-$str.="<td align='center'><br>".$products->getCost()."</td>"; //SHOULD BE HERE COLOR
-$str.="<td align='center'><br>".$products->getWeight()."</td>";
-$str.="<td align='center'><br>".$products->getDescription()."</td>";
+$str.="<td align='center'><img width='80' height='100' src=".$products->getProduct()->getProductDetails()[0]->getArray()[0]."></td>"; //Still NEED GET HERE
+$str.="<td align='center'><br>".$products->getProduct()->getName()."</td>";
+$str.="<td align='center'><br>".$products->getProduct()->getCode()."</td>";
+$str.="<td align='center'><br>".$products->getproductordersize()."</td>"; //Still NEED GET SIZE HERE
+$str.="<td align='center'><br>".$products->getproductorderquantity()."</td>"; //Still NEED GET Quantity HERE
+$str.="<td align='center'><br>".$products->getProduct()->getProductDetails()[0]->getColor()."</td>"; //SHOULD BE HERE COLOR
+$str.="<td align='center'><br>".$products->getProduct()->getWeight()."</td>";
+$str.="<td align='center'><br>".$products->getProduct()->getDescription()."</td>";
 
 
 }$str.="</tr>";
