@@ -280,7 +280,6 @@ Pat
                 
                 
 </div>
-            <form method="post" action="" id="product_form_4404356317218"  class="product-form">
 
        
             <div class="selector-wrapper">
@@ -320,7 +319,7 @@ Pat
 
           <div class="product-single__cart-submit-wrapper  product-form--full">
               <button type="submit" name="add" id="AddToCart" class="btn product-single__cart-submit btn--full  btn--secondary"
-               onclick="return cart()" >
+               onclick="cart()" >
                 <span id="AddToCartText">Add to Cart</span>
               </button>
               
@@ -336,7 +335,6 @@ Pat
              
               
             </div>
-          </form>
 
         </div>
 
@@ -444,15 +442,6 @@ A sturdy and warm sweatshirt bound to keep you warm in the colder months. A pre-
      var size = document.getElementById("ProductSelect-product-template-option-1").value;
      var Quantity = document.getElementById("Quantity").value;
 
-     alert(product_id);
-     alert(product_image1);
-     alert(product_name1);
-     alert(product_price1);
-     alert(color);
-     alert(size);
-     alert(Quantity);
-
-
            $.ajax({
             url: '../other/cartajaxBackend.php',
             type: 'POST',
@@ -463,12 +452,11 @@ A sturdy and warm sweatshirt bound to keep you warm in the colder months. A pre-
                    product_price1:product_price1,
                    color:color,
                    size:size,
-                   Quantity:Quantity},
+                   Quantity:Quantity
+            },
 
             success: function(response){
-                    if(response == true){
-                       
-  
+                    if(response == 1){
                       document.getElementById("CartCount").innerHTML = parseInt(document.getElementById("CartCount").innerHTML)+1;
                       document.getElementById("AddToCartText").innerHTML="Added To Cart";
                     }
