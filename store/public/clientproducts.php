@@ -22,6 +22,7 @@ require_once("../controller/userOrder.php");
 
 <body>
     <?php
+    //echo $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."?userid=".$_REQUEST['userid']."&orderid=".$_REQUEST['orderid']."";
     $id='';
     if(isset($_GET['userid']))
      $id = $_GET['userid']; 
@@ -38,6 +39,7 @@ require_once("../controller/userOrder.php");
         <?php
         echo $view->userOutput();
         ?>
+        <!--
     </div>
 
     <br>
@@ -47,42 +49,46 @@ require_once("../controller/userOrder.php");
         <button class="button">Pending <i class="fa fa-hourglass" aria-hidden="true"></i></button>
         <button class="button">Ready <i class="fa fa-clock-o" aria-hidden="true"></i></button>
     </center>
-    <br>
-    <table class="table table-bordered">
-        <tr>
-            <th>
-                <center><i class="fa fa-sort"></i></center>
-            </th>
-            <th>
-                <center>Image</center>
-            </th>
-            <th>
-                <center>Name</center>
-            </th>
-            <th>
-                <center>Code</center>
-            </th>
-            <th>
-                <center>Size</center>
-            </th>
-            <th>
-                <center>Quantity</center>
-            </th>
-            <th>
-                <center>Color</center>
-            </th>
-            <th>
-                <center>Weight</center>
-            </th>
-            <th>
-                <center>Description</center>
-            </th>
-        </tr>
+    -->
+        <br>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    <center><i class="fa fa-sort"></i></center>
+                </th>
+                <th>
+                    <center>Image</center>
+                </th>
+                <th>
+                    <center>Name</center>
+                </th>
+                <th>
+                    <center>Code</center>
+                </th>
+                <th>
+                    <center>Size</center>
+                </th>
+                <th>
+                    <center>Status</center>
+                </th>
+                <th>
+                    <center>Quantity</center>
+                </th>
+                <th>
+                    <center>Color</center>
+                </th>
+                <th>
+                    <center>Weight</center>
+                </th>
+                <th>
+                    <center>Description</center>
+                </th>
+            </tr>
 
-        <?php
+            <?php
        echo $view->productoutput();
 ?>
-    </table>
+        </table>
 
 
 </body>

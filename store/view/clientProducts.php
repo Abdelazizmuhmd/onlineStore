@@ -28,6 +28,14 @@ $str.="<div class='jumbotron'>";
                            $str.="</ul>";
                       $str.= "</div>";
                    $str.="</div>";
+                   $str.="</div>";
+                   $str.="<br>
+
+                   <br>
+                   <center>
+                       <a href='".$_SERVER['PHP_SELF']."?userid=".$_REQUEST['userid']."&orderid=".$_REQUEST['orderid']."&action=updatestat&stat=pending'><button class='button'>Pending <i class='fa fa-hourglass' aria-hidden='true'></i></button></a>
+                       <a href='".$_SERVER['PHP_SELF']."?userid=".$_REQUEST['userid']."&orderid=".$_REQUEST['orderid']."&action=updatestat&stat=ready'><button class='button'>Ready <i class='fa fa-clock-o' aria-hidden='true'></i></button></a>
+                   </center>";
                    return $str;
 }
 function productoutput(){

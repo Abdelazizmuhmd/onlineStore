@@ -161,6 +161,15 @@ function makeOrder ($userid,$comment,$status,$productsdetails){
         $this->db->bind(':id',$orderid,PDO::PARAM_INT);
         $this->db->execute();
      }
+     function updateStat($orderid,$status){
+      $this->connect();
+      $sql = "update `order` set status=:status where id=:id";
+      $this->db->query($sql);
+      $this->db->bind(':id',$orderid,PDO::PARAM_INT);
+      $this->db->bind(':status',$status,PDO::PARAM_STR);
+      $this->db->execute();
+       
+     }
     
     
     
