@@ -77,48 +77,6 @@ function  insertProduct(){
     
     
     
-     /*
-function addproductdetails(){
-    <script>
-var ahmed=""
-var text = '{"productdetails":[' + '{"color":"red","lastName":"Doe" }' + ']}';
-obj = JSON.parse(text);
-document.getElementById("demo").innerHTML =
-obj.productdetails[0].color + " " + obj.productdetails[0].lastName;
-
-}      
-md5($filename . microtime())
-https://makitweb.com/how-to-upload-multiple-image-files-with-jquery-ajax-and-php/
-https://www.geeksforgeeks.org/how-to-select-and-upload-multiple-files-with-html-and-php-using-http-post/
--->
-*/    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 function showproducts($subid=""){
@@ -153,9 +111,8 @@ function  updateProduct(){
 
 }
 function  deleteProduct(){
-
-    $productID = $_REQUEST['productID'];
-    $this->model->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->updateProduct($productID);
+    $productID = $_REQUEST['productdetailid'];
+    $this->model->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->getProductDetails()[0]->delete($productID);
 
 }
 

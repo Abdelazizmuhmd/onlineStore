@@ -64,8 +64,8 @@ class subCategory extends Model
     function readProducts($subcategoryId)
     {  
         $this->connect();
-      $sql = "SELECT subcategorydetails.productid FROM subcategorydetails
-        where subcategorydetails.subcategoryid = :id and isdeleted = 0";
+      $sql = "SELECT subcategorydetails.productid FROM subcategorydetails join subcategory on subcategorydetails.subcategoryid = subcategory.id
+        where subcategorydetails.subcategoryid = :id and subcategory.isdeleted = 0";
       $this->db->query($sql);
       $this->db->bind(':id',$subcategoryId,PDO::PARAM_INT);
       $this->db->execute(); 

@@ -2,7 +2,7 @@
 require_once("../model/Model.php");
 require_once("../model/productdetails.php");
 class product extends model{
-protected $productid;
+protected $id;
 protected $name;
 protected $code;
 protected $cost;
@@ -16,7 +16,7 @@ function getName(){
     return $this->name;
 }
 function getId(){
-    return $this->productid;
+    return $this->id;
 }
 function getCode(){
     return $this->code;

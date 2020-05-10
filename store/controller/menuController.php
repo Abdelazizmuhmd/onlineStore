@@ -6,19 +6,15 @@ public function  getAllCategoriesDetails(){
     $this->model->getAllCategoriesDetails();
 }  
     
- public function readProduct(){
-    $productid = 82;
+ public function readOneProduct(){
 
-   //$productid = $_REQUEST['productid'];
+   $productid = $_REQUEST['productid'];
 
     $this->model->getCategories()[0]->getSubcategories()[0]->readOneProduct($productid);
 
  }
  public function readProducts(){
-   
-     $subcategoryId=1;
-    //$subcategoryId = $_REQUEST['subcategoryId'];
-
+    $subcategoryId = $_REQUEST['subcategoryId'];
     $this->model->getCategories()[0]->getSubcategories()[0]->readProducts($subcategoryId);
 
  }

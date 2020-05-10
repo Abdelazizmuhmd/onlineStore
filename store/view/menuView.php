@@ -18,33 +18,32 @@ class menuView extends View{
           if(is_iterable($subCategories)){
           foreach($subCategories as $k=>$subcategory){
           $str.='<li>';
-          $str.='<a href="/collections/film-tee" class="site-nav__link">'.$subcategory->getName().'</a>';
+          $str.='<a href="../public/products.php?action=readProducts&subcategoryId='.$subcategory->getID().'" class="site-nav__link">'.$subcategory->getName().'</a>';
           $str.='</li>';}};
           $str.='</ul></li>';
     
-}}
+}
+    }
     echo $str;
     }
     
 
     function productsOutput(){
      $str=""; 
-
      $products=$this->model->getCategories()[0]->getSubcategories()[0]->getProducts();
        foreach($products as $i=>$product){
        if ($i>0){
+        
        $productDetails = $product->getProductDetails();
        foreach($productDetails as $k=>$productdetail){
        $imageArray=$productdetail->getImages();
-        if(is_iterable($imageArray)){
-       foreach($imageArray as $l=>$image){
      $str.='<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">';
      $str.=' <div class="supports-js" style="max-width: 600px; margin: 0 auto;">';
-     $str.=' <a href="" class="product__image-wrapper " style="padding-top:100.0%;" title="F*ck" data-image-link>';   
+     $str.=' <a href="../public/product.php?action=readOneProduct&productid='.$product->getId().'" class="product__image-wrapper " style="padding-top:100.0%;"  data-image-link>';   
      $str.='<img class="product__image "
                  alt="first image"
                  style="max-width: 600px; max-height: 600px;"
-                 src="images/'.$image.'"
+                 src="'.$imageArray[0].'"
                  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
                  data-aspectratio="1.0"
                  data-sizes="auto"
@@ -60,11 +59,11 @@ class menuView extends View{
      $str.=' <span class="badge badge--sale"></span>';
      $str.=' </div>';
      $str.=' </div>';
-       }}}}
+       }}
         echo $str;
     }
     }
-/*
+
     
     function readOneProduct(){
         $str="";
@@ -75,7 +74,7 @@ class menuView extends View{
          if($i!=0){$hidden="hidden";}
          $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js" >';
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 100%; position: relative; overflow: '.$hidden.';">';
-         $str.=' <img  class="product-single__photo"  src="../images/'.$productdetail->getImages()[0].'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
+         $str.=' <img  class="product-single__photo"  src="'.$productdetail->getImages()[0].'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
          $str.='</div>';
          $str.='</div>';
             
@@ -85,7 +84,7 @@ class menuView extends View{
         
         echo $str;
     }
-    */
+    
 
 }
 

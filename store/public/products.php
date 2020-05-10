@@ -6,7 +6,9 @@ require_once("../View/menuView.php");
 
 $model = new menu();
 $controller= new menuController($model);
-$controller->readProducts();
+if (isset($_GET['action']) && !empty($_GET['action'])) {
+  $controller->{$_GET['action']}();
+}
 $controller->getAllCategoriesDetails();
 $view= new menuView($model,$controller);
 
@@ -59,7 +61,7 @@ Pat
     
   <header style="height:115px;">
           <div id="HeaderLogoWrapper" class="supports-js" style="height:115px;">
-            <a href="" itemprop="url" style="padding-top:19.601328903654487%;  display: block;width:100px;height:100px;">
+            <a href="" itemprop="url" style="padding-top:19.601328903654487%;">
               <img id="HeaderLogo" 
                    src="images/logo.png"
                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"

@@ -139,6 +139,9 @@ function getMedium(){
   	function getArray(){
       return $this->Imagearray;
   	}
+    function getid(){
+        return $this->id;
+    }
 
   	
 
@@ -196,11 +199,11 @@ function getMedium(){
     
 
     
-    function delete ($productDetails){
+    function delete($productDetailid){
       $this->connect();
       $sql = "update productdetails set isdeleted=1 where id=:id";
       $this->db->query($sql);
-      $this->db->bind(':id',$productDetails,PDO::PARAM_INT);
+      $this->db->bind(':id',$productDetailid,PDO::PARAM_INT);
       $this->db->execute();
     }
     
