@@ -16,17 +16,16 @@ $view= new adminproductsView($model,$controller);
 <!DOCTYPE html>
 <html>
   <head>
-      <style>
-      
-      
-      
-      </style>
+        
+ 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <title>
       Products
     </title>
+          <link href="../css/header.css" rel="stylesheet" type="text/css" media="all" />
+
     <link href="../css/adminProducts.css" rel="stylesheet" type="text/css" media="all" />
     <link
       rel="stylesheet"
@@ -40,7 +39,9 @@ $view= new adminproductsView($model,$controller);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-   
+   <?php
+      include_once("../public/header.php");
+      ?>
 
     <br />
     <div  id="contain">

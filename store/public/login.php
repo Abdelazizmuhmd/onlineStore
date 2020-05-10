@@ -11,8 +11,6 @@ if(isset($_GET['action'])==='false'){
 
 else if (isset($_GET['action']) && !empty($_GET['action'])){
 $controller->{$_GET['action']}();
- header("location:orders.php");
-
 }
 ?>
 <!doctype html>
@@ -25,12 +23,12 @@ $controller->{$_GET['action']}();
 Pat  
     </title>
 
-  <link href="../../css/home.css" rel="stylesheet" type="text/css" media="all" /> 
-  <script src="../../js/j.js" type="text/javascript"></script>
-  <script src="../../js/s.js" type="text/javascript"></script>
-  <script src="../../js/home.js" type="text/javascript"></script>
-  <script src="../../js/j2.js" type="text/javascript"></script>
-  <script src="../../js/login.js" type="text/javascript"></script>
+  <link href="../css/home.css" rel="stylesheet" type="text/css" media="all" /> 
+  <script src="../js/j.js" type="text/javascript"></script>
+  <script src="../js/s.js" type="text/javascript"></script>
+  <script src="../js/home.js" type="text/javascript"></script>
+  <script src="../js/j2.js" type="text/javascript"></script>
+  <script src="../js/login.js" type="text/javascript"></script>
 
 
     
@@ -197,7 +195,7 @@ Pat
     </div>
 
     <div id="CustomerLoginForm" class="form-vertical">
-      <form method="post" action="orders.php?action=login" id="customer_login" accept-charset="UTF-8"><input type="hidden" name="form_type" value="customer_login"><input type="hidden" name="utf8" value="✓">
+      <form method="post" action="" id="customer_login" accept-charset="UTF-8"><input type="hidden" name="form_type" value="customer_login"><input type="hidden" name="utf8" value="✓">
 
         <h1 class="small--text-center">Login</h1>
 

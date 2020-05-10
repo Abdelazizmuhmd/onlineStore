@@ -11,7 +11,6 @@ if(isset($_GET['action'])==='false'){
 
 else if (isset($_GET['action']) && !empty($_GET['action'])){
 $controller->{$_GET['action']}();
- header("location:login.php");
 
 }
 ?>
@@ -25,12 +24,12 @@ $controller->{$_GET['action']}();
 Pat  
     </title>
 
-<link rel="stylesheet" media="all" href="../../css/home.css" />  
-<script src="../../js/j.js" type="text/javascript"></script>
-  <script src="../../js/s.js" type="text/javascript"></script>
-  <script src="../../js/home.js" type="text/javascript"></script>
-  <script src="../../js/j2.js" type="text/javascript"></script> 
-  <script src="../../js/signUp.js" type="text/javascript" ></script> 
+<link rel="stylesheet" media="all" href="../css/home.css" />  
+<script src="../js/j.js" type="text/javascript"></script>
+  <script src="../js/s.js" type="text/javascript"></script>
+  <script src="../js/home.js" type="text/javascript"></script>
+  <script src="../s/j2.js" type="text/javascript"></script> 
+  <script src="../js/signUp.js" type="text/javascript" ></script> 
  
     
 
@@ -192,9 +191,7 @@ Pat
 <h1 class="small--text-center">Create Account</h1>
 
 <div class="form-register form-vertical">
-   <form method = "post" action="login.php?action=signUP" >
-    
-
+   <form method = "post" action="../public/signup.php?action=signUP" >
     <label for="FirstName" class="label--hidden">First Name</label>
     <input type="text" name="firstname" id="firstName"  placeholder="First Name" autocapitalize="words" autofocus="" maxlength="10">
 
