@@ -92,9 +92,9 @@ function __construct1($productId){
 function getProductDetails(){
     return $this->productDetails;
 }
-    
- function insertProduct($name,$code,$cost,$profit,$description,$weight,$productDetails,$subcategoryid){
 
+    
+ function insertProduct($name,$code,$cost,$profit,$description,$weight,$productdetail,$subcategoryid){
       $this->connect();
       $sql = "INSERT into product(name,code,cost,profit,description,weight) values(:name,:code,:cost,:profit,:description,:weight)";
       $this->db->query($sql);
@@ -107,11 +107,10 @@ function getProductDetails(){
       $this->db->execute();
       $productid=$this->db->lastInsertedId();
      
-     
-      foreach($productDetails as $productdetail){     
+          
         $this->productDetails[0]->insert($productid,$productdetail['color'],$productdetail['s'],$productdetail['m'],$productdetail['l'],$productdetail['xl'],$productdetail['xxl'],$productdetail['xxxl'],$productdetail['img']);
        
-      }
+      
      
       $sql = "INSERT into subcategorydetails(subcategoryid,productid) values(:subcategoryid,:productid)";
       $this->db->query($sql);
@@ -119,7 +118,7 @@ function getProductDetails(){
       $this->db->bind(':productid',$productid,PDO::PARAM_INT);
       $this->db->execute();
      
-     
+     return $productid;
     
 }    
     

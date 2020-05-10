@@ -72,9 +72,9 @@ function products(){
   $productarr = $this->model->getcategories()[0]->getsubcategories()[0]->getproducts();
   $str ="";
     $length=count($productarr);
-  for ($i = 1;$i<$length;$i++)
-  {  $details = $productarr[$i]->getProductDetails();
-     //$img = $details->getArray()[0];
+  for ($i = 1;$i<$length;$i++)   
+  { 
+    $details = $productarr[$i]->getProductDetails();
    $dlength=count($details);
     for($j = 0;$j<$dlength;$j++)
      {

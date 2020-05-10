@@ -40,6 +40,8 @@ $view= new adminproductsView($model,$controller);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
+   
+
     <br />
     <div  id="contain">
       <div class="card" id="filterz">
@@ -94,7 +96,7 @@ $view= new adminproductsView($model,$controller);
 
 
 <div class="card-body" id="bod">
-  <h4>Product</h4>
+  <h4>Add Product</h4>
 </div>
 
 <div class="card-body" id="bod">
@@ -102,28 +104,35 @@ $view= new adminproductsView($model,$controller);
 
    <table class="table table-bordered"><br><br>
   
-
+                <input type="text" name="productid" id="productid" value="" hidden>
    <tr>
-            <td>  Name<input type="text" name="productName" class="form-control" id="" placeholder="Enter Product Name"></td>
-            <td>  Code<input type="text" name="productCode" class="form-control" id="" placeholder="Enter Product Code">
+       
+            <td>  Name<input type="text" id="productName"  class="form-control"  placeholder="Enter Product Name"></td>
+            <td>  Code<input type="text" id="productCode"  class="form-control"  placeholder="Enter Product Code">
 </td>
-      <td>profit<input type="text" name="productProfit" class="form-control" id="" placeholder="Enter Product profit"></td>
+      <td>profit<input type="text" id="productProfit"  class="form-control"  placeholder="Enter Product profit"></td>
 
          
           </tr>
 
           <tr>
-      <td>Description<input type="text" name="productDescription" class="form-control" id="" placeholder="Enter Product Description"></td>
-      <td>Weight<input type="text" name="productWeight" class="form-control" id="" placeholder="Enter Product Weight"></td>
-              <td>Cost<input type="text" name="productCost" class="form-control" id="" placeholder="Enter Product Cost"></td>
+      <td>Description<input type="text" id="productDescription"  class="form-control" placeholder="Enter Product Description"></td>
+      <td>Weight<input type="text" id="productWeight"  class="form-control"  placeholder="Enter Product Weight"></td>
+              <td>Cost<input type="text"   id="productCost" class="form-control"  placeholder="Enter Product Cost" ></td>
 
           </tr>
     </table>
 
 </div>
     <center>
-  <button  class="btn btn-primary" data-toggle="modal" data-target="#myModal2" >Add Color</button>
-   <button class="btn btn-primary" >Add Product</button></center>
+        <label style="font-size:20px;">Colors Added:</label>
+        <select name="colors" id="colors" style="width:100px;height:30px;">
+              <option value="volvo" disabled selected>none</option>
+
+        
+        </select>
+  <button  class="btn btn-primary" data-toggle="modal" data-target="#myModal2" onclick="resetcolor()" >Add Color</button><br><br>
+   <button class="btn btn-primary" onclick="reset()">Reset For New Product</button></center>
 
 <div class="card-body" id="bod">
    
@@ -346,48 +355,51 @@ $view= new adminproductsView($model,$controller);
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">New Product</h4>
+          <h4 class="modal-title">New product Details</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
 
           <center><h4><i class="fa fa-upload" aria-hidden="true"></i>
-      <input type="file" id="image" name="image[]" multiple></h4></center>        <hr class="new2">
+      <input type="file"  onchange="loadFile(event)" id="image" name="image[]" multiple></h4></center>        <hr class="new2">
 
         </div>
 
         <div class="modal-body">
 
-        <h4>Color</h4><input type="text" name="productColor" class="form-control" id="" placeholder="Enter Product Color">
+        <h4>Color</h4><input type="text" id="productColor" class="form-control"  placeholder="Enter Product Color">
         <table class="table table-bordered"><br>
   
 
    <tr>
       <h4>Sizes</h4>
-      <td>Small<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter Small Size" name="small"></td>
-      <td>  Medium<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter Medium Size" name="medium"></td>
-      <td> Large<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter Large Size" name="large"></td>
+      <td>Small<input class="form-control"  type="Number" step="1" min="0"   placeholder="Enter Small Size" id="small"></td>
+      <td>  Medium<input class="form-control"  type="Number" step="1" min="0"   placeholder="Enter Medium Size" id="Medium"></td>
+      <td> Large<input class="form-control" type="Number" step="1" min="0"  placeholder="Enter Large Size" id="Large"></td>
 
          
     </tr>
 
     <tr>
-      <td> xLarge<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter xlarge Size" name="xlarge"></td>
-      <td> 2xLarge<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter 2xlarge Size" name="2xlarge"></td>
-      <td>3xLarge<input class="form-control" type="Number" step="1" min="0"  id="" placeholder="Enter 3xlarge Size" name="3xlarge"></td>
+      <td> xLarge<input class="form-control"  type="Number" step="1" min="0"   placeholder="Enter xlarge Size" id="xLarge"></td>
+      <td> 2xLarge<input class="form-control" type="Number" step="1" min="0"   placeholder="Enter 2xlarge Size" id="2xLarge"></td>
+      <td>3xLarge<input class="form-control" type="Number" step="1" min="0"   placeholder="Enter 3xlarge Size" id="3xLarge"></td>
 
     </tr>
     </table>
-      <center><button id="finalProductAdd">Add</button></center>
+      <center><button onclick="addcolor()" id="finalProductAdd" data-dismiss="modal">Add</button></center>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+       
       </div>
       
     </div>
   </div>
-  
+  <p>
+      <script>
+      
+
+      </script>
+   
 
 <script>
     
@@ -420,7 +432,7 @@ document.getElementById("deletesubcategoryid").value= Select.options[ Select.sel
 function showproducts(){
      var subid = document.getElementById("subproductid").value;
            $.ajax({
-            url: '../other/ajaxBackend.php',
+            url: '../other/showproductsAjax.php',
             type: 'POST',
             data: {subid:subid},
             success: function(response){
@@ -429,6 +441,171 @@ function showproducts(){
           });
        }
 </script> 
+    
+    <script>
+var formData =new FormData();
+var loadFile = function(event) {
+formData =new FormData();
+$.each($("input[type=file]"), function (i, obj) {
+     $.each(obj.files, function (j, file) { 
+       formData.append('files[]', file);      
+});
+    })
+};
+function addcolor(){
+    var insertproductid=document.getElementById("productid").value;
+
+
+    if(insertproductid==""){
+     formData.append("productName",document.getElementById("productName").value);
+     formData.append("productCode",document.getElementById("productCode").value);
+     formData.append("productProfit",document.getElementById("productProfit").value);
+     formData.append("productDescription",document.getElementById("productDescription").value);
+     formData.append("productWeight",document.getElementById("productWeight").value);
+     formData.append("productCost",document.getElementById("productCost").value);
+     formData.append("productColor",document.getElementById("productColor").value);
+     formData.append("small",document.getElementById("small").value);
+     formData.append("Medium",document.getElementById("Medium").value);
+     formData.append("Large",document.getElementById("Large").value);
+     formData.append("xLarge",document.getElementById("xLarge").value);
+     formData.append("2xLarge",document.getElementById("2xLarge").value);
+     formData.append("3xLarge",document.getElementById("3xLarge").value);           
+     var Select = document.getElementById( "subselections" );
+     formData.append("$subcategoryid",Select.options[ Select.selectedIndex ].value) ;
+      $.ajax({
+            url: '../other/insertproductsAjax.php',
+            type: 'POST',
+            data:formData,
+            contentType: false,
+            processData: false,
+            success: function(response){
+                document.getElementById("productid").value=response;
+                
+                document.getElementById("productName").disabled = true;
+                document.getElementById("productCode").disabled = true;
+                document.getElementById("productProfit").disabled = true;
+                document.getElementById("productDescription").disabled = true;
+                document.getElementById("productWeight").disabled = true;
+                document.getElementById("productCost").disabled = true;
+                var x = document.getElementById("colors");
+                var option = document.createElement("option");
+                option.text = document.getElementById("productColor").value;
+                option.selected=true;
+                x.add(option);       
+                document.getElementById("colors").remove(0);
+                document.getElementById("catselection").disabled = true;
+                document.getElementById("subselections").disabled = true;
+ 
+            }
+    });            
+        }else{
+     formData.append("productid",document.getElementById("productid").value);
+     formData.append("productColor",document.getElementById("productColor").value);
+     formData.append("small",document.getElementById("small").value);
+     formData.append("Medium",document.getElementById("Medium").value);
+     formData.append("Large",document.getElementById("Large").value);
+     formData.append("xLarge",document.getElementById("xLarge").value);
+     formData.append("2xLarge",document.getElementById("2xLarge").value);
+     formData.append("3xLarge",document.getElementById("3xLarge").value);   
+            
+     var Select = document.getElementById( "subselections" );
+     formData.append("$subcategoryid",Select.options[ Select.selectedIndex ].value);
+            
+            $.ajax({
+            url: '../other/insertproductdetailsAjax.php',
+            type: 'POST',
+            data:formData,
+            contentType: false,
+            processData: false,
+            success: function(response){
+                var x = document.getElementById("colors");
+                var option = document.createElement("option");
+                option.text = document.getElementById("productColor").value;
+                option.selected=true;
+                x.add(option);       
+            }
+    });            
+            
+            
+            
+        }
+        
+    }
+
+    
+    
+    </script>
+
+      
+      
+      <script>
+        function  resetcolor(){
+            document.getElementById("productColor").value="";
+              document.getElementById("small").value="";
+              document.getElementById("Medium").value="";
+              document.getElementById("Large").value="";
+              document.getElementById("xLarge").value="";
+              document.getElementById("2xLarge").value="";
+              document.getElementById("3xLarge").value="";
+              document.getElementById('image').value = "";
+            
+        }
+          function reset(){
+              var select = document.getElementById("colors");
+
+              var length = select.options.length;
+              for (i = length-1; i >= 0; i--) {
+                  select.options[i] = null;
+                }
+              var option = document.createElement("option");
+              option.text = "none";
+              option.selected=true;      
+              select.add(option); 
+              document.getElementById("catselection").disabled = false;
+              document.getElementById("subselections").disabled = false;
+              document.getElementById("productName").disabled = false;
+              document.getElementById("productCode").disabled = false;
+              document.getElementById("productProfit").disabled = false;
+              document.getElementById("productDescription").disabled = false;
+              document.getElementById("productWeight").disabled = false;
+              document.getElementById("productCost").disabled = false;
+              document.getElementById("productid").value="";
+              
+              document.getElementById("productName").value="";
+              document.getElementById("productCode").value="";
+              document.getElementById("productProfit").value="";
+              document.getElementById("productDescription").value="";
+              document.getElementById("productWeight").value="";
+              document.getElementById("productCost").value="";
+              
+              document.getElementById("productColor").value="";
+              document.getElementById("small").value="";
+              document.getElementById("Medium").value="";
+              document.getElementById("Large").value="";
+              document.getElementById("xLarge").value="";
+              document.getElementById("2xLarge").value="";
+              document.getElementById("3xLarge").value="";
+              document.getElementById('image').value = "";
+ 
+
+
+              
+          }
+
+      
+      </script>
+    <script>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+     </script>
+    
  <!--
 function addproductdetails(){
     <script>
@@ -437,8 +614,11 @@ var text = '{"productdetails":[' + '{"color":"red","lastName":"Doe" }' + ']}';
 obj = JSON.parse(text);
 document.getElementById("demo").innerHTML =
 obj.productdetails[0].color + " " + obj.productdetails[0].lastName;
-}      
 
+}      
+md5($filename . microtime())
+https://makitweb.com/how-to-upload-multiple-image-files-with-jquery-ajax-and-php/
+https://www.geeksforgeeks.org/how-to-select-and-upload-multiple-files-with-html-and-php-using-http-post/
 -->
     
     
