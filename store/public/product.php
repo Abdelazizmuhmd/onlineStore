@@ -24,6 +24,7 @@ $view= new menuView($model,$controller);
     </title>
 
     <link href="../css/home.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../css/slider.css" rel="stylesheet" type="text/css" media="all" />
     <script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="../js/j.js" type="text/javascript"></script>
     <script src="../js/s.js" type="text/javascript"></script>
@@ -236,6 +237,7 @@ $view->readOneProduct();
     </div>
     <hr>
     </div>
+    <script src="../js/slider.js" type="text/javascript"></script>
 </body>
 
 </html>

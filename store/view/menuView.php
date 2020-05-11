@@ -76,7 +76,24 @@ class menuView extends View{
   
          $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js" value= '.$productdetail->getColor().'  style='.$display.'>';
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 100%; position: relative; overflow: '.$hidden.';">';
-         $str.=' <img  class="product-single__photo" src="'.$productdetail->getImages()[0].'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
+         $str.='<div style =""class="slideshow-container">';
+         $c=1;
+         foreach($productdetail->getImages() as $img){
+         $str.='<div style="position:relative; bottom:500px" class="mySlides'.$productdetail->getColor().' fade">';
+         $str.='<div class="numbertext">'.$c.' / '.count($productdetail->getImages()).'</div>';
+         $str.=' <img  class="product-single__photo" src="'.$img.'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
+         $str.='<div class="text"></div>';
+         $str.='</div>';
+         $c++;
+         }
+         $str.='<a style = " margin-bottom:250px; height:50px" class="prev" onclick="plusSlides(-1)">&#10094;</a>
+         <a  style = "margin-bottom:250px;height:50px"class="next" onclick="plusSlides(1)">&#10095;</a>
+         </div>
+         <br>';
+         $str.='<div style="text-align:center">';
+         for($i=1;$i<=count($productdetail->getImages());$i++)          
+         $str.='<span class="dot col'.$productdetail->getColor().'" onclick="currentSlide('.$i.')"></span>';
+         $str.='</div>';
          $str.='</div>';
          $str.='</div>';
          }
@@ -161,10 +178,8 @@ class menuView extends View{
                                 }
 
                 $str.= '<div class="product-single__description rte" itemprop="description">
-                     '.$product->getName().' -Geralt of Rivia<br>
+                     '.$product->getName().'<br>
                      <br>
-                     <br>
-                     Unisex Sweatshirt<br>
                      <br>
                      '.$product->getDescription().'
                      

@@ -7,7 +7,6 @@ $(document).ready(function () {
   $(".decider").change(function () {
     decider = $(this).find(":selected").text();
     decide = $(this).find(":selected");
-    console.log(arr);
     $(this)
       .parent()
       .parent()
@@ -37,5 +36,6 @@ $(document).ready(function () {
           $(".decider").val(decider);
         }
       });
+    showSlides(1);
   });
 });
