@@ -12,6 +12,9 @@ $val=array(array('id'=>$product_id,'name'=>$product_name,"image_url"=>$product_i
   $ar=json_encode($val);
   setcookie('cook',$ar);
    
+  setcookie('cartNumbers',155);
+
+
   echo true;
 
   

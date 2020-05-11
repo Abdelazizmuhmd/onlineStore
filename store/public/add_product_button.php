@@ -3,9 +3,9 @@
 if(isset($_POST['add'])){
 
 	$q1=$_POST['q1'];
-$val=array(array('id'=>"1", "image_url"=>"../images/c.jpg","color_size"=>"black/xL", "quantity"=>$q1,"price"=>"70"),
-           array('id'=>"25","image_url"=>"../images/b.jpg","color_size"=>"white/3xl", "quantity"=>"4","price"=>"100"),
-           array('id'=>"10", "image_url"=>"../images/c.jpg","color_size"=>"black/xL", "quantity"=>"2","price"=>"70"));
+$val=array(array('id'=>"1", "image_url"=>"../images/c.jpg","color"=>"blue","size"=>"xL", "quantity"=>$q1,"price"=>"70"),
+           array('id'=>"25","image_url"=>"../images/b.jpg","color"=>"blue","size"=>"xL", "quantity"=>"4","price"=>"100"),
+           array('id'=>"10", "image_url"=>"../images/c.jpg","color"=>"blue","size"=>"xL", "quantity"=>"2","price"=>"70"));
 
  	$ar=json_encode($val);
 	setcookie('cook',$ar);

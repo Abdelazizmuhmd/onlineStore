@@ -10,9 +10,7 @@ class signUpController extends Controller{
     $lastname = $_REQUEST['lastname'];
     $password = $_REQUEST['password'];
     $email = $_REQUEST['email'];
-
-
-     $this->model->signup($firstname,$lastname,$password,$email);
+    $this->model->signup($firstname,$lastname,$password,$email);
 
  }
 
@@ -22,10 +20,8 @@ class signUpController extends Controller{
     $address = $_REQUEST['address'];
     $apartment = $_REQUEST['apartment'];
     $city = $_REQUEST['city'];
-    $email = $_REQUEST['email'];
-     
-
-     $this->model->guestsignup($firstName,$lastName,$address,$apartment,$city,$email);
+    $email = $_REQUEST['email']; 
+    $this->model->guestsignup($firstName,$lastName,$address,$apartment,$city,$email);
 
  }
 
