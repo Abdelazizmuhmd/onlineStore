@@ -35,6 +35,8 @@ function showSlides(n) {
     dots[slideIndex - 1].className += " active";
   } else {
     slides[0].style.display = "block";
-    dots[0].className += "";
+    dots[0].style.display = "none";
+    var buttons = document.getElementsByClassName("but" + val);
+    for (i = 0; i < buttons.length; i++) buttons[i].style.display = "none";
   }
 }

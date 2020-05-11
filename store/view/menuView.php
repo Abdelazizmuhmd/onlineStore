@@ -86,8 +86,8 @@ class menuView extends View{
          $str.='</div>';
          $c++;
          }
-         $str.='<a style = " margin-bottom:250px; height:50px" class="prev" onclick="plusSlides(-1)">&#10094;</a>
-         <a  style = "margin-bottom:250px;height:50px"class="next" onclick="plusSlides(1)">&#10095;</a>
+         $str.='<a style = " margin-bottom:250px; height:50px" class="prev but'.$productdetail->getColor().'" onclick="plusSlides(-1)">&#10094;</a>
+         <a  style = "margin-bottom:250px;height:50px"class="next but'.$productdetail->getColor().'" onclick="plusSlides(1)">&#10095;</a>
          </div>
          <br>';
          $str.='<div style="text-align:center">';
