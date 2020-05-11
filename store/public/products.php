@@ -45,27 +45,6 @@ Pat
 <center>
  <iframe  src="../public/header.php" height="60" width="1000" style="border:none;"></iframe>
 </center>
-     
-    
-  <header style="height:115px;">
-          <div id="HeaderLogoWrapper" class="supports-js" style="height:115px;">
-            <a href="" itemprop="url" style="padding-top:19.601328903654487%;">
-              <img id="HeaderLogo" 
-                   src="images/logo.png"
-                   data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                   data-aspectratio=""
-                   data-sizes="auto"
-                   alt="Pat"
-                   itemprop="logo"
-                   style="width:90px;height:90px;"
-                   >
-            </a>
-          </div>
- 
-
-    </header>
-
-
 
 
     
@@ -73,6 +52,8 @@ Pat
   <div class="site-wrapper">
 
     <div class="grid">
+    <img  src="../images/logo.png" style="margin-bottom:30px; margin-left:60px; width:120px;height:120px;" >
+
 <?php
 
         include("menu.php");

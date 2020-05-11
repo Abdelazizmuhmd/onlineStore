@@ -73,18 +73,16 @@ class menuView extends View{
         $display="";
         foreach($productdetails as $i=> $productdetail){
          if($i!=0){$hidden="hidden";$display='display:none';}
-  
-         $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js" value= '.$productdetail->getColor().'  style='.$display.'>';
+         $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js images" value= '.$productdetail->getColor().'  style='.$display.'>';
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 100%; position: relative; overflow: '.$hidden.';">';
          $str.='<div style =""class="slideshow-container">';
-         $c=1;
+         $i++;   
          foreach($productdetail->getImages() as $img){
          $str.='<div style="position:relative; bottom:500px" class="mySlides'.$productdetail->getColor().' fade">';
-         $str.='<div class="numbertext">'.$c.' / '.count($productdetail->getImages()).'</div>';
+         $str.='<div class="numbertext"> / '.count($productdetail->getImages()).'</div>';
          $str.=' <img  class="product-single__photo" src="'.$img.'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
          $str.='<div class="text"></div>';
          $str.='</div>';
-         $c++;
          }
          $str.='<a style = " margin-bottom:250px; height:50px" class="prev" onclick="plusSlides(-1)">&#10094;</a>
          <a  style = "margin-bottom:250px;height:50px"class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -102,30 +100,33 @@ class menuView extends View{
          <div class="grid__item medium-up--one-half">
              <div class="product-single__meta small--text-center">
              
-                 <h1 id =  class="product-single__title" itemprop="name">'.$product->getName().'</h1>';
+                 <h1 id ="product_name1" class="product-single__title" itemprop="name">'.$product->getName().'</h1>';
                  $display ='';
                  foreach($productdetails as $i=> $productdetail){
                   if($i!=0){$hidden="hidden";$display='display:none';}
                   
                 $str.= '<div id = '.$productdetail->getColor().' style='.$display.'>
 
-                
                      <p class="product-single__prices">
-                         <span id="ProductPrice" class="product-single__price" value="30.0">'.$product->getCost().'.$</span>
+                         <span id="ProductPrice" class="product-single__price" value="'.(int)($product->getCost()+$product->getProfit()).'">'.(int)($product->getCost()+$product->getProfit()).' $</span>
                      </p>
 
                      <div class="product-single__policies rte">Tax included. Delevered to your Door.
-
-
+                          
 
                      </div>
-                     <form method="post" action="/cart/add" id="product_form_4404356317218"
+                     <form method="post" action="../other/cartajaxBackend.php" id="product_form_4404356317218"
                          accept-charset="UTF-8" class="product-form" enctype="multipart/form-data">
+                            <input type="text" name="productdetailid" value="'.$productdetail->getid().'" hidden>
+                            <input type="text" name="productname" value="'.$product->getName().'" hidden>
+                            <input type="text" name="productprice" value="'.(int)($product->getCost()+$product->getProfit()).'" hidden>
+                            <input type="text" name="imageurl" value="'.$productdetail->getArray()[0].'" hidden>
+
 
                          <div class="selector-wrapper">
                             <label for="ProductSelect-product-template-option-0"> Color</label>
                              <select class="single-option-selector decider" data-option="option1"
-                                 id="ProductSelect-product-template-option-0">';
+                                 id="ProductSelect-product-template-option-0"  name="colors" >';
                                  foreach($productdetails as $pro){
                                    if($productdetail->getColor() == $pro->getColor())
                                      $str.='<option selected = "selected" value="'.$pro->getColor().'">'.$pro->getColor().'</option>';
@@ -137,18 +138,18 @@ class menuView extends View{
                          <div class="selector-wrapper">
                              <label for="ProductSelect-product-template-option-1">Size</label>
                              <select class="single-option-selector" data-option="option2"
-                                 id="ProductSelect-product-template-option-1">';
+                                 id="ProductSelect-product-template-option-1" name="sizes">';
                                  
                                   if($productdetail->getSmall() != 0)
-                                    $str.='<option value="">Small</option>';
+                                    $str.='<option value="Small">Small</option>';
                                   if($productdetail->getMedium() != 0)
-                                    $str.='<option value="">Meduim</option>';
+                                    $str.='<option value="Meduim">Meduim</option>';
                                   if($productdetail->getXl() != 0)
-                                    $str.='<option value="">XL</option>';
+                                    $str.='<option value="XL">XL</option>';
                                   if($productdetail->getXxl() != 0)
-                                    $str.='<option value="">XXL</option>';
+                                    $str.='<option value="XXL">XXL</option>';
                                   if($productdetail->getXxxl() != 0)
-                                    $str.='<option value="">XXXL</option>';
+                                    $str.='<option value="XXXL">XXXL</option>';
                            $str.='</select></div>
                                  
 
@@ -159,10 +160,9 @@ class menuView extends View{
 
 
                          <div class="product-single__cart-submit-wrapper  product-form--full">
-                             <button type="submit" name="add" id="AddToCart"
+                             <input type="submit" value="Add to Cart" name="add" id="AddToCart"
                                  class="btn product-single__cart-submit btn--full  btn--secondary">
-                                 <span id="AddToCartText">Add to Cart</span>
-                             </button>
+                             
 
 
 
@@ -177,12 +177,13 @@ class menuView extends View{
 
                                 }
 
-                $str.= '<div class="product-single__description rte" itemprop="description">
-                     '.$product->getName().'<br>
-                     <br>
-                     <br>
-                     '.$product->getDescription().'
+                $str.= '<div class="product-single__description rte" itemprop="description"><h1>
+                    Description</h1>
                      
+                     '.$product->getDescription().'
+                     <br>                     <br>
+                     <br>
+
                   ';
         
             
