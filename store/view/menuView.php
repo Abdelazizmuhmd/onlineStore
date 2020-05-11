@@ -70,16 +70,104 @@ class menuView extends View{
         $product= $this->model->getCategories()[0]->getSubcategories()[0]->getProducts()[0];
         $productdetails = $product->getProductDetails();
         $hidden="";
+        $display="";
         foreach($productdetails as $i=> $productdetail){
-         if($i!=0){$hidden="hidden";}
-         $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js" >';
+         if($i!=0){$hidden="hidden";$display='display:none';}
+  
+         $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js" style='.$display.'>';
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 100%; position: relative; overflow: '.$hidden.';">';
          $str.=' <img  class="product-single__photo"  src="'.$productdetail->getImages()[0].'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
          $str.='</div>';
          $str.='</div>';
+         $str.=' </div>
+        
+         <div class="grid__item medium-up--one-half">
+             <div class="product-single__meta small--text-center">
+             
+                 <h1 style='.$display.' class="product-single__title" itemprop="name">'.$product->getName().'</h1>
+
+
+
+                 <div style='.$display.'>;
+
+                
+                     <p class="product-single__prices">
+                         <span id="ProductPrice" class="product-single__price" value="30.0">'.$product->getCost().'.$</span>
+                     </p>
+
+                     <div class="product-single__policies rte">Tax included. Delevered to your Door.
+
+
+
+                     </div>
+                     <form method="post" action="/cart/add" id="product_form_4404356317218"
+                         accept-charset="UTF-8" class="product-form" enctype="multipart/form-data">
+
+                         <div class="selector-wrapper">
+                            <label for="ProductSelect-product-template-option-0"> Color</label>
+                             <select class="single-option-selector" data-option="option1"
+                                 id="ProductSelect-product-template-option-0">';
+                                 foreach($productdetails as $pro){
+                                  $str.='<option value="">'.$pro->getColor().'</option>';
+                                  }
+                            $str.=' </select>
+                         </div>
+                         <div class="selector-wrapper">
+                             <label for="ProductSelect-product-template-option-1">Size</label>
+                             <select class="single-option-selector" data-option="option2"
+                                 id="ProductSelect-product-template-option-1">';
+                                 
+                                  if($productdetail->getSmall() != 0)
+                                    $str.='<option value="">Small</option>';
+                                  if($productdetail->getMedium() != 0)
+                                    $str.='<option value="">Meduim</option>';
+                                  if($productdetail->getXl() != 0)
+                                    $str.='<option value="">XL</option>';
+                                  if($productdetail->getXxl() != 0)
+                                    $str.='<option value="">XXL</option>';
+                                  if($productdetail->getXxxl() != 0)
+                                    $str.='<option value="">XXXL</option>';
+                           $str.='</select></div>
+                                 
+
+                         <div class="product-single__quantity">
+                             <label for="Quantity">Quantity</label>
+                             <input type="number" id="Quantity" name="quantity" value="1" min="1">
+                         </div>
+
+
+                         <div class="product-single__cart-submit-wrapper  product-form--full">
+                             <button type="submit" name="add" id="AddToCart"
+                                 class="btn product-single__cart-submit btn--full  btn--secondary">
+                                 <span id="AddToCartText">Add to Cart</span>
+                             </button>
+
+
+
+
+                         </div>
+
+                     </form>
+
+                 </div>';
+
+
+
+                                }
+
+                $str.= '<div class="product-single__description rte" itemprop="description">
+                     '.$product->getName().' -Geralt of Rivia<br>
+                     <br>
+                     <br>
+                     Unisex Sweatshirt<br>
+                     <br>
+                     '.$product->getDescription().'
+                     
+                  ';
+        
             
             
-        }
+        
         
         
         echo $str;
