@@ -1,18 +1,17 @@
  <?php 
-$product_id=$_REQUEST['product_id'];
-$product_image=$_REQUEST['product_image1'];
-$product_name=$_REQUEST['product_name1'];
-$ProductPrice=$_REQUEST['product_price1'];
-$color=$_REQUEST['color'];
-$size=$_REQUEST['size'];
-$quantity=$_REQUEST['Quantity'];
+$productdetail_id=$_REQUEST['productdetailid'];
+$product_image=$_REQUEST['imageurl'];
+$product_name=$_REQUEST['productname'];
+$ProductPrice=$_REQUEST['productprice'];
+$color=$_REQUEST['colors'];
+$size=$_REQUEST['sizes'];
+$quantity=$_REQUEST['quantity'];
 $NewArr=array();
 
 $cartNumber=1;
 if(isset($_COOKIE['cartNumber'])){
 $cartNumber=$_COOKIE['cartNumber']+1;
 }
-
 
 if(isset($_COOKIE['cook'])){
     $products= json_decode($_COOKIE['cook'],true);
@@ -21,7 +20,7 @@ if(isset($_COOKIE['cook'])){
     } 
 }
 
-$productt = array('id'=>$product_id,'name'=>$product_name,"image_url"=>$product_image,"color"=>$color,"size"=>$size, "quantity"=>$quantity,"price"=>$ProductPrice);
+$productt = array('id'=>$productdetail_id,'name'=>$product_name,"image_url"=>$product_image,"color"=>$color,"size"=>$size, "quantity"=>$quantity,"price"=>$ProductPrice);
 
 
 $NewArr[]=$productt;
@@ -33,17 +32,10 @@ $expire = time() + 60*60*24*30;
 setcookie('cook',$j,$expire,'/');
 
 
-setcookie('cartNumber',$cartNumber,$expire,'/');
-
-header("location:khaled_Addproduct.php");
+setcookie('cartNumber',$cartNumber,$expire,'/');   
 
 
-  $ar=json_encode($val);
-  setcookie('cook',$ar);
-   
-  setcookie('cartNumbers',155);
+header("location:../public/products.php");
 
-
-  echo true;
 
   ?>
