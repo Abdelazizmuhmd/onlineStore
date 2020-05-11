@@ -43,7 +43,7 @@ Pat
     </a>
       <!--header here  -->
 <center>
- <iframe  src="../public/header.php" height="60" width="1000" style="border:none;"></iframe>
+ <iframe  src="../public/header.php" height="70" width="1200" style="border:none;"></iframe>
 </center>
 
 

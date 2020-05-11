@@ -33,13 +33,12 @@ class menuView extends View{
      $products=$this->model->getCategories()[0]->getSubcategories()[0]->getProducts();
        foreach($products as $i=>$product){
        if ($i>0){
-        
        $productDetails = $product->getProductDetails();
        foreach($productDetails as $k=>$productdetail){
        $imageArray=$productdetail->getImages();
      $str.='<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">';
      $str.=' <div class="supports-js" style="max-width: 600px; margin: 0 auto;">';
-     $str.=' <a href="../public/product.php?action=readOneProduct&productid='.$product->getId().'" class="product__image-wrapper " style="padding-top:100.0%;"  data-image-link>';   
+     $str.=' <a href="../public/product.php?action=readOneProduct&productid='.$product->getId().'&productdetailid='.$productdetail->getid().'" class="product__image-wrapper " style="padding-top:100.0%;"  data-image-link>';   
      $str.='<img class="product__image "
                  alt="first image"
                  style="max-width: 600px; max-height: 600px;"
@@ -59,11 +58,14 @@ class menuView extends View{
      $str.=' <span class="badge badge--sale"></span>';
      $str.=' </div>';
      $str.=' </div>';
-       }}
-        echo $str;
+       
+       }
+       
     }
     }
+                   echo $str;
 
+    }
     
     function readOneProduct(){
         $str="";
@@ -72,7 +74,8 @@ class menuView extends View{
         $hidden="";
         $display="";
         foreach($productdetails as $i=> $productdetail){
-         if($i!=0){$hidden="hidden";$display='display:none';}
+                   //here is islam
+         if($productdetail->getid()!=$_REQUEST['productdetailid']){$hidden="hidden";$display='display:none';}
          $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js images" value= '.$productdetail->getColor().'  style='.$display.'>';
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 100%; position: relative; overflow: '.$hidden.';">';
          $str.='<div style =""class="slideshow-container">';
@@ -103,7 +106,10 @@ class menuView extends View{
                  <h1 id ="product_name1" class="product-single__title" itemprop="name">'.$product->getName().'</h1>';
                  $display ='';
                  foreach($productdetails as $i=> $productdetail){
-                  if($i!=0){$hidden="hidden";$display='display:none';}
+                     //here is islam
+                  if($productdetail->getid()!=$_REQUEST['productdetailid']){
+                      $hidden="hidden";$display='display:none';
+                           }
                   
                 $str.= '<div id = '.$productdetail->getColor().' style='.$display.'>
 

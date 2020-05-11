@@ -42,7 +42,7 @@ $view= new menuView($model,$controller);
             <p class="announcement-bar__message site-wrapper">WELCOME TO PAT</p>
         </a>
 <center>
- <iframe  src="../public/header.php" height="60" width="1000" style="border:none;"></iframe>
+ <iframe  src="../public/header.php" height="70" width="1200" style="border:none;"></iframe>
 </center>
 
 

@@ -1,15 +1,13 @@
 <?php
-
 if(isset($_COOKIE['cook'])){  
 $return=$_COOKIE['cook'];
 $arr=json_decode($return, true);  
-
 }
+
       
 if(isset($_POST['checkout'])){
   header("location:checkout.php");
 }
-
  if(isset($_GET["action"]))  
  { 
  if($_GET["action"] == "delete")  
@@ -20,17 +18,15 @@ if(isset($_POST['checkout'])){
                 $compare_id=$values['id'];
                 if($compare_id == $id){ 
                         array_splice($arr,$key1,1);
+                        $expire = time() + 60*60*24*30;                    
                     	$ar=json_encode($arr);
-	                    setcookie('cook',$ar);
-                    echo '<script>alert("Item Removed")</script>';  
-                    echo '<script>window.location="cart.php"</script>';  
+	                    setcookie('cook',$ar,$expire,'/');
+                        header("location:../public/cart.php");
+                       
                 }  
            }  
       }  
     }
-
-
-//echo $_COOKIE["cook"];
 ?>
 <html >
 <head>
