@@ -24,10 +24,12 @@ $view= new menuView($model,$controller);
     </title>
 
     <link href="../css/home.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="../js/j.js" type="text/javascript"></script>
     <script src="../js/s.js" type="text/javascript"></script>
     <script src="../js/home.js" type="text/javascript"></script>
     <script src="../js/j2.js" type="text/javascript"></script>
+    <script src="../js/product.js" type="text/javascript"></script>
 
 
 

@@ -74,21 +74,23 @@ class menuView extends View{
         foreach($productdetails as $i=> $productdetail){
          if($i!=0){$hidden="hidden";$display='display:none';}
   
-         $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js" style='.$display.'>';
+         $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js" value= '.$productdetail->getColor().'  style='.$display.'>';
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 100%; position: relative; overflow: '.$hidden.';">';
-         $str.=' <img  class="product-single__photo"  src="'.$productdetail->getImages()[0].'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
+         $str.=' <img  class="product-single__photo" src="'.$productdetail->getImages()[0].'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
          $str.='</div>';
          $str.='</div>';
+         }
          $str.=' </div>
         
          <div class="grid__item medium-up--one-half">
              <div class="product-single__meta small--text-center">
              
-                 <h1 style='.$display.' class="product-single__title" itemprop="name">'.$product->getName().'</h1>
-
-
-
-                 <div style='.$display.'>;
+                 <h1 id =  class="product-single__title" itemprop="name">'.$product->getName().'</h1>';
+                 $display ='';
+                 foreach($productdetails as $i=> $productdetail){
+                  if($i!=0){$hidden="hidden";$display='display:none';}
+                  
+                $str.= '<div id = '.$productdetail->getColor().' style='.$display.'>
 
                 
                      <p class="product-single__prices">
@@ -105,10 +107,13 @@ class menuView extends View{
 
                          <div class="selector-wrapper">
                             <label for="ProductSelect-product-template-option-0"> Color</label>
-                             <select class="single-option-selector" data-option="option1"
+                             <select class="single-option-selector decider" data-option="option1"
                                  id="ProductSelect-product-template-option-0">';
                                  foreach($productdetails as $pro){
-                                  $str.='<option value="">'.$pro->getColor().'</option>';
+                                   if($productdetail->getColor() == $pro->getColor())
+                                     $str.='<option selected = "selected" value="'.$pro->getColor().'">'.$pro->getColor().'</option>';
+                                   else
+                                     $str.='<option value="'.$pro->getColor().'">'.$pro->getColor().'</option>';
                                   }
                             $str.=' </select>
                          </div>
