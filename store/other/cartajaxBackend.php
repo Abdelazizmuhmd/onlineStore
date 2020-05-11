@@ -8,10 +8,7 @@ $size=$_REQUEST['sizes'];
 $quantity=$_REQUEST['quantity'];
 $NewArr=array();
 
-$cartNumber=1;
-if(isset($_COOKIE['cartNumber'])){
-$cartNumber=$_COOKIE['cartNumber']+1;
-}
+
 
 if(isset($_COOKIE['cook'])){
     $products= json_decode($_COOKIE['cook'],true);
@@ -32,7 +29,6 @@ $expire = time() + 60*60*24*30;
 setcookie('cook',$j,$expire,'/');
 
 
-setcookie('cartNumber',$cartNumber,$expire,'/');   
 
 
 header("location:../public/products.php");

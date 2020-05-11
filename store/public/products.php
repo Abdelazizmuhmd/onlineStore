@@ -38,12 +38,10 @@ Pat
     
 <body >
   <div>
-    <a href="F-tee.html" class="announcement-bar announcement-bar--link">
-    <p class="announcement-bar__message site-wrapper">WELCOME TO  PAT</p>
-    </a>
+ 
       <!--header here  -->
 <center>
- <iframe  src="../public/header.php" height="70" width="1200" style="border:none;"></iframe>
+ <iframe  src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
 </center>
 
 
