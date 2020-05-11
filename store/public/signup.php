@@ -5,14 +5,17 @@ require_once( "../controller/signUpController.php");
 
 $model = new user();
 $controller = new signUpController($model);
+
+
 if(isset($_GET['action'])==='false'){
     echo"bana says hi";
 }
-
 else if (isset($_GET['action']) && !empty($_GET['action'])){
-$controller->{$_GET['action']}();
+  
+  $controller->{$_GET['action']}();
+  }
 
-}
+
 ?>
 <!doctype php>
 <html >
@@ -219,30 +222,29 @@ Pat
 </div>  
 
 </body>
-<script>
-    
-    // function validateForm() {
-    //     var first = document.getElementById("firstName").value;
-    // if (first == "") {
-    //     alert("FristName must be filled out");
-    //     document.getElementById("fristName").style.borderColor = "red";
-    //     return false;
-    
-    //   }
-    
-    //   else if(first.length<5)
-    // {
-    //     alert("name id too short");
-    //     document.getElementById("name").style.borderColor = "red";
-    //     return false;
-    // }
-    
-  
-    // if (!first.match(/^[a-zA-Z]+$/)) 
-    //     {
-    //         alert('FristName Only alphabets are allowed');
-    //         return false;
-    //     }
-    // }
-    // </script>
+<script >
+
+
+$(document).ready(function(){
+   $("#email").keyup(function(){
+      var mail = $("#email").val().trim();
+      if(mail != ''){
+         $.ajax({
+            url: '../other/signUpAjax.php',
+            type: 'post',
+            data: {mail:mail},
+            success: function(response){
+                if(response > 0){
+                    alert("Email is taken");
+                }
+
+             }
+          });
+      }
+
+    });
+
+ });
+
+</script> 
 </html>

@@ -24,6 +24,7 @@ class user extends Model
             call_user_func_array(array($this,$f),$a);
         }
     }
+
 function __construct0() {
   }
  function __construct1($id)
@@ -34,6 +35,7 @@ function __construct0() {
 function getordersArray(){
     return $this->orders;
 }
+
    //test
 
     function getorders($userId){
@@ -116,6 +118,23 @@ function getordersArray(){
     }
     function signup($firstname,$lastname,$password,$email){
         $this->connect();
+
+        $query = "select * from user where email=:email";
+        $this->db->query($query);
+        $this->db->bind(':email',$email,PDO::PARAM_STR);
+       
+        $this->db->execute();
+        
+        if($this->db->numRows()>0) 
+        {
+
+            echo"<span> already exist </span>";
+
+        }
+
+
+
+else{
         $password=sha1($password);
         $sql = "insert into user(firstname,lastname,password,email,Usertype) values(:firstname,:lastname,:password,:email,:usertype)";
         $this->db->query($sql);
@@ -127,6 +146,7 @@ function getordersArray(){
         $this->db->execute();
         $id=$this->db->lastInsertedId();
         $this->getuser($id);
+}
     }
     
 
@@ -158,6 +178,27 @@ function getordersArray(){
         $this->db->bind(':id',$id,PDO::PARAM_INT);
         $this->db->execute();
     }
+    function checkEmail($email){
+        $this->connect();
+        $query = "select * from user where email=:email";
+        $this->db->query($query);
+        $this->db->bind(':email',$email,PDO::PARAM_STR);
+       
+        $this->db->execute();
+        echo $this->db->numRows();
+//         if($this->db->numRows()>0) 
+//         {
+
+// echo"already exist";
+
+//         }
+
+      
+        
+   
+
+        }
+
     
     function setID($id)
     {
