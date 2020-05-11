@@ -38,5 +38,12 @@ setcookie('cartNumber',$cartNumber,$expire,'/');
 header("location:khaled_Addproduct.php");
 
 
+  $ar=json_encode($val);
+  setcookie('cook',$ar);
+   
+  setcookie('cartNumbers',155);
+
+
+  echo true;
 
   ?>
