@@ -40,7 +40,7 @@ Pat
           
         </span>
       </div>
-    
+
 
     <div class="grid__item  medium-up--two-fifths  small--one-half text-right">
       <a href="" class="site-header__cart">
@@ -457,8 +457,7 @@ A sturdy and warm sweatshirt bound to keep you warm in the colder months. A pre-
 
             success: function(response){
                     if(response == 1){
-                      document.getElementById("CartCount").innerHTML = parseInt(document.getElementById("CartCount").innerHTML)+1;
-                      document.getElementById("AddToCartText").innerHTML="Added To Cart";
+                      document.getElementById("CartCount").innerHTML = parseInt(document.getElementById("CartCount").innerHTML)+1;                      document.getElementById("AddToCartText").innerHTML="Added To Cart";
                     }
              }
           });
