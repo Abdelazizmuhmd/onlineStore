@@ -260,8 +260,8 @@ Pat
 
     <div class="grid__item medium-up--one-half">
       <div class="product-single__meta small--text-center">
-        <h1 class="product-single__title" itemprop="name" id="product_name">Hmm</h1>
-        <input type="text" name="product_name1" id="product_name1" value="Hmm" hidden>
+        <h1 class="product-single__title" itemprop="name" id="product_name">HmssssssssssssssHmssssssssssssssmHmssssssssssssssmHmssssssssssssssmHmssssssssssssssmHmssssssssssssssmHmssssssssssssssmHmssssss</h1>
+        <input type="text" name="product_name1" id="product_name1" value="dassssssssssssssssss" hidden>
 
         
 
@@ -452,15 +452,12 @@ A sturdy and warm sweatshirt bound to keep you warm in the colder months. A pre-
                    product_price1:product_price1,
                    color:color,
                    size:size,
-                   Quantity:Quantity
+                   Quantity:Quantity,
+                
             },
-
             success: function(response){
-                    if(response == 1){
-                      document.getElementById("CartCount").innerHTML = parseInt(document.getElementById("CartCount").innerHTML)+1;
-                      document.getElementById("AddToCartText").innerHTML="Added To Cart";
-                    }
-             }
+                alert(response);
+            }
           });
        }
 </script>
