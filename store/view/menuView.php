@@ -73,9 +73,11 @@ class menuView extends View{
         $productdetails = $product->getProductDetails();
         $hidden="";
         $display="";
+        $pid = $_REQUEST['productdetailid'];
         foreach($productdetails as $i=> $productdetail){
                    //here is islam
-         if($productdetail->getid()!=$_REQUEST['productdetailid']){$hidden="hidden";$display='display:none';}
+         if($productdetail->getid()!=$pid/*$i != 0*/){ $hidden="hidden";$display='display:none';}
+         else $display='display:block';
          $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js images" value= '.$productdetail->getColor().'  style='.$display.'>';
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 100%; position: relative; overflow: '.$hidden.';">';
          $str.='<div style =""class="slideshow-container">';
@@ -105,11 +107,16 @@ class menuView extends View{
              
                  <h1 id ="product_name1" class="product-single__title" itemprop="name">'.$product->getName().'</h1>';
                  $display ='';
+                 $pid = $_REQUEST['productdetailid'];
                  foreach($productdetails as $i=> $productdetail){
                      //here is islam
-                  if($productdetail->getid()!=$_REQUEST['productdetailid']){
+                     //echo $productdetail->getid();
+                     
+
+                  if($productdetail->getid()!=$pid /*$i!=0*/){
                       $hidden="hidden";$display='display:none';
                            }
+                  else $display='display:block';
                   
                 $str.= '<div id = '.$productdetail->getColor().' style='.$display.'>
 

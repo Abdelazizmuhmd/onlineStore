@@ -7,6 +7,8 @@ $controller= new menuController($model);
 if (isset($_GET['action']) && !empty($_GET['action'])) {
   $controller->{$_GET['action']}();
 }
+//$_REQUEST['productdetailid'] = $_GET['productdetailid'];
+//echo $_REQUEST['productdetailid'];
 $controller->getAllCategoriesDetails();
 $view= new menuView($model,$controller);
 
@@ -42,6 +44,12 @@ $view= new menuView($model,$controller);
 <center>
  <iframe  src="../public/header.php" height="110" width="100%" style="border:none;"></iframe>
 </center>
+        <a href="" class="announcement-bar announcement-bar--link">
+            <p class="announcement-bar__message site-wrapper">WELCOME TO PAT</p>
+        </a>
+        <center>
+            <iframe src="../public/header.php" height="70" width="1200" style="border:none;"></iframe>
+        </center>
 
 
     </div>
@@ -51,12 +59,12 @@ $view= new menuView($model,$controller);
     <div class="site-wrapper">
 
         <div class="grid">
-        
-            
-            
-            
-              <img  src="../images/logo.png" style="margin-bottom:30px; margin-left:60px; width:120px;height:120px;" >
-            
+
+
+
+
+            <img src="../images/logo.png" style="margin-bottom:30px; margin-left:60px; width:120px;height:120px;">
+
             <?php
         include("menu.php");
 ?>
@@ -186,16 +194,16 @@ $view->readOneProduct();
                     <!-- /snippets/social-sharing.liquid -->
 
 
-        
 
-    </div>
-    </main>
-    </div>
-    <hr>
+
+                </div>
+            </main>
+        </div>
+        <hr>
     </div>
     <script src="../js/slider.js" type="text/javascript"></script>
     <script>
-   
+
     </script>
 </body>
 
