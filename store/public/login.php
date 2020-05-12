@@ -20,8 +20,8 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
 $controller2->{$_GET['action']}();
 if($model2->getID()!=""){
     header("location:../public/products.php");
-}else{
-    alert("Wrong user");
+}{
+    echo"wrong user";
 }
      
 }

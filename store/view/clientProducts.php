@@ -19,11 +19,12 @@ $str.="<div class='jumbotron'>";
                           $str.= "<ul class='container details'>";
                 $str.=  "<li><p><span class='glyphicon glyphicon-earphone one' style='width:50px;'></span>Phone : ".$this->model->getphone()."</p></li>";
                              $str.="<li><p><span class='glyphicon glyphicon-shopping-cart' style='width:50px;'></span> Number of orders : ".
-                             count($orderArray)."</p></li>";
+                             (count($orderArray)-1)."</p></li>";
                              //$str.="<li><p><span class='glyphicon glyphicon-sort' style='width:50px;'></span>53</p></li>";
                              $str.="<li><p><span class='glyphicon glyphicon-envelope one' style='width:50px;'></span>Email : ".$this->model->getemail()."</p></li>";
 
-                             $str.="<li><p><span class='glyphicon glyphicon-map-marker one' style='width:50px;'></span> City : x ".$this->model->getcity()."</p></li>";
+                             $str.="<li><p><span class='glyphicon glyphicon-map-marker one' style='width:50px;'></span> City :  ".$this->model->getcity()."</p></li>";
+          $str.="<li><p><span class='glyphicon glyphicon-map-marker one' style='width:50px;'></span> address :  ".$this->model->getAddress()."</p></li>";
                            
                            $str.="</ul>";
                       $str.= "</div>";

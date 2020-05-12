@@ -2,13 +2,28 @@
 require_once("../model/user.php");
 require_once("../controller/checkoutController.php");
 require_once("../view/checkout.php");
-
+session_start();
 
 $model = new user();
+
 $controller = new checkOutController($model);
+
+if(isset($_SESSION['id'])){
+    $controller->getuser($_SESSION['id']);
+}
+
 $view=new viewCheckOut($model,$controller);
 if (isset($_GET['action']) && !empty($_GET['action'])) {
-  $controller->{$_GET['action']}();
+    
+    if(isset($_SESSION['id'])){
+        
+      $controller->makeorderclient();
+        
+    }else{
+        
+        $controller->makeorderguest();
+    }
+    header("location:../public/recepit.php");
 }
 ?>
 <!DOCTYPE html>
@@ -64,8 +79,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
       <div class="wrap">
         <div class="main">
           <header class="main__header" role="banner">
-              
-  <a class="logo logo--left" href=""><img alt="" class="logo__image logo__image--small" src="" /></a>
+
 
 <h1 class="visually-hidden">
   Information
@@ -103,8 +117,6 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
           </header>
           <main class="main__content" role="main">
             
-  
-
 
 <div class="step" data-step="contact_information" data-last-step="false">
   
@@ -128,7 +140,7 @@ $view->userdetails();
         <aside class="sidebar" role="complementary">
           <div class="sidebar__header">
               
-  <a class="logo logo--left" href=""><img alt="" class="logo__image logo__image--small" src="" /></a>
+
 
 <h1 class="visually-hidden">
   Information
@@ -151,6 +163,11 @@ $arr=json_decode($return, true);
 $sub_total=0;
 foreach($arr as $key1 => $values)
 {
+    
+    
+    
+    
+    
   //echo $key1.' : '.$values.'<br>';
 $total=$values['price']*$values['quantity'];
 $sub_total+=$values['price']*$values['quantity'];

@@ -1,6 +1,8 @@
 <?php
 require_once("../model/Model.php");
 require_once("../model/order.php");
+require_once("../model/report.php");
+
 ?>
 <?php
 class user extends Model
@@ -16,6 +18,7 @@ class user extends Model
     private $city;
     private $userType;
     private $orders;
+    private $report;
     function __construct()
     {   $this->orders[]=new order();
         $a = func_get_args();
@@ -39,6 +42,8 @@ function getordersArray(){
    //test
 
     function getorders($userId){
+        $this->getvalidation();
+         $this->validation->validateNumber($userId,1,100000);
     $this->connect();
     if($this->userType=="client" || $this->userType=="guest" ){
     $sql = "select id from `order` where userid=:userid and isdeleted = 0";
@@ -66,12 +71,17 @@ function getordersArray(){
      $this->orders[0]->getorderdetails($orderid);
     }
     //test
-    function makeorder($userid,$comment,$status,$productdetails){
-    $order=new order($userid,$comment,$status,$productdetails);
+    function makeorder($productdetails){
+    $order=new order($this->id,$productdetails);
     }
     
     
     function login($email,$password){
+          $this->getvalidation();
+          $this->validation->validateLength($password,1,300);
+         $this->validation->validateEmail($email,1,250);
+
+        
         $password=sha1($password);
         $this->connect();
         $sql = "select id from user where email=:email and password=:password";
@@ -91,35 +101,61 @@ function getordersArray(){
         }
     }
         
-    function updateAddress($id,$address,$apartmant,$city){
+    function updateAddress($firstname,$lastname,$address,$apartmant,$city,$phone){
+          $this->getvalidation();
+          $this->validation->validateString($firstname,1,100);
+          $this->validation->validateString($lastname,1,100);
+          $this->validation->validateMixedString($address,1,400);
+          $this->validation->validateMixedString($apartmant,1,300);
+          $this->validation->validateString($city,1,100);
+          $this->validation->validateNumber($phone,1,100);
+ 
                 $this->connect();
 
-        $sql = "update user set address=:address,apartmant=:apartmant,city=:city where id=:id";
+        $sql = "update user set firstname=:firstname,lastname=:lastname,phone=:phone,  address=:address,apartmant=:apartmant,city=:city where id=:id";
         $this->db->query($sql);
-        $this->db->bind(':id',$id,PDO::PARAM_INT);
+        $this->db->bind(':id',$this->id,PDO::PARAM_INT);
         $this->db->bind(':address',$address,PDO::PARAM_STR);
+        $this->db->bind(':firstname',$firstname,PDO::PARAM_STR);
+        $this->db->bind(':lastname',$lastname,PDO::PARAM_STR);
+        $this->db->bind(':phone',$phone,PDO::PARAM_STR);
         $this->db->bind(':apartmant',$apartmant,PDO::PARAM_STR);
         $this->db->bind(':city',$city,PDO::PARAM_STR);
         $this->db->execute();
     } 
         
-    function guestsignup($firstName,$lastName,$address,$apartment,$city,$email){
+    function guestsignup($firstName,$lastName,$email,$address,$apartment,$city,$phone){
+           $this->getvalidation();
+          $this->validation->validateString($firstname,1,100);
+          $this->validation->validateString($lastname,1,100);
+          $this->validation->validateEmail($email,1,400);
+          $this->validation->validateMixedString($address,1,400);
+          $this->validation->validateMixedString($apartmant,1,300);
+          $this->validation->validateString($city,1,100);
+          $this->validation->validateNumber($phone,1,100);
+        
         $this->connect();
-        $sql = "insert into user(firstname,lastname,address,apartmant,city,email,Usertype) values(:firstname,:lastname,:apartment,:city,:address,:email,:usertype)";
+        $sql = "insert into user(firstname,lastname,address,apartmant,city,email,usertype,phone) values(:firstname,:lastname,:address,:apartmant,:city,:email,:usertype,:phone)";
         $this->db->query($sql);
         $this->db->bind(':firstname',$firstName,PDO::PARAM_STR);
         $this->db->bind(':lastname',$lastName,PDO::PARAM_STR);
         $this->db->bind(':address',$address,PDO::PARAM_STR);
-        $this->db->bind(':email',$email,PDO::PARAM_STR);
-        $this->db->bind(':apartment',$apartment,PDO::PARAM_STR);
+        $this->db->bind(':apartmant',$apartment,PDO::PARAM_STR);
         $this->db->bind(':city',$city,PDO::PARAM_STR);
         $this->db->bind(':email',$email,PDO::PARAM_STR);
+        $this->db->bind(':phone',$phone,PDO::PARAM_STR);
         $this->db->bind(':usertype',"guest",PDO::PARAM_STR);
         $this->db->execute();
         $id=$this->db->lastInsertedId();
         $this->getuser($id);
     }
     function signup($firstname,$lastname,$password,$email){
+          $this->getvalidation();
+          $this->validation->validateString($firstname,1,100);
+          $this->validation->validateString($lastname,1,100);
+          $this->validation->validateLength($password,1,300);
+          $this->validation->validateEmail($email,1,100);
+
         $this->connect();
 
         $query = "select * from user where email=:email";
@@ -146,6 +182,9 @@ function getordersArray(){
     
 
     function getuser($id){
+         $this->getvalidation();
+          $this->validation->validateNumber($id,1,100000);
+        
                 $this->connect();
         $sql = "select * from user where id=:id";
         $this->db->query($sql);
@@ -166,6 +205,8 @@ function getordersArray(){
         }
     }
     function deleteuser($id){
+         $this->getvalidation();
+          $this->validation->validateNumber($id,1,100000);
                 $this->connect();
 
         $sql = "update  user set isdeleted=1 where id=:id";
@@ -183,7 +224,12 @@ function getordersArray(){
         return $this->db->numRows();
 
         }
-
+    function generateReport(){
+        $this->report=new report();
+    }
+function getreport(){
+    return $this->report;
+}
     
     function setID($id)
     {

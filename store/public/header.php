@@ -60,6 +60,16 @@
             </span>
             
             <span class="vertical-divider"></span>
+            <button onclick="movetoHome()" style=" background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;">
+            <a href="" id="customer_login_link">
+                Home</a></button>
+                        <span class="vertical-divider"></span>
+
             <button onclick="movetoorders()" style=" background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
@@ -68,6 +78,16 @@
     outline:none;">
             <a href="" id="customer_register_link">myOrders</a>
           </button>
+
+            <button onclick="logout()" style=" background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;">
+            <a href="" id="customer_login_link">
+                logout</a></button>
+         
             
             
         </span>
@@ -78,8 +98,16 @@
      <div class="grid__item medium-up--two-fifths small--hide" style="margin-left: 140px;">
 
         <span class="customer-links small--hide">
-
             
+ <button onclick="movetoHome()" style=" background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;">
+            <a href="" id="customer_login_link">
+                Home</a></button>
+
         <button onclick="movetoorders()" style=" background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
@@ -88,8 +116,7 @@
     outline:none;">
             <a href="" id="customer_login_link">
                 Client Orders</a></button>
-            <span class="vertical-divider"></span>
-            <button onclick="movetoadminpanel()" style=" background-color: Transparent;
+            <button onclick="movetoadminproducts()" style=" background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
     cursor:pointer;
@@ -98,6 +125,25 @@
             <a href="" id="customer_register_link">AdminPanel</a>
           </button>
         </span>
+            <button onclick="movetoreport()" style=" background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;">
+            <a href="" id="customer_register_link">Generate Report</a>
+          </button>
+
+         
+          <button onclick="logout()" style=" background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;">
+            <a href="" id="customer_login_link">
+                logout</a></button>
+         
       </div>
       
       <?php }
@@ -135,11 +181,22 @@ $arr=json_decode($a, true);
        
 
         <script>
+            function movetoreport(){
+                window.top.location.href = "http://localhost/onlineStore/store/public/report.php"; 
+            }
+            function logout(){
+                window.top.location.href = "http://localhost/onlineStore/store/public/logout.php"; 
+                
+            }
+             function movetoHome(){
+                window.top.location.href = "http://localhost/onlineStore/store/public/products.php"; 
+
+            }
             function movetocart(){
                 window.top.location.href = "http://localhost/onlineStore/store/public/cart.php"; 
 
             }
-             function movetocart(){
+             function movetoadminproducts(){
                 window.top.location.href = "http://localhost/onlineStore/store/public/adminproducts.php"; 
 
             }

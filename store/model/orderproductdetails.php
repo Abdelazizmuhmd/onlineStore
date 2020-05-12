@@ -18,6 +18,8 @@ private $product;
      $this->readproduct($productdetailid);
  }
 function readproduct($productdetailid){
+      $this->getvalidation();
+     $this->validation->validateNumber($productdetailid,1,1000000);
     $this->connect();
     $sql="select  productid  from productdetails  where id =:productdetailid";
     $this->db->query($sql);

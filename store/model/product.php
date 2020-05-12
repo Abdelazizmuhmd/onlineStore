@@ -49,6 +49,11 @@ function __construct2($productid,$productdetailId){
 
 }        
 function readoneProductDetail($productid,$productdetailId){
+     $this->getvalidation();
+     $this->validation->validateNumber($productid,1,1000000);
+         $this->validation->validateNumber($productdetailId,1,1000000);
+
+    
      $this->connect();
 
      $sql="select * from product where id = :productid and isdeleted = 0" ;
@@ -95,6 +100,22 @@ function getProductDetails(){
 
     
  function insertProduct($name,$code,$cost,$profit,$description,$weight,$productdetail,$subcategoryid){
+          $this->getvalidation();
+         $this->validation->validateString($name,1,100);
+     
+         $this->validation->validateMixedString($code,1,10000);
+     
+         $this->validation->validateNumber($cost,1,10000);
+     
+         $this->validation->validateNumber($profit,1,10000);
+     
+         $this->validation->validateMixedString($description,1,1000);
+     
+         $this->validation->validateMixedString($weight,1,100);
+     
+         $this->validation->validateNumber($subcategoryid,1,10000);
+     
+
       $this->connect();
       $sql = "INSERT into product(name,code,cost,profit,description,weight) values(:name,:code,:cost,:profit,:description,:weight)";
       $this->db->query($sql);
@@ -107,9 +128,9 @@ function getProductDetails(){
       $this->db->execute();
       $productid=$this->db->lastInsertedId();
      
+     
           
-        $this->productDetails[0]->insert($productid,$productdetail['color'],$productdetail['s'],$productdetail['m'],$productdetail['l'],$productdetail['xl'],$productdetail['xxl'],$productdetail['xxxl'],$productdetail['img']);
-       
+        $this->productDetails[0]->insert($productid,$productdetail['color'],$productdetail['s'],$productdetail['m'],$productdetail['l'],$productdetail['xl'],$productdetail['xxl'],$productdetail['xxxl'],$productdetail['img']);  
       
      
       $sql = "INSERT into subcategorydetails(subcategoryid,productid) values(:subcategoryid,:productid)";
@@ -158,6 +179,8 @@ function getProductDetails(){
     
     
 function readProduct($productid){
+     $this->getvalidation();
+         $this->validation->validateNumber($productid,1,100000);
     $this->connect();
      $sql="select * from product where id = :id and isdeleted = 0" ;
      $this->db->query($sql);
@@ -193,6 +216,9 @@ function readProduct($productid){
     
     
 function deleteProduct($productID){
+         $this->getvalidation();
+
+     $this->validation->validateNumber($productid,1,100000);
      $this->connect();
       $sql = "update product set isdeleted=1 where id=:id";
           $this->db->query($sql);

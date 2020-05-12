@@ -63,6 +63,9 @@ class subCategory extends Model
     
     function readProducts($subcategoryId)
     {  
+                $this->getvalidation();
+
+         $this->validation->validateNumber($subcategoryId,1,100000);
         $this->connect();
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails join subcategory on subcategorydetails.subcategoryid = subcategory.id
         where subcategorydetails.subcategoryid = :id and subcategory.isdeleted = 0";
@@ -79,7 +82,15 @@ class subCategory extends Model
     }
     
    function insertSubCategory($categoryid,$name)
-    { $this->connect();
+       
+    { 
+       
+         $this->getvalidation();
+         $this->validation->validateNumber($categoryid,1,100000);
+         $this->validation->validateString($name,1,60);
+
+       
+       $this->connect();
       $sql = "INSERT into subcategory(name) values(:name)";
       $this->db->query($sql);
       $this->db->bind(':name',$name,PDO::PARAM_STR);
@@ -100,7 +111,9 @@ class subCategory extends Model
     
     function updateSubCategory($id,$name)
     {
-    
+      $this->getvalidation();
+         $this->validation->validateNumber($id,1,100000);
+         $this->validation->validateString($name,1,60);
       $this->connect();
       $sql = "UPDATE subcategory set name = :name where id = :id";
       $this->db->query($sql);
@@ -110,7 +123,9 @@ class subCategory extends Model
      
     }
     function deleteSubCategory($subcategoryid)
-    {
+    {     $this->getvalidation();
+         $this->validation->validateNumber($subcategoryid,1,100000);
+     
       $this->connect();
       $sql = "update subcategory set isdeleted=1 where id=:id";
       $this->db->query($sql);

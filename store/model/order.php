@@ -25,8 +25,8 @@ function __construct1($id) {
       $this->id = $id;
       $this->readOrder($id);
   }
-function __construct4($userid,$comment,$status,$productsdetails) {
-    $this->makeorder($userid,$comment,$status,$productsdetails);
+function __construct2($userid,$productsdetails) {
+    $this->makeorder($userid,$productsdetails);
   }
 
 
@@ -87,6 +87,9 @@ function __construct4($userid,$comment,$status,$productsdetails) {
    
 
 function getorderdetails($orderid){
+     $this->getvalidation();
+     $this->validation->validateNumber($orderid,1,1000000);
+    
     $this->connect();
     $sql="select id,productdetailid,size,quantity from orderdetails  where orderid =:orderid";
     $this->db->query($sql);
@@ -107,18 +110,20 @@ function getorderdetails($orderid){
 }
 
 
-function makeOrder ($userid,$comment,$status,$productsdetails){
+function makeOrder ($userid,$productsdetails){
+     $this->getvalidation();
+     $this->validation->validateNumber($userid,1,1000000);
+    
         $this->connect();
         $sqlOrder = "INSERT INTO `order` (userid,comment,status) VALUES (:userid,:comment,:status)";
         $this->db->query($sqlOrder);
         $this->db->bind(':userid',$userid,PDO::PARAM_INT);
-        $this->db->bind(':comment',$comment,PDO::PARAM_STR);
-        $this->db->bind(':status',$status,PDO::PARAM_STR);
+        $this->db->bind(':comment',"no Comment",PDO::PARAM_STR);
+        $this->db->bind(':status',"pedding",PDO::PARAM_STR);
         $this->db->execute();
         $orderid=$this->db->lastInsertedId();
     
         $length = count($productsdetails);
-        echo $length;
         for ($i = 0; $i < $length; $i++) {
             // assiarray
          $this->connect();
@@ -129,6 +134,11 @@ function makeOrder ($userid,$comment,$status,$productsdetails){
             
          $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productdetailid,size,quantity) VALUES (:orderid ,:productdetailid,:size,:quantity)";
             
+          $this->validation->validateNumber($orderid,1,1000000);
+          $this->validation->validateNumber($productdetailid,1,1000000);
+          $this->validation->validateString($productdetailsize,1,40);
+          $this->validation->validateNumber($productdetailquantity,1,20000);
+
            $this->db->query($sqlOrderDetails);
            $this->db->bind(':orderid',$orderid,PDO::PARAM_INT);
            $this->db->bind(':productdetailid',$productdetailid,PDO::PARAM_INT);
@@ -139,6 +149,9 @@ function makeOrder ($userid,$comment,$status,$productsdetails){
       }}
 
       function readOrder($id){
+     $this->getvalidation();
+     $this->validation->validateNumber($id,1,1000000);
+          
           $this->connect();
           $sql = "select userid,id,comment,status,createdtime from `order` where id = :id and isdeleted = 0    ";
           $this->db->query($sql);
@@ -155,6 +168,8 @@ function makeOrder ($userid,$comment,$status,$productsdetails){
       }
     
     function delete ($orderid){
+         $this->getvalidation();
+     $this->validation->validateNumber($orderid,1,1000000);
         $this->connect();
         $sql = "update `order` set isdeleted=1 where id=:id";
         $this->db->query($sql);
@@ -162,6 +177,11 @@ function makeOrder ($userid,$comment,$status,$productsdetails){
         $this->db->execute();
      }
      function updateStat($orderid,$status){
+           $this->getvalidation();
+     $this->validation->validateNumber($orderid,1,1000000);
+     $this->validation->validateString($status,1,100);
+         
+         
       $this->connect();
       $sql = "update `order` set status=:status where id=:id";
       $this->db->query($sql);

@@ -13,19 +13,19 @@ require_once("../controller/userOrder.php");
     <title>
         Orders
     </title>
-    <link href="../css/orders.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../css/orderss.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-    <script src="js/j.js" type="text/javascript"></script>
-    <script src="js/s.js" type="text/javascript"></script>
-    <script src="js/home.js" type="text/javascript"></script>
-    <script src="js/j2.js" type="text/javascript"></script>
+  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+    <center>
+ <iframe  src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
+</center>
     <?php
      $model = new user();
      $controller = new userOrderController($model);
@@ -47,7 +47,8 @@ require_once("../controller/userOrder.php");
         <div class="card" id="filterz">
             <div id="orders" class="card-header">
                 <b> Orders </b>
-            </div>
+            </div>                <!--
+
             <div class="card-body" id="bod">
                 <!--
                 <label id="slbl">Status:</label><select name="CardiologyPassword"
@@ -62,8 +63,8 @@ require_once("../controller/userOrder.php");
                     <option></option>
                     <option></option>
                 </select>
-                -->
-            </div>
+                
+        </div>-->
         </div>
     </div>
     <br />

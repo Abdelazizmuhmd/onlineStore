@@ -34,6 +34,8 @@ class menuView extends View{
        foreach($products as $i=>$product){
        if ($i>0){
        $productDetails = $product->getProductDetails();
+                     if(is_iterable($productDetails)){
+
        foreach($productDetails as $k=>$productdetail){
        $imageArray=$productdetail->getImages();
      $str.='<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">';
@@ -59,7 +61,7 @@ class menuView extends View{
      $str.=' </div>';
      $str.=' </div>';
        
-       }
+       }}
        
     }
     }

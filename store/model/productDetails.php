@@ -147,6 +147,19 @@ function getMedium(){
 
 
   function insert($productid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$Imagearray){
+      
+                $this->getvalidation();
+
+         $this->validation->validateString($color,1,100);
+         $this->validation->validateNumber($productid,1,100000);
+         $this->validation->validateNumber($s,1,30000);
+         $this->validation->validateNumber($m,1,30000);
+         $this->validation->validateNumber($l,1,30000);
+         $this->validation->validateNumber($xl,1,30000);
+         $this->validation->validateNumber($xxl,1,30000);
+         $this->validation->validateNumber($xxxl,1,30000);
+
+      
   $this->connect();
   $Imagearray=serialize($Imagearray);
       $soldini=0;
@@ -200,6 +213,9 @@ function getMedium(){
 
     
     function delete($productDetailid){
+         $this->getvalidation();
+
+         $this->validation->validateNumber($productDetailid,1,100000);
       $this->connect();
       $sql = "update productdetails set isdeleted=1 where id=:id";
       $this->db->query($sql);

@@ -62,7 +62,11 @@ class category extends Model
     }
 
     function readSubCategories($id)
-    { $this->connect();
+    { 
+         $this->getvalidation();
+         $this->validation->validateNumber($id,1,1000000);
+        
+      $this->connect();
       $sql = "SELECT subcategory.id,name FROM categorydetails inner join subcategory on categorydetails.subcategoryid = subcategory.id where categoryid = :id and subcategory.isdeleted = 0";
         
       $this->db->query($sql);
@@ -85,8 +89,11 @@ class category extends Model
     
 
      function insertCategory($name)
-    { 
-      $this->connect();
+    {       $this->getvalidation();
+            $this->validation->validateString($name,1,30);
+
+         $this->connect();
+
       $sql = "INSERT into category(name) values(:name)";
       $this->db->query($sql);
       $this->db->bind(':name',$name,PDO::PARAM_STR);
@@ -98,7 +105,13 @@ class category extends Model
        echo "THERE WAS AN ERROR";
     }
     function  updateCategory($id,$name)
-    { $this->connect();
+    {   
+         $this->getvalidation();
+         $this->validation->validateNumber($id,1,1000000);
+         $this->validation->validateString($name,1,30);
+
+        
+      $this->connect();
       $sql = "UPDATE category set name = :name where id = :id";
       $this->db->query($sql);
       $this->db->bind(':name',$name,PDO::PARAM_STR);
@@ -108,8 +121,8 @@ class category extends Model
     }
     
 function deleteCategory($categoryId)   
-{     
-    
+{        $this->getvalidation();
+         $this->validation->validateNumber($categoryId,1,1000000);
       $this->connect();
       $sql = "update category set isdeleted=1 where id=:id";
           $this->db->query($sql);

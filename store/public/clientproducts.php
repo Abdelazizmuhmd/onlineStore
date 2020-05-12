@@ -20,7 +20,9 @@ require_once("../controller/userOrder.php");
     <link rel="stylesheet" type="text/css" href="../css/clientproducts.css">
 </head>
 
-<body>
+<body>    <center>
+ <iframe  src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
+</center>
     <?php
     //echo $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."?userid=".$_REQUEST['userid']."&orderid=".$_REQUEST['orderid']."";
     $id='';
@@ -68,9 +70,7 @@ require_once("../controller/userOrder.php");
                 <th>
                     <center>Size</center>
                 </th>
-                <th>
-                    <center>Status</center>
-                </th>
+            
                 <th>
                     <center>Quantity</center>
                 </th>
@@ -90,7 +90,7 @@ require_once("../controller/userOrder.php");
 ?>
         </table>
 
-
+    </div>
 </body>
 
 </html>
