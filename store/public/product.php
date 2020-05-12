@@ -41,14 +41,10 @@ $view= new menuView($model,$controller);
 <body>
     <div>
     
-<center>
- <iframe  src="../public/header.php" height="110" width="100%" style="border:none;"></iframe>
-</center>
-        <a href="" class="announcement-bar announcement-bar--link">
-            <p class="announcement-bar__message site-wrapper">WELCOME TO PAT</p>
-        </a>
+
+     
         <center>
-            <iframe src="../public/header.php" height="70" width="1200" style="border:none;"></iframe>
+ <iframe  src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
         </center>
 
 

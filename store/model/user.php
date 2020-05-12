@@ -82,10 +82,13 @@ function getordersArray(){
         $row = $this->db->getdata();
         if ($this->db->numRows() > 0){
         $this->getuser($row[0]->id);
-        }else{
-            echo"wrong data";
+            session_start();
+            $_SESSION["usertype"]=$this->usertype;
+            $_SESSION['name']=$this->firstName;
+            $_SESSION['id']=$this->id;
+
+            
         }
-        
     }
         
     function updateAddress($id,$address,$apartmant,$city){
@@ -125,16 +128,8 @@ function getordersArray(){
        
         $this->db->execute();
         
-        if($this->db->numRows()>0) 
+        if($this->db->numRows()<=0) 
         {
-
-            echo"<span> already exist </span>";
-
-        }
-
-
-
-else{
         $password=sha1($password);
         $sql = "insert into user(firstname,lastname,password,email,Usertype) values(:firstname,:lastname,:password,:email,:usertype)";
         $this->db->query($sql);
@@ -185,17 +180,7 @@ else{
         $this->db->bind(':email',$email,PDO::PARAM_STR);
        
         $this->db->execute();
-        echo $this->db->numRows();
-//         if($this->db->numRows()>0) 
-//         {
-
-// echo"already exist";
-
-//         }
-
-      
-        
-   
+        return $this->db->numRows();
 
         }
 

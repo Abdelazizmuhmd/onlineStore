@@ -1,16 +1,3 @@
-<?php
-require_once("../model/user.php");
-require_once("../controller/checkoutController.php");
-require_once("../view/checkout.php");
-
-
-$model = new user();
-$controller = new checkOutController($model);
-$view=new viewCheckOut($model,$controller);
-if (isset($_GET['action']) && !empty($_GET['action'])) {
-  $controller->{$_GET['action']}();
-}
-?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="no-js desktop page--no-banner page--logo-main page--show page--show card-fields">
   <head>
@@ -110,16 +97,178 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
   
 
 
-  <?php
-$view->userdetails();
-  ?>
+  <div class="step__sections">
+      
+<div class="section section--contact-information">
+  <div class="section__header">
+    <div class="layout-flex layout-flex--tight-vertical layout-flex--loose-horizontal layout-flex--wrap">
+      <h2 class="section__title layout-flex__item layout-flex__item--stretch" id="main-header" tabindex="-1">
+        Contact information
+      </h2>
+
+        <p class="layout-flex__item">
+          <span aria-hidden="true">Already have an account?</span>
+          <a data-trekkie-id="have_an_account_login_link" href="">
+            <span class="visually-hidden">Already have an account?</span>
+            Log in
+</a>        </p>
+    </div>
+  </div>
+  <div class="section__content" data-section="customer-information" >
+        <div class="fieldset">
+          <div  class="field field--required">
+            <label class="field__label" for="checkout_email">Email</label>
+            <div class="field__input-wrapper">
+              <input placeholder="Email" autocapitalize="off" spellcheck="false" autocomplete="shipping email" data-trekkie-id="email_field" data-autofocus="true" data-backup="customer_email" aria-describedby="checkout-context-step-one error-for-email" aria-required="true" class="field__input" size="30" type="email" name="checkout[email]" id="checkout_email" />
+            </div>
+</div>        </div> 
+
+        <div class="fieldset-description" data-buyer-accepts-marketing>
+          <div class="section__content">
+            <div class="checkbox-wrapper">
+  <div class="checkbox__input">
+    <input name="checkout[buyer_accepts_marketing]" type="hidden" value="0" /><input class="input-checkbox" data-backup="buyer_accepts_marketing" data-trekkie-id="buyer_accepts_marketing_field" type="checkbox" value="1" name="checkout[buyer_accepts_marketing]" id="checkout_buyer_accepts_marketing" />
+  </div>
+  <label class="checkbox__label" for="checkout_buyer_accepts_marketing">
+    Keep me up to date on news and exclusive offers
+</label></div>
+
+          </div>
+        </div>
+  </div> 
+</div> 
+
+
+  <div class="section section--shipping-address" data-shipping-address>
+    <div class="section__header">
+      <h2 class="section__title">
+          Shipping address
+      </h2>
+    </div>
+
+    <div class="section__content">
+        
+        <div class="fieldset">
+          <div class="address-fields" data-address-fields>
+ 
+
+              
+              
+  <div class="field--half field field--required" >
+    <label class="field__label" >First name</label>
+    <div class="field__input-wrapper">
+      <input placeholder="First name"   class="field__input"  type="text"  />
+    </div>
+</div>
+              
+              
+              
+  <div class="field--half field field--required" >
+    <label class="field__label" >Last name</label>
+    <div class="field__input-wrapper">
+      <input placeholder="Last name"   class="field__input" type="text" />
+    </div>
+      
+      
+      
+</div>
+    <div  d class="field field--optional">
+      <label class="field__label" >Company (optional)</label>
+      <div class="field__input-wrapper">
+        <input placeholder="Company (optional)"  class="field__input"  type="text"  />
+      </div>
+</div>
+              
+              
+              
+  <div  class="field field--required">
+    <label class="field__label">Address</label>
+    <div class="field__input-wrapper">
+        <input placeholder="Address" class="field__input"  type="text"  />
+    </div>
+  </div>
+              
+    <div  class="field field--optional">
+      <label class="field__label" >Apartment, suite, etc. (optional)</label>
+      <div class="field__input-wrapper">
+        <input placeholder="Apartment, suite, etc. (optional)"  class="field__input"  type="text"  />
+      </div>  
+</div>
+        <div class="field--third field field--required" >
+    <label class="field__label" >Country/Region</label>
+    <div class="field__input-wrapper field__input-wrapper--select">
+<select  class="field__input field__input--select" >
+<option  value="egypt">EGYPT</option>
+        </select>
+        
+      
+    </div>
+</div>
+              
+  <div  class="field field--required">
+    <label class="field__label" >City</label>
+    <div class="field__input-wrapper">
+      <input placeholder="City" class="field__input"  type="text"  />
+    </div>
+</div>
+              
+              
+
+ 
+  
+              
+              
+    <div  class="field field--optional">
+      <label class="field__label" >Phone (optional)</label>
+      <div class="field__input-wrapper field__input-wrapper--icon-right">
+        <input placeholder="Phone (optional)"  class="field__input field__input--numeric"  type="tel" />
+        <div class="field__icon">
+        
+      </div>
+</div>
+    
+    
+</div>
+
+
+           
+            </div>
+        </div> 
+    </div> 
+  </div>
+
+  </div>
+
+  <div class="step__footer" data-step-footer>
+
+    <button name="button" type="submit" id="continue_button" class="step__footer__continue-btn btn" >
+        <span class="btn__content" >Continue to shipping</span>
+       </button>
+  
+</div>
+
 </div>
 
 
           </main>
             
             
-    
+    <footer class="main__footer" >
+                <ul class="policy-list">
+      <li class="policy-list__item">
+        <a aria-haspopup="dialog" href="">Refund policy</a>
+      </li>
+      <li class="policy-list__item">
+        <a aria-haspopup="dialog" href="">Shipping policy</a>
+      </li>
+      <li class="policy-list__item">
+        <a aria-haspopup="dialog" href="">Privacy policy</a>
+      </li>
+      <li class="policy-list__item">
+        <a aria-haspopup="dialog" href="">Terms of service</a>
+      </li>
+  </ul>
+ </footer>
             
 
         </div>
@@ -143,8 +292,7 @@ $view->userdetails();
   <div class="order-summary__sections">
     <div class="order-summary__section order-summary__section--product-list">
   <div class="order-summary__section__content">
-
-      <?php
+          <?php
 if(isset($_COOKIE['cook'])){
 $return=$_COOKIE['cook'];
 $arr=json_decode($return, true);
@@ -154,52 +302,45 @@ foreach($arr as $key1 => $values)
   //echo $key1.' : '.$values.'<br>';
 $total=$values['price']*$values['quantity'];
 $sub_total+=$values['price']*$values['quantity'];
-
-          echo"
-    <table class='product-table'>
-      <caption class='visually-hidden'>Shopping cart</caption>
-      <thead class='product-table__header'>
+      
+echo'
+    <table class="product-table">
+      <caption class="visually-hidden">Shopping cart</caption>
+      <thead class="product-table__header">
         <tr>
-          <th scope='col'><span class='visually-hidden'>Product image</span></th>
-          <th scope='col'><span class='visually-hidden'>Description</span></th>
-          <th scope='col'><span class='visually-hidden'>Quantity</span></th>
-          <th scope='col'><span class='visually-hidden'>Price</span></th>
+          <th scope="col"><span class="visually-hidden">Product image</span></th>
+          <th scope="col"><span class="visually-hidden">Description</span></th>
+          <th scope="col"><span class="visually-hidden">Quantity</span></th>
+          <th scope="col"><span class="visually-hidden">Price</span></th>
         </tr>
       </thead>
-
-<tbody data-order-summary-section='line-items'>
-      
-          <tr class='product' data-product-id='4396731957282' data-variant-id='31415765139490' data-product-type='Sweater' data-customer-ready-visible>
-          <td class='product__image'>
-            <div class='product-thumbnail'>
-  <div class='product-thumbnail__wrapper'>
-    <img alt=''class='product-thumbnail__image' src='$values[image_url]' />
+      <tbody data-order-summary-section="line-items">
+        <tr class="product" data-product-id="" data-variant-id="" data-product-type="Sweater" data-customer-ready-visible>
+          <td class="product__image">
+            <div class="product-thumbnail ">
+  <div class="product-thumbnail__wrapper">
+    <img   class="product-thumbnail__image" src='.$values[image_url].' />
   </div>
-    <span class='product-thumbnail__quantity' aria-hidden='true'>$values[quantity]</span>
+    <span class="product-thumbnail__quantity" aria-hidden="true">'.$values[quantity].'/ '.$values[size].'</span>
 </div>
 
           </td>
-          <th class='product__description' scope='row'>
-            <span class='product__description__name order-summary__emphasis'>$values[name] </span>
-            <span class='product__description__variant order-summary__small-text'>$values[color] / $values[size]</span>
-
-
+          <th class="product__description" scope="row">
+            <span class="product__description__name order-summary__emphasis">I&#39;m fine (phr.)</span>
+            <span class="product__description__variant order-summary__small-text">'.$values[color].' /'.$values[size].'</span>
           </th>
-          <td class='product__quantity visually-hidden'>
+          <td class="product__quantity visually-hidden">
             1
           </td>
-          <td class='product__price'>
-            <span class='order-summary__emphasis'>$total L.E</span>
+          <td class="product__price">
+            <span class="order-summary__emphasis">'.$total.'L.E</span>
           </td>
         </tr>
-
       </tbody>
-    </table>";
-}
-}
-     ?>
-
-
+    </table>
+';
+}}
+?>
     <div class="order-summary__scroll-indicator" aria-hidden="true" tabindex="-1">
       Scroll for more items
       <svg aria-hidden="true" focusable="false" class="icon-svg icon-svg--size-12"> <use xlink:href="#down-arrow" /> </svg>
@@ -254,16 +395,7 @@ $sub_total+=$values['price']*$values['quantity'];
   <th class="total-line__name" scope="row">Subtotal</th>
   <td class="total-line__price">
     <span class="order-summary__emphasis" data-checkout-subtotal-price-target="3000">
-    
-    <?php 
-
-if(isset($_COOKIE['cook'])){  
- echo $sub_total; echo " L.E";
-
-}else{
-  echo "0.0 L.E";
-}
-  ?>
+      €30,00
     </span>
   </td>
 </tr>
@@ -300,16 +432,7 @@ if(isset($_COOKIE['cook'])){
       </th>
       <td class="total-line__price payment-due">
         <span class="payment-due__price" data-checkout-payment-due-target="3000">
-       <?php   
-
-if(isset($_COOKIE['cook'])){  
-  
- echo $sub_total; echo " L.E";
-
-}else{
-  echo "0.0 L.E";
-}
-  ?>
+          €30,00
         </span>
       </td>
     </tr>

@@ -5,7 +5,6 @@ require_once("../view/View.php");
 class viewCheckOut extends View{
 
 function userdetails(){
-
    echo" 
    <div class='step__sections'>
       
@@ -27,9 +26,8 @@ function userdetails(){
      <div class='section__content' data-section='customer-information' >
            <div class='fieldset'>
              <div  class='field field--required'>
-               <label class='field__label' for='checkout_email'>Email</label>
                <div class='field__input-wrapper'>
-                 <input value=".$this->model->getEmail()." autocapitalize='off' spellcheck='false' autocomplete='shipping email' data-trekkie-id='email_field' data-autofocus='true' data-backup='customer_email' aria-describedby='checkout-context-step-one error-for-email' aria-required='true' class='field__input' size='30' type='email' name='checkout[email]' id='checkout_email' />
+                 <input value='".$this->model->getEmail()."' placeholder='Email' aria-required='true' class='field__input' size='30' type='email' name='checkoutemail' id='checkout_email' />
                </div>
    </div>        </div> 
    
@@ -64,41 +62,33 @@ function userdetails(){
    
                  
                  
-     <div class='field--half field field--required' >
-       <label class='field__label' >First name</label>
+     <div class='field field field--required' >
        <div class='field__input-wrapper'>
-         <input value=".$this->model->getfirstName()."   class='field__input'  type='text'  />
+         <input value='".$this->model->getfirstName()."'  placeholder='First Name'  class='field__input'  type='text'  />
        </div>
    </div>
                  
                  
                  
-     <div class='field--half field field--required' >
-       <label class='field__label' >Last name</label>
+     <div class='field field field--required' >
        <div class='field__input-wrapper'>
-         <input value=".$this->model->getlastName()."   class='field__input' type='text' />
+         <input value='".$this->model->getlastName()."' placeholder='Last name'   class='field__input' type='text' />
        </div>
          
-         
- 
-                 
-                 
+             
                  
      <div  class='field field--required'>
-       <label class='field__label'>Address</label>
        <div class='field__input-wrapper'>
-           <input value=".$this->model->getAddress()." class='field__input'  type='text'  />
+           <input value='".$this->model->getAddress()."' placeholder='Address'  class='field__input'  type='text'  />
        </div>
      </div>
                  
        <div  class='field field--optional'>
-         <label class='field__label' >Apartment, suite, etc. (optional)</label>
          <div class='field__input-wrapper'>
-           <input value=".$this->model->getApartmant()."  class='field__input'  type='text'  />
+           <input value='".$this->model->getApartmant()."' placeholder='Apartmant'  class='field__input'  type='text'  />
          </div>  
    </div>
            <div class='field--third field field--required' >
-       <label class='field__label' >Country/Region</label>
        <div class='field__input-wrapper field__input-wrapper--select'>
    <select  class='field__input field__input--select' >
    <option  value='egypt'>EGYPT</option>
@@ -109,9 +99,8 @@ function userdetails(){
    </div>
                  
      <div  class='field field--required'>
-       <label class='field__label' >City</label>
        <div class='field__input-wrapper'>
-         <input value=".$this->model->getCity()." class='field__input'  type='text'  />
+         <input value='".$this->model->getCity()."' placeholder='City'  class='field__input'  type='text'  />
        </div>
    </div>
                  
@@ -122,9 +111,8 @@ function userdetails(){
                  
                  
        <div  class='field field--optional'>
-         <label class='field__label' >Phone (optional)</label>
          <div class='field__input-wrapper field__input-wrapper--icon-right'>
-           <input value=".$this->model->getPhone()."  class='field__input field__input--numeric'  type='tel' />
+           <input value='".$this->model->getPhone()."' placeholder='phone'   class='field__input field__input--numeric'  type='tel' />
            <div class='field__icon'>
            
          </div>
@@ -141,41 +129,17 @@ function userdetails(){
      </div>
    
      </div>
+       <div class='step__footer' data-step-footer>
+
+      <button name='button' type='submit' id='continue_button' class='step__footer__continue-btn btn' >
+        <span class='btn__content' >Continue to shipping</span>
+       </button>
+       </div>
+
      ";
  }
  
-  function productOutput(){
-      
-      $orders=$this->model->getordersArray();
-      echo $this->model->getfirstName();
-     echo $orders[0]->getStatus();
-      
-  /*  echo"
-   <tr class='product' data-product-id='4396731957282' data-variant-id='31415765139490' data-product-type='Sweater' data-customer-ready-visible>
-            <td class='product__image'>
-              <div class='product-thumbnail' >
-    <div class='product-thumbnail__wrapper'>
-      <img alt='I'm fine (phr.) - White / S' class='product-thumbnail__image' src='' />
-    </div>
-      <span class='product-thumbnail__quantity' aria-hidden='true'>1</span>
-  </div>
   
-            </td>
-            <th class='product__description' scope='row'>
-              <span class='product__description__name order-summary__emphasis'>I&#39;m fine (phr.)</span>
-              <span class='product__description__variant order-summary__small-text'>White / S</span>
-  
-  
-            </th>
-            <td class='product__quantity visually-hidden'>
-              1
-            </td>
-            <td class='product__price'>
-              <span class='order-summary__emphasis'>�30,00</span>
-            </td>
-          </tr>
-          ";*/
-  }
 
 }
 

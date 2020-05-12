@@ -14,13 +14,15 @@
     <p class="announcement-bar__message site-wrapper">WELCOME TO  PAT</p>
     </a>
     <div class="site-wrapper">
+        
 
   <div class="top-bar grid">
 
 <?php
-          if(!isset($_SESSION['usertype'])){
-?>
-
+            session_start();
+      
+      if(!isset($_SESSION['usertype'])||$_SESSION['usertype']=="guest"){
+?>   
       <div class="grid__item medium-up--two-fifths small--hide" style="margin-left: 140px;">
 
         <span class="customer-links small--hide">
@@ -99,7 +101,7 @@
       </div>
       
       <?php }
-                                                     ?>
+                       ?>
       
       
       

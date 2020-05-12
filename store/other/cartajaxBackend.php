@@ -31,7 +31,7 @@ setcookie('cook',$j,$expire,'/');
 
 
 
-header("location:../public/products.php");
+header("location:../public/cart.php");
 
 
   ?>

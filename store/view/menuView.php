@@ -173,7 +173,7 @@ class menuView extends View{
 
 
                          <div class="product-single__cart-submit-wrapper  product-form--full">
-                             <input type="submit" value="Add to Cart" name="add" id="AddToCart"
+                       <input type="submit" value="Add to Cart" name="add" id="AddToCart"
                                  class="btn product-single__cart-submit btn--full  btn--secondary">
                              
 
