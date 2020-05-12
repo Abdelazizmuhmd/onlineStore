@@ -158,10 +158,26 @@ if (!phone.match('^[0-9]+$'))
 
 //--------------------------------------------------------------
 
+if (code == "") {
+        
 
+  }
 
+else if(code.length<5)
+{
+  alert("Code too short");
+  document.getElementById("checkout_reduction_code").style.borderColor = "red";
 
+return (false)   
+}
+else if (!code.match(/^[A-Za-z0-9]+$/)) 
+{
+  alert('Code Only alphabets and numbers are allowed');
+  document.getElementById("checkout_reduction_code").style.borderColor = "red";
+  return false;
+}
 
+//-----------------------------------------------
 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailformat))
 {
     return true;
