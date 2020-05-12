@@ -27,6 +27,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
   
 
 <script src="js/checkout.js"></script>
+<script src="../js/check_Out.js" type="text/javascript" ></script> 
 
     </head>
 <body>
@@ -220,7 +221,7 @@ $sub_total+=$values['price']*$values['quantity'];
       <label class="field__label" for="checkout_reduction_code">Discount code</label>
       <div class="field__input-btn-wrapper">
         <div class="field__input-wrapper">
-          <input placeholder="Discount code" class="field__input" id="checkout_reduction_code" data-discount-field="true" data-trekkie-id="reduction_code_field" autocomplete="off" aria-required="true" size="30" type="text" name="checkout[reduction_code]" />
+          <input placeholder="Discount code" class="field__input" id="checkout_reduction_code" data-discount-field="true" data-trekkie-id="reduction_code_field" autocomplete="off" aria-required="true" size="30" type="text" name="checkout[reduction_code]" maxlength='20'  />
         </div>
 
         <button name="button" type="submit" class="field__input-btn btn btn--disabled" data-trekkie-id="apply_discount_button" aria-busy="false">

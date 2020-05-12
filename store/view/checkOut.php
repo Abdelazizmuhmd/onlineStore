@@ -64,7 +64,7 @@ function userdetails(){
                  
      <div class='field field field--required' >
        <div class='field__input-wrapper'>
-         <input value='".$this->model->getfirstName()."'  placeholder='First Name'  class='field__input'  type='text'  />
+         <input value='".$this->model->getfirstName()."'  placeholder='First Name'  class='field__input'  type='text'id='firstName' maxlength='20' required  />
        </div>
    </div>
                  
@@ -72,20 +72,20 @@ function userdetails(){
                  
      <div class='field field field--required' >
        <div class='field__input-wrapper'>
-         <input value='".$this->model->getlastName()."' placeholder='Last name'   class='field__input' type='text' />
+         <input value='".$this->model->getlastName()."' placeholder='Last name'   class='field__input' type='text'id='lastName'maxlength='20' required />
        </div>
          
              
                  
      <div  class='field field--required'>
        <div class='field__input-wrapper'>
-           <input value='".$this->model->getAddress()."' placeholder='Address'  class='field__input'  type='text'  />
+           <input value='".$this->model->getAddress()."' placeholder='Address'  class='field__input'  type='text' id='adress' maxlength='20' required />
        </div>
      </div>
                  
        <div  class='field field--optional'>
          <div class='field__input-wrapper'>
-           <input value='".$this->model->getApartmant()."' placeholder='Apartmant'  class='field__input'  type='text'  />
+           <input value='".$this->model->getApartmant()."' placeholder='Apartmant'  class='field__input'  type='text' id='apartment'maxlength='20' required  />
          </div>  
    </div>
            <div class='field--third field field--required' >
@@ -100,7 +100,7 @@ function userdetails(){
                  
      <div  class='field field--required'>
        <div class='field__input-wrapper'>
-         <input value='".$this->model->getCity()."' placeholder='City'  class='field__input'  type='text'  />
+         <input value='".$this->model->getCity()."' placeholder='City'  class='field__input'  type='text' id='city' maxlength='20' required />
        </div>
    </div>
                  
@@ -112,7 +112,7 @@ function userdetails(){
                  
        <div  class='field field--optional'>
          <div class='field__input-wrapper field__input-wrapper--icon-right'>
-           <input value='".$this->model->getPhone()."' placeholder='phone'   class='field__input field__input--numeric'  type='tel' />
+           <input value='".$this->model->getPhone()."' placeholder='phone'   class='field__input field__input--numeric'  type='tel' id='phoneNumber' maxlength='11' required/>
            <div class='field__icon'>
            
          </div>
@@ -131,7 +131,7 @@ function userdetails(){
      </div>
        <div class='step__footer' data-step-footer>
 
-      <button name='button' type='submit' id='continue_button' class='step__footer__continue-btn btn' >
+      <button name='button' type='submit' id='continue_button' class='step__footer__continue-btn btn' onclick ='return validate()' >
         <span class='btn__content' >Continue to shipping</span>
        </button>
        </div>
@@ -144,6 +144,9 @@ function userdetails(){
 }
 
 ?>
+<head>
+<script src="../js/check_Out.js" type="text/javascript" ></script> 
+</head>
 
 
 
