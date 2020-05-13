@@ -41,7 +41,6 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 
   
 
-<script src="js/checkout.js"></script>
 <script src="../js/check_Out.js" type="text/javascript" ></script> 
 
     </head>

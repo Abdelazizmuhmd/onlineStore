@@ -1,6 +1,6 @@
 <?php
 require_once("config.php");
-
+require_once("../other/customError.php");
 class Database
 {
     private $servername;
@@ -36,7 +36,8 @@ class Database
     }
     catch(PDOException $e)
     {
-    echo "Connection failed: " . $e->getMessage();
+        throw new Exception('DATABASE IS DOWN!  ');
+   // echo "Connection failed: " . $e->getMessage();
     }
    }
     
@@ -77,4 +78,5 @@ class Database
     }
 
 }
+
 ?>

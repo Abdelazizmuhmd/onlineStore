@@ -2,6 +2,7 @@
 require_once("../model/menu.php");
 require_once("../controller/adminController.php");
 require_once("../View/adminproducts.php");
+include_once("../other/session.php");
 
 $model = new menu();
 $controller= new adminController($model);

@@ -126,11 +126,15 @@ function getordersArray(){
         
     function guestsignup($firstName,$lastName,$email,$address,$apartment,$city,$phone){
            $this->getvalidation();
-          $this->validation->validateString($firstname,1,100);
-          $this->validation->validateString($lastname,1,100);
+          $this->validation->validateString($firstName,1,100);
+          $this->validation->validateString($lastName,1,100);
+        
           $this->validation->validateEmail($email,1,400);
+        
           $this->validation->validateMixedString($address,1,400);
+        
           $this->validation->validateMixedString($apartmant,1,300);
+        
           $this->validation->validateString($city,1,100);
           $this->validation->validateNumber($phone,1,100);
         

@@ -8,7 +8,8 @@ var phone = document.getElementById("phoneNumber").value;
 var mailformat = document.getElementById('checkout_email').value;
 var adress = document.getElementById("adress").value;
 var apartment = document.getElementById("apartment").value;
-var code = document.getElementById("checkout_reduction_code").value;
+//  var code = document.getElementById("code").value;
+
 //---------------------------------------------------------------------
    //FristName
    if (first == "") {
@@ -71,14 +72,14 @@ if(adress== ""){
 }
 
 
-else if(adress.length<5)
+else if(adress.length<4)
 {
   alert("adress  is too short");
   document.getElementById("adress").style.borderColor = "red";
 
 return (false)   
 }
-else if (!adress .match(/^[A-Za-z0-9]+$/)) 
+else if (!adress .match(/^[A-Za-z0-9 ]+$/)) 
 {
   alert('adress Only alphabets and numbers are allowed');
   document.getElementById("adress").style.borderColor = "red";
@@ -94,7 +95,7 @@ if(apartment  == ""){
 }
 
 
-else if(apartment.length<5)
+else if(apartment.length<0)
 {
   alert("apartmentis too short");
   document.getElementById("apartment").style.borderColor = "red";
@@ -157,7 +158,7 @@ if (!phone.match('^[0-9]+$'))
     }
 
 //--------------------------------------------------------------
-
+/*
 if (code == "") {
         
 
@@ -176,7 +177,7 @@ else if (!code.match(/^[A-Za-z0-9]+$/))
   document.getElementById("checkout_reduction_code").style.borderColor = "red";
   return false;
 }
-
+*/
 //-----------------------------------------------
 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailformat))
 {

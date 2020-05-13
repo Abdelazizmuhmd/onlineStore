@@ -2,6 +2,8 @@
 require_once("../view/orders.php");
 require_once("../model/user.php");
 require_once("../controller/userOrder.php");
+include_once("../other/sessioncheck.php");
+
 ?>
 <!DOCTYPE html>
 <html>

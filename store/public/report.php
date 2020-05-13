@@ -1,5 +1,7 @@
 <?php 
 require_once("../model/user.php");
+include_once("../other/session.php");
+
 $model = new user();
 $model->generateReport();
 ?>

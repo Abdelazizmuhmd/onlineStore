@@ -3,6 +3,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("location:../public/products.php");
+header("location:../public/login.php");
 
 ?>

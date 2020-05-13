@@ -58,12 +58,12 @@ function validateMixedString($value,$min,$max){
 
 }
 function validateEmail($email,$min,$max){
-    /*$this->validateLength($email,$min,$max); 
+    $this->validateLength($email,$min,$max); 
 
        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         header("location: error.html");
           die();
-        }*/
+        }
         
         
     }
@@ -90,6 +90,7 @@ function validateNumber($value,$min,$max){
 function validateLength($value,$min,$max){
   
      $length=strlen($value);
+       $min=$min-1;
      if($length<$min ||$length>$max){
         header("location: erro.html");
           die();

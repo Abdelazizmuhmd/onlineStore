@@ -1,4 +1,6 @@
 <?php
+include_once("../other/sessioncheck.php");
+
 require_once("../view/clientProducts.php");
 require_once("../model/user.php");
 require_once("../controller/userOrder.php");

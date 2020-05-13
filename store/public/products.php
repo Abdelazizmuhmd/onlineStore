@@ -3,7 +3,6 @@
 require_once("../model/menu.php");
 require_once("../controller/menuController.php");
 require_once("../View/menuView.php");
-
 $model = new menu();
 $controller= new menuController($model);
 if (isset($_GET['action']) && !empty($_GET['action'])) {
