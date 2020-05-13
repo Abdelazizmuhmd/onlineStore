@@ -56,7 +56,7 @@ function readoneProductDetail($productid,$productdetailId){
     
      $this->connect();
 
-     $sql="select * from product where id = :productid and isdeleted = 0" ;
+     $sql="select * from product where id = :productid " ;
      $this->db->query($sql);
      $this->db->bind(':productid',$productid,PDO::PARAM_INT);
      $this->db->execute();
@@ -69,7 +69,7 @@ function readoneProductDetail($productid,$productdetailId){
      $this->profit =(int)$product[0]->profit;
      $this->description =$product[0]->description;
      $this->weight =$product[0]->weight;}
-    $sql="select * from productdetails where id = :productdetailid and isdeleted = 0 ";
+    $sql="select * from productdetails where id = :productdetailid  ";
     $this->db->query($sql);
     $this->db->bind(':productdetailid',$productdetailId,PDO::PARAM_INT);
     $this->db->execute();

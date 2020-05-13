@@ -42,7 +42,8 @@ $str.="<div class='jumbotron'>";
 function productoutput(){
 $str ="";
 $i=1;
-foreach($this->model->getordersArray()[0]->getProducts() as $products){
+$productss=$this->model->getordersArray()[0]->getProducts();
+foreach($productss as $products){
 
 $str.="<tr><td align='center'><br>".$i++."</td>";
 $str.="<td align='center'><img width='80' height='100' src=".$products->getProduct()->getProductDetails()[0]->getArray()[0]."></td>"; //Still NEED GET HERE
