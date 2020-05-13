@@ -16,7 +16,6 @@ function myException($exception) {
     
     header("location: ../other/customerror.php?errormessage=".$exception->getMessage());
     $message = $exception->getMessage().", WE ARE WORKING ON SOLUTION NOW <br>";
-    echo $message;
     sendErrorByMail($message);
 }
 set_exception_handler("myException");
@@ -80,7 +79,7 @@ session_start();
 if(!isset($_SESSION['id'])){
 $init=1;
 }else{
-$init=_SESSION['id'];
+$init=$_SESSION['id'];
 }
 $errstr= filter_var($errstr,FILTER_SANITIZE_ENCODED);
 $errfile= filter_var($errfile,FILTER_SANITIZE_ENCODED);
