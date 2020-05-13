@@ -23,7 +23,7 @@ function userdetails(){
                  
      <div class='field field field--required' >
        <div class='field__input-wrapper'>
-         <input value='".$this->model->getfirstName()."' name='firstname'  placeholder='First Name'  class='field__input'  type='text'   />
+         <input value='".$this->model->getfirstName()."' name='firstname'  placeholder='First Name'  class='field__input'  type='text'id='firstName' maxlength='20' required   />
        </div>
    </div>
                  
@@ -31,11 +31,11 @@ function userdetails(){
                  
      <div class='field field field--required' >
        <div class='field__input-wrapper'>
-         <input value='".$this->model->getlastName()."'name='lastname' placeholder='Last name'   class='field__input' type='text' />
+         <input value='".$this->model->getlastName()."'name='lastname' placeholder='Last name'   class='field__input' type='text' id='lastName'maxlength='20' required/>
        </div>
             <div class='field field field--required' >
        <div class='field__input-wrapper'>
-         <input value='".$this->model->getEmail()."' name='email'  placeholder='Email'  class='field__input'  type='text'   />
+         <input value='".$this->model->getEmail()."' name='email' size='30' type='email'  id='checkout_email' placeholder='Email'  class='field__input'  type='text'   />
        </div>
    </div>
          
@@ -43,13 +43,13 @@ function userdetails(){
                  
      <div  class='field field--required'>
        <div class='field__input-wrapper'>
-           <input value='".$this->model->getAddress()."' name='address' placeholder='Address'  class='field__input'  type='text'  />
+           <input value='".$this->model->getAddress()."' name='address' placeholder='Address'  class='field__input'  type='text' id='adress' maxlength='20' required />
        </div>
      </div>
                  
        <div  class='field field--optional'>
          <div class='field__input-wrapper'>
-           <input value='".$this->model->getApartmant()."' name='apartmant' placeholder='Apartmant'  class='field__input'  type='text'  />
+           <input value='".$this->model->getApartmant()."' name='apartmant' placeholder='Apartmant'  class='field__input'  type='text' id='apartment'maxlength='20' required   />
          </div>  
    </div>
            <div class='field--third field field--required' >
@@ -64,7 +64,7 @@ function userdetails(){
                  
      <div  class='field field--required'>
        <div class='field__input-wrapper'>
-         <input value='".$this->model->getCity()."' name='city' placeholder='City'  class='field__input'  type='text'  />
+         <input value='".$this->model->getCity()."' name='city' placeholder='City'  class='field__input'  type='text' id='city' maxlength='20' required />
        </div>
    </div>
                  
@@ -76,7 +76,7 @@ function userdetails(){
                  
        <div  class='field field--optional'>
          <div class='field__input-wrapper field__input-wrapper--icon-right'>
-           <input value='".$this->model->getPhone()."' name='phone' placeholder='phone'   class='field__input field__input--numeric'  type='tel' />
+           <input value='".$this->model->getPhone()."' name='phone' placeholder='phone'   class='field__input field__input--numeric'  type='tel'id='phoneNumber' maxlength='11' required />
            <div class='field__icon'>
            
          </div>
@@ -95,7 +95,7 @@ function userdetails(){
      </div>
        <div class='step__footer' data-step-footer>
 
-      <button onlick='makereceipt' class='step__footer__continue-btn btn' >
+      <button onclick ='return validate()' class='step__footer__continue-btn btn' >
         <span class='btn__content' >Make Order</span>
        </button>
        </div>

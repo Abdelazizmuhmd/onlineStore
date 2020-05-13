@@ -32,6 +32,7 @@ $view= new adminproductsView($model,$controller);
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <script src="../js/adminproduct.js" type="text/javascript" ></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -107,18 +108,18 @@ $view= new adminproductsView($model,$controller);
                 <input type="text" name="productid" id="productid" value="" hidden>
    <tr>
        
-            <td>  Name<input type="text" id="productName"  class="form-control"  placeholder="Enter Product Name"></td>
-            <td>  Code<input type="text" id="productCode"  class="form-control"  placeholder="Enter Product Code">
+            <td>  Name<input type="text" id="productName"  class="form-control"  placeholder="Enter Product Name" maxlength="50" required></td>
+            <td>  Code<input type="text" id="productCode"  class="form-control"  placeholder="Enter Product Code"  maxlength="50" required>
 </td>
-      <td>profit<input type="text" id="productProfit"  class="form-control"  placeholder="Enter Product profit"></td>
+      <td>profit<input type="text" id="productProfit"  class="form-control"  placeholder="Enter Product profit"  maxlength="50" required></td>
 
          
           </tr>
 
           <tr>
-      <td>Description<input type="text" id="productDescription"  class="form-control" placeholder="Enter Product Description"></td>
-      <td>Weight<input type="text" id="productWeight"  class="form-control"  placeholder="Enter Product Weight"></td>
-              <td>Cost<input type="text"   id="productCost" class="form-control"  placeholder="Enter Product Cost" ></td>
+      <td>Description<input type="text" id="productDescription"  class="form-control" placeholder="Enter Product Description"  maxlength="50" required></td>
+      <td>Weight<input type="text" id="productWeight"  class="form-control"  placeholder="Enter Product Weight"  maxlength="50" required></td>
+              <td>Cost<input type="text"   id="productCost" class="form-control"  placeholder="Enter Product Cost"  maxlength="50" required ></td>
 
           </tr>
     </table>
@@ -226,13 +227,13 @@ $view= new adminproductsView($model,$controller);
         </div>
         <div class="modal-body">
             <form action="../public/adminproducts.php?action=addCategory" method="POST" id="addcategoryform">
-            <input type="text" name="newcategoryname"  class="form-control" placeholder="Category Name">
+            <input type="text" name="newcategoryname" id="newcategoryname"  class="form-control" placeholder="Category Name"  maxlength="50" required>
             </form>
 
         </div>
         <div class="modal-footer">
             
-          <button type="submit" class="btn btn-primary"  form="addcategoryform">Add Catgory</button>
+          <button type="submit" class="btn btn-primary"  form="addcategoryform" onclick="return addcategoryvalidate()">Add Catgory</button>
             
             
         </div>
@@ -253,14 +254,14 @@ $view= new adminproductsView($model,$controller);
         </div>
         <div class="modal-body">
         <form action="../public/adminproducts.php?action=editCategory" method="POST" id="editcategory">
-            <input type="text" name="newcategoryname"  class="form-control" placeholder="New Name">
+            <input type="text" name="newcategoryname" id="editcategoryname"  class="form-control" placeholder="New Name"  maxlength="50" required >
                  <input type="text" value="" id="editcatgoryid" name="editcatgoryid" hidden>
          </form>
 
 
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary"  form="editcategory">Save</button>
+          <button type="submit" class="btn btn-primary"  form="editcategory" onclick="return editcategoryvalidate()">Save</button>
         </div>
       </div>
       
@@ -285,14 +286,14 @@ $view= new adminproductsView($model,$controller);
         <div class="modal-body">
       
         <form action="../public/adminproducts.php?action=editsubcategory" method="POST" id="editsubcategory">
-        <input type="text" name="newsubcategoryname" class="form-control" placeholder="New Name">
+        <input type="text" name="newsubcategoryname" id="editsubcategoryname" class="form-control" placeholder="New Name"  maxlength="50" required>
         <input type="text" value="" id="editsubcatgoryid" name="editsubcatgoryid" hidden>
          </form>
 
 
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary"  form="editsubcategory">Save</button>
+          <button type="submit" class="btn btn-primary"  form="editsubcategory" onclick="return editsubcategoryvalidate()">Save</button>
         </div>
       </div>
       
@@ -319,14 +320,14 @@ $view= new adminproductsView($model,$controller);
 
            <form action="../public/adminproducts.php?action=addsubcategory" method="POST" id="addsubcategoryform">
                
-            <input type="text" name="subcategoryname"  class="form-control" placeholder="Category Name">
+            <input type="text" name="subcategoryname" id="newsubcategoryname"  class="form-control" placeholder="Category Name"   maxlength="50" required>
                <input type="text" id="categoryid" hidden name="categoryid">
             </form>
 
         </div>
         <div class="modal-footer">
             
-          <button type="submit" class="btn btn-primary"  form="addsubcategoryform">Add Catgory</button>
+          <button type="submit" class="btn btn-primary"  form="addsubcategoryform" onclick="return newsubcategoryvalidate()">Add Catgory</button>
       </div>
       
   </div>
@@ -367,7 +368,7 @@ $view= new adminproductsView($model,$controller);
 
         <div class="modal-body">
 
-        <h4>Color</h4><input type="text" id="productColor" class="form-control"  placeholder="Enter Product Color">
+        <h4>Color</h4><input type="text" id="productColor" class="form-control"  placeholder="Enter Product Color"  maxlength="50" required>
         <table class="table table-bordered"><br>
   
 
@@ -453,7 +454,32 @@ $.each($("input[type=file]"), function (i, obj) {
     })
 };
 function addcolor(){
-    var insertproductid=document.getElementById("productid").value;
+  var productColor=document.getElementById("productColor").value;
+   
+
+   //-----------------------------------------
+   if (productColor == "") {
+       alert("Color name must be filled out");
+       document.getElementById("productColor").style.borderColor = "red";
+       return false;
+   
+     }
+   
+     else if(productColor.length<3)
+   {
+       alert("Color name too short");
+       document.getElementById("productColor").style.borderColor = "red";
+       return false;
+   }   
+   
+   
+   if (!productColor.match(/^[a-zA-Z]+$/)) 
+       {
+           alert('Color name Only alphabets are allowed');
+           document.getElementById("productColor").style.borderColor = "red";
+           return false;
+       }
+  var insertproductid=document.getElementById("productid").value;
 
 
     if(insertproductid==""){
@@ -540,7 +566,10 @@ function addcolor(){
       
       <script>
         function  resetcolor(){
-            document.getElementById("productColor").value="";
+        
+   
+    //----------------------
+    document.getElementById("productColor").value="";
               document.getElementById("small").value="";
               document.getElementById("Medium").value="";
               document.getElementById("Large").value="";
@@ -548,9 +577,152 @@ function addcolor(){
               document.getElementById("2xLarge").value="";
               document.getElementById("3xLarge").value="";
               document.getElementById('image').value = "";
-            
         }
           function reset(){
+            var productName=document.getElementById("productName").value;
+    var productCode=document.getElementById("productCode").value;
+    var productProfit=document.getElementById("productProfit").value;
+    var productDescription=document.getElementById("productDescription").value;
+    var productWeight=document.getElementById("productWeight").value;
+    var productCost=document.getElementById("productCost").value;
+    //----------------------------------------------------
+    if (productName == "") {
+        alert("productName name must be filled out");
+        document.getElementById("productName").style.borderColor = "red";
+        return false;
+    
+      }
+    
+      else if(productName.length<3)
+    {
+        alert("productName name too short");
+        document.getElementById("productName").style.borderColor = "red";
+        return false;
+    }   
+    
+    
+    if (!productName.match(/^[a-zA-Z]+$/)) 
+        {
+            alert('productName Only alphabets are allowed');
+            document.getElementById("productName").style.borderColor = "red";
+            return false;
+        }
+        //---------------------
+        //code
+        if (productCode == "") {
+    alert("productCode must be filled out");
+    document.getElementById("productCode").style.borderColor = "red";
+    return false;
+
+  }
+
+  else if(productCode.length<3)
+{
+    alert("productCode id too short");
+    document.getElementById("productCode").style.borderColor = "red";
+    return false;
+}
+
+
+ if (!productCode.match(/^\d*\.?\d*$/ )) 
+    {
+        alert('productCode  numbers are allowed');
+        return false;
+    }
+    //-----------------------------
+    //weight
+    if (productWeight == "") {
+    alert("productWeight must be filled out");
+    document.getElementById("productWeight").style.borderColor = "red";
+    return false;
+
+  }
+
+  else if(productWeight.length<3)
+{
+    alert("productWeight id too short");
+    document.getElementById("productWeight").style.borderColor = "red";
+    return false;
+}
+
+
+ if (!productWeight.match(/^\d*\.?\d*$/ )) 
+    {
+        alert('productWeight  numbers are allowed');
+        return false;
+    }
+    //-------------------------------------------
+    //cost
+    if (productCost == "") {
+    alert("productCost must be filled out");
+    document.getElementById("productCost").style.borderColor = "red";
+    return false;
+
+  }
+
+  else if(productCost.length<3)
+{
+    alert("productCost id too short");
+    document.getElementById("productCost").style.borderColor = "red";
+    return false;
+}
+
+
+ if (!productCost.match(/^\d*\.?\d*$/ )) 
+    {
+        alert('productCost  numbers are allowed');
+        return false;
+    }
+    //---------------------------------------
+    //description
+    productDescription
+    if (productDescription == "") {
+    alert("productDescription must be filled out");
+    document.getElementById("productDescription").style.borderColor = "red";
+    return false;
+
+  }
+
+  else if(productDescription.length<3)
+{
+    alert("productDescription id too short");
+    document.getElementById("productDescription").style.borderColor = "red";
+    return false;
+}
+
+
+
+    if (!productDescription.match(/^[A-Za-z0-9]+$/)) 
+    {
+        alert('productDescription Only alphabets and numbers are allowed');
+        return false;
+    }
+            //--------------------
+            //profit
+            if (productProfit == "") {
+    alert("productProfit must be filled out");
+    document.getElementById("productProfit").style.borderColor = "red";
+    return false;
+
+  }
+
+  else if(productProfit.length<3)
+{
+    alert("productProfit id too short");
+    document.getElementById("productProfit").style.borderColor = "red";
+    return false;
+}
+
+
+ if (!productProfit.match(/^\d*\.?\d*$/ )) 
+    {
+        alert('productProfit  numbers are allowed');
+        return false;
+    }
+
+
+
+
               var select = document.getElementById("colors");
 
               var length = select.options.length;
