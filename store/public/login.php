@@ -116,7 +116,7 @@ Pat
         <p>
           <input type="submit" name="signin" class="btn" value="Log IN" onclick="return validateForm()">
         </p>
-        <p><a href="/account/register" id="customer_register_link">Sign up</a></p>
+        <p><a href="../public/signup.php" id="customer_register_link">Sign up</a></p>
         
           <p><a href="#recover" id="RecoverPassword">Forgot your password?</a></p>
         

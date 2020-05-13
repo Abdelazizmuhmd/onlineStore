@@ -94,7 +94,7 @@ function getordersArray(){
         if ($this->db->numRows() > 0){
         $this->getuser($row[0]->id);
             session_start();
-            $_SESSION["usertype"]=$this->usertype;
+            $_SESSION["usertype"]=$this->userType;
             $_SESSION['name']=$this->firstName;
             $_SESSION['id']=$this->id;
 
