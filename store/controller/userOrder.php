@@ -24,9 +24,7 @@ public function getOrder(){
     
 public function getuser(){
 
-
-	$userid = 1;
-    //$userid=$_REQUEST['userid'];
+    $userid=$_REQUEST['userid'];
     $this->model->getuser($userid);
     
 }

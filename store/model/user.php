@@ -50,6 +50,7 @@ function getordersArray(){
     $this->db->query($sql);
     $this->db->bind(':userid',$userId,PDO::PARAM_INT);
         }else{
+       
      $sql = "select id from `order`where isdeleted = 0 ";
      $this->db->query($sql);
         }
@@ -205,7 +206,7 @@ function getordersArray(){
         $this->address=$row[0]->address;
         $this->city=$row[0]->city;
         $this->apartmant=$row[0]->apartmant;
-        $this->usertype=$row[0]->usertype;
+        $this->userType=$row[0]->usertype;
         }
     }
     function deleteuser($id){

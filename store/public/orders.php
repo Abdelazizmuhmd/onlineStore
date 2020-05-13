@@ -31,7 +31,10 @@ include_once("../other/sessioncheck.php");
     <?php
      $model = new user();
      $controller = new userOrderController($model);
-     $_REQUEST['userid'] = 1;
+    if(isset($_SESSION['id'])){
+     $_REQUEST['userid'] = $_SESSION['id'];
+    }
+     $controller->getuser();
      $controller->getOrders();
      $view = new ordersview($model, $controller);
      if (isset($_GET['action']) && !empty($_GET['action'])) {
