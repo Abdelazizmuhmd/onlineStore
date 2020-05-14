@@ -56,7 +56,7 @@ class menuView extends View{
      $str.=' </div>'; 
      $str.='  <div " class="product__prices text-center">';
      $str.=' <span class="product__price">';
-     $str.=' <span class="visually-hidden">Regular price</span>'.(int)($product->getprofit()+$product->getcost()).' L.e</span>';
+     $str.=' <span class="visually-hidden">Regular price</span>'.(int)($product->getprofit()+$product->getcost()).' L.E</span>';
      $str.=' <span class="badge badge--sale"></span>';
      $str.=' </div>';
      $str.=' </div>';

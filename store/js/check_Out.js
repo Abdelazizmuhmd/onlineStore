@@ -102,7 +102,7 @@ else if(apartment.length<0)
 
 return (false)   
 }
-else if (!apartment.match(/^[A-Za-z0-9]+$/)) 
+else if (!apartment.match(/^[A-Za-z0-9 ]+$/)) 
 {
   alert('apartment Only alphabets and numbers are allowed');
   document.getElementById("apartment").style.borderColor = "red";

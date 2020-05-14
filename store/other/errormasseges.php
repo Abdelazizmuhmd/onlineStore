@@ -60,7 +60,7 @@ foreach($result as $row) {
 <td align="center"><?php echo urldecode($row->errorfile); ?></td>
 <td align="center"><?php echo urldecode($row->errorline); ?></td>
 <td align="center">
-<a onclick="return checkDelete()" href="delete2.php?id=<?php echo $row["id"]; ?>"><button class="btn btn-danger">Delete</button></a>
+<a onclick="return checkDelete()" href="delete2.php?id=<?php  ?>"><button class="btn btn-danger">Delete</button></a>
 </td>
 </tr>
 <?php  }
@@ -73,7 +73,7 @@ else if($row->errornumber==512){?>
     <td align="center"><?php echo urldecode($row->errorfile); ?></td>
     <td align="center"><?php echo urldecode($row->errorline); ?></td>
     <td align="center">
-    <a onclick="return checkDelete()" href="delete2.php?id=<?php echo $row["id"]; ?>"><button class="btn btn-danger">Delete</button></a>
+    <a onclick="return checkDelete()" href="delete2.php?id=<?php  ?>"><button class="btn btn-danger">Delete</button></a>
     </td>
     </tr>
 

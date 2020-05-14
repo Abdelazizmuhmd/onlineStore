@@ -10,7 +10,6 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 }
 $controller->getAllCategoriesDetails();
 $view= new menuView($model,$controller);
-
 ?>
 <!doctype html>
 <html >
