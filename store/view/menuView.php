@@ -38,7 +38,7 @@ class menuView extends View{
 
        foreach($productDetails as $k=>$productdetail){
        $imageArray=$productdetail->getImages();
-     $str.='<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">';
+     $str.='<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated"  role="listitem">';
      $str.=' <div class="supports-js" style="max-width: 600px; margin: 0 auto;">';
      $str.=' <a href="../public/product.php?action=readOneProduct&productid='.$product->getId().'&productdetailid='.$productdetail->getid().'" class="product__image-wrapper " style="padding-top:100.0%;"  data-image-link>';   
      $str.='<img class="product__image "
@@ -51,15 +51,16 @@ class menuView extends View{
                  data-image>    
       </a>';
      $str.=' </div>';
-     $str.=' <div class="product__title product__title--card text-center">';
+     $str.=' <div style="margin-top:160px;" class="product__title product__title--card text-center">';
      $str.=' <a href="">'.$product->getName().'</a>';
      $str.=' </div>'; 
-     $str.='  <div class="product__prices text-center">';
+     $str.='  <div " class="product__prices text-center">';
      $str.=' <span class="product__price">';
      $str.=' <span class="visually-hidden">Regular price</span>'.(int)($product->getprofit()+$product->getcost()).' L.e</span>';
      $str.=' <span class="badge badge--sale"></span>';
      $str.=' </div>';
      $str.=' </div>';
+          
        
        }}
        
@@ -123,7 +124,7 @@ class menuView extends View{
                 $str.= '<div id = '.$productdetail->getColor().' style='.$display.'>
 
                      <p class="product-single__prices">
-                         <span id="ProductPrice" class="product-single__price" value="'.(int)($product->getCost()+$product->getProfit()).'">'.(int)($product->getCost()+$product->getProfit()).' $</span>
+                         <span id="ProductPrice" class="product-single__price" value="'.(int)($product->getCost()+$product->getProfit()).'">'.(int)($product->getCost()+$product->getProfit()).' L.E</span>
                      </p>
 
                      <div class="product-single__policies rte">Tax included. Delevered to your Door.

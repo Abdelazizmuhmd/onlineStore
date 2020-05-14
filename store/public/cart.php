@@ -89,6 +89,7 @@ Pat
       <form method="post" action="checkout.php" novalidate="" class="cart pf-form-processed">
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7ZCRLW"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<h1>products</h1>
 <?php
 if(isset($_COOKIE['cook'])){
 $return=$_COOKIE['cook'];
@@ -106,7 +107,7 @@ $sub_total+=$values['price']*$values['quantity'];
 echo "<table class='cart-table responsive-table table--no-border'>
           <thead class='cart__row cart__header-labels small--hide'>
 
-            <tr><th class='text-left cart__table-cell--image'>Product</th>
+            <tr><th class='text-left cart__table-cell--image'></th>
             <th class='text-center cart__table-cell--meta'></th>
             <th class='text-right cart__table-cell--price'>Price</th>
             <th class='text-right cart__table-cell--quantity'>Quantity</th>
@@ -152,7 +153,7 @@ echo "<table class='cart-table responsive-table table--no-border'>
 }
 ?>
         <footer class="cart__footer">
-          <div class="grid">
+          <div class="grid" style="margin-top:100px;">
             <div class="grid__item large-up--one-half">
               <label for="CartSpecialInstructions" class="label--block">Special instructions for seller</label>
               <textarea name="note" id="CartSpecialInstructions" class="input--block cart__note"></textarea>
