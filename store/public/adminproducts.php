@@ -386,7 +386,7 @@ $view= new adminproductsView($model,$controller);
 
                         <center>
                             <h4><i class="fa fa-upload" aria-hidden="true"></i>
-                                <input type="file" onchange="loadFile(event)" id="image" name="image[]" multiple></h4>
+                                <input type="file"  id="image" name="image[]" onchange="loadFile(event)" multiple></h4>
                         </center>
                         <hr class="new2">
 
@@ -517,7 +517,7 @@ $view= new adminproductsView($model,$controller);
                     document.getElementById("productCode").style.borderColor = "red";
                     return false;
 
-                } else if (productCode.length < 3) {
+                } else if (productCode.length < 1) {
                     alert("productCode id too short");
                     document.getElementById("productCode").style.borderColor = "red";
                     return false;
@@ -535,7 +535,7 @@ $view= new adminproductsView($model,$controller);
                     document.getElementById("productWeight").style.borderColor = "red";
                     return false;
 
-                } else if (productWeight.length < 3) {
+                } else if (productWeight.length < 1) {
                     alert("productWeight id too short");
                     document.getElementById("productWeight").style.borderColor = "red";
                     return false;
@@ -553,7 +553,7 @@ $view= new adminproductsView($model,$controller);
                     document.getElementById("productCost").style.borderColor = "red";
                     return false;
 
-                } else if (productCost.length < 3) {
+                } else if (productCost.length < 1) {
                     alert("productCost id too short");
                     document.getElementById("productCost").style.borderColor = "red";
                     return false;
@@ -572,7 +572,7 @@ $view= new adminproductsView($model,$controller);
                     document.getElementById("productDescription").style.borderColor = "red";
                     return false;
 
-                } else if (productDescription.length < 3) {
+                } else if (productDescription.length < 1) {
                     alert("productDescription id too short");
                     document.getElementById("productDescription").style.borderColor = "red";
                     return false;
@@ -580,7 +580,7 @@ $view= new adminproductsView($model,$controller);
 
 
 
-                if (!productDescription.match(/^[A-Za-z0-9]+$/)) {
+                if (!productDescription.match(/^[A-Za-z0-9 ]+$/)) {
                     alert('productDescription Only alphabets and numbers are allowed');
                     return false;
                 }
@@ -591,7 +591,7 @@ $view= new adminproductsView($model,$controller);
                     document.getElementById("productProfit").style.borderColor = "red";
                     return false;
 
-                } else if (productProfit.length < 3) {
+                } else if (productProfit.length < 1) {
                     alert("productProfit id too short");
                     document.getElementById("productProfit").style.borderColor = "red";
                     return false;
@@ -613,7 +613,7 @@ $view= new adminproductsView($model,$controller);
                     document.getElementById("productColor").style.borderColor = "red";
                     return false;
 
-                } else if (productColor.length < 3) {
+                } else if (productColor.length < 1) {
                     alert("Color name too short");
                     document.getElementById("productColor").style.borderColor = "red";
                     return false;
@@ -630,8 +630,8 @@ $view= new adminproductsView($model,$controller);
 
                 var insertproductid = document.getElementById("productid").value;
 
-
                 if (insertproductid == "") {
+
                     formData.append("productName", document.getElementById("productName").value);
                     formData.append("productCode", document.getElementById("productCode").value);
                     formData.append("productProfit", document.getElementById("productProfit").value);
@@ -646,7 +646,7 @@ $view= new adminproductsView($model,$controller);
                     formData.append("2xLarge", document.getElementById("2xLarge").value);
                     formData.append("3xLarge", document.getElementById("3xLarge").value);
                     var Select = document.getElementById("subselections");
-                    formData.append("$subcategoryid", Select.options[Select.selectedIndex].value);
+                    formData.append("subcategoryid", Select.options[Select.selectedIndex].value);
                     $.ajax({
                         url: '../other/insertproductsAjax.php',
                         type: 'POST',
@@ -674,7 +674,9 @@ $view= new adminproductsView($model,$controller);
                         }
                     });
                 } else {
-                    formData.append("productid", document.getElementById("productid").value);
+                                      
+                    formData.append("productid", 
+                    document.getElementById("productid").value);
                     formData.append("productColor", document.getElementById("productColor").value);
                     formData.append("small", document.getElementById("small").value);
                     formData.append("Medium", document.getElementById("Medium").value);
@@ -682,10 +684,26 @@ $view= new adminproductsView($model,$controller);
                     formData.append("xLarge", document.getElementById("xLarge").value);
                     formData.append("2xLarge", document.getElementById("2xLarge").value);
                     formData.append("3xLarge", document.getElementById("3xLarge").value);
+       
+                    
 
                     var Select = document.getElementById("subselections");
-                    formData.append("$subcategoryid", Select.options[Select.selectedIndex].value);
+                    formData.append("subcategoryid", Select.options[Select.selectedIndex].value);
+                    
+             /*       
+                    alert(document.getElementById("productid").value);
+                    alert(document.getElementById("productColor").value);
+                    alert(document.getElementById("small").value);
+                    alert(document.getElementById("Medium").value);
+                    alert(document.getElementById("Large").value);
+                    alert(document.getElementById("xLarge").value);
+                    alert(document.getElementById("2xLarge").value);
+                    alert(document.getElementById("productid").value);
+                    alert(document.getElementById("3xLarge").value);
 
+                    
+                    
+                    */
                     $.ajax({
                         url: '../other/insertproductdetailsAjax.php',
                         type: 'POST',

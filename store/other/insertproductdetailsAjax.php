@@ -19,10 +19,9 @@ $imgArr=[];
            }            
       }  
  } 
+
 $model= new productDetails();
 
 $model->insert($_REQUEST['productid'],$_REQUEST['productColor'],$_REQUEST['small'],$_REQUEST['Medium'],$_REQUEST['Large'],$_REQUEST['xLarge'],$_REQUEST['2xLarge'],$_REQUEST['3xLarge'],$imgArr);
-
-
 
 ?>

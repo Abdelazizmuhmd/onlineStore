@@ -147,11 +147,12 @@ function getMedium(){
 
 
   function insert($productid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$Imagearray){
+    
       
                 $this->getvalidation();
 
          $this->validation->validateString($color,1,100);
-         $this->validation->validateNumber($productid,1,100000);
+         //$this->validation->validateNumber($productid,1,100000);
          $this->validation->validateNumber($s,1,30000);
          $this->validation->validateNumber($m,1,30000);
          $this->validation->validateNumber($l,1,30000);
