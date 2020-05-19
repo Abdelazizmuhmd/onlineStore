@@ -75,7 +75,7 @@ if(!$mail->send()) {
 
 
 function saveErrorLog($errno , $errstr , $errfile, $errline){
-session_start();
+//session_start();
 if(!isset($_SESSION['id'])){
 $init=1;
 }else{

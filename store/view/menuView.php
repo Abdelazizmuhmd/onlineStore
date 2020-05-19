@@ -18,7 +18,7 @@ class menuView extends View{
           if(is_iterable($subCategories)){
           foreach($subCategories as $k=>$subcategory){
           $str.='<li>';
-          $str.='<a href="../public/products.php?action=readProducts&subcategoryId='.$subcategory->getID().'" class="site-nav__link">'.$subcategory->getName().'</a>';
+          $str.='<a  id="'.$i.'" href="../public/products.php?action=readProducts&subcategoryId='.$subcategory->getID().'" class="site-nav__link">'.$subcategory->getName().'</a>';
           $str.='</li>';}};
           $str.='</ul></li>';
     

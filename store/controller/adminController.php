@@ -4,12 +4,14 @@ class adminController extends Controller{
 
 
 
+
 function getAllCategories(){
     $this->model->getAllCategoriesDetails();
 }
 
 function addCategory(){
     $categoryName = $_REQUEST['newcategoryname'];
+    
     $this->model->getCategories()[0]->insertCategory($categoryName);
 
 }
@@ -17,14 +19,14 @@ function editCategory(){
     $categoryName = $_REQUEST['newcategoryname'];
     $categoryId = $_REQUEST['editcatgoryid'];
     $this->model->getCategories()[0]->updateCategory($categoryId,$categoryName);
-
 }
 function deletecategory(){
     $categoryId = $_REQUEST['deletecategoryid'];
     $this->model->getCategories()[0]->deleteCategory($categoryId);
-
+    
 }
-
+    
+    
 
 
 function addsubcategory(){

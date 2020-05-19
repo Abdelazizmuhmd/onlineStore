@@ -11,7 +11,7 @@
     </button>
     <div id="SiteNav" class="site-nav" role="menu">
       <ul class="list--nav">
-          <?php
+        <?php
              $view->menuOutput();
 ?>
 <!-- repeat all that to add section-->

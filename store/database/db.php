@@ -48,6 +48,7 @@ class Database
     { 
     $this->stmt = $this->conn->prepare($sql);
         
+        
     }
     public function bind($param,$value,$options)
     {

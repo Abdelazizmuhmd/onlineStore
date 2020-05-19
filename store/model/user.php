@@ -84,6 +84,7 @@ function getordersArray(){
 
         
         $password=sha1($password);
+        
         $this->connect();
         $sql = "select id from user where email=:email and password=:password";
         $this->db->query($sql);

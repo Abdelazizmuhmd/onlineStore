@@ -100,7 +100,8 @@ function getProductDetails(){
 
     
  function insertProduct($name,$code,$cost,$profit,$description,$weight,$productdetail,$subcategoryid){
-          $this->getvalidation();
+         $this->getvalidation();
+     
          $this->validation->validateString($name,1,100);
      
          $this->validation->validateMixedString($code,1,10000);

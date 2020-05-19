@@ -3,14 +3,22 @@
 require_once("../model/menu.php");
 require_once("../controller/menuController.php");
 require_once("../View/menuView.php");
+
 $model = new menu();
+
 $controller= new menuController($model);
+
 if (isset($_GET['action']) && !empty($_GET['action'])) {
   $controller->{$_GET['action']}();
 }
+
 $controller->getAllCategoriesDetails();
+
+
 $view= new menuView($model,$controller);
+
 ?>
+
 <!doctype html>
 <html >
 <head>
@@ -70,7 +78,7 @@ Pat
 <div data-section-id="collection-template" data-section-type="collection-template" data-sort-enabled="true" data-tags-enabled="true">
   
   <div class="grid grid--uniform" role="list">
-      <?php
+<?php
 
       $view->productsOutput();
 ?>
@@ -117,7 +125,11 @@ Pat
 </div>
       -->
       
-
+<script>  
+    if(document.getElementById("1").href!=""&&window.location.href=="http://localhost/onlineStore/store/public/products.php"){
+        window.location.href=document.getElementById("1").href;
+    }
+</script>
 
 
 

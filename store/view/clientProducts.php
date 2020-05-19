@@ -43,6 +43,7 @@ function productoutput(){
 $str ="";
 $i=1;
 $productss=$this->model->getordersArray()[0]->getProducts();
+    if(is_iterable($productss)){
 foreach($productss as $products){
 
 $str.="<tr><td align='center'><br>".$i++."</td>";
@@ -58,7 +59,7 @@ $str.="<td align='center'><br>".$products->getProduct()->getDescription()."</td>
 
 }$str.="</tr>";
                       return $str;
-}
+}}
 function output(){
    
 }

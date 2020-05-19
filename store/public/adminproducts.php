@@ -5,10 +5,15 @@ require_once("../View/adminproducts.php");
 include_once("../other/session.php");
 
 $model = new menu();
+
 $controller= new adminController($model);
+
 if (isset($_GET['action']) && !empty($_GET['action'])) {
   $controller->{$_GET['action']}();
 }
+
+
+
 $controller->getAllCategories();
 
 $view= new adminproductsView($model,$controller);
@@ -55,6 +60,7 @@ $view= new adminproductsView($model,$controller);
                 <?php 
             
      echo $view->getallcategories();
+    
             
     ?>
 
@@ -66,14 +72,17 @@ $view= new adminproductsView($model,$controller);
                 <button class="btn btn-primary" data-toggle="modal" style="width:140px;margin-left:50px;padding:10px;"
                     data-target="#categoryAdd">Add Category </button>
 
+                
+                
                 <form action="../public/adminproducts.php?action=deletecategory" method="POST">
                     <input type="text" id="deletecategoryid" name="deletecategoryid" value="" hidden>
                     <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');"
                         class="btn btn-primary" style="margin-left:50px;padding:10px;">Delete Category
-
                     </button>
                 </form>
 
+                
+                
 
 
             </div>
