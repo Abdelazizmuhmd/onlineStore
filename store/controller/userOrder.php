@@ -41,6 +41,7 @@ public function updatestat(){
     $orderid=$_REQUEST['orderid'];
     $status=$_REQUEST['stat'];
     $this->model->getordersArray()[0]->updateStat($orderid,$status);
+    header("location:../public/orders.php");
 
     
 }
