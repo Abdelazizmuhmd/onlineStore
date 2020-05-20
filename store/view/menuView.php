@@ -38,7 +38,7 @@ class menuView extends View{
 
        foreach($productDetails as $k=>$productdetail){
        $imageArray=$productdetail->getImages();
-     $str.='<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated"  role="listitem">';
+     $str.='<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" id="stitem" role="listitem">';
      $str.=' <div class="supports-js" style="max-width: 600px; margin: 0 auto;">';
      $str.=' <a href="../public/product.php?action=readOneProduct&productid='.$product->getId().'&productdetailid='.$productdetail->getid().'" class="product__image-wrapper " style="padding-top:100.0%;"  data-image-link>';   
      $str.='<img class="product__image "
@@ -82,13 +82,13 @@ class menuView extends View{
          if($productdetail->getid()!=$pid/*$i != 0*/){ $hidden="hidden";$display='display:none';}
          else $display='display:block';
          $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js images" value= '.$productdetail->getColor().'  style='.$display.'>';
-         $str.=' <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 100%; position: relative; overflow: '.$hidden.';">';
+         $str.=' <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 500px; position: relative; overflow: '.$hidden.';">';
          $str.='<div style =""class="slideshow-container">';
          $i++;   
          foreach($productdetail->getImages() as $img){
          $str.='<div style="position:relative; bottom:500px" class="mySlides'.$productdetail->getColor().' fade">';
          $str.='<div class="numbertext"> / '.count($productdetail->getImages()).'</div>';
-         $str.=' <img  class="product-single__photo" src="'.$img.'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
+         $str.=' <img style=""  class="product-single__photo" src="'.$img.'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
          $str.='<div class="text"></div>';
          $str.='</div>';
          }
@@ -104,7 +104,6 @@ class menuView extends View{
          $str.='</div>';
          }
          $str.=' </div>
-        
          <div class="grid__item medium-up--one-half">
              <div class="product-single__meta small--text-center">
              

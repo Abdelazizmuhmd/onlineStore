@@ -125,7 +125,7 @@ $view= new menuView($model,$controller);
 
                 <div class="grid product-single">
 
-                    <div class="grid__item medium-up--one-half">
+                    <div class="grid__item medium-up--one-half" id="sthalf">
                         <?php
 $view->readOneProduct();
 
