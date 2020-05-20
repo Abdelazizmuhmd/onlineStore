@@ -23,6 +23,7 @@ include_once("../other/sessioncheck.php");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="../js/edit.js"></script>
+    <script src="../js/ordertbl.js"></script>
 </head>
 
 <body>
@@ -54,24 +55,15 @@ include_once("../other/sessioncheck.php");
             <div id="orders" class="card-header">
                 <b> Orders </b>
             </div>
-            <!--
+            
 
             <div class="card-body" id="bod">
-                <!--
                 <label id="slbl">Status:</label><select name="CardiologyPassword"
                     placeholder="Enter Cardiology Password" class="form-control" required id="stat">
-                    <option></option>
-                    <option></option>
+                    <option val="0" disabled selected></option>
+                    <option>pending</option>
+                    <option>delivered</option>
                 </select>
-                <label id="plbl">Price:</label>
-                
-                <select name="CardiologyPassword" placeholder="Enter Cardiology Password" class="form-control" required
-                    id="price">
-                    <option></option>
-                    <option></option>
-                </select>
-                
-        </div>-->
         </div>
     </div>
     <br />
@@ -79,7 +71,7 @@ include_once("../other/sessioncheck.php");
     <div id="container">
         <div id="table">
             <table id="Display">
-                <tr>
+                <tr id='must'>
                     <th>
                         <label for="vehicle1"> orderNumber</label>
                     </th>

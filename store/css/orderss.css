@@ -34,9 +34,7 @@
   font-family: verdana;
   display: table;
 }*/
-.category{
-    
-    
+.category {
 }
 #table {
   position: relative;
@@ -100,11 +98,11 @@ b {
   right: 8.5%;
   position: relative;
   width: 12.5%;
-  left: 25%;
+  left: 43%;
 }
 #slbl {
   position: relative;
-  left: 25%;
+  left: 42%;
   font-size: 25px;
 }
 #plbl {
