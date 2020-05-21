@@ -209,6 +209,7 @@ hr.new2 {
 }
 #selectSizes{
   width: 25%;
+  overflow: hidden;
 }
 #finalProductAdd{
   background-color: #1c87c9;
