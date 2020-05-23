@@ -2,11 +2,11 @@
 require_once("../database/db.php");
 require_once("../database/validation.php");
 
-require_once("../other/customError.php");
+//require_once("../other/customError.php");
 
 abstract class Model{
    
-    protected $db;
+    public $db;
     protected $validation; 
 
      public function getvalidation(){

@@ -44,13 +44,16 @@ Pat
     </title>
 
   <link href="../css/home.css" rel="stylesheet" type="text/css" media="all" /> 
-  <script src="../js/j.js" type="text/javascript"></script>
-  <script src="../js/s.js" type="text/javascript"></script>
-  <script src="../js/home.js" type="text/javascript"></script>
+
+<script src="../js/j.js" type="text/javascript"></script>
+ <script src="../js/home.js" type="text/javascript"></script>
   <script src="../js/j2.js" type="text/javascript"></script>
+  <script src="../js/s.js" type="text/javascript"></script>
+    
+<style>
 
     
-
+    </style>
 </head>
 
     
@@ -89,7 +92,8 @@ Pat
       <form method="post" action="checkout.php" novalidate="" class="cart pf-form-processed">
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7ZCRLW"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<h1>products</h1>
+          <h1>Cart</h1>
+
 <?php
 if(isset($_COOKIE['cook'])){
 $return=$_COOKIE['cook'];
@@ -120,9 +124,9 @@ echo "<table class='cart-table responsive-table table--no-border'>
                   
 
 
-                    <div id='CartImageWrapper--13760170131490' class='cart__image-wrapper supports-js'>
-                      <a class='cart__image-container' href='/collections/all/products/im-fine-phr-2?variant=31415765139490' style='padding-top:100.0%;'>
-                        <img id='CartImage--13760170131490' class='cart__image' src='$values[image_url]' data-widths='[180, 230, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' data-aspectratio='1.0' data-sizes='auto' alt='I'm fine (phr.) - White / S' itemprop='image'>
+                    <div id='CartImageWrapper--13760170131490' class='cart__image-wrapper supports-js' style='max-width:165px; max-height:220px; '>
+                      <a class='cart__image-container' href='/collections/all/products/im-fine-phr-2?variant=31415765139490' style='padding-top:100.0%;max-width:165px; max-height:220px; '>
+                        <img id='CartImage--13760170131490' style='max-width:165px; max-height:220px; ' class='cart__image' src='$values[image_url]"."large.jpeg'  itemprop='image'>
                       </a>
                     </div>
                 </td>
@@ -146,6 +150,9 @@ echo "<table class='cart-table responsive-table table--no-border'>
 
                 <td data-label='Total' class='text-right cart__table-cell--line-price'><span class='hulkapps-cart-item-line-price'   >$total L.E</span></td>
               </tr>
+              <hr style='margin-bottom:30px;'>             
+              
+
           </tbody>
         </table>";
 

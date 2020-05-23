@@ -5,7 +5,6 @@ require_once("../View/adminproducts.php");
 include_once("../other/session.php");
 
 $model = new menu();
-
 $controller= new adminController($model);
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
@@ -32,6 +31,8 @@ $view= new adminproductsView($model,$controller);
     </title>
 
     <link href="../css/adminProducts.css" rel="stylesheet" type="text/css" media="all" />
+          <link href="../css/products.css" rel="stylesheet" type="text/css" media="all" /> 
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <script src="../js/adminproduct.js" type="text/javascript"></script>
@@ -122,23 +123,23 @@ $view= new adminproductsView($model,$controller);
                     <input type="text" name="productid" id="productid" value="" hidden>
                     <tr>
 
-                        <td> Name<input type="text" id="productName" class="form-control"
+                        <td> Name<input type="text" id="productName" value="test" class="form-control"
                                 placeholder="Enter Product Name" maxlength="50" required></td>
-                        <td> Code<input type="text" id="productCode" class="form-control"
+                        <td> Code<input type="text" id="productCode" value="22" class="form-control"
                                 placeholder="Enter Product Code" maxlength="50" required>
                         </td>
-                        <td>profit<input type="text" id="productProfit" class="form-control"
+                        <td>profit<input type="text" value="22"id="productProfit" class="form-control"
                                 placeholder="Enter Product profit" maxlength="50" required></td>
 
 
                     </tr>
 
                     <tr>
-                        <td>Description<input type="text" id="productDescription" class="form-control"
+                        <td>Description<input type="text" value="test"id="productDescription" class="form-control"
                                 placeholder="Enter Product Description" maxlength="50" required></td>
-                        <td>Weight<input type="text" id="productWeight" class="form-control"
+                        <td>Weight<input type="text" value="22"id="productWeight" class="form-control"
                                 placeholder="Enter Product Weight" maxlength="50" required></td>
-                        <td>Cost<input type="text" id="productCost" class="form-control"
+                        <td>Cost<input type="text"value="22" id="productCost" class="form-control"
                                 placeholder="Enter Product Cost" maxlength="50" required></td>
 
                     </tr>
@@ -152,7 +153,7 @@ $view= new adminproductsView($model,$controller);
 
 
                 </select>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal2" onclick="resetcolor()">Add
+                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal2" onclick="">Add
                     Color</button><br><br>
                 <button class="btn btn-primary" onclick="reset()">Reset For New Product</button></center>
 
@@ -188,6 +189,7 @@ $view= new adminproductsView($model,$controller);
 
         <div id="table">
             <table class="table table-bordered" id="productstable"><br><br>
+                <tbody id="productst">
                 <tr>
                     <th>image</th>
                     <th>id</th>
@@ -229,8 +231,11 @@ $view= new adminproductsView($model,$controller);
          echo $view->products();
           
 ?>
+                </tbody>
 
             </table>
+               <button onclick="showproducts()"  id="loadmore" value="loadMore" class="buttonn buttonn1" style="visibility:hidden" >loadMore</button>
+
         </div>
     </div>
 
@@ -380,7 +385,6 @@ $view= new adminproductsView($model,$controller);
 
 
 
-
         <div class="modal fade" id="myModal2" role="dialog">
             <div class="modal-dialog">
 
@@ -402,34 +406,38 @@ $view= new adminproductsView($model,$controller);
 
                     <div class="modal-body">
 
-                        <h4>Color</h4><input type="text" id="productColor" class="form-control"
+                        <h4>Color</h4><input type="text" value="test" id="productColor" class="form-control"
                             placeholder="Enter Product Color" maxlength="50" required>
                         <table class="table table-bordered"><br>
 
 
                             <tr>
                                 <h4>Sizes</h4>
-                                <td>Small<input class="form-control" type="Number" step="1" min="0"
+                                <td>Small<input class="form-control" value="22"type="Number" step="1" min="0"
                                         placeholder="Enter Small Size" id="small"></td>
-                                <td> Medium<input class="form-control" type="Number" step="1" min="0"
+                                <td> Medium<input class="form-control"value="222" type="Number" step="1" min="0"
                                         placeholder="Enter Medium Size" id="Medium"></td>
-                                <td> Large<input class="form-control" type="Number" step="1" min="0"
+                                <td> Large<input class="form-control" value="22"type="Number" step="1" min="0"
                                         placeholder="Enter Large Size" id="Large"></td>
 
 
                             </tr>
 
                             <tr>
-                                <td> xLarge<input class="form-control" type="Number" step="1" min="0"
+                                <td> xLarge<input class="form-control" value="22"type="Number" step="1" min="0"
                                         placeholder="Enter xlarge Size" id="xLarge"></td>
-                                <td> 2xLarge<input class="form-control" type="Number" step="1" min="0"
+                                <td> 2xLarge<input class="form-control"value="222" type="Number" step="1" min="0"
                                         placeholder="Enter 2xlarge Size" id="2xLarge"></td>
-                                <td>3xLarge<input class="form-control" type="Number" step="1" min="0"
+                                <td>3xLarge<input class="form-control" value="222"type="Number" step="1" min="0"
                                         placeholder="Enter 3xlarge Size" id="3xLarge"></td>
 
                             </tr>
+                            
                         </table>
-                        <center><button onclick="addcolor()" id="finalProductAdd" data-dismiss="modal">Add</button>
+                           
+
+                        <center>
+                            <button onclick="addcolor()" id="finalProductAdd" data-dismiss="modal">Add</button>
                         </center>
                     </div>
 
@@ -438,6 +446,8 @@ $view= new adminproductsView($model,$controller);
             </div>
         </div>
         <p>
+                  <input type="text" value="1"  id="numRows" name="numRows" hidden>
+
             <script>
 
 
@@ -466,19 +476,33 @@ $view= new adminproductsView($model,$controller);
             </script>
 
             <script>
+                
+                
+                
             function showproducts() {
-                var subid = document.getElementById("subproductid").value;
+               var subcategoryid = document.getElementById("subproductid").value;
+               var numRows = document.getElementById("numRows").value;
                 $.ajax({
-                    url: '../other/showproductsAjax.php',
-                    type: 'POST',
-                    data: {
-                        subid: subid
-                    },
-                    success: function(response) {
-                        document.getElementById("productstable").innerHTML += response;
-                    }
-                });
+                      url: '../other/showproductsAjax.php',
+                      type: 'POST',
+                      data: {subcategoryid:subcategoryid,numRows:numRows},
+                      success: function(response) {
+                          document.getElementById("loadmore").style.visibility="initial";
+                      if(response==0){
+                           document.getElementById("loadmore").style.visibility="hidden";
+                                     }
+                       
+                     document.getElementById("numRows").value = parseInt(document.getElementById("numRows").value)+9;
+                     var moreproducts = document.getElementById('productst');
+                     moreproducts.insertAdjacentHTML('beforeend', response);
+                          
+                      }
+          
+        });
             }
+                
+                
+                
             </script>
 
             <script>
@@ -682,7 +706,6 @@ $view= new adminproductsView($model,$controller);
                         }
                     });
                 } else {
-                                      
                     formData.append("productid", 
                     document.getElementById("productid").value);
                     formData.append("productColor", document.getElementById("productColor").value);
@@ -692,9 +715,6 @@ $view= new adminproductsView($model,$controller);
                     formData.append("xLarge", document.getElementById("xLarge").value);
                     formData.append("2xLarge", document.getElementById("2xLarge").value);
                     formData.append("3xLarge", document.getElementById("3xLarge").value);
-       
-                    
-
                     var Select = document.getElementById("subselections");
                     formData.append("subcategoryid", Select.options[Select.selectedIndex].value);
                     

@@ -3,15 +3,15 @@
   require_once("../model/product.php");
 
 ?>
-<?php 
+<?php
 class subCategory extends Model
 {
     private $name;
     private $id;
     private $products;
-    
-    
-    
+
+
+
     function __construct()
     {
         $a = func_get_args();
@@ -20,33 +20,33 @@ class subCategory extends Model
             call_user_func_array(array($this,$f),$a);
         }
     }
-    
+
        function __construct0()
-    {  
+    {
         $this->products[]= new product();
     }
-    
 
- 
+
+
      function __construct2($id,$name)
-    {   
+    {
         $this->id = $id;
         $this->name =$name;
            $this->products[]= new product();
-        
+
     }
-    
+
     function setName($name)
     {
       $this->name = $name;
     }
     function getName()
-    { 
+    {
       return $this->name;
     }
     function setID($id)
     {
-      $this->id = $id;   
+      $this->id = $id;
     }
     function getID()
     {
@@ -55,23 +55,22 @@ class subCategory extends Model
     function getProducts(){
         return $this->products;
     }
-    
-    function readOneProduct($id){  
-        $this->products[0]=new product($id);
-        
-    }
-    
-    function readProducts($subcategoryId)
-    {  
-                $this->getvalidation();
 
-         $this->validation->validateNumber($subcategoryId,1,100000);
-        $this->connect();
+    function readOneProduct($id){
+        $this->products[0]=new product($id);
+
+    }
+
+    function readProducts($subcategoryId,$start)
+    { 
+      $this->getvalidation();
+      $this->validation->validateNumber($subcategoryId,1,100000);
+      $this->connect();
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails join subcategory on subcategorydetails.subcategoryid = subcategory.id
-        where subcategorydetails.subcategoryid = :id and subcategory.isdeleted = 0";
+      where subcategorydetails.subcategoryid = :id and subcategory.isdeleted = 0 limit $start,9";
       $this->db->query($sql);
       $this->db->bind(':id',$subcategoryId,PDO::PARAM_INT);
-      $this->db->execute(); 
+      $this->db->execute();
       if ($this->db->numRows() > 0){
           $row = $this->db->getdata();
           $n = $this->db->numRows();
@@ -80,35 +79,35 @@ class subCategory extends Model
               $this->products[]=new product($productid);
           }}
     }
-    
+
    function insertSubCategory($categoryid,$name)
-       
-    { 
-       
+
+    {
+
          $this->getvalidation();
          $this->validation->validateNumber($categoryid,1,100000);
          $this->validation->validateString($name,1,60);
 
-       
+
        $this->connect();
       $sql = "INSERT into subcategory(name) values(:name)";
       $this->db->query($sql);
       $this->db->bind(':name',$name,PDO::PARAM_STR);
       $this->db->execute();
       $subcategoryid=$this->db->lastInsertedId();
-     
+
       $sql = "INSERT into categorydetails(subcategoryid,categoryid) values(:subcategoryid,:categoryid)";
       $this->db->query($sql);
       $this->db->bind(':subcategoryid',$subcategoryid,PDO::PARAM_INT);
       $this->db->bind(':categoryid',$categoryid,PDO::PARAM_INT);
 
       $this->db->execute();
-     
-     
-     
-    
+
+
+
+
     }
-    
+
     function updateSubCategory($id,$name)
     {
       $this->getvalidation();
@@ -120,18 +119,18 @@ class subCategory extends Model
       $this->db->bind(':id',$id,PDO::PARAM_INT);
       $this->db->bind(':name',$name,PDO::PARAM_STR);
       $this->db->execute();
-     
+
     }
     function deleteSubCategory($subcategoryid)
     {     $this->getvalidation();
          $this->validation->validateNumber($subcategoryid,1,100000);
-     
+
       $this->connect();
       $sql = "update subcategory set isdeleted=1 where id=:id";
       $this->db->query($sql);
       $this->db->bind(':id',$subcategoryid,PDO::PARAM_INT);
       $this->db->execute();
-      
+
     }
 }
 

@@ -1,6 +1,6 @@
 <?php
 require_once("config.php");
-require_once("../other/customError.php");
+//require_once("../other/customError.php");
 class Database
 {
     private $servername;
