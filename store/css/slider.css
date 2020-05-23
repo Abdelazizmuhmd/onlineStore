@@ -105,3 +105,13 @@
     opacity: 1;
   }
 }
+@media only screen and (max-width: 732.8px) {
+  #stitem {
+    padding-bottom: 100%;
+    position: relative;
+  }
+  #sthalf {
+    margin-bottom: -10%;
+    position: relative;
+  }
+}

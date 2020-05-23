@@ -23,7 +23,6 @@ $view= new adminproductsView($model,$controller);
 
 <head>
 
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
@@ -40,6 +39,7 @@ $view= new adminproductsView($model,$controller);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="../js/editProduct.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -67,10 +67,10 @@ $view= new adminproductsView($model,$controller);
 
 
                 <button class="btn btn-primary" data-toggle="modal" data-target="#categoryEdit"
-                    style="width:140px;margin-left:50px;padding:10px;">Edit Category</button>
+                    style="margin-left: 10px;  overflow: hidden;">Edit Category</button>
 
 
-                <button class="btn btn-primary" data-toggle="modal" style="width:140px;margin-left:50px;padding:10px;"
+                <button class="btn btn-primary" data-toggle="modal" style="margin-left: 10px;  overflow: hidden;"
                     data-target="#categoryAdd">Add Category </button>
 
                 
@@ -78,7 +78,7 @@ $view= new adminproductsView($model,$controller);
                 <form action="../public/adminproducts.php?action=deletecategory" method="POST">
                     <input type="text" id="deletecategoryid" name="deletecategoryid" value="" hidden>
                     <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');"
-                        class="btn btn-primary" style="margin-left:50px;padding:10px;">Delete Category
+                        class="btn btn-primary" style="margin-left: 10px;  overflow: hidden;">Delete Category
                     </button>
                 </form>
 
@@ -93,9 +93,9 @@ $view= new adminproductsView($model,$controller);
                 <select name="subcategory" id="subselections" class="form-control subcategory combBox">
 
                 </select>
-                <button class="btn btn-primary" data-toggle="modal" style=" margin-left:50px;padding:10px;"
+                <button class="btn btn-primary" data-toggle="modal" style="margin-left: 10px;  overflow: hidden;"
                     data-target="#subCategoryEdit" onclick="getsubid()"> Edit SubCategory </button>
-                <button class="btn btn-primary" data-toggle="modal" style="margin-left:50px;padding:10px;"
+                <button class="btn btn-primary" data-toggle="modal" style="margin-left: 10px;  overflow: hidden;"
                     data-target="#subCategoryAdd">Add SubCategory </button>
 
 
@@ -103,7 +103,7 @@ $view= new adminproductsView($model,$controller);
                 <form action="../public/adminproducts.php?action=deletesubcategory" method="POST">
                     <input type="text" id="deletesubcategoryid" name="deletesubcategoryid" value="" hidden>
                     <button type="submit" onclick="getsubidandconfirm()" class="btn btn-primary"
-                        style="margin-left:50px;padding:10px;">Delete SubCategory
+                        style="margin-left: 10px;  overflow: hidden;">Delete SubCategory
 
                     </button>
                 </form>

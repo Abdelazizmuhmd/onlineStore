@@ -62,6 +62,8 @@ include_once("../other/sessioncheck.php");
                     placeholder="Enter Cardiology Password" class="form-control" required id="stat">
                     <option val="0" disabled selected></option>
                     <option>pending</option>
+                    <option>prepared</option>
+                    <option>finished</option>
                     <option>delivered</option>
                 </select>
         </div>
@@ -78,6 +80,7 @@ include_once("../other/sessioncheck.php");
                     <th>Comment</th>
                     <th>Status</th>
                     <th>createdtime</th>
+                    <th>editStatus</th>
                     <th>Action</th>
                     <th>Delete</th>
                 </tr>
