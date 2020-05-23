@@ -82,7 +82,7 @@ function products(){
          $str .= "<tr>
             <td><img src=".$details[$j]->getArray()[0]." style='width
             :50px;height:50px;position: relative;'></td>
-            <td><label>".$productarr[$i]->getName()."</label></td>
+            <td><div class = 'editor' >".$productarr[$i]->getName()."</div></td>
             <td>".(int)($productarr[$i]->getCost()+$productarr[$i]->getProfit())." L.E</td>
             <td>".$productarr[$i]->getCode()."</td>
             <td>".$productarr[$i]->getDescription()."</td>
