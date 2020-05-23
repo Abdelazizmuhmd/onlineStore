@@ -82,18 +82,19 @@ function products(){
          $str .= "<tr>
             <td><img src=".$details[$j]->getArray()[0]." style='width
             :50px;height:50px;position: relative;'></td>
-            <td><div class = 'editor' >".$productarr[$i]->getName()."</div></td>
-            <td>".(int)($productarr[$i]->getCost()+$productarr[$i]->getProfit())." L.E</td>
-            <td>".$productarr[$i]->getCode()."</td>
-            <td>".$productarr[$i]->getDescription()."</td>
-            <td>".$details[$j]->getColor()."</td>
-            <td>".$details[$j]->getSmall()."</td>
-            <td>".$details[$j]->getMedium()."</td>
-            <td>".$details[$j]->getLarge()."</td>
-            <td>".$details[$j]->getXl()."</td>
-            <td>".$details[$j]->getXxl()."</td>
-            <td>".$details[$j]->getXxl()."</td>
-            <td><a id='button' href=''>Edit</a></td>
+            <td>".$details[$j]->getid()."</td>
+            <td>".$productarr[$i]->getid()."</td>
+            <td><div name ='name' class = 'editor' >".$productarr[$i]->getName()."</div></td>
+            <td><div name ='price' class = 'editor' >".(int)($productarr[$i]->getCost()+$productarr[$i]->getProfit())." L.E</div></td>
+            <td><div name ='code' class = 'editor' >".$productarr[$i]->getCode()."</div></td>
+            <td><div name ='description' class = 'editor' >".$productarr[$i]->getDescription()."</div></td>
+            <td><div name ='color' class = 'editor' >".$details[$j]->getColor()."</div></td>
+            <td><div name ='small' class = 'editor' >".$details[$j]->getSmall()."</div></td>
+            <td><div name ='medium' class = 'editor' >".$details[$j]->getMedium()."</div></td>
+            <td><div name ='large' class = 'editor' >".$details[$j]->getLarge()."</div></td>
+            <td><div name ='xlarge' class = 'editor' >".$details[$j]->getXl()."</div></td>
+            <td><div name ='xxlarge' class = 'editor' >".$details[$j]->getXxl()."</div></td>
+            <td><div name ='xxxlarge' class = 'editor' >".$details[$j]->getXxxl()."</div></td>
             <td><a id='button' href='../public/adminproducts.php?action=deleteProduct&productdetailid=".$details[$j]->getid()."'><i class='fa fa-trash'></i></a></td>
           </tr>";
      }}

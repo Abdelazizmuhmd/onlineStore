@@ -226,8 +226,8 @@ hr.new2 {
   overflow: auto;
   margin-top: 5px;
   padding: 2px 1px;
-  width: 100%;
+  overflow: auto;
   color: black;
-  height: 35px;
   position: relative;
+  height: 35px;
 }

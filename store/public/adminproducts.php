@@ -190,6 +190,8 @@ $view= new adminproductsView($model,$controller);
             <table class="table table-bordered" id="productstable"><br><br>
                 <tr>
                     <th>image</th>
+                    <th>id</th>
+                    <th>detailId</th>
                     <th>name</th>
                     <th>price</th>
                     <th>code</th>
@@ -201,9 +203,6 @@ $view= new adminproductsView($model,$controller);
                     <th>XLQ</th>
                     <th>XXLQ</th>
                     <th>XXXLQ</th>
-
-
-                    <th>Edit</th>
                     <th>Delete</th>
                 </tr>
                 <!--
