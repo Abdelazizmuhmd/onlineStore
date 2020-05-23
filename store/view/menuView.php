@@ -91,9 +91,9 @@ class menuView extends View{
          $str.='<div style="" class="mySlides'.$productdetail->getColor().' fade">';
          $str.='<div class="numbertext"> / '.count($productdetail->getImages()).'</div>';
          if($display=="display:block;"){ 
-         $str.='<img id="'.$productdetail->getColor().'1"  class="product-single__photo"  src="'.$img.'originalphoto.jpeg" >';
+         $str.='<img   class="product-single__photo '.$productdetail->getColor().'1"  src="'.$img.'originalphoto.jpeg" >';
              }else{
-                $str.='<img id="'.$productdetail->getColor().'1"  src="" class="product-single__photo" data-src="'.$img.'originalphoto.jpeg" >';
+                $str.='<img   src="" class="product-single__photo '.$productdetail->getColor().'1" data-src="'.$img.'originalphoto.jpeg" >';
             }
 
          $str.='<div class="text"></div>';
