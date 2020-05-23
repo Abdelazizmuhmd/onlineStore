@@ -10,37 +10,41 @@ $imgArr=[];
  if(is_array($_FILES))   
  {  foreach ($_FILES['files']['name'] as $name => $value)  
       {  
+     
            $file_name = explode(".", $_FILES['files']['name'][$name]);  
            $allowed_ext = array("jpg", "jpeg", "png", "gif");  
            if(in_array($file_name[1], $allowed_ext))  
-           {       echo"ds22a";
-
+           {  
                $sourcePath = $_FILES['files']['tmp_name'][$name];  
                $generalname = md5(rand());
-               $targetPath="../images/".$generalname; 
-            
-                $image = new ImageResize($sourcePath);
-                $image->save($targetPath."originalphoto.jpeg");
                
-                $image = new ImageResize($sourcePath);
+               $targetPath="../images/".$generalname; 
+               $originalPhotoTargetPath = $targetPath.'originalphoto.jpeg';
+    if(move_uploaded_file($sourcePath, $originalPhotoTargetPath))  
+                {  
+
+                
+                $image = new ImageResize($originalPhotoTargetPath);
                 $image->interlace = 0;    
                 $image->gamma(false);
-                $image->scale(50);    
+                $image->resize(305, 460, $allow_enlarge = True);
+
                 $image->save($targetPath."grande.jpeg");
                    
-                $image = new ImageResize($sourcePath);
+                $image = new ImageResize($originalPhotoTargetPath);
                 $image->interlace = 0;    
                 $image->gamma(false);
-                $image->scale(25);    
+                $image->resize(145, 217, $allow_enlarge = True);
                 $image->save($targetPath."large.jpeg"); 
-               
-                $image = new ImageResize($sourcePath);
+                $image = new ImageResize($originalPhotoTargetPath);
                 $image->interlace = 0;    
                 $image->gamma(false);
-                $image->scale(15);    
+                $image->resize(43, 64, $allow_enlarge = True);
                 $image->save($targetPath."small.jpeg");   
-                $imgArr[]=$targetPath; 
-                              
+                
+                $imgArr[]=$targetPath;               
+
+            }
            }            
       }  
  } 

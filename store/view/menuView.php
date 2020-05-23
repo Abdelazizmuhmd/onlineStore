@@ -86,8 +86,10 @@ class menuView extends View{
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  >';
          $str.='<div class="slideshow-container">';
          $i++;
+            $p=0;
 
          foreach($productdetail->getImages() as $img){
+     
          $str.='<div style="" class="mySlides'.$productdetail->getColor().' fade">';
          $str.='<div class="numbertext"> / '.count($productdetail->getImages()).'</div>';
          if($display=="display:block;"){ 
