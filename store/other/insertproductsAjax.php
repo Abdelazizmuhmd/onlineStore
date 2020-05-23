@@ -1,20 +1,49 @@
 <?php
 require_once("../model/product.php");
+require_once("../other/compress/lib/ImageResize.php");
+require_once("../other/compress/lib/ImageResizeException.php");
+use \Gumlet\ImageResize;
+
+
 $imgArr=[];
  if(is_array($_FILES))   
  {  foreach ($_FILES['files']['name'] as $name => $value)  
       {  
+     
            $file_name = explode(".", $_FILES['files']['name'][$name]);  
            $allowed_ext = array("jpg", "jpeg", "png", "gif");  
            if(in_array($file_name[1], $allowed_ext))  
            {  
-                $new_name = md5(rand()) . '.' . $file_name[1];  
-                $sourcePath = $_FILES['files']['tmp_name'][$name];  
-                $targetPath = "../images/".$new_name;  
-                if(move_uploaded_file($sourcePath, $targetPath))  
+               $sourcePath = $_FILES['files']['tmp_name'][$name];  
+               $generalname = md5(rand());
+               
+               $targetPath="../images/".$generalname; 
+               $originalPhotoTargetPath = $targetPath.'originalphoto.jpeg';
+    if(move_uploaded_file($sourcePath, $originalPhotoTargetPath))  
                 {  
-                    $imgArr[]=$targetPath;
-                }                 
+
+                
+                $image = new ImageResize($originalPhotoTargetPath);
+                $image->interlace = 0;    
+                $image->gamma(false);
+                $image->resize(305, 460, $allow_enlarge = True);
+
+                $image->save($targetPath."grande.jpeg");
+                   
+                $image = new ImageResize($originalPhotoTargetPath);
+                $image->interlace = 0;    
+                $image->gamma(false);
+                $image->resize(145, 217, $allow_enlarge = True);
+                $image->save($targetPath."large.jpeg"); 
+                $image = new ImageResize($originalPhotoTargetPath);
+                $image->interlace = 0;    
+                $image->gamma(false);
+                $image->resize(43, 64, $allow_enlarge = True);
+                $image->save($targetPath."small.jpeg");   
+                
+                $imgArr[]=$targetPath;               
+
+            }
            }            
       }  
  } 
@@ -26,8 +55,6 @@ array("color"=>$_REQUEST['productColor'],"s"=>$_REQUEST['small'],"m"=>$_REQUEST[
 $model = new product();
 $productid=$model->insertProduct($_REQUEST['productName'],$_REQUEST['productCode'],$_REQUEST['productCost'],$_REQUEST['productProfit'],$_REQUEST['productDescription'],$_REQUEST['productWeight'],$productdetail,$_REQUEST['subcategoryid']);
 
-
 echo $productid;
-
 
  ?>  

@@ -87,7 +87,7 @@ $subcategoryid=$_REQUEST['subproductid'];
 }
  else{       $subcategoryid=$subid;
     }
-$this->model->getCategories()[0]->getSubcategories()[0]->readProducts($subcategoryid);
+$this->model->getCategories()[0]->getSubcategories()[0]->readProducts($subcategoryid,1);
 }
 
 function  updateProduct(){

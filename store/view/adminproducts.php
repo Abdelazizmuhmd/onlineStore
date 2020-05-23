@@ -78,9 +78,11 @@ function products(){
     if(is_iterable($details)){
     $dlength=count($details);  
     for($j = 0;$j<$dlength;$j++)
-     {
-         $str .= "<tr>
-            <td><img src=".$details[$j]->getArray()[0]." style='width
+     { 
+         $str .= "
+         
+         <tr>
+            <td><img src='".$details[$j]->getArray()[0]."small.jpeg' style='width
             :50px;height:50px;position: relative;'></td>
             <td><label>".$productarr[$i]->getName()."</label></td>
             <td>".(int)($productarr[$i]->getCost()+$productarr[$i]->getProfit())." L.E</td>
@@ -95,8 +97,11 @@ function products(){
             <td>".$details[$j]->getXxl()."</td>
             <td><a id='button' href=''>Edit</a></td>
             <td><a id='button' href='../public/adminproducts.php?action=deleteProduct&productdetailid=".$details[$j]->getid()."'><i class='fa fa-trash'></i></a></td>
-          </tr>";
+          </tr> 
+          
+          ";
      }}
+     
  }
  return $str;
 }

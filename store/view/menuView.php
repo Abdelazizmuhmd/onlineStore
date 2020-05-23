@@ -2,7 +2,7 @@
 require_once("../view/View.php");
 
 class menuView extends View{
-    
+
     function MenuOutput(){
     $str="";
     $categories = $this->model->getCategories();
@@ -21,55 +21,56 @@ class menuView extends View{
           $str.='<a  id="'.$i.'" href="../public/products.php?action=readProducts&subcategoryId='.$subcategory->getID().'" class="site-nav__link">'.$subcategory->getName().'</a>';
           $str.='</li>';}};
           $str.='</ul></li>';
-    
+
 }
     }
     echo $str;
     }
-    
 
+//305 460
     function productsOutput(){
-     $str=""; 
+     
+     $str="";
      $products=$this->model->getCategories()[0]->getSubcategories()[0]->getProducts();
        foreach($products as $i=>$product){
        if ($i>0){
        $productDetails = $product->getProductDetails();
-                     if(is_iterable($productDetails)){
-
+        if(is_iterable($productDetails)){
        foreach($productDetails as $k=>$productdetail){
        $imageArray=$productdetail->getImages();
      $str.='<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated"  role="listitem">';
      $str.=' <div class="supports-js" style="max-width: 600px; margin: 0 auto;">';
-     $str.=' <a href="../public/product.php?action=readOneProduct&productid='.$product->getId().'&productdetailid='.$productdetail->getid().'" class="product__image-wrapper " style="padding-top:100.0%;"  data-image-link>';   
+     $str.=' <a href="../public/product.php?action=readOneProduct&productid='.$product->getId().'&productdetailid='.$productdetail->getid().'" class="product__image-wrapper " style="padding-top:100.0%;"  data-image-link>';
      $str.='<img class="product__image "
                  alt="first image"
                  style="max-width: 600px; max-height: 600px;"
-                 src="'.$imageArray[0].'"
+                 src="'.$imageArray[0].'grande.jpeg"
                  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
                  data-aspectratio="1.0"
                  data-sizes="auto"
-                 data-image>    
+                 data-image>
       </a>';
      $str.=' </div>';
      $str.=' <div style="margin-top:160px;" class="product__title product__title--card text-center">';
      $str.=' <a href="">'.$product->getName().'</a>';
-     $str.=' </div>'; 
+     $str.=' </div>';
      $str.='  <div " class="product__prices text-center">';
      $str.=' <span class="product__price">';
      $str.=' <span class="visually-hidden">Regular price</span>'.(int)($product->getprofit()+$product->getcost()).' L.E</span>';
      $str.=' <span class="badge badge--sale"></span>';
      $str.=' </div>';
      $str.=' </div>';
-          
-       
+
+
        }}
-       
+
     }
     }
+
                    echo $str;
 
     }
-    
+
     function readOneProduct(){
         $str="";
         $product= $this->model->getCategories()[0]->getSubcategories()[0]->getProducts()[0];
@@ -80,47 +81,52 @@ class menuView extends View{
         foreach($productdetails as $i=> $productdetail){
                    //here is islam
          if($productdetail->getid()!=$pid/*$i != 0*/){ $hidden="hidden";$display='display:none';}
-         else $display='display:block';
-         $str.='<div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js images" value= '.$productdetail->getColor().'  style='.$display.'>';
-         $str.=' <div class="product-single__photos" data-aspectratio="1.0"  style="padding-top: 100%; position: relative; overflow: '.$hidden.';">';
-         $str.='<div style =""class="slideshow-container">';
-         $i++;   
+         else $display='display:block;';
+         $str.='   <div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js images" value= '.$productdetail->getColor().'  style='.$display.'>';
+         $str.=' <div class="product-single__photos" data-aspectratio="1.0"  >';
+         $str.='<div class="slideshow-container">';
+         $i++;
          foreach($productdetail->getImages() as $img){
-         $str.='<div style="position:relative; bottom:500px" class="mySlides'.$productdetail->getColor().' fade">';
+         $str.='<div style="" class="mySlides'.$productdetail->getColor().' fade">';
          $str.='<div class="numbertext"> / '.count($productdetail->getImages()).'</div>';
-         $str.=' <img  class="product-single__photo" src="'.$img.'" data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="1.0">'; 
+         if($display=="display:block;"){ 
+         $str.='<img id="'.$productdetail->getColor().'1"  class="product-single__photo"  src="'.$img.'originalphoto.jpeg" >';
+             }else{
+                $str.='<img id="'.$productdetail->getColor().'1"  src="" class="product-single__photo" data-src="'.$img.'originalphoto.jpeg" >';
+            }
          $str.='<div class="text"></div>';
          $str.='</div>';
          }
          $str.='<a style = " margin-bottom:250px; height:50px" class="prev but'.$productdetail->getColor().'" onclick="plusSlides(-1)">&#10094;</a>
          <a  style = "margin-bottom:250px;height:50px"class="next but'.$productdetail->getColor().'" onclick="plusSlides(1)">&#10095;</a>
          </div>
+
          <br>';
          $str.='<div style="text-align:center">';
-         for($i=1;$i<=count($productdetail->getImages());$i++)          
+         for($i=1;$i<=count($productdetail->getImages());$i++)
          $str.='<span class="dot col'.$productdetail->getColor().'" onclick="currentSlide('.$i.')"></span>';
          $str.='</div>';
          $str.='</div>';
          $str.='</div>';
          }
          $str.=' </div>
-        
-         <div class="grid__item medium-up--one-half">
+
+         <div class="grid__item medium-up--one-half" >
              <div class="product-single__meta small--text-center">
-             
+
                  <h1 id ="product_name1" class="product-single__title" itemprop="name">'.$product->getName().'</h1>';
                  $display ='';
                  $pid = $_REQUEST['productdetailid'];
                  foreach($productdetails as $i=> $productdetail){
                      //here is islam
                      //echo $productdetail->getid();
-                     
+
 
                   if($productdetail->getid()!=$pid /*$i!=0*/){
                       $hidden="hidden";$display='display:none';
                            }
-                  else $display='display:block';
-                  
+                  else $display='display:block;';
+
                 $str.= '<div id = '.$productdetail->getColor().' style='.$display.'>
 
                      <p class="product-single__prices">
@@ -128,7 +134,7 @@ class menuView extends View{
                      </p>
 
                      <div class="product-single__policies rte">Tax included. Delevered to your Door.
-                          
+
 
                      </div>
                      <form method="post" action="../other/cartajaxBackend.php" id="product_form_4404356317218"
@@ -155,7 +161,7 @@ class menuView extends View{
                              <label for="ProductSelect-product-template-option-1">Size</label>
                              <select class="single-option-selector" data-option="option2"
                                  id="ProductSelect-product-template-option-1" name="sizes">';
-                                 
+
                                   if($productdetail->getSmall() != 0)
                                     $str.='<option value="Small">Small</option>';
                                   if($productdetail->getMedium() != 0)
@@ -167,7 +173,7 @@ class menuView extends View{
                                   if($productdetail->getXxxl() != 0)
                                     $str.='<option value="XXXL">XXXL</option>';
                            $str.='</select></div>
-                                 
+
 
                          <div class="product-single__quantity">
                              <label for="Quantity">Quantity</label>
@@ -178,7 +184,7 @@ class menuView extends View{
                          <div class="product-single__cart-submit-wrapper  product-form--full">
                        <input type="submit" value="Add to Cart" name="add" id="AddToCart"
                                  class="btn product-single__cart-submit btn--full  btn--secondary">
-                             
+
 
 
 
@@ -195,21 +201,21 @@ class menuView extends View{
 
                 $str.= '<div class="product-single__description rte" itemprop="description"><h1>
                     Description</h1>
-                     
+
                      '.$product->getDescription().'
                      <br>                     <br>
                      <br>
 
                   ';
-        
-            
-            
-        
-        
-        
+
+
+
+
+
+
         echo $str;
     }
-    
+
 
 }
 

@@ -7,6 +7,7 @@ $(document).ready(function () {
   $(".decider").change(function () {
     decider = $(this).find(":selected").text();
     decide = $(this).find(":selected");
+      deciderimg=decider+"1";
     $(this)
       .parent()
       .parent()
@@ -37,5 +38,9 @@ $(document).ready(function () {
         }
       });
     showSlides(1);
+       document.getElementById("green1").src =document.getElementById("green1").getAttribute("data-src");
+ 
+      
+      
   });
 });
