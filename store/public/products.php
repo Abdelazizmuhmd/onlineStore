@@ -12,6 +12,8 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
   $controller->{$_GET['action']}();
 }
 
+
+
 $controller->getAllCategoriesDetails();
 
 
@@ -24,6 +26,7 @@ $view= new menuView($model,$controller);
 <head>
   <meta charset="utf-8">
       <link href="../css/home.css" rel="stylesheet" type="text/css" media="all" /> 
+      <link href="../css/products.css" rel="stylesheet" type="text/css" media="all" /> 
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -36,7 +39,7 @@ Pat
   <script src="../js/home.js" type="text/javascript"></script>
   <script src="../js/j2.js" type="text/javascript"></script>
 
-    
+
 
 </head>
 
@@ -77,11 +80,18 @@ Pat
 
 <div data-section-id="collection-template" data-section-type="collection-template" data-sort-enabled="true" data-tags-enabled="true">
   
-  <div class="grid grid--uniform" role="list">
+  <div class="grid grid--uniform"  id="products" role="list">
 <?php
 
       $view->productsOutput();
 ?>
+      </div>
+
+      <button onclick="loadMoreProducts()"  id="loadmore" value="loadMore" class="buttonn buttonn1">loadMore</button>
+    
+      <input type="text" value="10"  id="numRows" name="numRows" hidden>
+            <input type="text" value=""  id="subcategoryid" name="subcategoryid" hidden>
+
 <!--
 
 <div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" role="listitem">
@@ -125,16 +135,41 @@ Pat
 </div>
       -->
       
+<?php if(isset($_GET['subcategoryId'])){
+?>    <script>
+      document.getElementById("subcategoryid").value= <?php echo $_GET['subcategoryId']; ?>;
+      </script>
+      <?php } 
+    ?>      
 <script>  
     if(document.getElementById("1").href!=""&&window.location.href=="http://localhost/onlineStore/store/public/products.php"){
         window.location.href=document.getElementById("1").href;
     }
+    
+    function loadMoreProducts(){
+    var subcategoryid = document.getElementById("subcategoryid").value;
+    var numRows = document.getElementById("numRows").value;
+    $.ajax({
+          url: '../other/requestproductsajax.php',
+          type: 'POST',
+          data: {subcategoryid:subcategoryid,numRows:numRows},
+          success: function(response) {
+             if(response==0){
+               document.getElementById("loadmore").style.visibility="hidden";
+               }
+              document.getElementById("numRows").value = parseInt(document.getElementById("numRows").value)+10;
+
+           var moreProducts = document.getElementById('products');
+            moreProducts.insertAdjacentHTML('beforeend', response);
+          }
+        });
+    }
+    
+    
 </script>
 
 
-
    
-</div>
 </div>
 </div>
 </main>

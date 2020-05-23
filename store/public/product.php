@@ -27,13 +27,14 @@ $view= new menuView($model,$controller);
 
     <link href="../css/home.css" rel="stylesheet" type="text/css" media="all" />
     <link href="../css/slider.css" rel="stylesheet" type="text/css" media="all" />
-    <script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
-    <script src="../js/j.js" type="text/javascript"></script>
-    <script src="../js/s.js" type="text/javascript"></script>
-    <script src="../js/home.js" type="text/javascript"></script>
-    <script src="../js/j2.js" type="text/javascript"></script>
-    <script src="../js/product.js" type="text/javascript"></script>
+      <script src="../js/j.js" type="text/javascript"></script>
 
+    <script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
+     <script src="../js/s.js" type="text/javascript"></script>
+    <script src="../js/home.js" type="text/javascript"></script>
+ <script src="../js/j2.js" type="text/javascript"></script>
+    
+    <script src="../js/product.js" type="text/javascript"></script>
 
 
 </head>
@@ -72,69 +73,16 @@ $view= new menuView($model,$controller);
 
 
 
-                <style>
-                @media screen and (min-width: 750px) {
-                    #ProductImage-13801390768162 {
-                        max-width: 720px;
-                        max-height: 720.0px;
-                    }
-
-                    #ProductImageWrapper-13801390768162 {
-                        max-width: 720px;
-                    }
-                }
-
-
-
-                @media screen and (max-width: 749px) {
-                    #ProductImage-13801390768162 {
-                        max-width: 720px;
-                        max-height: 720px;
-                    }
-
-                    #ProductImageWrapper-13801390768162 {
-                        max-width: 720px;
-                    }
-                }
-                </style>
-                <style>
-                @media screen and (min-width: 750px) {
-                    #ProductImage-13801391030306 {
-                        max-width: 720px;
-                        max-height: 720.0px;
-                    }
-
-                    #ProductImageWrapper-13801391030306 {
-                        max-width: 720px;
-                    }
-                }
-
-
-
-                @media screen and (max-width: 749px) {
-                    #ProductImage-13801391030306 {
-                        max-width: 720px;
-                        max-height: 720px;
-                    }
-
-                    #ProductImageWrapper-13801391030306 {
-                        max-width: 720px;
-                    }
-                }
-                </style>
 
                 <div class="grid product-single">
 
+                   
                     <div class="grid__item medium-up--one-half" id="sthalf">
                         <?php
 $view->readOneProduct();
 
       ?>
-
-
-
-
-
+ 
 
 
 
@@ -150,8 +98,7 @@ $view->readOneProduct();
                                             <td><strong>XL</strong></td>
                                             <td><strong>2XL</strong></td>
                                             <td><strong>3XL</strong></td>
-                                            <td><strong>4XL</strong></td>
-                                            <td><strong>5XL</strong></td>
+                                           
                                         </tr>
                                         <tr>
                                             <td><strong>Length (cm)</strong></td>
@@ -161,8 +108,7 @@ $view->readOneProduct();
                                             <td>76</td>
                                             <td>79</td>
                                             <td>81</td>
-                                            <td>84</td>
-                                            <td>86</td>
+                                       
                                         </tr>
                                         <tr>
                                             <td><strong>Width (cm)</strong></td>
@@ -172,8 +118,7 @@ $view->readOneProduct();
                                             <td>66</td>
                                             <td>71</td>
                                             <td>76</td>
-                                            <td>81</td>
-                                            <td>86</td>
+                                      
                                         </tr>
                                     </tbody>
                                 </table>

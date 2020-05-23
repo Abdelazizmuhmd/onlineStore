@@ -188,9 +188,9 @@ $sub_total+=$values['price']*$values['quantity'];
       
           <tr class='product' data-product-id='4396731957282' data-variant-id='31415765139490' data-product-type='Sweater' data-customer-ready-visible>
           <td class='product__image'>
-            <div class='product-thumbnail'>
+            <div class='product-thumbnail' style='margin-bottom:5px;'>
   <div class='product-thumbnail__wrapper'>
-    <img alt=''class='product-thumbnail__image' src='$values[image_url]' />
+    <img alt=''class='product-thumbnail__image' src='$values[image_url]small.jpeg' />
   </div>
     <span class='product-thumbnail__quantity' aria-hidden='true'>$values[quantity]</span>
 </div>
