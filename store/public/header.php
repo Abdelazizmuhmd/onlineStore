@@ -10,9 +10,11 @@
 
  
 <body>
-    
-<nav class="navbar navbar-expand-md navbar-light bg-success">
-    <a href="#" class="navbar-brand" style="color: white;">Bat Store</a>
+      <a href="" class="announcement-bar announcement-bar--link" style="text-decoration: none;">
+    <p class="announcement-bar__message site-wrapper">WELCOME TO  PAT</p>
+    </a>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a href="#" class="navbar-brand" style="color: ;">Bat Store</a>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,8 +26,8 @@
       
       if(!isset($_SESSION['usertype'])||$_SESSION['usertype']=="guest"){
 ?>
-            <a href="#" onclick="movetologin()" class="nav-item nav-link active" style="color: white;">Login</a>
-            <a href="#" onclick="movetosignup()" class="nav-item nav-link" style="color: white;">Signup</a>
+            <a href="#" onclick="movetologin()" class="nav-item nav-link active" style="color: ;">Login</a>
+            <a href="#" onclick="movetosignup()" class="nav-item nav-link" style="color: ;">Signup</a>
             <?php
          }
 
@@ -35,9 +37,9 @@
 
             <a class="nav-item nav-link active">Welcome 
         <?php   echo $_SESSION['name']; ?></a>
-            <a href="#" onclick="movetoHome()" class="nav-item nav-link active" style="color: white;">Home</a>
-            <a href="#" onclick="movetoorders()" class="nav-item nav-link" style="color: white;">My Orders</a>
-            <a href="#" onclick="logout()" class="nav-item nav-link active" style="color: white;">Logout</a>
+            <a href="#" onclick="movetoHome()" class="nav-item nav-link active" style="color: ;">Home</a>
+            <a href="#" onclick="movetoorders()" class="nav-item nav-link" style="color: ;">My Orders</a>
+            <a href="#" onclick="logout()" class="nav-item nav-link active" style="color: ;">Logout</a>
 <?php }
 
 
@@ -47,12 +49,12 @@
 
 
                 else if($_SESSION['usertype']=="admin"){ ?>
-            <a href="#" onclick="movetoHome()" class="nav-item nav-link active" style="color: white;">Home</a>
-            <a href="#" onclick="movetoorders()" class="nav-item nav-link" style="color: white;">Client Orders</a>
-            <a href="#" onclick="movetoadminproducts()" class="nav-item nav-link active" style="color: white;">Admin Panel</a>
-            <a href="#" onclick="movetoreport()" class="nav-item nav-link active" style="color: white;">Generate Report</a>
-            <a href="#" onclick="system()" class="nav-item nav-link" style="color: white;">System Logs</a>
-            <a href="#" onclick="logout()" class="nav-item nav-link active" style="color: white;">Logout</a>
+            <a href="#" onclick="movetoHome()" class="nav-item nav-link active" style="color: ;">Home</a>
+            <a href="#" onclick="movetoorders()" class="nav-item nav-link" style="color: ;">Client Orders</a>
+            <a href="#" onclick="movetoadminproducts()" class="nav-item nav-link active" style="color: ;">Admin Panel</a>
+            <a href="#" onclick="movetoreport()" class="nav-item nav-link active" style="color: ;">Generate Report</a>
+            <a href="#" onclick="system()" class="nav-item nav-link" style="color: ;">System Logs</a>
+            <a href="#" onclick="logout()" class="nav-item nav-link active" style="color: ;">Logout</a>
 <?php } ?>
 
         </div>
