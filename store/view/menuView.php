@@ -80,7 +80,7 @@ class menuView extends View{
         $pid = $_REQUEST['productdetailid'];
         foreach($productdetails as $i=> $productdetail){
                    //here is islam
-         if($productdetail->getid()!=$pid/*$i != 0*/){ $hidden="hidden";$display='display:none';}
+         if($productdetail->getid()!=$pid/*$i != 0*/){ $hidden="hidden";$display='display:none;';}
          else $display='display:block;';
          $str.='   <div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js images" value= '.$productdetail->getColor().'  style='.$display.'>';
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  >';
@@ -89,8 +89,7 @@ class menuView extends View{
             $p=0;
 
          foreach($productdetail->getImages() as $img){
-     
-         $str.='<div style="" class="mySlides'.$productdetail->getColor().' fade">';
+         $str.='<div  class="mySlides'.$productdetail->getColor().' fade">';
          $str.='<div class="numbertext"> / '.count($productdetail->getImages()).'</div>';
          if($display=="display:block;"){ 
          $str.='<img   class="product-single__photo '.$productdetail->getColor().'1"  src="'.$img.'originalphoto.jpeg" >';
@@ -117,7 +116,7 @@ class menuView extends View{
 
          <div class="grid__item medium-up--one-half" >
 
-             <div class="product-single__meta small--text-center">
+             <div class="product-single__meta small--text-center" id="selectorContainer">
 
                  <h1 id ="product_name1" class="product-single__title" itemprop="name">'.$product->getName().'</h1>';
                  $display ='';
@@ -128,11 +127,11 @@ class menuView extends View{
 
 
                   if($productdetail->getid()!=$pid /*$i!=0*/){
-                      $hidden="hidden";$display='display:none';
+                      $hidden="hidden";$display='display:none;';
                            }
                   else $display='display:block;';
 
-                $str.= '<div id = '.$productdetail->getColor().' style='.$display.'>
+                $str.= '<div class="selectorsC" id = '.$productdetail->getColor().' style='.$display.'>
 
                      <p class="product-single__prices">
                          <span id="ProductPrice" class="product-single__price" value="'.(int)($product->getCost()+$product->getProfit()).'">'.(int)($product->getCost()+$product->getProfit()).' L.E</span>
@@ -153,7 +152,7 @@ class menuView extends View{
                          <div class="selector-wrapper">
                             <label for="ProductSelect-product-template-option-0"> Color</label>
                              <select class="single-option-selector decider" data-option="option1"
-                                 id="ProductSelect-product-template-option-0"  name="colors" >';
+                                 id="ProductSelect-product-template-option-0"  name="colors"  check="'.$display.'" >';
                                  foreach($productdetails as $pro){
                                    if($productdetail->getColor() == $pro->getColor())
                                      $str.='<option selected = "selected" value="'.$pro->getColor().'">'.$pro->getColor().'</option>';

@@ -12,6 +12,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 }
 
 
+
 $controller->getAllCategories();
 
 $view= new adminproductsView($model,$controller);

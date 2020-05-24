@@ -8,6 +8,7 @@ $(document).ready(function () {
     decider = $(this).find(":selected").text();
     decide = $(this).find(":selected");
       deciderimg=decider+"1";
+      //images
     $(this)
       .parent()
       .parent()
@@ -21,6 +22,7 @@ $(document).ready(function () {
           $(".decider").val(decider);
         }
       });
+      //dropdowns
     $(this)
       .parent()
       .parent()
@@ -37,7 +39,7 @@ $(document).ready(function () {
           $(".decider").val(decider);
         }
       });
-       showSlides(1);
+      
  
        var x = document.getElementsByClassName(deciderimg);
        for(var i=0; i<x.length; i++)
@@ -46,6 +48,9 @@ $(document).ready(function () {
            x[i].src=x[i].getAttribute("data-src");
             }
         }
+       showSlides(1);
       
   });
+    
+   
 });

@@ -33,7 +33,7 @@ $view= new menuView($model,$controller);
      <script src="../js/s.js" type="text/javascript"></script>
     <script src="../js/home.js" type="text/javascript"></script>
  <script src="../js/j2.js" type="text/javascript"></script>
-    
+
     <script src="../js/product.js" type="text/javascript"></script>
 
 
