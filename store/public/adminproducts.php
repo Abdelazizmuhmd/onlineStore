@@ -11,7 +11,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
   $controller->{$_GET['action']}();
 }
 
-
+$controller->updateProduct();
 
 $controller->getAllCategories();
 

@@ -13,9 +13,23 @@ function currentSlide(n) {
 
 function showSlides(n) {
   var i;
-  val = "";
+  var  val = "";
   //for (var c = 0; c < $(this).find(":selected").text().length / 2; c++)
-  val = $(".decider").val();
+    var selectorsLength = document.getElementsByClassName("decider").length;
+    var selectors = document.getElementsByClassName("decider");
+    for(var k=0;k<selectorsLength;k++){
+    if(selectors[k].getAttribute("check")=="display:block;"){
+        alert(k);
+      val = selectors[k].options[selectors[k].selectedIndex ].value ;
+
+        }
+        
+    }
+
+   
+    
+   
+    
   var slides = document.getElementsByClassName("mySlides" + val);
   var dots = document.getElementsByClassName("col" + val);
   if (slides.length > 1) {
