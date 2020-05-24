@@ -93,7 +93,6 @@ $this->model->getCategories()[0]->getSubcategories()[0]->readProducts($subcatego
 function  updateProduct(){
 
     $productid = $_REQUEST['productid'];
-
     $productdetailid = $_REQUEST['productdetailid'];
     $name = $_REQUEST['name'];
     $code = $_REQUEST['code'];
@@ -109,7 +108,7 @@ function  updateProduct(){
     $xxl= $_REQUEST['xxl'];
     $xxxl= $_REQUEST['xxxl'];
     $imageurls= $_REQUEST['imageurls'];
-    $this->model->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->updateProduct($productid,$productdetailid,$name,$code,$cost,$profit,$description,$weight,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
+    $this->model->getCategories()[0]->getSubcategories()[0]->getProducts()[0]->update($productid,$productdetailid,$name,$code,$cost,$profit,$description,$weight,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
 
 }
 function  deleteProduct(){

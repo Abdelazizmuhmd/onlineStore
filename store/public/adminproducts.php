@@ -12,7 +12,6 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 }
 
 
-
 $controller->getAllCategories();
 
 $view= new adminproductsView($model,$controller);
@@ -195,7 +194,8 @@ $view= new adminproductsView($model,$controller);
                     <th>id</th>
                     <th>detailId</th>
                     <th>name</th>
-                    <th>price</th>
+                    <th>cost</th>
+                    <th>profit</th>
                     <th>code</th>
                     <th>description</th>
                     <th>color</th>
@@ -205,6 +205,7 @@ $view= new adminproductsView($model,$controller);
                     <th>XLQ</th>
                     <th>XXLQ</th>
                     <th>XXXLQ</th>
+                    <th>Weight</th>
                     <th>Delete</th>
                 </tr>
                 <!--

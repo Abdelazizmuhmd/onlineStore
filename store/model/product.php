@@ -150,7 +150,7 @@ function getProductDetails(){
      function update($productid,$productdetailid,$name,$code,$cost,$profit,$description,$weight,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls){
 
       $this->connect();
-      $sql = "update product  set name= :name ,code= :code ,cost=:cost ,profit=:profit,description=:description,weight=:weight where id = :id";
+      $sql = "update product  set name= :name ,code=:code ,cost=:cost ,profit=:profit,description=:description,weight=:weight where id =:id";
                   $this->db->query($sql);
 
       $this->db->bind(':name',$name,PDO::PARAM_STR);
@@ -159,17 +159,13 @@ function getProductDetails(){
 
          
       $this->db->bind(':cost',$cost,PDO::PARAM_INT);
-
       $this->db->bind(':profit',$profit,PDO::PARAM_INT);
-
-
-         
       $this->db->bind(':description',$description,PDO::PARAM_STR);
       $this->db->bind(':weight',$weight,PDO::PARAM_INT);
       $this->db->bind(':id',$productid,PDO::PARAM_INT);
-
-         
       $this->db->execute();
+         
+      echo $productid;
         
       $this->productDetails[0]->update($productdetailid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
         

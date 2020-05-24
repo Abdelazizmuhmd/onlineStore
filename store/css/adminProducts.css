@@ -224,10 +224,18 @@ hr.new2 {
   border: 1px solid darkgray;
   box-shadow: 1px 1px 1px 0 lightgray inset;
   overflow: auto;
-  margin-top: 5px;
   padding: 2px 1px;
   overflow: auto;
   color: black;
   position: relative;
-  height: 35px;
+}
+.wr {
+  background-color: #da5555;
+  border: 1px solid darkgray;
+  box-shadow: 1px 1px 1px 0 lightgray inset;
+  overflow: auto;
+  padding: 2px 1px;
+  overflow: auto;
+  color: black;
+  position: relative;
 }

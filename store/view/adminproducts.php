@@ -84,10 +84,11 @@ function products(){
          <tr>
             <td><img src='".$details[$j]->getArray()[0]."small.jpeg' style='width
             :50px;height:50px;position: relative;'></td>
-            <td>".$details[$j]->getid()."</td>
             <td>".$productarr[$i]->getid()."</td>
+            <td>".$details[$j]->getid()."</td>
             <td><div name ='name' class = 'editor' >".$productarr[$i]->getName()."</div></td>
-            <td><div name ='price' class = 'editor' >".(int)($productarr[$i]->getCost()+$productarr[$i]->getProfit())." L.E</div></td>
+            <td><div name ='cost' value=".$productarr[$i]->getCost()." class = 'editor' >".$productarr[$i]->getCost()."</div>L.E</td>
+            <td ><div name ='profit' value=".$productarr[$i]->getProfit()." class = 'editor' >".$productarr[$i]->getProfit()."</div>L.E</td>
             <td><div name ='code' class = 'editor' >".$productarr[$i]->getCode()."</div></td>
             <td><div name ='description' class = 'editor' >".$productarr[$i]->getDescription()."</div></td>
             <td><div name ='color' class = 'editor' >".$details[$j]->getColor()."</div></td>
@@ -97,6 +98,7 @@ function products(){
             <td><div name ='xlarge' class = 'editor' >".$details[$j]->getXl()."</div></td>
             <td><div name ='xxlarge' class = 'editor' >".$details[$j]->getXxl()."</div></td>
             <td><div name ='xxxlarge' class = 'editor' >".$details[$j]->getXxxl()."</div></td>
+            <td><div name ='weight' class = 'editor' >".$productarr[$i]->getWeight()."</div></td>
             <td><a id='button' href='../public/adminproducts.php?action=deleteProduct&productdetailid=".$details[$j]->getid()."'><i class='fa fa-trash'></i></a></td>
           </tr> 
           
