@@ -37,10 +37,15 @@ $(document).ready(function () {
           $(".decider").val(decider);
         }
       });
-    showSlides(1);
-       document.getElementById("green1").src =document.getElementById("green1").getAttribute("data-src");
+       showSlides(1);
  
-      
+       var x = document.getElementsByClassName(deciderimg);
+       for(var i=0; i<x.length; i++)
+        {
+          if(x[i].getAttribute("src")==""){
+           x[i].src=x[i].getAttribute("data-src");
+            }
+        }
       
   });
 });

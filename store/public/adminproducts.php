@@ -188,7 +188,6 @@ $view= new adminproductsView($model,$controller);
 
         <div id="table">
             <table class="table table-bordered" id="productstable"><br><br>
-                <tbody id="productst">
                 <tr>
                     <th>image</th>
                     <th>id</th>
@@ -208,6 +207,8 @@ $view= new adminproductsView($model,$controller);
                     <th>Weight</th>
                     <th>Delete</th>
                 </tr>
+                                    <tbody id="productst">
+
                 <!--
    <tr>
             <td><label>Micheal Townly</label></td>
@@ -235,7 +236,7 @@ $view= new adminproductsView($model,$controller);
                 </tbody>
 
             </table>
-               <button onclick="showproducts()"  id="loadmore" value="loadMore" class="buttonn buttonn1" style="visibility:hidden" >loadMore</button>
+               <button onclick="getsubid(1)"  id="loadmore" value="loadMore" class="buttonn buttonn1" style="visibility:hidden" >loadMore</button>
 
         </div>
     </div>
@@ -448,22 +449,39 @@ $view= new adminproductsView($model,$controller);
         </div>
         <p>
                   <input type="text" value="1"  id="numRows" name="numRows" hidden>
-
-            <script>
+                  <input name="oldsubid" type="text" id="oldsubid" hidden>
+                         <script>
 
 
             </script>
 
 
             <script>
+            var p=0;
             function getsubid(i = "") {
                 var Select = document.getElementById("subselections");
                 document.getElementById("editsubcatgoryid").value = Select.options[Select.selectedIndex].value;
                 document.getElementById("subproductid").value = Select.options[Select.selectedIndex].value;
-                if (i == 1) {
+               if (i == 1) {
+                    if(p==0){
+                        document.getElementById("oldsubid").value=document.getElementById("subproductid").value;
+                         document.getElementById("numRows").value=1;
+                        p=1;
+                    }
+                    
+                    if(document.getElementById("oldsubid").value==document.getElementById("subproductid").value){
                     showproducts();
+                    }else{
+                        document.getElementById("oldsubid").value=document.getElementById("subproductid").value;
+                        var new_tbody = document.createElement('tbody');
+                         document.getElementById('productst').innerHTML="";
+                        document.getElementById("loadmore").style.visibility="hidden";
+                        document.getElementById("numRows").value=1;
+                        showproducts();
+                        p=0;
+                      
+                    }
                 }
-
             }
 
             function getsubidandconfirm() {
@@ -492,7 +510,6 @@ $view= new adminproductsView($model,$controller);
                       if(response==0){
                            document.getElementById("loadmore").style.visibility="hidden";
                                      }
-                       
                      document.getElementById("numRows").value = parseInt(document.getElementById("numRows").value)+9;
                      var moreproducts = document.getElementById('productst');
                      moreproducts.insertAdjacentHTML('beforeend', response);
@@ -518,7 +535,6 @@ $view= new adminproductsView($model,$controller);
             };
 
             function addcolor() {
-
                 var productName = document.getElementById("productName").value;
                 var productCode = document.getElementById("productCode").value;
                 var productProfit = document.getElementById("productProfit").value;

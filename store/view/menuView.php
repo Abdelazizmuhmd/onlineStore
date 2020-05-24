@@ -86,14 +86,16 @@ class menuView extends View{
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  >';
          $str.='<div class="slideshow-container">';
          $i++;
+            $p=0;
 
          foreach($productdetail->getImages() as $img){
+     
          $str.='<div style="" class="mySlides'.$productdetail->getColor().' fade">';
          $str.='<div class="numbertext"> / '.count($productdetail->getImages()).'</div>';
          if($display=="display:block;"){ 
-         $str.='<img id="'.$productdetail->getColor().'1"  class="product-single__photo"  src="'.$img.'originalphoto.jpeg" >';
+         $str.='<img   class="product-single__photo '.$productdetail->getColor().'1"  src="'.$img.'originalphoto.jpeg" >';
              }else{
-                $str.='<img id="'.$productdetail->getColor().'1"  src="" class="product-single__photo" data-src="'.$img.'originalphoto.jpeg" >';
+                $str.='<img   src="" class="product-single__photo '.$productdetail->getColor().'1" data-src="'.$img.'originalphoto.jpeg" >';
             }
 
          $str.='<div class="text"></div>';
