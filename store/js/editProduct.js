@@ -86,63 +86,63 @@ $(document).ready(function () {
         else if ($(this).text() == "XXXLQ") xxxli = $(this).index();
         else if ($(this).text() == "Weight") wi = $(this).index();
       });
-    var productid = $("#productstable")
+    var productid = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + id + ")");
     product.append("productid", productid.text());
-    var productdetailid = $("#productstable")
+    var productdetailid = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + pid + ")");
     product.append("productdetailid", productdetailid.text());
-    var pname = $("#productstable")
+    var pname = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + ni + ")");
     product.append("name", pname.text());
-    var cost = $("#productstable")
+    var cost = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + csi + ")");
     product.append("cost", cost.text());
-    var profit = $("#productstable")
+    var profit = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + pi + ")");
     product.append("profit", profit.text());
-    var code = $("#productstable")
+    var code = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + ci + ")");
     product.append("code", code.text());
-    var description = $("#productstable")
+    var description = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + di + ")");
     product.append("description", description.text());
-    var color = $("#productstable")
+    var color = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + coi + ")");
     product.append("color", color.text());
-    var s = $("#productstable")
+    var s = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + si + ")");
     product.append("s", s.text());
-    var m = $("#productstable")
+    var m = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + mi + ")");
     product.append("m", m.text());
-    var l = $("#productstable")
+    var l = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + li + ")");
     product.append("l", l.text());
-    var xl = $("#productstable")
+    var xl = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + xli + ")");
     product.append("xl", xl.text());
-    var xxl = $("#productstable")
+    var xxl = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + xxli + ")");
     product.append("xxl", xxl.text());
-    var xxxl = $("#productstable")
+    var xxxl = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + xxxli + ")");
     product.append("xxxl", xxxl.text());
-    var weight = $("#productstable")
+    var weight = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + wi + ")");
     product.append("weight", weight.text());
