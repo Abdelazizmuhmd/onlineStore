@@ -14,7 +14,9 @@ var apartment = document.getElementById("apartment").value;
    //FristName
    if (first == "") {
         
-    alert("FristName must be filled out");
+    document.getElementById("Fname").innerHTML = "First Name is Empty";
+
+
     document.getElementById("firstName").style.borderColor = "red";
    
     return false;
@@ -23,23 +25,33 @@ var apartment = document.getElementById("apartment").value;
 
   else if(first.length<2)
 {
-    alert("FirstName too short");
+  document.getElementById("Fname").innerHTML = "Frist Name is to Small";
     document.getElementById("firstName").style.borderColor = "red";
     return false;
 }
 
 
-if (!first.match(/^[a-zA-Z]+$/)) 
+else if (!first.match(/^[a-zA-Z]+$/)) 
     {
-        alert('FristName Only alphabets are allowed');
-        document.getElementById("firstName").style.borderColor = "red";
+      document.getElementById("Fname").innerHTML = "Frist Name must be letters Only";
+      document.getElementById("firstName").style.borderColor = "red";
         return false;
     }
+    else
+    {
+        document.getElementById("Fname").innerHTML = "";
+        document.getElementById("firstName").style.borderColor = "green";
+
+
+
+    }
+
 // --------------------------------------------------
     // LastName
 
     if (last == "") {
-        alert("lastName must be filled out");
+      document.getElementById("Lname").innerHTML = "Last Name is empty";
+
         document.getElementById("lastName").style.borderColor = "red";
         return false;
     
@@ -47,7 +59,7 @@ if (!first.match(/^[a-zA-Z]+$/))
     
       else if(last.length<2)
     {
-        alert("LastName is too short");
+      document.getElementById("Lname").innerHTML = "LAst Name is small";
         document.getElementById("lastName").style.borderColor = "red";
        
         return false;
@@ -56,15 +68,24 @@ if (!first.match(/^[a-zA-Z]+$/))
   
     if (!last.match(/^[a-zA-Z]+$/)) 
         {
-            alert('LastName Only alphabets are allowed');
+          document.getElementById("Lname").innerHTML = "Last Name must be in letters Only";
             document.getElementById("lastName").style.borderColor = "red";
             return false;
         }
+        else
+        {
+            document.getElementById("Lname").innerHTML = "";
+            document.getElementById("lastName").style.borderColor = "green";
+
+
+
+        }
+
 
 //--------------------------------------------------------------------
 //-------------------------------------------------
 if(adress== ""){
-    alert("adress  must be filled out ")
+  document.getElementById("Adress").innerHTML = "Adress is empty";
     document.getElementById("adress").style.borderColor = "red";
    
     return (false)
@@ -74,20 +95,29 @@ if(adress== ""){
 
 else if(adress.length<4)
 {
-  alert("adress  is too short");
+  document.getElementById("Adress").innerHTML = "Adress is  to small";
   document.getElementById("adress").style.borderColor = "red";
 
 return (false)   
 }
 else if (!adress .match(/^[A-Za-z0-9 ]+$/)) 
 {
-  alert('adress Only alphabets and numbers are allowed');
+  document.getElementById("Adress").innerHTML = "Adress Number and Letters are only allowed";
+
   document.getElementById("adress").style.borderColor = "red";
   return false;
 }
+else
+{
+    document.getElementById("Adress").innerHTML = "";
+    document.getElementById("adress").style.borderColor = "green";
+
+
+
+}
 //-------------------------------------------------------------------
 if(apartment  == ""){
-    alert("apartment must be filled out ")
+  document.getElementById("Apartment").innerHTML = "Apartment is empty";
     document.getElementById("apartment").style.borderColor = "red";
    
     return (false)
@@ -95,24 +125,32 @@ if(apartment  == ""){
 }
 
 
-else if(apartment.length<0)
+else if(apartment.length<1)
 {
-  alert("apartmentis too short");
+  document.getElementById("Apartment").innerHTML = "Apartment is to Small";
   document.getElementById("apartment").style.borderColor = "red";
 
 return (false)   
 }
 else if (!apartment.match(/^[A-Za-z0-9 ]+$/)) 
 {
-  alert('apartment Only alphabets and numbers are allowed');
+  document.getElementById("Apartment").innerHTML = "Apartment letters and number are only allowed";
   document.getElementById("apartment").style.borderColor = "red";
   return false;
 }
 
+else
+{
+    document.getElementById("Apartment").innerHTML = "";
+    document.getElementById("apartment").style.borderColor = "green";
+
+
+
+}
 //---------------------------------------------
 if (city == "") {
         
-    alert("city must be filled out");
+  document.getElementById("City").innerHTML = "City is empty";
     document.getElementById("city").style.borderColor = "red";
    
     return false;
@@ -121,40 +159,55 @@ if (city == "") {
 
   else if(city.length<2)
 {
-    alert("city too short");
+  document.getElementById("City").innerHTML = "City is So Small";
     document.getElementById("city").style.borderColor = "red";
     return false;
 }
 
 
-if (!city.match(/^[a-zA-Z]+$/)) 
+else if (!city.match(/^[a-zA-Z]+$/)) 
     {
-        alert('city Only alphabets are allowed');
+        document.getElementById("City").innerHTML = "City is only alphabets are allowed";
+
         document.getElementById("city").style.borderColor = "red";
         return false;
+    }else
+    {
+        document.getElementById("City").innerHTML = "";
+        document.getElementById("city").style.borderColor = "green";
+
+    
+    
     }
 
 
 //--------------------------------------------------
 if (phone == "") {
         
-    alert("phone must be filled out");
-    document.getElementById("phoneNumber").style.borderColor = "red";
+  document.getElementById("Phone").innerHTML = "Phone is empty";
+  document.getElementById("phoneNumber").style.borderColor = "red";
     return false;
    
   }
 
   else if(phone.length<11)
 {
-    alert("phone too short");
-    document.getElementById("phoneNumber").style.borderColor = "red";
+  document.getElementById("Phone").innerHTML = "Phone is to Small";
+  document.getElementById("phoneNumber").style.borderColor = "red";
     return false;
 }
-if (!phone.match('^[0-9]+$')) 
+else if (!phone.match('^[0-9]+$')) 
     {
-        alert('Phone  Only Numbers are allowed');
-        document.getElementById("phoneNumber").style.borderColor = "red";
+      document.getElementById("Phone").innerHTML = "Phone are only numbers allowed";
+      document.getElementById("phoneNumber").style.borderColor = "red";
         return false;
+    }
+    else
+    {
+        document.getElementById("Phone").innerHTML = "";
+        document.getElementById("phoneNumber").style.borderColor = "Green";
+
+    
     }
 
 //--------------------------------------------------------------
@@ -181,16 +234,22 @@ else if (!code.match(/^[A-Za-z0-9]+$/))
 //-----------------------------------------------
 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailformat))
 {
-    return true;
+ document.getElementById("mail").innerHTML = "";
+ document.getElementById("checkout_email").style.borderColor = "Green";
+
+ return true;
+
 }
 
 else{
      
 
-      alert("You have entered an invalid email address! or empty field")
-      document.getElementById("checkout_email").style.borderColor = "red";
-  return (false)
+ document.getElementById("mail").innerHTML = "Mail in correct";
+ document.getElementById("checkout_email").style.borderColor = "red";
+
+ return false;
 }
+
 //---------------------------------
 
 

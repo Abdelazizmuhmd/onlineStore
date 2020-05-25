@@ -8,7 +8,8 @@ function validateForm() {
      //FristName
      if (first == "") {
         
-        alert("FristName must be filled out");
+        document.getElementById("Fname").innerHTML = "First Name is Empty";
+
        
         return false;
        
@@ -16,21 +17,30 @@ function validateForm() {
     
       else if(first.length<2)
     {
-        alert("FirstName too short");
+        document.getElementById("Fname").innerHTML = "Frist Name is to Small";
+
         return false;
     }
     
   
-    if (!first.match(/^[a-zA-Z]+$/)) 
+   else if (!first.match(/^[a-zA-Z]+$/)) 
         {
-            alert('FristName Only alphabets are allowed');
+            document.getElementById("Fname").innerHTML = "Frist Name must be letters Only";
+
             return false;
         }
+    else
+        {
+            document.getElementById("Fname").innerHTML = "";
+
+
+        }
+
     // --------------------------------------------------
         // LastName
 
         if (last == "") {
-            alert("lastName must be filled out");
+            document.getElementById("Lname").innerHTML = "Last Name is empty";
         
             return false;
         
@@ -38,53 +48,70 @@ function validateForm() {
         
           else if(last.length<2)
         {
-            alert("LastName is too short");
+            document.getElementById("Lname").innerHTML = "LAst Name is small";
            
             return false;
         }
         
       
-        if (!last.match(/^[a-zA-Z]+$/)) 
+       else if (!last.match(/^[a-zA-Z]+$/)) 
             {
-                alert('LastName Only alphabets are allowed');
+                document.getElementById("Lname").innerHTML = "Last Name must be in letters Only";
                 return false;
+            }
+            else
+            {
+                document.getElementById("Lname").innerHTML = "";
+    
+    
             }
    
    
     // -------------------------------------------------
-    if(p == ""){
-        alert("password must be filled out ")
-       
-        return (false)
-
-}
-
-
-else if(p.length<5)
-{
-      alert("password is too short");
- 
-  return (false)   
-}else if (!p.match(/^[A-Za-z0-9]+$/)) 
-  {
-      alert('password Only alphabets and numbers are allowed');
-      return false;
-  }
-
+   
        // -------------------------------------------------
 
        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailformat))
        {
-           return true;
+        document.getElementById("mail").innerHTML = "";
+
        }
       
        else{
             
      
-             alert("You have entered an invalid email address! or empty field")
-         return (false)
+        document.getElementById("mail").innerHTML = "Mail in correct";
+        return false;
        }
        
+       //----------------------------------------------
+       if(p == ""){
+        document.getElementById("pass").innerHTML = "Password IS empty";
+       
+        return false;
+
+        }
+
+
+        else if(p.length<5)
+    {
+    document.getElementById("pass").innerHTML = "Password is to small";
+ 
+  return false;   
+    }
+        else if (!p.match(/^[A-Za-z0-9]+$/)) 
+    {
+    document.getElementById("pass").innerHTML = "Pasword must be in letters or number Only";
+    return false;
+    }
+        else
+    {
+      document.getElementById("pass").innerHTML = "";
+      return true;
+
+
+    }
+
 
 
 

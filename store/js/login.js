@@ -4,31 +4,40 @@ function validateForm() {
 //---------
 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailformat))
 {
-    return true;
+ document.getElementById("mail").innerHTML = "";
+
 }
 
 else{
      
 
-      alert("You have entered an invalid email address! or empty field")
-  return (false)
-}
-//------------------
-
-    if(p == ""){
-        alert("password must be filled out ")
-       
-        return false;
-
+ document.getElementById("mail").innerHTML = "Mail in correct";
+ return false;
 }
 
+//----------------------------------------------
+if(p == ""){
+ document.getElementById("pass").innerHTML = "Password IS empty";
 
-else if (!p.match(/^[A-Za-z0-9]+$/)) 
-  {
-      alert('password Only alphabets and numbers are allowed');
-      return false;
-  }
-  //-----------------------------
+ return false;
+
+ }
+
+
+ else if (!p.match(/^[A-Za-z0-9]+$/)) 
+{
+document.getElementById("pass").innerHTML = "Pasword must be in letters or number Only";
+return false;
+}
+ else
+{
+document.getElementById("pass").innerHTML = "";
+return true;
+
+
+}
+
+
  
 
 }

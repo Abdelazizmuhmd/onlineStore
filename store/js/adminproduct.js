@@ -9,7 +9,7 @@ function addcategoryvalidate()
 {
 var addcategory=document.getElementById("newcategoryname").value;
 if (addcategory == "") {
-    alert("Category name must be filled out");
+    document.getElementById("CategoryName").innerHTML = "Category Name is empty";
     document.getElementById("newcategoryname").style.borderColor = "red";
     return false;
 
@@ -17,17 +17,24 @@ if (addcategory == "") {
 
   else if(addcategory.length<3)
 {
-    alert("Category name too short");
+    document.getElementById("CategoryName").innerHTML = "Category Name is to short";
     document.getElementById("newcategoryname").style.borderColor = "red";
     return false;
 }   
 
 
-if (!addcategory.match(/^[a-zA-Z]+$/)) 
+else if (!addcategory.match(/^[a-zA-Z]+$/)) 
     {
-        alert('Category name Only alphabets are allowed');
+        document.getElementById("CategoryName").innerHTML = "Category Name only letters are allowed";
         document.getElementById("newcategoryname").style.borderColor = "red";
         return false;
+    }
+    else
+    {
+        document.getElementById("CategoryName").innerHTML = "";
+        document.getElementById("newcategoryname").style.borderColor = "green";
+        return true;
+
     }
 }
 //-----------------------------------------------------------------------------
@@ -35,7 +42,7 @@ function newsubcategoryvalidate()
 {
 var subcategory=document.getElementById("newsubcategoryname").value;
 if (subcategory == "") {
-    alert("SubCategory name must be filled out");
+    document.getElementById("SubCategoryName").innerHTML = "Sub Category Name is empty";
     document.getElementById("newsubcategoryname").style.borderColor = "red";
     return false;
 
@@ -43,17 +50,24 @@ if (subcategory == "") {
 
   else if(subcategory.length<3)
 {
-    alert("SubCategory name too short");
+    document.getElementById("SubCategoryName").innerHTML = "Sub Category Name is to short";
     document.getElementById("newsubcategoryname").style.borderColor = "red";
     return false;
 }   
 
 
-if (!subcategory.match(/^[a-zA-Z]+$/)) 
+else if (!subcategory.match(/^[a-zA-Z]+$/)) 
     {
-        alert('SubCategory name Only alphabets are allowed');
+        document.getElementById("SubCategoryName").innerHTML = "Sub Category Name only letters are allowed";
         document.getElementById("newsubcategoryname").style.borderColor = "red";
         return false;
+    }
+    else
+    {
+        document.getElementById("SubCategoryName").innerHTML = "";
+        document.getElementById("newsubcategoryname").style.borderColor = "green";
+        return true;
+
     }
 }
 //---------------------------------------------------------------------------------
@@ -65,7 +79,7 @@ if (!subcategory.match(/^[a-zA-Z]+$/))
 {
     var editcategoryname=document.getElementById("editcategoryname").value;
 if (editcategoryname == "") {
-    alert("Category name must be filled out");
+    document.getElementById("CategoryEdit").innerHTML = " Category Name is empty";
     document.getElementById("editcategoryname").style.borderColor = "red";
     return false;
 
@@ -73,17 +87,24 @@ if (editcategoryname == "") {
 
   else if(editcategoryname.length<3)
 {
-    alert("Category name too short");
+    document.getElementById("CategoryEdit").innerHTML = " Category Name is to short";
     document.getElementById("editcategoryname").style.borderColor = "red";
     return false;
 }   
 
 
-if (!editcategoryname.match(/^[a-zA-Z]+$/)) 
+else if (!editcategoryname.match(/^[a-zA-Z]+$/)) 
     {
-        alert('Category name Only alphabets are allowed');
+        document.getElementById("CategoryEdit").innerHTML = " Category Name only letters are allowed";
         document.getElementById("editcategoryname").style.borderColor = "red";
         return false;
+    }
+    else
+    {
+        document.getElementById("CategoryEdit").innerHTML = "";
+        document.getElementById("editcategoryname").style.borderColor = "green";
+        return true;
+
     }
 }
 //---------------------
@@ -91,7 +112,7 @@ function editsubcategoryvalidate()
 {
     var editsubcategoryname=document.getElementById("editsubcategoryname").value;
 if (editsubcategoryname == "") {
-    alert("SubCategory name must be filled out");
+    document.getElementById("SubCategoryEdit").innerHTML = "Category name is empty";
     document.getElementById("editsubcategoryname").style.borderColor = "red";
     return false;
 
@@ -99,17 +120,24 @@ if (editsubcategoryname == "") {
 
   else if(editsubcategoryname.length<3)
 {
-    alert("SubCategory name too short");
+    document.getElementById("SubCategoryEdit").innerHTML = "Category name is to short";
     document.getElementById("editsubcategoryname").style.borderColor = "red";
     return false;
 }   
 
 
-if (!editsubcategoryname.match(/^[a-zA-Z]+$/)) 
+else if (!editsubcategoryname.match(/^[a-zA-Z]+$/)) 
     {
-        alert('SubCategory name Only alphabets are allowed');
+        document.getElementById("SubCategoryEdit").innerHTML = "Category name only letters allowd";
         document.getElementById("editsubcategoryname").style.borderColor = "red";
         return false;
+    }
+    else
+    {
+        document.getElementById("SubCategoryEdit").innerHTML = "";
+        document.getElementById("editsubcategoryname").style.borderColor = "green";
+        return true;
+
     }
 }
 

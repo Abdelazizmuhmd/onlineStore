@@ -45,6 +45,7 @@ Pat
   <script src="../js/login.js" type="text/javascript"></script>
 
 
+
     
 
 </head>
@@ -104,13 +105,14 @@ Pat
 
 
         <label for="CustomerEmail" class="label--hidden">Email</label>
-        <input type="email" name="email" id="CustomerEmail" class="" placeholder="Email" autocorrect="off" autocapitalize="off" autofocus="">
-
+        <input type="email" name="email" id="CustomerEmail" class="" placeholder="Email" autocorrect="off" autocapitalize="off" autofocus="" onkeyup="validateForm()">
+        <p id="mail" style="color:red;"></p>
         
           <label for="CustomerPassword" class="label--hidden">Password</label>
-          <input type="password" value="" name="password" id="CustomerPassword" class="" placeholder="Password">
+          <input type="password" value="" name="password" id="CustomerPassword" class="" placeholder="Password" onkeyup="validateForm()">
                  <?php  if(isset($_GET['check'])){ echo"<P> Invalid Passsword </P>";   }
           ?>
+          <p id="pass" style="color:red;"></p>
 
          
         <p>

@@ -39,7 +39,7 @@ Pat
   <script src="../js/home.js" type="text/javascript"></script>
   <script src="../s/j2.js" type="text/javascript"></script> 
   <script src="../js/signUp.js" type="text/javascript" ></script> 
- 
+
     
 
 </head>
@@ -81,16 +81,22 @@ Pat
 <div class="form-register form-vertical">
    <form method = "post" action="../public/signup.php?action=signUP" >
     <label for="FirstName" class="label--hidden">First Name</label>
-    <input type="text" name="firstname" id="firstName"  placeholder="First Name" autocapitalize="words" autofocus="" maxlength="10">
-
+    <input type="text" name="firstname" id="firstName"  placeholder="First Name" autocapitalize="words" autofocus="" maxlength="10" onkeyup="validateForm()">
+    <p id="Fname" style="color:red;"></p>
     <label for="LastName" class="label--hidden">Last Name</label>
-    <input type="text" name="lastname" id="lastName"  placeholder="Last Name" autocapitalize="words" maxlength="10">
+    <input type="text" name="lastname" id="lastName"  placeholder="Last Name" autocapitalize="words" maxlength="10" onkeyup="validateForm()">
+    <p id="Lname" style="color:red;"></p>
 
     <label for="Email" class="label--hidden">Email</label>
-    <input type="email" name="email" id="email"  class="" placeholder="Email" autocorrect="off" autocapitalize="off">
+    <input type="email" name="email" id="email"  class="" placeholder="Email" autocorrect="off" autocapitalize="off" onkeyup="validateForm()">
+    <p id="mail" style="color:red;"></p>
 
     <label for="CreatePassword" class="label--hidden">Password</label>
-    <input type="password" name="password" id="password"  class="" placeholder="Password" maxlength="25">
+    <input type="password" name="password" id="password"  class="" placeholder="Password" maxlength="25" onkeyup="validateForm()">
+    <p id="pass" style="color:red;"></p>
+
+
+    
 
     <p>
       <input type="submit" name="submit" value="Create" onclick="return validateForm()" >
@@ -121,7 +127,7 @@ $(document).ready(function(){
             success: function(response){
                 if(response > 0){
                     document.getElementById("email").value="";
-                    alert("Email is taken");
+                    document.getElementById("mail").innerHTML = "mail is already taken";
                 }
 
              }

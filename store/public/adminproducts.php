@@ -124,23 +124,36 @@ $view= new adminproductsView($model,$controller);
                     <tr>
 
                         <td> Name<input type="text" id="productName" value="test" class="form-control"
-                                placeholder="Enter Product Name" maxlength="50" required></td>
+                                placeholder="Enter Product Name" maxlength="50" required>
+                                <p id="Name" style="color:red;"></p>
+                                </td>
                         <td> Code<input type="text" id="productCode" value="22" class="form-control"
                                 placeholder="Enter Product Code" maxlength="50" required>
+                                <p id="Code" style="color:red;"></p>
+
                         </td>
                         <td>profit<input type="text" value="22"id="productProfit" class="form-control"
-                                placeholder="Enter Product profit" maxlength="50" required></td>
+                                placeholder="Enter Product profit" maxlength="50" required>
+                                <p id="Profit" style="color:red;"></p>
+                                </td>
 
 
                     </tr>
 
                     <tr>
                         <td>Description<input type="text" value="test"id="productDescription" class="form-control"
-                                placeholder="Enter Product Description" maxlength="50" required></td>
+                                placeholder="Enter Product Description" maxlength="50" required>
+                                <p id="Description" style="color:red;"></p>
+                                </td>
                         <td>Weight<input type="text" value="22"id="productWeight" class="form-control"
-                                placeholder="Enter Product Weight" maxlength="50" required></td>
+                                placeholder="Enter Product Weight" maxlength="50" required>
+                                <p id="Weight" style="color:red;"></p>
+                                </td>
+
                         <td>Cost<input type="text"value="22" id="productCost" class="form-control"
-                                placeholder="Enter Product Cost" maxlength="50" required></td>
+                                placeholder="Enter Product Cost" maxlength="50" required>
+                                <p id="Cost" style="color:red;"></p>
+                                </td>
 
                     </tr>
                 </table>
@@ -258,6 +271,8 @@ $view= new adminproductsView($model,$controller);
                             id="addcategoryform">
                             <input type="text" name="newcategoryname" id="newcategoryname" class="form-control"
                                 placeholder="Category Name" maxlength="50" required>
+                                <p id="CategoryName" style="color:red;"></p>
+
                         </form>
 
                     </div>
@@ -287,6 +302,8 @@ $view= new adminproductsView($model,$controller);
                         <form action="../public/adminproducts.php?action=editCategory" method="POST" id="editcategory">
                             <input type="text" name="newcategoryname" id="editcategoryname" class="form-control"
                                 placeholder="New Name" maxlength="50" required>
+                                <p id="CategoryEdit" style="color:red;"></p>
+
                             <input type="text" value="" id="editcatgoryid" name="editcatgoryid" hidden>
                         </form>
 
@@ -322,6 +339,8 @@ $view= new adminproductsView($model,$controller);
                             id="editsubcategory">
                             <input type="text" name="newsubcategoryname" id="editsubcategoryname" class="form-control"
                                 placeholder="New Name" maxlength="50" required>
+                                <p id="SubCategoryEdit" style="color:red;"></p>
+
                             <input type="text" value="" id="editsubcatgoryid" name="editsubcatgoryid" hidden>
                         </form>
 
@@ -359,6 +378,8 @@ $view= new adminproductsView($model,$controller);
 
                             <input type="text" name="subcategoryname" id="newsubcategoryname" class="form-control"
                                 placeholder="Category Name" maxlength="50" required>
+                                <p id="SubCategoryName" style="color:red;"></p>
+
                             <input type="text" id="categoryid" hidden name="categoryid">
                         </form>
 
@@ -411,6 +432,8 @@ $view= new adminproductsView($model,$controller);
 
                         <h4>Color</h4><input type="text" value="test" id="productColor" class="form-control"
                             placeholder="Enter Product Color" maxlength="50" required>
+                            <p id="Color" style="color:red;"></p>
+
                         <table class="table table-bordered"><br>
 
 
@@ -546,136 +569,188 @@ $view= new adminproductsView($model,$controller);
                 var productCost = document.getElementById("productCost").value;
                 //----------------------------------------------------
                 if (productName == "") {
-                    alert("productName name must be filled out");
+                    document.getElementById("Name").innerHTML = "Name is empty";
                     document.getElementById("productName").style.borderColor = "red";
                     return false;
 
                 } else if (productName.length < 3) {
-                    alert("productName name too short");
+                    document.getElementById("Name").innerHTML = "Name is to short";
                     document.getElementById("productName").style.borderColor = "red";
                     return false;
                 }
 
 
-                if (!productName.match(/^[a-zA-Z]+$/)) {
-                    alert('productName Only alphabets are allowed');
+                else if (!productName.match(/^[a-zA-Z]+$/)) {
+                    document.getElementById("Name").innerHTML = "Name must be Letters only";
+
                     document.getElementById("productName").style.borderColor = "red";
                     return false;
+                }
+                else
+                {
+                    document.getElementById("Name").innerHTML = "";
+                    document.getElementById("productName").style.borderColor = "Green";
+
+    
                 }
                 //---------------------
                 //code
                 if (productCode == "") {
-                    alert("productCode must be filled out");
+                    document.getElementById("Code").innerHTML = "Code is empty";
                     document.getElementById("productCode").style.borderColor = "red";
                     return false;
 
                 } else if (productCode.length < 1) {
-                    alert("productCode id too short");
+                    document.getElementById("Code").innerHTML = "Code is to short";
                     document.getElementById("productCode").style.borderColor = "red";
                     return false;
                 }
 
 
-                if (!productCode.match(/^\d*\.?\d*$/)) {
-                    alert('productCode  numbers are allowed');
+               else if (!productCode.match(/^\d*\.?\d*$/)) {
+                    document.getElementById("Code").innerHTML = "Code must be  numbers only";
                     return false;
+                }
+                else
+                {
+                    document.getElementById("Code").innerHTML = "";
+                    document.getElementById("productCode").style.borderColor = "Green";
+
+    
                 }
                 //-----------------------------
                 //weight
                 if (productWeight == "") {
-                    alert("productWeight must be filled out");
+                    document.getElementById("Weight ").innerHTML = "Weight  is empty";
                     document.getElementById("productWeight").style.borderColor = "red";
                     return false;
 
                 } else if (productWeight.length < 1) {
-                    alert("productWeight id too short");
+                    document.getElementById("Weight ").innerHTML = "Weight  is to short";
                     document.getElementById("productWeight").style.borderColor = "red";
                     return false;
                 }
 
 
-                if (!productWeight.match(/^\d*\.?\d*$/)) {
-                    alert('productWeight  numbers are allowed');
+                else if (!productWeight.match(/^\d*\.?\d*$/)) {
+                    document.getElementById("Weight ").innerHTML = "Weight  must be numbers only";
                     return false;
+                }
+                else
+                {
+                    document.getElementById("Weight").innerHTML = "";
+                    document.getElementById("productWeight").style.borderColor = "Green";
+
+    
                 }
                 //-------------------------------------------
                 //cost
                 if (productCost == "") {
-                    alert("productCost must be filled out");
+                    document.getElementById("Cost").innerHTML = "Cost  is empty";
                     document.getElementById("productCost").style.borderColor = "red";
                     return false;
 
                 } else if (productCost.length < 1) {
-                    alert("productCost id too short");
+                    document.getElementById("Cost").innerHTML = "Cost  is to short";
                     document.getElementById("productCost").style.borderColor = "red";
                     return false;
                 }
 
 
-                if (!productCost.match(/^\d*\.?\d*$/)) {
-                    alert('productCost  numbers are allowed');
+                else if (!productCost.match(/^\d*\.?\d*$/)) {
+                    document.getElementById("Cost").innerHTML = "Cost only numbers are allowed";
                     return false;
+                }
+                else
+                {
+                    document.getElementById("Cost").innerHTML = "";
+                    document.getElementById("productCost").style.borderColor = "Green";
+
+    
                 }
                 //---------------------------------------
                 //description
                 productDescription
                 if (productDescription == "") {
-                    alert("productDescription must be filled out");
+                    document.getElementById("Description").innerHTML = "Description is empty";
                     document.getElementById("productDescription").style.borderColor = "red";
                     return false;
 
                 } else if (productDescription.length < 1) {
-                    alert("productDescription id too short");
+                    document.getElementById("Description").innerHTML = "Description is to Short";
                     document.getElementById("productDescription").style.borderColor = "red";
                     return false;
                 }
 
 
 
-                if (!productDescription.match(/^[A-Za-z0-9 ]+$/)) {
-                    alert('productDescription Only alphabets and numbers are allowed');
+               else if (!productDescription.match(/^[A-Za-z0-9 ]+$/)) {
+                    document.getElementById("Description").innerHTML = "Description only letters and number are allowed";
                     return false;
+                }
+                else
+                {
+                    document.getElementById("Description").innerHTML = "";
+                    document.getElementById("productDescription").style.borderColor = "Green";
+
+    
                 }
                 //--------------------
                 //profit
                 if (productProfit == "") {
-                    alert("productProfit must be filled out");
+                    document.getElementById("Profit").innerHTML = "Profit is empty";
                     document.getElementById("productProfit").style.borderColor = "red";
                     return false;
 
                 } else if (productProfit.length < 1) {
-                    alert("productProfit id too short");
+                    document.getElementById("Profit").innerHTML = "Profit is Short";
                     document.getElementById("productProfit").style.borderColor = "red";
                     return false;
                 }
 
 
-                if (!productProfit.match(/^\d*\.?\d*$/)) {
-                    alert('productProfit  numbers are allowed');
+                else if (!productProfit.match(/^\d*\.?\d*$/)) {
+                    document.getElementById("Profit").innerHTML = "Profit only numbers are allowed";
+                    document.getElementById("productProfit").style.borderColor = "red";
+
                     return false;
                 }
+                else
+                {
+                    document.getElementById("Profit").innerHTML = "";
+                    document.getElementById("productProfit").style.borderColor = "Green";
 
+    
+                }
+//-------------------------------------------------------------------------------------------------------------
 
                 var productColor = document.getElementById("productColor").value;
 
                 //-----------------------------------------
                 if (productColor == "") {
 
-                    alert("Color name must be filled out");
+                    document.getElementById("Color ").innerHTML = "Color  is empty";
                     document.getElementById("productColor").style.borderColor = "red";
                     return false;
 
                 } else if (productColor.length < 1) {
-                    alert("Color name too short");
+                    document.getElementById("Color ").innerHTML = "Color  is to short";
                     document.getElementById("productColor").style.borderColor = "red";
                     return false;
                 }
 
 
-                if (!productColor.match(/^[a-zA-Z]+$/)) {
-                    alert('Color name Only alphabets are allowed');
+               else if (!productColor.match(/^[a-zA-Z]+$/)) {
+                    document.getElementById("Color ").innerHTML = "Color  only letters are allowed";
                     document.getElementById("productColor").style.borderColor = "red";
                     return false;
+                }
+                else
+                {
+                    document.getElementById("Color").innerHTML = "";
+                    document.getElementById("productColor").style.borderColor = "Green";
+
+    
                 }
 
 
