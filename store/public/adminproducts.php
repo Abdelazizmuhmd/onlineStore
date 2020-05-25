@@ -65,20 +65,20 @@ $view= new adminproductsView($model,$controller);
             
     ?>
 
-
+<div>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#categoryEdit"
-                    style="margin-left: 10px;  overflow: hidden;">Edit Category</button>
+                    style="margin-left: 7px;  overflow: hidden;">Edit Category</button>
 
 
-                <button class="btn btn-primary" data-toggle="modal" style="margin-left: 10px;  overflow: hidden;"
+                <button class="btn btn-primary" data-toggle="modal" style="margin-left: 7px;  overflow: hidden;"
                     data-target="#categoryAdd">Add Category </button>
-
+</div>
                 
                 
                 <form action="../public/adminproducts.php?action=deletecategory" method="POST">
                     <input type="text" id="deletecategoryid" name="deletecategoryid" value="" hidden>
                     <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');"
-                        class="btn btn-primary" style="margin-left: 10px;  overflow: hidden;">Delete Category
+                        class="btn btn-primary" style="margin-left: 7px;  overflow: hidden;">Delete Category
                     </button>
                 </form>
 
@@ -93,17 +93,20 @@ $view= new adminproductsView($model,$controller);
                 <select name="subcategory" id="subselections" class="form-control subcategory combBox">
 
                 </select>
-                <button class="btn btn-primary" data-toggle="modal" style="margin-left: 10px;  overflow: hidden;"
-                    data-target="#subCategoryEdit" onclick="getsubid()"> Edit SubCategory </button>
-                <button class="btn btn-primary" data-toggle="modal" style="margin-left: 10px;  overflow: hidden;"
-                    data-target="#subCategoryAdd">Add SubCategory </button>
 
+                <div>
+                <button class="btn btn-primary" data-toggle="modal" style="margin-left: 7px;  overflow: hidden;"
+                    data-target="#subCategoryEdit" onclick="getsubid()"> Edit SubCategory </button>
+                    
+                <button class="btn btn-primary" data-toggle="modal" style="margin-left: 7px;  overflow: hidden;"
+                    data-target="#subCategoryAdd">Add SubCategory </button>
+</div>
 
 
                 <form action="../public/adminproducts.php?action=deletesubcategory" method="POST">
                     <input type="text" id="deletesubcategoryid" name="deletesubcategoryid" value="" hidden>
                     <button type="submit" onclick="getsubidandconfirm()" class="btn btn-primary"
-                        style="margin-left: 10px;  overflow: hidden;">Delete SubCategory
+                        style="margin-left: 1px;  overflow: hidden;">Delete SubCateg
 
                     </button>
                 </form>
