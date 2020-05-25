@@ -19,7 +19,7 @@ function showSlides(n) {
     var selectors = document.getElementsByClassName("decider");
     for(var k=0;k<selectorsLength;k++){
     if(selectors[k].getAttribute("check")=="display:block;"){
-        alert(k);
+       
       val = selectors[k].options[selectors[k].selectedIndex ].value ;
 
         }

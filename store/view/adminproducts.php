@@ -69,6 +69,7 @@ function subcategoryoutput(){
 */
 
 function products(){
+    $rowIndex=1;
   $productarr = $this->model->getcategories()[0]->getsubcategories()[0]->getproducts();
   $str ="";
     $length=count($productarr);
@@ -81,7 +82,7 @@ function products(){
      { 
          $str .= "
          
-         <tr>
+         <tr id='".$rowIndex."'>
             <td><img src='".$details[$j]->getArray()[0]."small.jpeg' style='width
             :50px;height:50px;position: relative;'></td>
             <td>".$productarr[$i]->getid()."</td>
@@ -99,10 +100,11 @@ function products(){
             <td><div name ='xxlarge' class = 'editor' >".$details[$j]->getXxl()."</div></td>
             <td><div name ='xxxlarge' class = 'editor' >".$details[$j]->getXxxl()."</div></td>
             <td><div name ='weight' class = 'editor' >".$productarr[$i]->getWeight()."</div></td>
-            <td><a id='button' href='../public/adminproducts.php?action=deleteProduct&productdetailid=".$details[$j]->getid()."'><i class='fa fa-trash'></i></a></td>
+            <td><a id='button' onclick='deleteRow(".$rowIndex.",".$details[$j]->getid().")'><i class='fa fa-trash'></i></a></td>
           </tr> 
           
           ";
+        $rowIndex +=1 ;
      }}
      
  }

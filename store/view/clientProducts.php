@@ -33,10 +33,7 @@ $str.="<div class='jumbotron'>";
                    $str.="<br>
 
                    <br>
-                   <center>
-                       <a href='".$_SERVER['PHP_SELF']."?userid=".$_REQUEST['userid']."&orderid=".$_REQUEST['orderid']."&action=updatestat&stat=pending'><button class='button'>Pending <i class='fa fa-hourglass' aria-hidden='true'></i></button></a>
-                       <a href='".$_SERVER['PHP_SELF']."?userid=".$_REQUEST['userid']."&orderid=".$_REQUEST['orderid']."&action=updatestat&stat=ready'><button class='button'>Ready <i class='fa fa-clock-o' aria-hidden='true'></i></button></a>
-                   </center>";
+                ";
                    return $str;
 }
 function productoutput(){
@@ -47,7 +44,7 @@ $productss=$this->model->getordersArray()[0]->getProducts();
 foreach($productss as $products){
 
 $str.="<tr><td align='center'><br>".$i++."</td>";
-$str.="<td align='center'><img width='80' height='100' src=".$products->getProduct()->getProductDetails()[0]->getArray()[0]."></td>"; //Still NEED GET HERE
+$str.="<td align='center'><img width='80' height='100' src=".$products->getProduct()->getProductDetails()[0]->getArray()[0]."large.jpeg></td>"; //Still NEED GET HERE
 $str.="<td align='center'><br>".$products->getProduct()->getName()."</td>";
 $str.="<td align='center'><br>".$products->getProduct()->getCode()."</td>";
 $str.="<td align='center'><br>".$products->getproductordersize()."</td>"; //Still NEED GET SIZE HERE

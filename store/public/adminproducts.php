@@ -518,6 +518,8 @@ $view= new adminproductsView($model,$controller);
                       }
           
         });
+
+
             }
                 
                 
@@ -834,10 +836,22 @@ $view= new adminproductsView($model,$controller);
             }
             </script>
             <script>
+               
 
-
-
-
+function deleteRow(rowIndex,productdetailid){
+if (confirm("are u sure want to delete this")) {            
+     $.ajax({
+       url: '../public/adminproducts.php?action=deleteProduct',
+       type: 'POST',
+       data:{productdetailid:productdetailid},
+       success: function(response) {
+      $('#' + rowIndex).remove();
+          }});
+  }else{
+  alert("can't be deleted");
+}
+    
+}
 
 
 

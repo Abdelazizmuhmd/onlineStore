@@ -119,7 +119,7 @@ function makeOrder ($userid,$productsdetails){
         $this->db->query($sqlOrder);
         $this->db->bind(':userid',$userid,PDO::PARAM_INT);
         $this->db->bind(':comment',"no Comment",PDO::PARAM_STR);
-        $this->db->bind(':status',"pedding",PDO::PARAM_STR);
+        $this->db->bind(':status',"pending",PDO::PARAM_STR);
         $this->db->execute();
         $orderid=$this->db->lastInsertedId();
     
