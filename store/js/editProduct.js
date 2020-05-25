@@ -159,6 +159,58 @@ $(document).ready(function () {
         success: function (response) {
           cell.removeClass("input");
           cell.html("<div>" + cell.text() + "</div>");
+          $("#productst")
+            .find("tr")
+            .each(function () {
+              if (
+                $(this)
+                  .find("td:eq(" + id + ")")
+                  .text() == productid.text()
+              ) {
+                $(this)
+                  .find("td:eq(" + ni + ")")
+                  .html(
+                    "<div name ='name' class = 'editor'>" +
+                      pname.text() +
+                      "</div>"
+                  );
+                $(this)
+                  .find("td:eq(" + ci + ")")
+                  .html(
+                    "<div name ='code' class = 'editor'>" +
+                      code.text() +
+                      "</div>"
+                  );
+                $(this)
+                  .find("td:eq(" + csi + ")")
+                  .html(
+                    "<div name ='cost' class = 'editor'>" +
+                      cost.text().replace("L.E", "") +
+                      "</div>L.E"
+                  );
+                $(this)
+                  .find("td:eq(" + pi + ")")
+                  .html(
+                    "<div name ='profit' class = 'editor'>" +
+                      profit.text().replace("L.E", "") +
+                      "</div>L.E"
+                  );
+                $(this)
+                  .find("td:eq(" + di + ")")
+                  .html(
+                    "<div name ='description' class = 'editor'>" +
+                      description.text() +
+                      "</div>"
+                  );
+                $(this)
+                  .find("td:eq(" + wi + ")")
+                  .html(
+                    "<div name ='weight' class = 'editor'>" +
+                      weight.text() +
+                      "</div>"
+                  );
+              }
+            });
         },
       });
     }
