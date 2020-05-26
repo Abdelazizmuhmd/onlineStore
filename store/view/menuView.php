@@ -141,7 +141,7 @@ class menuView extends View{
 
 
                      </div>
-                     <form method="post" action="../other/cartajaxBackend.php" id="product_form_4404356317218"
+                     <form method="post" action="../other/cartajaxBackend.php" id=""
                          accept-charset="UTF-8" class="product-form" enctype="multipart/form-data">
                             <input type="text" name="productdetailid" value="'.$productdetail->getid().'" hidden>
                             <input type="text" name="productname" value="'.$product->getName().'" hidden>
