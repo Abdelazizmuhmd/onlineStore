@@ -141,12 +141,11 @@ class menuView extends View{
 
 
                      </div>
-                     <form method="post" action="../other/cartajaxBackend.php" id="product_form_4404356317218"
-                         accept-charset="UTF-8" class="product-form" enctype="multipart/form-data">
-                            <input type="text" name="productdetailid" value="'.$productdetail->getid().'" hidden>
-                            <input type="text" name="productname" value="'.$product->getName().'" hidden>
-                            <input type="text" name="productprice" value="'.(int)($product->getCost()+$product->getProfit()).'" hidden>
-                            <input type="text" name="imageurl" value="'.$productdetail->getArray()[0].'" hidden>
+                    
+                            <input type="text" id="product_id" name="productdetailid" value="'.$productdetail->getid().'" hidden>
+                            <input type="text" id="product_name" name="productname" value="'.$product->getName().'" hidden>
+                            <input type="text" id="product_cost" name="productprice" value="'.(int)($product->getCost()+$product->getProfit()).'" hidden>
+                            <input type="text" id="product_img" name="imageurl" value="'.$productdetail->getArray()[0].'" hidden>
 
 
                          <div class="selector-wrapper">
@@ -187,7 +186,7 @@ class menuView extends View{
 
                          <div class="product-single__cart-submit-wrapper  product-form--full">
                        <input type="submit" value="Add to Cart" name="add" id="AddToCart"
-                                 class="btn product-single__cart-submit btn--full  btn--secondary">
+                              onclick="addToCart()"   class="btn product-single__cart-submit btn--full  btn--secondary">
 
 
 
@@ -195,7 +194,6 @@ class menuView extends View{
 
                          </div>
 
-                     </form>
 
                  </div>';
 
