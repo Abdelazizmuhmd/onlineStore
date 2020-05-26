@@ -143,9 +143,39 @@ $view->readOneProduct();
         <hr>
     </div>
     <script src="../js/slider.js" type="text/javascript"></script>
-    <script>
-
-    </script>
+  
 </body>
+  <script>
 
+
+   function addToCart() {
+
+            var id = document.getElementById("product_id").value;
+            var name = document.getElementById("product_name").value;// get product name
+            var cost = document.getElementById("product_cost").value;  // get quantity
+            var img= document.getElementById("product_img").value;
+            var color=document.getElementById("ProductSelect-product-template-option-0").value;
+            var size=document.getElementById("ProductSelect-product-template-option-1").value;
+            var quantity=document.getElementById("Quantity").value;
+
+
+
+
+ 
+var feed = {"id":id,"name":name,"cost":cost,"img":img,"color":color,"size":size,"quantity":quantity};
+alert(feed.id);
+
+var data = [];
+
+    data.push(feed);
+
+
+final_data=JSON.stringify(data);
+
+localStorage.setItem("products", final_data);
+alert(final_data);
+
+            
+        }
+    </script>
 </html>
