@@ -146,8 +146,6 @@ $view->readOneProduct();
   
 </body>
   <script>
-
-
    function addToCart() {
 
             var id = document.getElementById("product_id").value;
@@ -157,19 +155,28 @@ $view->readOneProduct();
             var color=document.getElementById("ProductSelect-product-template-option-0").value;
             var size=document.getElementById("ProductSelect-product-template-option-1").value;
             var quantity=document.getElementById("Quantity").value;
-
-
-
-
- 
+       var flag = 0 ;
+       var data = [];
+if (localStorage.getItem("products") === null) {
+}else{
+var products = localStorage.getItem("products");
+    
+products = JSON.parse(products);
+    
+products.forEach(breakProduct);
+    
+function breakProduct(item,index){
+  if(item.id==id){
+      item.quantity = parseInt(item.quantity)+parseInt(quantity);
+      flag=1;
+  }
+  data.push(item);
+}
+}  
+if(flag==0){
 var feed = {"id":id,"name":name,"cost":cost,"img":img,"color":color,"size":size,"quantity":quantity};
-alert(feed.id);
-
-var data = [];
-
-    data.push(feed);
-
-
+data.push(feed);
+}
 final_data=JSON.stringify(data);
 
 localStorage.setItem("products", final_data);
