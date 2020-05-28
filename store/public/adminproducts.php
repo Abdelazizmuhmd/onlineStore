@@ -127,16 +127,16 @@ $view= new adminproductsView($model,$controller);
                     <tr>
 
                         <td> Name<input type="text" id="productName" value="test" class="form-control"
-                                placeholder="Enter Product Name" maxlength="50" required>
+                                placeholder="Enter Product Name" maxlength="50" onkeyup="validate()" required>
                                 <p id="Name" style="color:red;"></p>
                                 </td>
                         <td> Code<input type="text" id="productCode" value="22" class="form-control"
-                                placeholder="Enter Product Code" maxlength="50" required>
+                                placeholder="Enter Product Code" maxlength="50" onkeyup="validate()" required>
                                 <p id="Code" style="color:red;"></p>
 
                         </td>
                         <td>profit<input type="text" value="22"id="productProfit" class="form-control"
-                                placeholder="Enter Product profit" maxlength="50" required>
+                                placeholder="Enter Product profit" maxlength="50" onkeyup="validate()" required>
                                 <p id="Profit" style="color:red;"></p>
                                 </td>
 
@@ -145,16 +145,16 @@ $view= new adminproductsView($model,$controller);
 
                     <tr>
                         <td>Description<input type="text" value="test"id="productDescription" class="form-control"
-                                placeholder="Enter Product Description" maxlength="50" required>
+                                placeholder="Enter Product Description" maxlength="50" onkeyup="validate()" required>
                                 <p id="Description" style="color:red;"></p>
                                 </td>
                         <td>Weight<input type="text" value="22"id="productWeight" class="form-control"
-                                placeholder="Enter Product Weight" maxlength="50" required>
+                                placeholder="Enter Product Weight" maxlength="50" onkeyup="validate()" required>
                                 <p id="Weight" style="color:red;"></p>
                                 </td>
 
                         <td>Cost<input type="text"value="22" id="productCost" class="form-control"
-                                placeholder="Enter Product Cost" maxlength="50" required>
+                                placeholder="Enter Product Cost" maxlength="50" onkeyup="validate()" required>
                                 <p id="Cost" style="color:red;"></p>
                                 </td>
 
