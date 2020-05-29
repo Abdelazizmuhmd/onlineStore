@@ -166,27 +166,27 @@ class menuView extends View{
                                   }
                             $str.=' </select>
                          </div>
-                         <div class="selector-wrapper">
+                         <div class="selector-wrapper decdiv">
                              <label for="ProductSelect-product-template-option-1">Size</label>
-                             <select class="single-option-selector" data-option="option2"
+                             <select class="single-option-selector quantity" data-option="option2"
                                  id="ProductSelect-product-template-option-1" name="sizes">';
 
                                   if($productdetail->getSmall() != 0)
-                                    $str.='<option value="Small">Small</option>';
+                                    $str.='<option id ="'.$productdetail->getSmall().'"value="Small">Small</option>';
                                   if($productdetail->getMedium() != 0)
-                                    $str.='<option value="Meduim">Meduim</option>';
+                                    $str.='<option id ="'.$productdetail->getMedium().'" value="Meduim">Meduim</option>';
                                   if($productdetail->getXl() != 0)
-                                    $str.='<option value="XL">XL</option>';
+                                    $str.='<option id ="'.$productdetail->getXl().'" value="XL">XL</option>';
                                   if($productdetail->getXxl() != 0)
-                                    $str.='<option value="XXL">XXL</option>';
+                                    $str.='<option id = "'.$productdetail->getXxl().'" value="XXL">XXL</option>';
                                   if($productdetail->getXxxl() != 0)
-                                    $str.='<option value="XXXL">XXXL</option>';
+                                    $str.='<option id = "'.$productdetail->getXxxl().'" value="XXXL">XXXL</option>';
                            $str.='</select></div>
 
 
-                         <div class="product-single__quantity">
+                         <div class="product-single__quantity qdiv">
                              <label for="Quantity">Quantity</label>
-                             <input type="number" id="Quantity" name="quantity" value="1" min="1">
+                             <input type="number" class="qbutton" id="Quantity" name="quantity" value="1" min="1">
                          </div>
 
 
