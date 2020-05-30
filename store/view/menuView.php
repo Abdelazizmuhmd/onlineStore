@@ -116,7 +116,7 @@ class menuView extends View{
 
          <div class="grid__item medium-up--one-half" >
 
-             <div class="product-single__meta small--text-center" id="selectorContainer">
+             <div class="product-single__meta small--text-center deciding" id="selectorContainer">
 
                  <h1 id ="product_name1" class="product-single__title" itemprop="name">'.$product->getName().'</h1>';
                  $display ='';
@@ -196,7 +196,7 @@ class menuView extends View{
 
 
 
-
+</form>
 
                          </div>
 
