@@ -207,8 +207,8 @@ $view= new adminproductsView($model,$controller);
             <table class="table table-bordered" id="productstable"><br><br>
                 <tr>
                     <th>image</th>
-                    <th>id</th>
-                    <th>detailId</th>
+                    <th style="display:none">id</th>
+                    <th style="display:none"> detailId</th>
                     <th>name</th>
                     <th>cost</th>
                     <th>profit</th>

@@ -85,8 +85,8 @@ function products(){
          <tr id='".$rowIndex."'>
             <td><img src='".$details[$j]->getArray()[0]."small.jpeg' style='width
             :50px;height:50px;position: relative;'></td>
-            <td>".$productarr[$i]->getid()."</td>
-            <td>".$details[$j]->getid()."</td>
+            <td style='display:none' >".$productarr[$i]->getid()."</td>
+            <td style='display:none' >".$details[$j]->getid()."</td>
             <td><div name ='name' class = 'editor' >".$productarr[$i]->getName()."</div></td>
             <td><div name ='cost' value=".$productarr[$i]->getCost()." class = 'editor' >".$productarr[$i]->getCost()."</div>L.E</td>
             <td ><div name ='profit' value=".$productarr[$i]->getProfit()." class = 'editor' >".$productarr[$i]->getProfit()."</div>L.E</td>
