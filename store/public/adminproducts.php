@@ -32,7 +32,7 @@ $view= new adminproductsView($model,$controller);
 
     <link href="../css/adminProducts.css" rel="stylesheet" type="text/css" media="all" />
           <link href="../css/products.css" rel="stylesheet" type="text/css" media="all" /> 
-
+          <link href="../css/popup.css" rel="stylesheet" type="text/css" media="all" /> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <script src="../js/adminproduct.js" type="text/javascript"></script>
@@ -957,7 +957,13 @@ https://www.geeksforgeeks.org/how-to-select-and-upload-multiple-files-with-html-
 
 
     </div>
-
+<div id="myModal" class="modalPopup">
+                    <div class="popup-notification" id='popup'>
+                        <h2></h2>
+                        <a class="popup-close">&times;</a>
+                        <div class="popup-content"></div>
+                    </div>
+                </div>
 </body>
 
 

@@ -1,4 +1,13 @@
 $(document).ready(function () {
+  function popup(head, body) {
+    head = head == true ? "Success" : "Failed";
+    $(".popup-notification h2").text(head);
+    $(".popup-content").html(body);
+    $(".modalPopup").css("display", "block");
+  }
+  $(".popup-close").click(function () {
+    $(".modalPopup").css("display", "none");
+  });
   var orig;
   var color;
   $(document).on("click", ".editor", function () {
@@ -147,8 +156,10 @@ $(document).ready(function () {
       .find("td:eq(" + wi + ")");
     product.append("weight", weight.text());
     product.append("imageurls", "");
+    var noti = $(this).attr("name");
     if ($(this).attr("class").includes("wr"))
-      alert("Invalid " + $(this).attr("name"));
+      popup(false, "Invalid " + $(this).attr("name"));
+    //alert("Invalid " + $(this).attr("name"));
     else {
       $.ajax({
         url: "../public/adminproducts.php?action=updateProduct",
@@ -159,6 +170,7 @@ $(document).ready(function () {
         success: function (response) {
           cell.removeClass("input");
           cell.html("<div>" + cell.text() + "</div>");
+          popup(true, noti + " Updated!");
           $("#productst")
             .find("tr")
             .each(function () {
