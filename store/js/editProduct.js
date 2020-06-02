@@ -10,6 +10,7 @@ $(document).ready(function () {
   });
   var orig;
   var color;
+  var error;
   $(document).on("click", ".editor", function () {
     color = $(this).css("background-color");
     $(this).closest("div").attr("contenteditable", "true");
@@ -29,6 +30,7 @@ $(document).ready(function () {
         if (test.match(/^[0-9]+$/)) {
           $(this).removeClass("input");
           $(this).addClass("wr");
+          error = "Input can't be a number only";
         } else {
           $(this).removeClass("wr");
           $(this).addClass("input");
@@ -48,6 +50,7 @@ $(document).ready(function () {
         if (!test.match(/^[0-9]+$/)) {
           $(this).removeClass("input");
           $(this).addClass("wr");
+          error = "Input must be a number";
         } else {
           $(this).removeClass("wr");
           $(this).addClass("input");
@@ -157,8 +160,11 @@ $(document).ready(function () {
     product.append("weight", weight.text());
     product.append("imageurls", "");
     var noti = $(this).attr("name");
-    if ($(this).attr("class").includes("wr"))
-      popup(false, "Invalid " + $(this).attr("name"));
+    if ($(this).attr("class").includes("wr")) {
+      popup(false, "Invalid " + $(this).attr("name") + ", " + error);
+      $(this).removeClass("wr");
+      $(this).text(orig);
+    }
     //alert("Invalid " + $(this).attr("name"));
     else {
       $.ajax({
