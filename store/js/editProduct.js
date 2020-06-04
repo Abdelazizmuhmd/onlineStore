@@ -27,10 +27,19 @@ $(document).ready(function () {
     $(this).keyup(function (e) {
       var test = $(this).text();
       if (name == "name" || name == "description" || name == "color") {
-        if (test.match(/^[0-9]+$/)) {
+        if (test.match(/^[0-9]+$/) || test == "") {
           $(this).removeClass("input");
           $(this).addClass("wr");
-          error = "Input can't be a number only";
+          error = "Input must include letters";
+        } else {
+          $(this).removeClass("wr");
+          $(this).addClass("input");
+        }
+      } else if (name == "code") {
+        if (!test.match(/^(?=.*[a-zA-Z])(?=.*[0-9])/)) {
+          $(this).removeClass("input");
+          $(this).addClass("wr");
+          error = "Input must include letters and numbers only";
         } else {
           $(this).removeClass("wr");
           $(this).addClass("input");
@@ -38,7 +47,6 @@ $(document).ready(function () {
       } else if (
         name == "profit" ||
         name == "cost" ||
-        name == "code" ||
         name == "small" ||
         name == "medium" ||
         name == "large" ||
@@ -50,7 +58,7 @@ $(document).ready(function () {
         if (!test.match(/^[0-9]+$/)) {
           $(this).removeClass("input");
           $(this).addClass("wr");
-          error = "Input must be a number";
+          error = "Input must include numbers only";
         } else {
           $(this).removeClass("wr");
           $(this).addClass("input");
