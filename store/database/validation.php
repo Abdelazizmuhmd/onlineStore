@@ -52,6 +52,7 @@ function validateMixedString($value,$min,$max){
         
  $this->validateLength($value,$min,$max); 
  if(!preg_match("/^[a-zA-Z0-9 ]*$/",$value)){
+    
       header("location: error.html");
       die();
  }
@@ -83,6 +84,7 @@ function filterOutput($value){
 function validateNumber($value,$min,$max){
     
    $this->validateLength($value,$min,$max);
+    $value=trim($value);
     if(!is_numeric($value)){
         header("location: error.html?a=".$value);
          die();

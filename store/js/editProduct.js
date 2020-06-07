@@ -121,11 +121,11 @@ $(document).ready(function () {
     var cost = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + csi + ")");
-    product.append("cost", cost.text());
+    product.append("cost",cost.text().replace("L.E",""));
     var profit = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + pi + ")");
-    product.append("profit", profit.text());
+    product.append("profit", profit.text().replace("L.E",""));
     var code = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + ci + ")");
@@ -182,6 +182,7 @@ $(document).ready(function () {
         processData: false,
         contentType: false,
         success: function (response) {
+            alert(response);
           cell.removeClass("input");
           cell.html("<div>" + cell.text() + "</div>");
           popup(true, noti + " Updated!");
