@@ -41,6 +41,7 @@ $(document).ready(function () {
         }
       } else if (name == "description") {
         if (
+          test.match(/^[0-9]+$/) ||
           test.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/) ||
           test == ""
         ) {
