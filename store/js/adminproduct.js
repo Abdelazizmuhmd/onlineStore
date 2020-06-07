@@ -166,7 +166,7 @@ function validate()
     }
 
 
-    else if (!productName.match(/^[a-zA-Z]+$/)) {
+    else if (!productName.match(/^[a-zA-Z ]+$/)) {
         document.getElementById("Name").innerHTML = "Name must be Letters only";
 
         document.getElementById("productName").style.borderColor = "red";
@@ -193,8 +193,8 @@ function validate()
     }
 
 
-   else if (!productCode.match(/^\d*\.?\d*$/)) {
-        document.getElementById("Code").innerHTML = "Code must be  numbers only";
+   else if (!productCode.match(/^[a-zA-Z0-9 ]+$/)) {
+        document.getElementById("Code").innerHTML = "Code must contain letter or numbers only";
         document.getElementById("productCode").style.borderColor = "red";
         return false;
     }

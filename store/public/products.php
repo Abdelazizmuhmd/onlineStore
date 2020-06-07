@@ -90,7 +90,7 @@ Pat
 
       
     
-      <input type="text" value="10"  id="numRows" name="numRows" hidden>
+      <input type="text" value="0" id="numRows" name="numRows" hidden>
             <input type="text" value=""  id="subcategoryid" name="subcategoryid" hidden>
 
 <!--
@@ -143,6 +143,7 @@ Pat
       <?php } 
     ?>      
 <script>  
+    loadMoreProducts();
     if(document.getElementById("1").href!=""&&window.location.href=="http://localhost/onlineStore/store/public/products.php"){
         window.location.href=document.getElementById("1").href;
     }
@@ -158,7 +159,7 @@ Pat
              if(response==0){
                document.getElementById("loadmore").style.visibility="hidden";
                }
-              document.getElementById("numRows").value = parseInt(document.getElementById("numRows").value)+10;
+              document.getElementById("numRows").value = parseInt(document.getElementById("numRows").value)+3
 
            var moreProducts = document.getElementById('products');
             moreProducts.insertAdjacentHTML('beforeend', response);
