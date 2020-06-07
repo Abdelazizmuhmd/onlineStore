@@ -33,7 +33,7 @@ $(document).ready(function () {
         ) {
           $(this).removeClass("input");
           $(this).addClass("wr");
-          error = "Input must include letters with numbers if needed";
+          error = "Input must include letters only";
         } else {
           $(this).removeClass("wr");
           $(this).addClass("input");
