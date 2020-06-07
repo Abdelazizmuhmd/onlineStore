@@ -42,7 +42,7 @@ text {
     .box{
         position: relative;
         display: inline-block; /* Make the width of box same as image */
-        margin-left:200px;
+        margin-left:150px;
         
     }
     .box .text{
@@ -128,7 +128,9 @@ text {
          
 
 
-         
+         ?>
+         <div style="display:flex; position:relative">
+         <?php
           for($j=0;$j<3;$j++)
           {
             $imgs_arr = [];
@@ -153,11 +155,15 @@ text {
             
 
                        }
+                       
                        echo"<div class='text'>
+                       
 <h1 style='color:white;'>$a[$j]</h1>
 </div>
-</div>
 ";
+?>
+                       </div>
+                       <?php
          
            
           }
