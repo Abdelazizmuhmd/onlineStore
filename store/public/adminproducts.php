@@ -75,7 +75,7 @@ $view= new adminproductsView($model,$controller);
 
     <link href="../css/adminProducts.css" rel="stylesheet" type="text/css" media="all" />
           <link href="../css/products.css" rel="stylesheet" type="text/css" media="all" /> 
-
+          <link href="../css/popup.css" rel="stylesheet" type="text/css" media="all" /> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <script src="../js/adminproduct.js" type="text/javascript"></script>
@@ -176,16 +176,16 @@ $view= new adminproductsView($model,$controller);
                     <tr>
 
                         <td> Name<input type="text" id="productName" value="test" class="form-control"
-                                placeholder="Enter Product Name" maxlength="50" required>
+                                placeholder="Enter Product Name" maxlength="50" onkeyup="validate()" required>
                                 <p id="Name" style="color:red;"></p>
                                 </td>
                         <td> Code<input type="text" id="productCode" value="22" class="form-control"
-                                placeholder="Enter Product Code" maxlength="50" required>
+                                placeholder="Enter Product Code" maxlength="50" onkeyup="validate()" required>
                                 <p id="Code" style="color:red;"></p>
 
                         </td>
                         <td>profit<input type="text" value="22"id="productProfit" class="form-control"
-                                placeholder="Enter Product profit" maxlength="50" required>
+                                placeholder="Enter Product profit" maxlength="50" onkeyup="validate()" required>
                                 <p id="Profit" style="color:red;"></p>
                                 </td>
 
@@ -194,16 +194,16 @@ $view= new adminproductsView($model,$controller);
 
                     <tr>
                         <td>Description<input type="text" value="test"id="productDescription" class="form-control"
-                                placeholder="Enter Product Description" maxlength="50" required>
+                                placeholder="Enter Product Description" maxlength="50" onkeyup="validate()" required>
                                 <p id="Description" style="color:red;"></p>
                                 </td>
                         <td>Weight<input type="text" value="22"id="productWeight" class="form-control"
-                                placeholder="Enter Product Weight" maxlength="50" required>
+                                placeholder="Enter Product Weight" maxlength="50" onkeyup="validate()" required>
                                 <p id="Weight" style="color:red;"></p>
                                 </td>
 
                         <td>Cost<input type="text"value="22" id="productCost" class="form-control"
-                                placeholder="Enter Product Cost" maxlength="50" required>
+                                placeholder="Enter Product Cost" maxlength="50" onkeyup="validate()" required>
                                 <p id="Cost" style="color:red;"></p>
                                 </td>
 
@@ -266,8 +266,8 @@ $view= new adminproductsView($model,$controller);
             <table class="table table-bordered" id="productstable"><br><br>
                 <tr>
                     <th>image</th>
-                    <th>id</th>
-                    <th>detailId</th>
+                    <th style="display:none">id</th>
+                    <th style="display:none"> detailId</th>
                     <th>name</th>
                     <th>cost</th>
                     <th>profit</th>
@@ -1105,7 +1105,13 @@ https://www.geeksforgeeks.org/how-to-select-and-upload-multiple-files-with-html-
 
 
     </div>
-
+<div id="myModal" class="modalPopup">
+                    <div class="popup-notification" id='popup'>
+                        <h2></h2>
+                        <a class="popup-close">&times;</a>
+                        <div class="popup-content"></div>
+                    </div>
+                </div>
 </body>
 
 

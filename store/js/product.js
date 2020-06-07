@@ -7,8 +7,8 @@ $(document).ready(function () {
   $(".decider").change(function () {
     decider = $(this).find(":selected").text();
     decide = $(this).find(":selected");
-      deciderimg=decider+"1";
-      //images
+    deciderimg = decider + "1";
+    //images
     $(this)
       .parent()
       .parent()
@@ -22,7 +22,7 @@ $(document).ready(function () {
           $(".decider").val(decider);
         }
       });
-      //dropdowns
+    //dropdowns
     $(this)
       .parent()
       .parent()
@@ -39,18 +39,64 @@ $(document).ready(function () {
           $(".decider").val(decider);
         }
       });
-      
- 
-       var x = document.getElementsByClassName(deciderimg);
-       for(var i=0; i<x.length; i++)
-        {
-          if(x[i].getAttribute("src")==""){
-           x[i].src=x[i].getAttribute("data-src");
-            }
-        }
-       showSlides(1);
-      
+
+    var x = document.getElementsByClassName(deciderimg);
+    for (var i = 0; i < x.length; i++) {
+      if (x[i].getAttribute("src") == "") {
+        x[i].src = x[i].getAttribute("data-src");
+      }
+    }
+    showSlides(1);
+    var sizes = $(".qbutton")
+      .parent()
+      .parent()
+      .find(".decdiv")
+      .find(".quantity")
+      .find(":selected");
+    sizes.each(function () {
+      if ($(this).parent().parent().parent().css("display") == "block")
+        $(this)
+          .parent()
+          .parent()
+          .parent()
+          .find(".qdiv")
+          .find(".qbutton")
+          .attr("max", $(this).attr("id"));
+    });
   });
-    
-   
+  var sizes = $(".qbutton")
+    .parent()
+    .parent()
+    .find(".decdiv")
+    .find(".quantity")
+    .find(":selected");
+  sizes.each(function () {
+    if ($(this).parent().parent().parent().css("display") == "block")
+      $(this)
+        .parent()
+        .parent()
+        .parent()
+        .find(".qdiv")
+        .find(".qbutton")
+        .attr("max", $(this).attr("id"));
+  });
+  $(".quantity").change(function () {
+    var select = $(this);
+    $(this)
+      .find(":selected")
+      .parent()
+      .parent()
+      .parent()
+      .find(".qdiv")
+      .find(".qbutton")
+      .val("1");
+    $(this)
+      .find(":selected")
+      .parent()
+      .parent()
+      .parent()
+      .find(".qdiv")
+      .find(".qbutton")
+      .attr("max", $(this).find(":selected").attr("id"));
+  });
 });

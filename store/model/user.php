@@ -2,6 +2,8 @@
 require_once("../model/Model.php");
 require_once("../model/order.php");
 require_once("../model/report.php");
+require_once("../model/mostsoled.php");
+
 
 ?>
 <?php
@@ -19,6 +21,7 @@ class user extends Model
     private $userType;
     private $orders;
     private $report;
+ 
     function __construct()
     {   $this->orders[]=new order();
         $a = func_get_args();
@@ -235,6 +238,13 @@ function getordersArray(){
     }
 function getreport(){
     return $this->report;
+}
+function getMostSell(){
+    $this->mostsoled=new mostsoled();
+    
+}
+function getSell(){
+return $this->mostsoled;
 }
     
     function setID($id)

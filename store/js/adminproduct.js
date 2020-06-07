@@ -139,5 +139,205 @@ else if (!editsubcategoryname.match(/^[a-zA-Z]+$/))
         return true;
 
     }
+
+}
+function validate()
+{
+
+
+
+
+    var productName = document.getElementById("productName").value;
+    var productCode = document.getElementById("productCode").value;
+    var productProfit = document.getElementById("productProfit").value;
+    var productDescription = document.getElementById("productDescription").value;
+    var productWeight = document.getElementById("productWeight").value;
+    var productCost = document.getElementById("productCost").value;
+    //----------------------------------------------------
+    if (productName == "") {
+        document.getElementById("Name").innerHTML = "Name is empty";
+        document.getElementById("productName").style.borderColor = "red";
+        return false;
+
+    } else if (productName.length < 3) {
+        document.getElementById("Name").innerHTML = "Name is to short";
+        document.getElementById("productName").style.borderColor = "red";
+        return false;
+    }
+
+
+    else if (!productName.match(/^[a-zA-Z]+$/)) {
+        document.getElementById("Name").innerHTML = "Name must be Letters only";
+
+        document.getElementById("productName").style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById("Name").innerHTML = "";
+        document.getElementById("productName").style.borderColor = "Green";
+
+
+    }
+    //---------------------
+    //code
+    if (productCode == "") {
+        document.getElementById("Code").innerHTML = "Code is empty";
+        document.getElementById("productCode").style.borderColor = "red";
+        return false;
+
+    } else if (productCode.length < 1) {
+        document.getElementById("Code").innerHTML = "Code is to short";
+        document.getElementById("productCode").style.borderColor = "red";
+        return false;
+    }
+
+
+   else if (!productCode.match(/^\d*\.?\d*$/)) {
+        document.getElementById("Code").innerHTML = "Code must be  numbers only";
+        return false;
+    }
+    else
+    {
+        document.getElementById("Code").innerHTML = "";
+        document.getElementById("productCode").style.borderColor = "Green";
+
+
+    }
+    //-----------------------------
+    //weight
+    if (productWeight == "") {
+        document.getElementById("Weight ").innerHTML = "Weight  is empty";
+        document.getElementById("productWeight").style.borderColor = "red";
+        return false;
+
+    } else if (productWeight.length < 1) {
+        document.getElementById("Weight ").innerHTML = "Weight  is to short";
+        document.getElementById("productWeight").style.borderColor = "red";
+        return false;
+    }
+
+
+    else if (!productWeight.match(/^\d*\.?\d*$/)) {
+        document.getElementById("Weight ").innerHTML = "Weight  must be numbers only";
+        return false;
+    }
+    else
+    {
+        document.getElementById("Weight").innerHTML = "";
+        document.getElementById("productWeight").style.borderColor = "Green";
+
+
+    }
+    //-------------------------------------------
+    //cost
+    if (productCost == "") {
+        document.getElementById("Cost").innerHTML = "Cost  is empty";
+        document.getElementById("productCost").style.borderColor = "red";
+        return false;
+
+    } else if (productCost.length < 1) {
+        document.getElementById("Cost").innerHTML = "Cost  is to short";
+        document.getElementById("productCost").style.borderColor = "red";
+        return false;
+    }
+
+
+    else if (!productCost.match(/^\d*\.?\d*$/)) {
+        document.getElementById("Cost").innerHTML = "Cost only numbers are allowed";
+        return false;
+    }
+    else
+    {
+        document.getElementById("Cost").innerHTML = "";
+        document.getElementById("productCost").style.borderColor = "Green";
+
+
+    }
+    //---------------------------------------
+    //description
+    productDescription
+    if (productDescription == "") {
+        document.getElementById("Description").innerHTML = "Description is empty";
+        document.getElementById("productDescription").style.borderColor = "red";
+        return false;
+
+    } else if (productDescription.length < 1) {
+        document.getElementById("Description").innerHTML = "Description is to Short";
+        document.getElementById("productDescription").style.borderColor = "red";
+        return false;
+    }
+
+
+
+   else if (!productDescription.match(/^[A-Za-z0-9 ]+$/)) {
+        document.getElementById("Description").innerHTML = "Description only letters and number are allowed";
+        return false;
+    }
+    else
+    {
+        document.getElementById("Description").innerHTML = "";
+        document.getElementById("productDescription").style.borderColor = "Green";
+
+
+    }
+    //--------------------
+    //profit
+    if (productProfit == "") {
+        document.getElementById("Profit").innerHTML = "Profit is empty";
+        document.getElementById("productProfit").style.borderColor = "red";
+        return false;
+
+    } else if (productProfit.length < 1) {
+        document.getElementById("Profit").innerHTML = "Profit is Short";
+        document.getElementById("productProfit").style.borderColor = "red";
+        return false;
+    }
+
+
+    else if (!productProfit.match(/^\d*\.?\d*$/)) {
+        document.getElementById("Profit").innerHTML = "Profit only numbers are allowed";
+        document.getElementById("productProfit").style.borderColor = "red";
+
+        return false;
+    }
+    else
+    {
+        document.getElementById("Profit").innerHTML = "";
+        document.getElementById("productProfit").style.borderColor = "Green";
+
+
+    }
+//-------------------------------------------------------------------------------------------------------------
+
+    var productColor = document.getElementById("productColor").value;
+
+    //-----------------------------------------
+    if (productColor == "") {
+
+        document.getElementById("Color ").innerHTML = "Color  is empty";
+        document.getElementById("productColor").style.borderColor = "red";
+        return false;
+
+    } else if (productColor.length < 1) {
+        document.getElementById("Color ").innerHTML = "Color  is to short";
+        document.getElementById("productColor").style.borderColor = "red";
+        return false;
+    }
+
+
+   else if (!productColor.match(/^[a-zA-Z]+$/)) {
+        document.getElementById("Color ").innerHTML = "Color  only letters are allowed";
+        document.getElementById("productColor").style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById("Color").innerHTML = "";
+        document.getElementById("productColor").style.borderColor = "Green";
+
+
+    }
+
 }
 

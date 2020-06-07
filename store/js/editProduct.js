@@ -1,6 +1,16 @@
 $(document).ready(function () {
+  function popup(head, body) {
+    head = head == true ? "Success" : "Failed";
+    $(".popup-notification h2").text(head);
+    $(".popup-content").html(body);
+    $(".modalPopup").css("display", "block");
+  }
+  $(".popup-close").click(function () {
+    $(".modalPopup").css("display", "none");
+  });
   var orig;
   var color;
+  var error;
   $(document).on("click", ".editor", function () {
     color = $(this).css("background-color");
     $(this).closest("div").attr("contenteditable", "true");
@@ -17,9 +27,19 @@ $(document).ready(function () {
     $(this).keyup(function (e) {
       var test = $(this).text();
       if (name == "name" || name == "description" || name == "color") {
-        if (test.match(/^[0-9]+$/)) {
+        if (test.match(/^[0-9]+$/) || test == "") {
           $(this).removeClass("input");
           $(this).addClass("wr");
+          error = "Input must include letters";
+        } else {
+          $(this).removeClass("wr");
+          $(this).addClass("input");
+        }
+      } else if (name == "code") {
+        if (!test.match(/^(?=.*[a-zA-Z])(?=.*[0-9])/)) {
+          $(this).removeClass("input");
+          $(this).addClass("wr");
+          error = "Input must include letters and numbers only";
         } else {
           $(this).removeClass("wr");
           $(this).addClass("input");
@@ -27,7 +47,6 @@ $(document).ready(function () {
       } else if (
         name == "profit" ||
         name == "cost" ||
-        name == "code" ||
         name == "small" ||
         name == "medium" ||
         name == "large" ||
@@ -39,6 +58,7 @@ $(document).ready(function () {
         if (!test.match(/^[0-9]+$/)) {
           $(this).removeClass("input");
           $(this).addClass("wr");
+          error = "Input must include numbers only";
         } else {
           $(this).removeClass("wr");
           $(this).addClass("input");
@@ -147,8 +167,13 @@ $(document).ready(function () {
       .find("td:eq(" + wi + ")");
     product.append("weight", weight.text());
     product.append("imageurls", "");
-    if ($(this).attr("class").includes("wr"))
-      alert("Invalid " + $(this).attr("name"));
+    var noti = $(this).attr("name");
+    if ($(this).attr("class").includes("wr")) {
+      popup(false, "Invalid " + $(this).attr("name") + ", " + error);
+      $(this).removeClass("wr");
+      $(this).text(orig);
+    }
+    //alert("Invalid " + $(this).attr("name"));
     else {
       $.ajax({
         url: "../public/adminproducts.php?action=updateProduct",
@@ -159,6 +184,7 @@ $(document).ready(function () {
         success: function (response) {
           cell.removeClass("input");
           cell.html("<div>" + cell.text() + "</div>");
+          popup(true, noti + " Updated!");
           $("#productst")
             .find("tr")
             .each(function () {
