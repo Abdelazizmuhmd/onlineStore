@@ -543,7 +543,7 @@ $view= new adminproductsView($model,$controller);
             </div>
         </div>
         <p>
-                  <input type="text" value="1"  id="numRows" name="numRows" hidden>
+                  <input type="text" value="0"  id="numRows" name="numRows" hidden>
                   <input name="oldsubid" type="text" id="oldsubid" hidden>
                          <script>
 
@@ -571,7 +571,7 @@ function toggle() {
                if (i == 1) {
                     if(p==0){
                         document.getElementById("oldsubid").value=document.getElementById("subproductid").value;
-                         document.getElementById("numRows").value=1;
+                         document.getElementById("numRows").value=0;
                         p=1;
                     }
                     
@@ -582,7 +582,7 @@ function toggle() {
                         var new_tbody = document.createElement('tbody');
                          document.getElementById('productst').innerHTML="";
                         document.getElementById("loadmore").style.visibility="hidden";
-                        document.getElementById("numRows").value=1;
+                        document.getElementById("numRows").value=0;
                         showproducts();
                         p=0;
                       
@@ -612,11 +612,12 @@ function toggle() {
                       type: 'POST',
                       data: {subcategoryid:subcategoryid,numRows:numRows},
                       success: function(response) {
+                          alert(response);
                           document.getElementById("loadmore").style.visibility="initial";
                       if(response==0){
                            document.getElementById("loadmore").style.visibility="hidden";
                                      }
-                     document.getElementById("numRows").value = parseInt(document.getElementById("numRows").value)+9;
+                     document.getElementById("numRows").value = parseInt(document.getElementById("numRows").value)+3;
                      var moreproducts = document.getElementById('productst');
                      moreproducts.insertAdjacentHTML('beforeend', response);
                           

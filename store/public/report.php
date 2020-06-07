@@ -42,7 +42,7 @@ text {
     .box{
         position: relative;
         display: inline-block; /* Make the width of box same as image */
-        margin-left:150px;
+        margin-left:8%;
         
     }
     .box .text{
