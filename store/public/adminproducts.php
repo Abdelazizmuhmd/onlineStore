@@ -154,9 +154,9 @@ $view= new adminproductsView($model,$controller);
                 <form action="../public/adminproducts.php?action=deletesubcategory" method="POST">
                     <input type="text" id="deletesubcategoryid" name="deletesubcategoryid" value="" hidden>
                     <button type="submit" onclick="getsubidandconfirm()" class="btn btn-primary"
-                        style="margin-left: 1px;  overflow: hidden;">Delete SubCateg
+                        style="margin-left: 1px;  overflow: hidden;">Delete SubCateg</button>
 
-                    </button>
+                    
                 </form>
 
             </div>  
@@ -196,7 +196,7 @@ $view= new adminproductsView($model,$controller);
                                 <p id="Code" style="color:red;"></p>
 
                         </td>
-                        <td>profit<input type="text" value="22"id="productProfit" class="form-control"
+                        <td>profit<input type="text" value="22" id="productProfit" class="form-control"
                                 placeholder="Enter Product profit" maxlength="50" onkeyup="validate()" required>
                                 <p id="Profit" style="color:red;"></p>
                                 </td>
@@ -279,7 +279,7 @@ $view= new adminproductsView($model,$controller);
                 <tr>
                     <th>image</th>
                     <th style="display:none">id</th>
-                    <th style="display:none"> detailId</th>
+                    <th style="display:none">detailId</th>
                     <th>name</th>
                     <th>cost</th>
                     <th>profit</th>
@@ -493,6 +493,7 @@ $view= new adminproductsView($model,$controller);
                         <center>
                             <h4><i class="fa fa-upload" aria-hidden="true"></i>
                                 <input type="file"  id="image" name="image[]" onchange="loadFile(event)" multiple></h4>
+                                <p id="imagep" style="color:red;"></p>
                         </center>
                         <hr class="new2">
 
@@ -650,15 +651,7 @@ function toggle() {
                 var productCost = document.getElementById("productCost").value;
                 var photo = document.getElementById("image").value;
                 
- if(!photo=="")
-  { if(!photo.endsWith(".png")&&!photo.endsWith(".jpg")&&!photo.endsWith(".jpeg")){
-    alert("wrong  image file extination")
-      return false;
-  }}
-else{
-      alert("please upload image");
-      return false;
-  }
+
                 //----------------------------------------------------
                 if (productName == "") {
                     document.getElementById("Name").innerHTML = "Name is empty";
@@ -710,6 +703,59 @@ else{
 
     
                 }
+                               //profit
+                               if (productProfit == "") {
+                    document.getElementById("Profit").innerHTML = "Profit is empty";
+                    document.getElementById("productProfit").style.borderColor = "red";
+                    return false;
+
+                } else if (productProfit.length < 1) {
+                    document.getElementById("Profit").innerHTML = "Profit is Short";
+                    document.getElementById("productProfit").style.borderColor = "red";
+                    return false;
+                }
+
+
+                else if (!productProfit.match(/^\d*\.?\d*$/)) {
+                    document.getElementById("Profit").innerHTML = "Profit only numbers are allowed";
+                    document.getElementById("productProfit").style.borderColor = "red";
+
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("Profit").innerHTML = "";
+                    document.getElementById("productProfit").style.borderColor = "Green";
+
+    
+                }
+                //description
+                
+                if (productDescription == "") {
+                    document.getElementById("Description").innerHTML = "Description is empty";
+                    document.getElementById("productDescription").style.borderColor = "red";
+                    return false;
+
+                } else if (productDescription.length < 1) {
+                    document.getElementById("Description").innerHTML = "Description is to Short";
+                    document.getElementById("productDescription").style.borderColor = "red";
+                    return false;
+                }
+
+
+
+               else if (!productDescription.match(/^[A-Za-z0-9 ]+$/)) {
+                    document.getElementById("Description").innerHTML = "Description only letters and number are allowed";
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("Description").innerHTML = "";
+                    document.getElementById("productDescription").style.borderColor = "Green";
+
+    
+                }
+                //--------------------
                 //-----------------------------
                 //weight
                 if (productWeight == "") {
@@ -761,59 +807,23 @@ else{
     
                 }
                 //---------------------------------------
-                //description
-                productDescription
-                if (productDescription == "") {
-                    document.getElementById("Description").innerHTML = "Description is empty";
-                    document.getElementById("productDescription").style.borderColor = "red";
-                    return false;
+  
+                if(!photo=="")
+  { if(!photo.endsWith(".png")&&!photo.endsWith(".jpg")&&!photo.endsWith(".jpeg")){
+   
+    document.getElementById("imagep").innerHTML = "wrong  image file extination";
+      return false;
+  }
+  else{
+    document.getElementById("imagep").innerHTML = "";
 
-                } else if (productDescription.length < 1) {
-                    document.getElementById("Description").innerHTML = "Description is to Short";
-                    document.getElementById("productDescription").style.borderColor = "red";
-                    return false;
-                }
+  }}
+else{
 
-
-
-               else if (!productDescription.match(/^[A-Za-z0-9 ]+$/)) {
-                    document.getElementById("Description").innerHTML = "Description only letters and number are allowed";
-                    return false;
-                }
-                else
-                {
-                    document.getElementById("Description").innerHTML = "";
-                    document.getElementById("productDescription").style.borderColor = "Green";
-
-    
-                }
-                //--------------------
-                //profit
-                if (productProfit == "") {
-                    document.getElementById("Profit").innerHTML = "Profit is empty";
-                    document.getElementById("productProfit").style.borderColor = "red";
-                    return false;
-
-                } else if (productProfit.length < 1) {
-                    document.getElementById("Profit").innerHTML = "Profit is Short";
-                    document.getElementById("productProfit").style.borderColor = "red";
-                    return false;
-                }
-
-
-                else if (!productProfit.match(/^\d*\.?\d*$/)) {
-                    document.getElementById("Profit").innerHTML = "Profit only numbers are allowed";
-                    document.getElementById("productProfit").style.borderColor = "red";
-
-                    return false;
-                }
-                else
-                {
-                    document.getElementById("Profit").innerHTML = "";
-                    document.getElementById("productProfit").style.borderColor = "Green";
-
-    
-                }
+      document.getElementById("imagep").innerHTML = "please upload image";
+      return false;
+  }
+               
 //-------------------------------------------------------------------------------------------------------------
 
                 var productColor = document.getElementById("productColor").value;

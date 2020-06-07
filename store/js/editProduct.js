@@ -121,11 +121,11 @@ $(document).ready(function () {
     var cost = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + csi + ")");
-    product.append("cost", cost.text());
+    product.append("cost", cost.text().replace("L.E", ""));
     var profit = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + pi + ")");
-    product.append("profit", profit.text());
+    product.append("profit", profit.text().replace("L.E", ""));
     var code = $("#productst")
       .find("tr:eq(" + rowIndex + ")")
       .find("td:eq(" + ci + ")");
@@ -168,13 +168,41 @@ $(document).ready(function () {
     product.append("weight", weight.text());
     product.append("imageurls", "");
     var noti = $(this).attr("name");
+    //var dupcolor = false;
+    var dcount = 0;
+    if ($(this).attr("name") == "color") {
+      var ccell = $(this);
+      $("#productst")
+        .find("tr")
+        .each(function () {
+          if (
+            $(this)
+              .find("td:eq(" + id + ")")
+              .text() == productid.text()
+          ) {
+            if (
+              $(this)
+                .find("td:eq(" + coi + ")")
+                .text() == color.text()
+            )
+              dcount++;
+          }
+        });
+    }
     if ($(this).attr("class").includes("wr")) {
       popup(false, "Invalid " + $(this).attr("name") + ", " + error);
       $(this).removeClass("wr");
       $(this).text(orig);
     }
     //alert("Invalid " + $(this).attr("name"));
-    else {
+    else if (dcount > 1) {
+      popup(
+        false,
+        "Invalid " + $(this).attr("name") + ", cannot insert color twice"
+      );
+      $(this).removeClass("input");
+      $(this).text(orig);
+    } else {
       $.ajax({
         url: "../public/adminproducts.php?action=updateProduct",
         type: "POST",
@@ -182,61 +210,67 @@ $(document).ready(function () {
         processData: false,
         contentType: false,
         success: function (response) {
-          cell.removeClass("input");
-          cell.html("<div>" + cell.text() + "</div>");
-          popup(true, noti + " Updated!");
-          $("#productst")
-            .find("tr")
-            .each(function () {
-              if (
-                $(this)
-                  .find("td:eq(" + id + ")")
-                  .text() == productid.text()
-              ) {
-                $(this)
-                  .find("td:eq(" + ni + ")")
-                  .html(
-                    "<div name ='name' class = 'editor'>" +
-                      pname.text() +
-                      "</div>"
-                  );
-                $(this)
-                  .find("td:eq(" + ci + ")")
-                  .html(
-                    "<div name ='code' class = 'editor'>" +
-                      code.text() +
-                      "</div>"
-                  );
-                $(this)
-                  .find("td:eq(" + csi + ")")
-                  .html(
-                    "<div name ='cost' class = 'editor'>" +
-                      cost.text().replace("L.E", "") +
-                      "</div>L.E"
-                  );
-                $(this)
-                  .find("td:eq(" + pi + ")")
-                  .html(
-                    "<div name ='profit' class = 'editor'>" +
-                      profit.text().replace("L.E", "") +
-                      "</div>L.E"
-                  );
-                $(this)
-                  .find("td:eq(" + di + ")")
-                  .html(
-                    "<div name ='description' class = 'editor'>" +
-                      description.text() +
-                      "</div>"
-                  );
-                $(this)
-                  .find("td:eq(" + wi + ")")
-                  .html(
-                    "<div name ='weight' class = 'editor'>" +
-                      weight.text() +
-                      "</div>"
-                  );
-              }
-            });
+          if (response.includes("SORRY BAD REQUEST , TRY AGAIN")) {
+            popup(false, "Invalid " + noti);
+            cell.removeClass("input");
+            cell.html("<div>" + orig + "</div>");
+          } else {
+            cell.removeClass("input");
+            cell.html("<div>" + cell.text() + "</div>");
+            popup(true, noti + " Updated!");
+            $("#productst")
+              .find("tr")
+              .each(function () {
+                if (
+                  $(this)
+                    .find("td:eq(" + id + ")")
+                    .text() == productid.text()
+                ) {
+                  $(this)
+                    .find("td:eq(" + ni + ")")
+                    .html(
+                      "<div name ='name' class = 'editor'>" +
+                        pname.text() +
+                        "</div>"
+                    );
+                  $(this)
+                    .find("td:eq(" + ci + ")")
+                    .html(
+                      "<div name ='code' class = 'editor'>" +
+                        code.text() +
+                        "</div>"
+                    );
+                  $(this)
+                    .find("td:eq(" + csi + ")")
+                    .html(
+                      "<div name ='cost' class = 'editor'>" +
+                        cost.text().replace("L.E", "") +
+                        "</div>L.E"
+                    );
+                  $(this)
+                    .find("td:eq(" + pi + ")")
+                    .html(
+                      "<div name ='profit' class = 'editor'>" +
+                        profit.text().replace("L.E", "") +
+                        "</div>L.E"
+                    );
+                  $(this)
+                    .find("td:eq(" + di + ")")
+                    .html(
+                      "<div name ='description' class = 'editor'>" +
+                        description.text() +
+                        "</div>"
+                    );
+                  $(this)
+                    .find("td:eq(" + wi + ")")
+                    .html(
+                      "<div name ='weight' class = 'editor'>" +
+                        weight.text() +
+                        "</div>"
+                    );
+                }
+              });
+          }
         },
       });
     }

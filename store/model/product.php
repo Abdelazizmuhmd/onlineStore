@@ -149,19 +149,17 @@ function getProductDetails(){
      function update($productid,$productdetailid,$name,$code,$cost,$profit,$description,$weight,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls){
          $this->getvalidation();
          
-         $this->validation->validateString($name,1,100);
+        $this->validation->validateString($name,1,100);
+        $this->validation->validateMixedString($code,1,10000);
+        $this->validation->validateNumber($cost,1,10000);
      
-         $this->validation->validateMixedString($code,1,10000);
+        $this->validation->validateNumber($profit,1,10000);
      
-         $this->validation->validateNumber($cost,1,10000);
+        $this->validation->validateMixedString($description,1,1000);
      
-         $this->validation->validateNumber($profit,1,10000);
+        $this->validation->validateMixedString($weight,1,100);
      
-         $this->validation->validateMixedString($description,1,1000);
-     
-         $this->validation->validateMixedString($weight,1,100);
-     
-         $this->validation->validateNumber($subcategoryid,1,10000);
+        $this->validation->validateNumber($productid,1,10000);
      
 
       $this->connect();
@@ -180,10 +178,11 @@ function getProductDetails(){
       $this->db->bind(':weight',$weight,PDO::PARAM_INT);
       $this->db->bind(':id',$productid,PDO::PARAM_INT);
       $this->db->execute();
-         
+
+     $this->productDetails[0]->update($productdetailid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
+
       echo $productid;
         
-      $this->productDetails[0]->update($productdetailid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls);
         
      
          
