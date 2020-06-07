@@ -1,4 +1,12 @@
  <?php 
+if(!isset($_REQUEST['productdetailid']) ||!isset($_REQUEST['imageurl']) ||
+	!isset($_REQUEST['productname']) ||!isset($_REQUEST['productprice']) ||
+	!isset($_REQUEST['colors']) ||!isset($_REQUEST['sizes']) ||
+	!isset($_REQUEST['quantity'])){
+header("location:../public/products.php");
+
+
+}
 $productdetail_id=$_REQUEST['productdetailid'];
 $product_image=$_REQUEST['imageurl'];
 $product_name=$_REQUEST['productname'];

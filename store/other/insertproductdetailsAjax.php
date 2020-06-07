@@ -6,6 +6,24 @@ require_once("../other/compress/lib/ImageResizeException.php");
 use \Gumlet\ImageResize;
 
 
+
+if(!isset($_FILES['files']['name']) || 
+!isset($_REQUEST['productid']) || !isset($_REQUEST['productColor']) ||
+
+!isset($_REQUEST['small']) ||!isset($_REQUEST['Medium']) ||
+
+
+!isset($_REQUEST['Large']) ||!isset($_REQUEST['xLarge'])||
+!isset($_REQUEST['2xLarge']) ||!isset($_REQUEST['3xLarge']) 
+
+){
+echo "There is an error with inserting products Details";
+header("location:../public/adminproducts.php");
+
+
+}
+
+
 $imgArr=[];
  if(is_array($_FILES))   
  {  foreach ($_FILES['files']['name'] as $name => $value)  

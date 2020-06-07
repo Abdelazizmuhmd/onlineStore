@@ -3,7 +3,26 @@ require_once("../model/product.php");
 require_once("../other/compress/lib/ImageResize.php");
 require_once("../other/compress/lib/ImageResizeException.php");
 use \Gumlet\ImageResize;
+if(!isset($_FILES['files']['name']) || 
+!isset($_REQUEST['productColor']) || !isset($_REQUEST['small']) ||
 
+!isset($_REQUEST['Medium']) ||!isset($_REQUEST['Large']) ||
+
+!isset($_REQUEST['xLarge']) ||!isset($_REQUEST['2xLarge']) ||
+
+!isset($_REQUEST['3xLarge']) ||!isset($_REQUEST['productName']) ||
+
+!isset($_REQUEST['productCode']) ||!isset($_REQUEST['productCost']) ||
+
+!isset($_REQUEST['productProfit']) ||!isset($_REQUEST['productDescription']) ||
+!isset($_REQUEST['productWeight']) ||!isset($_REQUEST['subcategoryid']) 
+
+){
+echo "There is an error with inserting products";
+header("location:../public/adminproducts.php");
+
+
+}
 
 $imgArr=[];
  if(is_array($_FILES))   

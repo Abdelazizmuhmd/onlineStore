@@ -44,8 +44,6 @@ Pat
 
 
 </head>
-
-    
     
 <body >
   <div>
@@ -88,8 +86,9 @@ Pat
       $view->productsOutput();
 ?>
       </div>
+<button onclick="loadMoreProducts()"  id="loadmore" value="loadMore" class="buttonn buttonn1">loadMore</button>
 
-      <button onclick="loadMoreProducts()"  id="loadmore" value="loadMore" class="buttonn buttonn1">loadMore</button>
+      
     
       <input type="text" value="10"  id="numRows" name="numRows" hidden>
             <input type="text" value=""  id="subcategoryid" name="subcategoryid" hidden>

@@ -1,5 +1,8 @@
 <?php
 require_once("../model/user.php");
+if(!isset($_REQUEST['mail'])){
+ header("location:../public/signup.php");
+}
 
 $model= new user();
   $mail = $_REQUEST['mail'];

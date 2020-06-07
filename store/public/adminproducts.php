@@ -115,7 +115,7 @@ $view= new adminproductsView($model,$controller);
 
 <div>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#categoryEdit"
-                    style="margin-left: 7px;  overflow: hidden;">Edit Category</button>
+                    style="margin-left: 7px;  overflow: hidden;" >Edit Category</button>
 
 
                 <button class="btn btn-primary" data-toggle="modal" style="margin-left: 7px;  overflow: hidden;"
@@ -160,9 +160,21 @@ $view= new adminproductsView($model,$controller);
                 </form>
 
             </div>  
+            <script>
+                function show_div(){
+                    var b = document.getElementById("subselections").length; 
 
-
-
+                  if(b != 0){
+                        document.getElementById("bigDiv2").innerHTML = "<input type='submit' name='AddProduct' value='Add Product' onclick='toggle()' class='btn btn-primary'>";
+                  }   
+                }
+            
+             
+            </script>
+    <div id="bigDiv2">
+       
+    </div>
+<div   style="display: none;" id="bigDiv">
             <div class="card-body" id="bod">
                 <h4>Add Product</h4>
             </div>
@@ -223,7 +235,7 @@ $view= new adminproductsView($model,$controller);
                                 <label style="font-size:20px;" id="colorsAdded" ></label>
 <br><br>
                 <button class="btn btn-primary" onclick="reset()" id="myBtn">Submit Product</button></center>
-
+</div>
             <div class="card-body" id="bod">
 
 
@@ -539,7 +551,14 @@ $view= new adminproductsView($model,$controller);
 
 
             <script>
-                
+function toggle() {
+  var x = document.getElementById("bigDiv");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+} 
                 
                 
                 

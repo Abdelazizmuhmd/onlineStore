@@ -5,7 +5,7 @@ class adminproductsView extends View{
 function getallcategories(){
 $str="";
 $categories = $this->model->getCategories();
-$str.='<select name="categories" id="catselection" class="form-control categories combBox">';
+$str.='<select name="categories" id="catselection" class="form-control categories combBox" onclick=" show_div()">';
 $str.='<option disabled selected value> -- select an option -- </option>
 ';
 foreach($categories as $i=>$category){
