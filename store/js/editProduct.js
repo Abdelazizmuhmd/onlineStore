@@ -26,20 +26,39 @@ $(document).ready(function () {
     }*/
     $(this).keyup(function (e) {
       var test = $(this).text();
-      if (name == "name" || name == "description" || name == "color") {
-        if (test.match(/^[0-9]+$/) || test == "") {
+      if (name == "name" || name == "color") {
+        if (
+          test.match(/^[0-9]+$/) ||
+          test.match(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/) ||
+          test == ""
+        ) {
           $(this).removeClass("input");
           $(this).addClass("wr");
-          error = "Input must include letters";
+          error = "Input must include letters with numbers if needed";
+        } else {
+          $(this).removeClass("wr");
+          $(this).addClass("input");
+        }
+      } else if (name == "description") {
+        if (
+          test.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/) ||
+          test == ""
+        ) {
+          $(this).removeClass("input");
+          $(this).addClass("wr");
+          error = "Input must include letters with numbers if needed";
         } else {
           $(this).removeClass("wr");
           $(this).addClass("input");
         }
       } else if (name == "code") {
-        if (!test.match(/^(?=.*[a-zA-Z])(?=.*[0-9])/)) {
+        if (
+          test.match(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/) ||
+          test == ""
+        ) {
           $(this).removeClass("input");
           $(this).addClass("wr");
-          error = "Input must include letters and numbers only";
+          error = "Input must include letters or numbers only";
         } else {
           $(this).removeClass("wr");
           $(this).addClass("input");
