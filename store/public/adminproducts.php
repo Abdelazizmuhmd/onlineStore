@@ -481,6 +481,7 @@ $view= new adminproductsView($model,$controller);
                         <center>
                             <h4><i class="fa fa-upload" aria-hidden="true"></i>
                                 <input type="file"  id="image" name="image[]" onchange="loadFile(event)" multiple></h4>
+                                <p id="imagep" style="color:red;"></p>
                         </center>
                         <hr class="new2">
 
@@ -633,11 +634,17 @@ $view= new adminproductsView($model,$controller);
                 
  if(!photo=="")
   { if(!photo.endsWith(".png")&&!photo.endsWith(".jpg")&&!photo.endsWith(".jpeg")){
-    alert("wrong  image file extination")
+   
+    document.getElementById("imagep").innerHTML = "wrong  image file extination";
       return false;
+  }
+  else{
+    document.getElementById("imagep").innerHTML = "";
+
   }}
 else{
-      alert("please upload image");
+
+      document.getElementById("imagep").innerHTML = "please upload image";
       return false;
   }
                 //----------------------------------------------------
