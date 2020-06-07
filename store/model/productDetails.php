@@ -196,6 +196,20 @@ function getMedium(){
           return 0;
       }
     }
+    function checkcolordup($productid,$color,$productdetailid){
+        $sql="select id from productdetails where color = :color and productid=:productid and id <> :productdetailsid ";
+        $this->connect();
+        $this->db->query($sql);
+        $this->db->bind(':productid',$productid,PDO::PARAM_INT);
+        $this->db->bind(':color',$color,PDO::PARAM_STR);
+        $this->db->bind(':productdetailsid',$productdetailid,PDO::PARAM_INT);
+        $this->db->execute();
+        if ($this->db->numRows() > 0){        
+          return 1;
+       }else{
+          return 0;
+      }
+    }
     
 
     function update($productdetailid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$Imagearray){
@@ -208,17 +222,19 @@ function getMedium(){
          $this->validation->validateNumber($xl,1,30000);
          $this->validation->validateNumber($xxl,1,30000);
          $this->validation->validateNumber($xxxl,1,30000);
-        
-        
+         $this->connect();
+         $sql ="select productid from productdetails where id = :id";
+         $this->db->query($sql);
+         $this->db->bind(':id',$productdetailid,PDO::PARAM_INT);
+         $this->db->execute();
+         $x = $this->db->getdata();
+         $pid = $x[0]->productid;
       if($Imagearray ==''){
-        $this->connect();
+        if($this->checkcolordup($pid,$color,$productdetailid)==0)
+        {
         $queryUpdate = "UPDATE productdetails set  color = :color, s=:s, m=:m,l=:l,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl where id =:productdetailsid";
-     
-  
           $this->db->query($queryUpdate);
-          
           $this->db->bind(':productdetailsid',$productdetailid,PDO::PARAM_INT);
-          
           $this->db->bind(':color',$color,PDO::PARAM_STR);
           $this->db->bind(':s',$s,PDO::PARAM_INT);
           $this->db->bind(':m',$m,PDO::PARAM_INT);
@@ -227,13 +243,13 @@ function getMedium(){
           $this->db->bind(':xxxl',$xxxl,PDO::PARAM_INT);
           $this->db->bind(':l',$l,PDO::PARAM_INT);  
           $this->db->execute();
-
+        }
       }
       else{
           
       $Imagearray=serialize($Imagearray);
       $this->connect();
-      $queryUpdate = "UPDATE productdetails set  color = :color, s=:s, m=:m,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl,sold=:sold,imageUrl=:imageUrls where id =:productdetailsid";
+      $queryUpdate = "UPDATE productdetails set  color = :color, s=:s, m=:m,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl,imageUrl=:imageUrls where id =:productdetailsid";
    
 
         $this->db->query($queryUpdate);
@@ -246,7 +262,6 @@ function getMedium(){
         $this->db->bind(':xl',$xl,PDO::PARAM_INT);
         $this->db->bind(':xxl',$xxl,PDO::PARAM_INT);
         $this->db->bind(':xxxl',$xxxl,PDO::PARAM_INT);
-        $this->db->bind(':sold',$sold,PDO::PARAM_INT);
         $this->db->bind(':imageUrls',$Imagearray,PDO::PARAM_STR);
 
         $this->db->execute();
