@@ -28,9 +28,8 @@ $(document).ready(function () {
       var test = $(this).text();
       if (name == "name" || name == "color") {
         if (
-          test.match(/^[0-9]+$/) ||
-          test.match(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/) ||
-          test == ""
+          !test.match(/^[A-Za-z]+$/) ||
+          test.match(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
         ) {
           $(this).removeClass("input");
           $(this).addClass("wr");
