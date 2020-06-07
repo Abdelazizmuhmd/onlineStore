@@ -39,14 +39,10 @@ text {
     .a{
         display: inline-block;
     }
-
     .box{
         position: relative;
         display: inline-block; /* Make the width of box same as image */
         margin-left:8%;
-      
-  
-        
         
     }
     .box .text{
@@ -61,7 +57,7 @@ text {
         font-family: Arial,sans-serif;
         color: #0000FF ;
         width: 60%; /* Set the width of the positioned div */
-       
+        
         opacity: 0.8;
         /* #fff; */
     }
@@ -132,7 +128,9 @@ text {
          
 
 
-         
+         ?>
+         <div style="display:flex; position:relative">
+         <?php
           for($j=0;$j<3;$j++)
           {
             $imgs_arr = [];
@@ -148,7 +146,6 @@ text {
   $bana="$imgs_arr[$i]";
 
   echo"
-
   <div class='box'>
   <img src='{$imgs_arr[$i]}grande.jpeg' >
   ";
@@ -158,12 +155,15 @@ text {
             
 
                        }
+                       
                        echo"<div class='text'>
+                       
 <h1 style='color:white;'>$a[$j]</h1>
 </div>
-</div>
-
 ";
+?>
+                       </div>
+                       <?php
          
            
           }
