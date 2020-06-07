@@ -153,9 +153,9 @@ function getProductDetails(){
         $this->validation->validateMixedString($code,1,10000);
         $this->validation->validateNumber($cost,1,10000);
      
-         $this->validation->validateNumber($profit,1,10000);
+        $this->validation->validateNumber($profit,1,10000);
      
-      $this->validation->validateMixedString($description,1,1000);
+        $this->validation->validateMixedString($description,1,1000);
      
         $this->validation->validateMixedString($weight,1,100);
      
