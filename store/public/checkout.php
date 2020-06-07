@@ -186,9 +186,9 @@ $sub_total+=$values['price']*$values['quantity'];
 
 <tbody data-order-summary-section='line-items'>
       
-          <tr class='product' data-product-id='4396731957282' data-variant-id='31415765139490' data-product-type='Sweater' data-customer-ready-visible>
-          <td class='product__image'>
-            <div class='product-thumbnail' style='margin-bottom:5px;'>
+<tr class='product' data-product-id='4396731957282' data-variant-id='31415765139490' data-product-type='Sweater' data-customer-ready-visible>
+<td class='product__image'>
+    <div class='product-thumbnail' style='margin-bottom:5px;'>
   <div class='product-thumbnail__wrapper'>
     <img alt=''class='product-thumbnail__image' src='$values[image_url]small.jpeg' />
   </div>
@@ -224,7 +224,7 @@ $sub_total+=$values['price']*$values['quantity'];
   </div>
 </div>
 
-
+<!--
       <div class="order-summary__section order-summary__section--discount" data-reduction-form="update">
         <h3 class="visually-hidden">Discount</h3>
         <form class="edit_checkout" action="" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="" />
@@ -255,7 +255,7 @@ $sub_total+=$values['price']*$values['quantity'];
   </div>
 </form>
 
-      </div>
+      </div>-->
 
     <div class="order-summary__section order-summary__section--total-lines" data-order-summary-section="payment-lines">
       <table class="total-line-table">
@@ -284,7 +284,7 @@ if(isset($_COOKIE['cook'])){
     </span>
   </td>
 </tr>
-
+ <!-- 
 
         <tr class="total-line total-line--shipping">
   <th class="total-line__name" scope="row">
@@ -295,12 +295,12 @@ if(isset($_COOKIE['cook'])){
             <span class="visually-hidden">Shipping costs</span>
             <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-14 icon-svg--inline-after icon-svg--clickable" role="presentation" aria-hidden="true" focusable="false"> <use xlink:href="#question" /> </svg>
 </a>  </th>
-  <td class="total-line__price">
+<td class="total-line__price">
     <span class="order-summary__small-text" data-checkout-total-shipping-target="0">
       Calculated at next step
     </span>
   </td>
-</tr>
+</tr>-->
 
 
 

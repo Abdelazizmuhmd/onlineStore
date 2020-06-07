@@ -83,9 +83,6 @@ function userdetails(){
                  
    
     
-     
-                 
-                 
        <div  class='field field--optional'>
          <div class='field__input-wrapper field__input-wrapper--icon-right'>
            <input value='".$this->model->getPhone()."' name='phone' placeholder='phone'   class='field__input field__input--numeric'  type='tel'id='phoneNumber' maxlength='11' onkeyup='validate()' required />

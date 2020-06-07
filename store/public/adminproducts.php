@@ -20,8 +20,51 @@ $view= new adminproductsView($model,$controller);
 ?>
 <!DOCTYPE html>
 <html>
+    
+
 
 <head>
+        <style>
+
+/* The Modal (background) */
+.modall {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modall-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -49,6 +92,11 @@ $view= new adminproductsView($model,$controller);
     </center>
 
     <br />
+    
+ 
+    
+
+        
     <div id="contain">
         <div class="card" id="filterz">
             <div id="orders" class="card-header">
@@ -111,7 +159,8 @@ $view= new adminproductsView($model,$controller);
                     </button>
                 </form>
 
-            </div>
+            </div>  
+
 
 
             <div class="card-body" id="bod">
@@ -163,15 +212,17 @@ $view= new adminproductsView($model,$controller);
 
             </div>
             <center>
-                <label style="font-size:20px;">Colors Added:</label>
-                <select name="colors" id="colors" style="width:100px;height:30px;">
-                    <option value="volvo" disabled selected>none</option>
+                <label style="font-size:20px;" >Colors Added:</label>
+                <select name="colors[]" id="colors" style="width:100px;height:30px;">
+                    <option value="none" disabled selected>none</option>
 
 
                 </select>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#myModal2" onclick="">Add
-                    Color</button><br><br>
-                <button class="btn btn-primary" onclick="reset()">Reset For New Product</button></center>
+                    Color</button><br>
+                                <label style="font-size:20px;" id="colorsAdded" ></label>
+<br><br>
+                <button class="btn btn-primary" onclick="reset()" id="myBtn">Submit Product</button></center>
 
             <div class="card-body" id="bod">
 
@@ -181,7 +232,15 @@ $view= new adminproductsView($model,$controller);
     </div>
     <br />
     <br />
+            <div id="myModall" class="modall">
 
+  <!-- Modal content -->
+  <div class="modall-content">
+    <span class="close">&times;</span>
+    <p>Product Added succesfuly.</p>
+  </div>
+    </div>
+        
 
     <div id="container">
         <center><b>Products</b></center>
@@ -361,10 +420,6 @@ $view= new adminproductsView($model,$controller);
 
 
 
-
-
-
-
         <div class="modal fade" id="subCategoryAdd" role="dialog">
             <div class="modal-dialog">
 
@@ -466,7 +521,7 @@ $view= new adminproductsView($model,$controller);
                            
 
                         <center>
-                            <button onclick="addcolor()" id="finalProductAdd" data-dismiss="modal">Add</button>
+                            <button onclick="addcolor()" id="finalProductAdd" >Add</button>
                         </center>
                     </div>
 
@@ -484,6 +539,10 @@ $view= new adminproductsView($model,$controller);
 
 
             <script>
+                
+                
+                
+                
             var p=0;
             function getsubid(i = "") {
                 var Select = document.getElementById("subselections");
@@ -570,6 +629,17 @@ $view= new adminproductsView($model,$controller);
                 var productDescription = document.getElementById("productDescription").value;
                 var productWeight = document.getElementById("productWeight").value;
                 var productCost = document.getElementById("productCost").value;
+                var photo = document.getElementById("image").value;
+                
+ if(!photo=="")
+  { if(!photo.endsWith(".png")&&!photo.endsWith(".jpg")&&!photo.endsWith(".jpeg")){
+    alert("wrong  image file extination")
+      return false;
+  }}
+else{
+      alert("please upload image");
+      return false;
+  }
                 //----------------------------------------------------
                 if (productName == "") {
                     document.getElementById("Name").innerHTML = "Name is empty";
@@ -744,7 +814,7 @@ $view= new adminproductsView($model,$controller);
 
 
                else if (!productColor.match(/^[a-zA-Z]+$/)) {
-                    document.getElementById("Color ").innerHTML = "Color  only letters are allowed";
+                    document.getElementById("Color").innerHTML = "Color  only letters are allowed";
                     document.getElementById("productColor").style.borderColor = "red";
                     return false;
                 }
@@ -760,6 +830,35 @@ $view= new adminproductsView($model,$controller);
 
                 var insertproductid = document.getElementById("productid").value;
 
+                
+                
+                
+          var colorsArray = document.getElementById('colors'), Singlecolor, i;
+
+     for(i = 0; i < colorsArray.length; i++) {
+       Singlecolor = colorsArray[i];
+     if(Singlecolor.value==document.getElementById("productColor").value.trim()){
+          document.getElementById("Color").innerHTML = "Color already added";
+                    document.getElementById("productColor").style.borderColor = "red";
+                    return false;
+         
+     } else
+                {
+                    document.getElementById("Color").innerHTML = "";
+                    document.getElementById("productColor").style.borderColor = "Green";
+
+    
+                }
+         
+     }
+   
+                
+                
+                
+                
+                
+                
+                
                 if (insertproductid == "") {
 
                     formData.append("productName", document.getElementById("productName").value);
@@ -784,7 +883,7 @@ $view= new adminproductsView($model,$controller);
                         contentType: false,
                         processData: false,
                         success: function(response) {
-                            document.getElementById("productid").value = response;
+                            document.getElementById("productid").value =response.trim();
 
                             document.getElementById("productName").disabled = true;
                             document.getElementById("productCode").disabled = true;
@@ -800,12 +899,13 @@ $view= new adminproductsView($model,$controller);
                             document.getElementById("colors").remove(0);
                             document.getElementById("catselection").disabled = true;
                             document.getElementById("subselections").disabled = true;
+                            $('#myModal2').modal('hide');
+                           
 
                         }
                     });
                 } else {
-                    formData.append("productid", 
-                    document.getElementById("productid").value);
+                    formData.append("productid",document.getElementById("productid").value);
                     formData.append("productColor", document.getElementById("productColor").value);
                     formData.append("small", document.getElementById("small").value);
                     formData.append("Medium", document.getElementById("Medium").value);
@@ -842,6 +942,8 @@ $view= new adminproductsView($model,$controller);
                             option.text = document.getElementById("productColor").value;
                             option.selected = true;
                             x.add(option);
+                             $('#myModal2').modal('hide');
+                           
                         }
                     });
 
@@ -875,8 +977,21 @@ $view= new adminproductsView($model,$controller);
                 var select = document.getElementById("colors");
 
                 var length = select.options.length;
-                for (i = length - 1; i >= 0; i--) {
+                for (i = length-1 ; i >= 0; i--) {
+                 if(select.options[i].value=="none"){
+                    document.getElementById("colorsAdded").innerHTML = "Color must be added";
+                    document.getElementById("colorsAdded").style.color = "red";
+
+                    document.getElementById("colors").style.borderColor = "red";
+                    return 1;
+                     
+                       
+                    }else{
+                    document.getElementById("colorsAdded").innerHTML = "";
+                    document.getElementById("colors").style.borderColor = "black";
+                    }
                     select.options[i] = null;
+               
                 }
                 var option = document.createElement("option");
                 option.text = "none";
@@ -936,6 +1051,39 @@ if (confirm("are u sure want to delete this")) {
 
 
             </script>
+            
+            
+            <script>
+// Get the modal
+var modal = document.getElementById("myModall");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+   var check =  reset();
+    if(check==1){
+
+}else{
+     modal.style.display = "block";
+}}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
             <!--
 function addproductdetails(){

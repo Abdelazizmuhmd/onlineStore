@@ -244,7 +244,7 @@ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mailformat))
 else{
      
 
- document.getElementById("mail").innerHTML = "Mail in correct";
+ document.getElementById("mail").innerHTML = "Mail incorrect";
  document.getElementById("checkout_email").style.borderColor = "red";
 
  return false;

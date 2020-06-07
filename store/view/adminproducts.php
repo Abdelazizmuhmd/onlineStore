@@ -92,7 +92,7 @@ function products(){
             <td ><div name ='profit' value=".$productarr[$i]->getProfit()." class = 'editor' >".$productarr[$i]->getProfit()."</div>L.E</td>
             <td><div name ='code' class = 'editor' >".$productarr[$i]->getCode()."</div></td>
             <td><div name ='description' class = 'editor' >".$productarr[$i]->getDescription()."</div></td>
-            <td><div name ='color' class = 'editor' >".$details[$j]->getColor()."</div></td>
+            <td><div name ='color' class = '' >".$details[$j]->getColor()."</div></td>
             <td><div name ='small' class = 'editor' >".$details[$j]->getSmall()."</div></td>
             <td><div name ='medium' class = 'editor' >".$details[$j]->getMedium()."</div></td>
             <td><div name ='large' class = 'editor' >".$details[$j]->getLarge()."</div></td>

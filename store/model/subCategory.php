@@ -65,9 +65,10 @@ class subCategory extends Model
     { 
       $this->getvalidation();
       $this->validation->validateNumber($subcategoryId,1,100000);
+      $this->validation->validateNumber($start,1,100000);
       $this->connect();
       $sql = "SELECT subcategorydetails.productid FROM subcategorydetails join subcategory on subcategorydetails.subcategoryid = subcategory.id
-      where subcategorydetails.subcategoryid = :id and subcategory.isdeleted = 0 limit $start,9";
+      where subcategorydetails.subcategoryid = :id and subcategory.isdeleted = 0 limit $start,6";
       $this->db->query($sql);
       $this->db->bind(':id',$subcategoryId,PDO::PARAM_INT);
       $this->db->execute();

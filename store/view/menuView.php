@@ -1,6 +1,7 @@
 <?php
 require_once("../view/View.php");
 
+
 class menuView extends View{
 
     function MenuOutput(){
@@ -38,6 +39,8 @@ class menuView extends View{
         if(is_iterable($productDetails)){
        foreach($productDetails as $k=>$productdetail){
        $imageArray=$productdetail->getImages();
+                   if(is_iterable($imageArray)){
+
      $str.='<div class="product grid__item medium-up--one-third small--one-half slide-up-animation animated" id="stitem" role="listitem">';
      $str.=' <div class="supports-js" style="max-width: 600px; margin: 0 auto;">';
      $str.=' <a href="../public/product.php?action=readOneProduct&productid='.$product->getId().'&productdetailid='.$productdetail->getid().'" class="product__image-wrapper " style="padding-top:100.0%;"  data-image-link>';
@@ -62,33 +65,61 @@ class menuView extends View{
      $str.=' </div>';
 
 
-       }}
-
-    }
+       }}}
     }
 
+       }
+      
                    echo $str;
 
+    
     }
-
     function readOneProduct(){
+        
+        if(isset($_REQUEST['productdetailid'])&&isset($_REQUEST['productid'])){
+     if(!is_numeric($_REQUEST['productdetailid'])){
+         $str="<h1>Bad Request<h1>";
+         echo $str;
+       die();
+    }else if(strlen($_REQUEST['productdetailid'])<1||strlen($_REQUEST['productdetailid'])>100000){
+        $str="<h1>Bad Request<h1>";
+         echo $str;
+          die();
+    }
+            
         $str="";
         $product= $this->model->getCategories()[0]->getSubcategories()[0]->getProducts()[0];
         $productdetails = $product->getProductDetails();
         $hidden="";
         $display="";
         $pid = $_REQUEST['productdetailid'];
+        if(is_iterable($productdetails)){ 
+           $flag=0;
+             foreach($productdetails as $i=> $productdetail){
+             if($productdetail->getid()==$pid){
+             $flag=1;         
+             }
+             
+             }
+            if($flag==0){
+              $str="<h1>Bad Request<h1>";
+                echo $str;
+                 die();
+            }
+            
         foreach($productdetails as $i=> $productdetail){
-                   //here is islam
+            
+                //here is islam
          if($productdetail->getid()!=$pid/*$i != 0*/){ $hidden="hidden";$display='display:none;';}
          else $display='display:block;';
          $str.='   <div id="ProductImageWrapper-13801390768162" class="product-single__featured-image-wrapper supports-js images" value= '.$productdetail->getColor().'  style='.$display.'>';
          $str.=' <div class="product-single__photos" data-aspectratio="1.0"  >';
          $str.='<div class="slideshow-container">';
          $i++;
-            $p=0;
-
-         foreach($productdetail->getImages() as $img){
+         $p=0;
+             $imagess=$productdetail->getImages();
+       if(is_iterable($imagess)){
+         foreach($imagess as $img){
          $str.='<div  class="mySlides'.$productdetail->getColor().' fade">';
          $str.='<div class="numbertext"> / '.count($productdetail->getImages()).'</div>';
          if($display=="display:block;"){ 
@@ -106,12 +137,14 @@ class menuView extends View{
 
          <br>';
          $str.='<div style="text-align:center">';
-         for($i=1;$i<=count($productdetail->getImages());$i++)
+         $imagesLength=count($productdetail->getImages());
+         for($i=1;$i<=$imagesLength;$i++)
          $str.='<span class="dot col'.$productdetail->getColor().'" onclick="currentSlide('.$i.')"></span>';
          $str.='</div>';
          $str.='</div>';
          $str.='</div>';
          }
+        }
          $str.=' </div>
 
          <div class="grid__item medium-up--one-half" >
@@ -121,6 +154,7 @@ class menuView extends View{
                  <h1 id ="product_name1" class="product-single__title" itemprop="name">'.$product->getName().'</h1>';
                  $display ='';
                  $pid = $_REQUEST['productdetailid'];
+        
                  foreach($productdetails as $i=> $productdetail){
                      //here is islam
                      //echo $productdetail->getid();
@@ -192,7 +226,7 @@ class menuView extends View{
 
                          <div class="product-single__cart-submit-wrapper  product-form--full">
                        <input type="submit" value="Add to Cart" name="add" id="AddToCart"
-                              onclick="addToCart()"   class="btn product-single__cart-submit btn--full  btn--secondary">
+                               class="btn product-single__cart-submit btn--full  btn--secondary">
 
 
 
@@ -201,11 +235,13 @@ class menuView extends View{
                          </div>
 
 
-                 </div>';
+                 </div></form> ';
 
 
 
                                 }
+    
+        
 
                 $str.= '<div class="product-single__description rte" itemprop="description"><h1>
                     Description</h1>
@@ -214,17 +250,64 @@ class menuView extends View{
                      <br>                     <br>
                      <br>
 
+
+
+
                   ';
+            $str.='<div class="table-responsive dynamic" data-unit-system="metric">
+                            <div class="rte__table-wrapper">
+                                <table cellpadding="5">
+                                    <tbody>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td><strong>S</strong></td>
+                                            <td><strong>M</strong></td>
+                                            <td><strong>L</strong></td>
+                                            <td><strong>XL</strong></td>
+                                            <td><strong>2XL</strong></td>
+                                            <td><strong>3XL</strong></td>
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Length (cm)</strong></td>
+                                            <td>69</td>
+                                            <td>71</td>
+                                            <td>74</td>
+                                            <td>76</td>
+                                            <td>79</td>
+                                            <td>81</td>
+                                       
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Width (cm)</strong></td>
+                                            <td>51</td>
+                                            <td>56</td>
+                                            <td>61</td>
+                                            <td>66</td>
+                                            <td>71</td>
+                                            <td>76</td>
+                                      
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>';
 
-
+}else{
+      $str="<h1>Product not Found<h1>";
+        }
 
 
 
 
         echo $str;
-    }
+    }else{
+               $str="<h1>Product not Found<h1>";
+             echo $str;
+         }
 
 
+}
 }
 
 ?>

@@ -16,7 +16,7 @@ class validation{
 function removeSpaces($value){
     
     
-$value=trim(preg_replace('/\s+/', ' ',$value));
+$value=trim(preg_replace('/\s+/', '',$value));
     return $value;
     
 }
@@ -62,11 +62,18 @@ function validateEmail($email,$min,$max){
 
        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         header("location: error.html");
-          die();
+        die();
         }
         
         
     }
+   /* 
+function validateImageName($image){
+    if(!preg_match("/^[a-zA-Z0-9 _.\/]*$/",$image)){
+         header("location: error.html");
+         die();
+    }
+}*/
 
 function filterOutput($value){
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
@@ -76,9 +83,8 @@ function filterOutput($value){
 function validateNumber($value,$min,$max){
     
    $this->validateLength($value,$min,$max);
-    
     if(!is_numeric($value)){
-        header("location: error.html");
+        header("location: error.html?a=".$value);
          die();
     }
 

@@ -5,7 +5,11 @@ require_once("../View/menuView.php");
 $model = new menu();
 $controller= new menuController($model);
 if (isset($_GET['action']) && !empty($_GET['action'])) {
-  $controller->{$_GET['action']}();
+ if(method_exists($controller,$_GET['action'])){
+    $controller->{$_GET['action']}();
+    }else{
+     header("location: ../public/products.php");
+ }
 }
 //$_REQUEST['productdetailid'] = $_GET['productdetailid'];
 //echo $_REQUEST['productdetailid'];
@@ -85,45 +89,6 @@ $view->readOneProduct();
  
 
 
-
-                        <div class="table-responsive dynamic" data-unit-system="metric">
-                            <div class="rte__table-wrapper">
-                                <table cellpadding="5">
-                                    <tbody>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                            <td><strong>S</strong></td>
-                                            <td><strong>M</strong></td>
-                                            <td><strong>L</strong></td>
-                                            <td><strong>XL</strong></td>
-                                            <td><strong>2XL</strong></td>
-                                            <td><strong>3XL</strong></td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Length (cm)</strong></td>
-                                            <td>69</td>
-                                            <td>71</td>
-                                            <td>74</td>
-                                            <td>76</td>
-                                            <td>79</td>
-                                            <td>81</td>
-                                       
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Width (cm)</strong></td>
-                                            <td>51</td>
-                                            <td>56</td>
-                                            <td>61</td>
-                                            <td>66</td>
-                                            <td>71</td>
-                                            <td>76</td>
-                                      
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
                     </div>
 
 
@@ -147,7 +112,7 @@ $view->readOneProduct();
 </body>
   <script>
    function addToCart() {
-
+/* 
             var id = document.getElementById("product_id").value;
             var name = document.getElementById("product_name").value;// get product name
             var cost = document.getElementById("product_cost").value;  // get quantity
@@ -155,7 +120,7 @@ $view->readOneProduct();
             var color=document.getElementById("ProductSelect-product-template-option-0").value;
             var size=document.getElementById("ProductSelect-product-template-option-1").value;
             var quantity=document.getElementById("Quantity").value;
-       var flag = 0 ;
+     var flag = 0 ;
        var data = [];
 if (localStorage.getItem("products") === null) {
 }else{
@@ -183,6 +148,6 @@ localStorage.setItem("products", final_data);
 alert(final_data);
 
             
-        }
-    </script>
+        */
+   }    </script>
 </html>

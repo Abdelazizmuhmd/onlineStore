@@ -7,16 +7,16 @@ public function  getAllCategoriesDetails(){
 }
 
  public function readOneProduct(){
-
-   $productid = $_REQUEST['productid'];
-
+ if(isset( $_REQUEST['productid'])){
+    $productid = $_REQUEST['productid'];
     $this->model->getCategories()[0]->getSubcategories()[0]->readOneProduct($productid);
-
+ }
  }
  public function readProducts(){
-    $subcategoryId = $_REQUEST['subcategoryId'];
+     if(isset( $_REQUEST['subcategoryId'])){
+     $subcategoryId = $_REQUEST['subcategoryId'];
     $this->model->getCategories()[0]->getSubcategories()[0]->readProducts($subcategoryId,1);
-
+     }
  }
 
 

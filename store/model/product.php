@@ -51,7 +51,7 @@ function __construct2($productid,$productdetailId){
 function readoneProductDetail($productid,$productdetailId){
      $this->getvalidation();
      $this->validation->validateNumber($productid,1,1000000);
-         $this->validation->validateNumber($productdetailId,1,1000000);
+     $this->validation->validateNumber($productdetailId,1,1000000);
 
     
      $this->connect();
@@ -139,7 +139,6 @@ function getProductDetails(){
       $this->db->bind(':subcategoryid',$subcategoryid,PDO::PARAM_INT);
       $this->db->bind(':productid',$productid,PDO::PARAM_INT);
       $this->db->execute();
-     
      return $productid;
     
 }    
@@ -148,10 +147,27 @@ function getProductDetails(){
     
     
      function update($productid,$productdetailid,$name,$code,$cost,$profit,$description,$weight,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls){
+         $this->getvalidation();
+         
+         $this->validation->validateString($name,1,100);
+     
+         $this->validation->validateMixedString($code,1,10000);
+     
+         $this->validation->validateNumber($cost,1,10000);
+     
+         $this->validation->validateNumber($profit,1,10000);
+     
+         $this->validation->validateMixedString($description,1,1000);
+     
+         $this->validation->validateMixedString($weight,1,100);
+     
+         $this->validation->validateNumber($subcategoryid,1,10000);
+     
 
       $this->connect();
       $sql = "update product  set name= :name ,code=:code ,cost=:cost ,profit=:profit,description=:description,weight=:weight where id =:id";
-                  $this->db->query($sql);
+         
+      $this->db->query($sql);
 
       $this->db->bind(':name',$name,PDO::PARAM_STR);
 
@@ -177,7 +193,7 @@ function getProductDetails(){
     
 function readProduct($productid){
      $this->getvalidation();
-         $this->validation->validateNumber($productid,1,100000);
+     $this->validation->validateNumber($productid,1,100000);
     $this->connect();
      $sql="select * from product where id = :id and isdeleted = 0" ;
      $this->db->query($sql);

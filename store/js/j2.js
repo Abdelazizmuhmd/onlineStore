@@ -1967,10 +1967,10 @@ theme.afterCartLoad = function(cart) {
     theme.cache.$emptyCart.addClass(theme.cache.cartNoCookies);
   }
 
-  $.getJSON('/cart.js', function(cart) {
+  /*$.getJSON('/cart.js', function(cart) {
     // Update cart count
     theme.cache.$cartCount.text(cart.item_count);
-  });
+  });*/
 };
 
 theme.cookiesEnabled = function() {

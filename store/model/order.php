@@ -114,6 +114,14 @@ function makeOrder ($userid,$productsdetails){
      $this->getvalidation();
      $this->validation->validateNumber($userid,1,1000000);
     
+        for ($i = 0; $i < $length; $i++) {
+            checkQuantity($productsdetails[$i]['id'],$productsdetails[$i]['size'],$productsdetails[$i]['quantity']);
+        }
+    
+    
+    
+    
+    
         $this->connect();
         $sqlOrder = "INSERT INTO `order` (userid,comment,status) VALUES (:userid,:comment,:status)";
         $this->db->query($sqlOrder);
@@ -135,9 +143,7 @@ function makeOrder ($userid,$productsdetails){
          $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productdetailid,size,quantity) VALUES (:orderid ,:productdetailid,:size,:quantity)";
             
           $this->validation->validateNumber($orderid,1,1000000);
-          $this->validation->validateNumber($productdetailid,1,1000000);
-          $this->validation->validateString($productdetailsize,1,40);
-          $this->validation->validateNumber($productdetailquantity,1,20000);
+      
 
            $this->db->query($sqlOrderDetails);
            $this->db->bind(':orderid',$orderid,PDO::PARAM_INT);
@@ -147,7 +153,48 @@ function makeOrder ($userid,$productsdetails){
            $this->db->execute();
 
       }}
-
+function checkQuantity($id,$size,$quantity){
+    
+    $this->getvalidation();
+    $this->validation->validateNumber($id,1,1000000);
+    $this->validation->validateString($size,1,40);
+    $this->validation->validateNumber($quantity,1,20000);
+    
+    
+    
+    
+    if($size=="Small"){
+    $sql="select id from productdetails where id =:id and s >=:size";
+    }
+    else if($size=="Medium"){
+        $sql="select id from productdetails where id =:id and m >=:size";
+    }
+      else if($size=="L"){
+        $sql="select id from productdetails where id =:id and l >=:size";
+    }
+      else if($size=="XL"){
+        $sql="select id from productdetails where id =:id and xl >=:size";
+    }
+  else if($size=="XXL"){
+        $sql="select id from productdetails where id =:id and xxl >=:size";
+    }
+    else if($size=="XXXL"){
+        $sql="select id from productdetails where id =:id and xxxl >=:size";
+    }else{
+        header("location: ../public/error.html");
+    }
+  $this->connect();
+  $this->db->query($sqlOrderDetails);
+  $this->db->bind(':id',$id,PDO::PARAM_INT);
+  $this->db->bind(':size',$size,PDO::PARAM_STR);
+   if ($this->db->numRows() == 0){
+      header("location: ..public/error.html");
+      }
+    
+        
+        
+    
+}
       function readOrder($id){
      $this->getvalidation();
      $this->validation->validateNumber($id,1,1000000);

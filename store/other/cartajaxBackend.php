@@ -9,7 +9,6 @@ $quantity=$_REQUEST['quantity'];
 $NewArr=array();
 
 
-
 if(isset($_COOKIE['cook'])){
     $products= json_decode($_COOKIE['cook'],true);
     foreach($products as $product){
@@ -27,7 +26,6 @@ $j=json_encode($NewArr);
 $expire = time() + 60*60*24*30;
 
 setcookie('cook',$j,$expire,'/');
-
 
 
 

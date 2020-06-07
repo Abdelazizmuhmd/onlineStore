@@ -147,12 +147,12 @@ function getMedium(){
 
 
   function insert($productid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$Imagearray){
-    
-      
-                $this->getvalidation();
-
+        $check=$this->checkcolor($productid,$color);
+      if($check==0){
+         $this->getvalidation();
          $this->validation->validateString($color,1,100);
-         //$this->validation->validateNumber($productid,1,100000);
+      
+         $this->validation->validateNumber($productid,1,10000);
          $this->validation->validateNumber($s,1,30000);
          $this->validation->validateNumber($m,1,30000);
          $this->validation->validateNumber($l,1,30000);
@@ -160,11 +160,10 @@ function getMedium(){
          $this->validation->validateNumber($xxl,1,30000);
          $this->validation->validateNumber($xxxl,1,30000);
 
-      
-  $this->connect();
-  $Imagearray=serialize($Imagearray);
-      $soldini=0;
-  $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,sold,imageUrl) VALUES(:productid,:color,:s,:m,:l,:xl,:xxl,:xxxl,:sold,:imageUrls)";
+        $this->connect();
+        $Imagearray=serialize($Imagearray);
+         $soldini=0;
+         $query = "INSERT INTO productdetails (productid,color,s,m,l,xl,xxl,xxxl,sold,imageUrl) VALUES(:productid,:color,:s,:m,:l,:xl,:xxl,:xxxl,:sold,:imageUrls)";
  		
         $this->db->query($query);
       
@@ -179,15 +178,38 @@ function getMedium(){
         $this->db->bind(':sold',$soldini,PDO::PARAM_INT);
         $this->db->bind(':imageUrls',$Imagearray,PDO::PARAM_STR);
         $this->db->execute();
-
+      }
 
   	}
 
    
-    
+    function checkcolor($productid,$color){
+        $sql="select id from productdetails where color = :color and productid=:productid ";
+        $this->connect();
+        $this->db->query($sql);
+        $this->db->bind(':productid',$productid,PDO::PARAM_INT);
+        $this->db->bind(':color',$color,PDO::PARAM_STR);
+        $this->db->execute();
+        if ($this->db->numRows() > 0){        
+          return 1;
+       }else{
+          return 0;
+      }
+    }
     
 
     function update($productdetailid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$Imagearray){
+         $this->getvalidation();
+         $this->validation->validateString($color,1,100);
+         $this->validation->validateNumber($productdetailid,1,100000);
+         $this->validation->validateNumber($s,1,30000);
+         $this->validation->validateNumber($m,1,30000);
+         $this->validation->validateNumber($l,1,30000);
+         $this->validation->validateNumber($xl,1,30000);
+         $this->validation->validateNumber($xxl,1,30000);
+         $this->validation->validateNumber($xxxl,1,30000);
+        
+        
       if($Imagearray ==''){
         $this->connect();
         $queryUpdate = "UPDATE productdetails set  color = :color, s=:s, m=:m,l=:l,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl where id =:productdetailsid";
@@ -208,6 +230,7 @@ function getMedium(){
 
       }
       else{
+          
       $Imagearray=serialize($Imagearray);
       $this->connect();
       $queryUpdate = "UPDATE productdetails set  color = :color, s=:s, m=:m,xl=:xl,xxl=:xxl,xxxl=:xxxl,xxxl=:xxxl,sold=:sold,imageUrl=:imageUrls where id =:productdetailsid";
