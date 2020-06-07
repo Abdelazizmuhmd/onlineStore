@@ -209,6 +209,8 @@ class menuView extends View{
                                     $str.='<option id ="'.$productdetail->getSmall().'"value="Small">Small</option>';
                                   if($productdetail->getMedium() != 0)
                                     $str.='<option id ="'.$productdetail->getMedium().'" value="Meduim">Meduim</option>';
+                                  if($productdetail->getLarge() != 0)
+                                    $str.='<option id ="'.$productdetail->getLarge().'" value="Large">Large</option>';
                                   if($productdetail->getXl() != 0)
                                     $str.='<option id ="'.$productdetail->getXl().'" value="XL">XL</option>';
                                   if($productdetail->getXxl() != 0)
