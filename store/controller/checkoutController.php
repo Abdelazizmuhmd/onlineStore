@@ -8,6 +8,10 @@ $this->model->getuser($userid);
         
 }
 function makeorderclient(){
+    if (isset($_REQUEST['firstname']) && isset($_REQUEST['lastname']) && 
+        isset($_REQUEST['address']) && isset($_REQUEST['apartmant']) &&
+        isset($_REQUEST['city']) && isset($_REQUEST['phone'])) {
+
     $firstname=$_REQUEST['firstname'];
     $lastname=$_REQUEST['lastname'];
     $address=$_REQUEST['address'];
@@ -15,11 +19,18 @@ function makeorderclient(){
     $city=$_REQUEST['city'];
     $phone=$_REQUEST['phone'];
 
+    }
+ 
+
 $this->model->updateAddress($firstname,$lastname,$address,$apartmant,$city,$phone);
 $this->makeorder();
 }
 
 function makeorderguest(){
+     if (isset($_REQUEST['firstname']) && isset($_REQUEST['lastname']) && 
+        isset($_REQUEST['address']) && isset($_REQUEST['apartmant']) &&
+        isset($_REQUEST['city']) && isset($_REQUEST['email']) && isset($_REQUEST['phone'])) {
+
     $firstname=$_REQUEST['firstname'];
     $lastname=$_REQUEST['lastname'];
     $address=$_REQUEST['address'];
@@ -27,6 +38,8 @@ function makeorderguest(){
     $email=$_REQUEST['email'];
     $city=$_REQUEST['city'];
     $phone=$_REQUEST['phone'];
+    }
+    
 $this->model->guestsignup($firstname,$lastname,$email,$address,$apartmant,$city,$phone);
 $this->makeorder();
 }
