@@ -29,13 +29,28 @@ else if (!addcategory.match(/^[a-zA-Z]+$/))
         document.getElementById("newcategoryname").style.borderColor = "red";
         return false;
     }
-    else
-    {
-        document.getElementById("CategoryName").innerHTML = "";
-        document.getElementById("newcategoryname").style.borderColor = "green";
-        return true;
 
-    }
+    var categories = document.getElementById('catselection'), category, i;
+     for(i = 0; i < categories.length; i++) {
+         category = categories[i];
+         if(category.innerHTML.trim()==addcategory){
+             document.getElementById("CategoryName").innerHTML = "Category Name alreagy exist";
+             document.getElementById("newcategoryname").style.borderColor = "red";
+             return false;
+
+         }else{
+           document.getElementById("CategoryName").innerHTML = "";
+           document.getElementById("newcategoryname").style.borderColor = "green";             
+         }
+
+     }
+
+    
+    
+    return true;
+    
+    
+    
 }
 //-----------------------------------------------------------------------------
 function newsubcategoryvalidate()
@@ -62,13 +77,24 @@ else if (!subcategory.match(/^[a-zA-Z]+$/))
         document.getElementById("newsubcategoryname").style.borderColor = "red";
         return false;
     }
-    else
-    {
-        document.getElementById("SubCategoryName").innerHTML = "";
-        document.getElementById("newsubcategoryname").style.borderColor = "green";
-        return true;
+ var subcategories = document.getElementById('subselections'), subcategory, i;
+     for(i = 0; i < subcategories.length; i++) {
+         subcategoryy = subcategories[i];
+         if(subcategoryy.innerHTML.trim()==subcategory){
+              document.getElementById("SubCategoryName").innerHTML = "SubCategory Name already exist";
+               document.getElementById("newsubcategoryname").style.borderColor = "red";
+              return false;
 
-    }
+         }else{
+           document.getElementById("SubCategoryName").innerHTML = "";
+           document.getElementById("newsubcategoryname").style.borderColor = "green";    
+         }
+
+     }
+
+    
+    
+    return true;
 }
 //---------------------------------------------------------------------------------
 

@@ -20,7 +20,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav">
             <?php
+            if (session_status() == PHP_SESSION_NONE) {
+
             session_start();
+            }
       
       if(!isset($_SESSION['usertype'])||$_SESSION['usertype']=="guest"){
 ?>
