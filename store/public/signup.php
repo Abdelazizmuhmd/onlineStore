@@ -40,7 +40,13 @@ Pat
   <script src="../s/j2.js" type="text/javascript"></script> 
   <script src="../js/signUp.js" type="text/javascript" ></script> 
 
-    
+    <style>
+        @media only screen and (max-width: 600px) {
+            iframe{
+                height:400px;
+            }
+}
+    </style>
 
 </head>
 

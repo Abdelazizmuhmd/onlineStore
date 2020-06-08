@@ -20,6 +20,13 @@ require_once("../controller/userOrder.php");
 
 
     <link rel="stylesheet" type="text/css" href="../css/clientproducts.css">
+    <style>
+        @media only screen and (max-width: 600px) {
+            iframe{
+                height:400px;
+            }
+}
+    </style>
 </head>
 
 <body>    

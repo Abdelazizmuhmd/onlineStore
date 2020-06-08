@@ -87,13 +87,20 @@ $view= new adminproductsView($model,$controller);
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="../js/editProduct.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+        @media only screen and (max-width: 600px) {
+            iframe{
+                height:400px;
+            }
+}
+    </style>
 </head>
 
 <body>
     
-    
+ 
     <center>
-        <iframe src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
+        <iframe src="../public/header.php" height="100%" width="100%" style="border:none;"></iframe>
     </center>
 
     

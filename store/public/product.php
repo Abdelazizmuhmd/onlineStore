@@ -40,7 +40,13 @@ $view= new menuView($model,$controller);
 
     <script src="../js/product.js" type="text/javascript"></script>
 
-
+<style>
+        @media only screen and (max-width: 600px) {
+            iframe{
+                height:400px;
+            }
+}
+    </style>
 </head>
 
 <body>

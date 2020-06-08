@@ -24,6 +24,13 @@ include_once("../other/sessioncheck.php");
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="../js/edit.js"></script>
     <script src="../js/ordertbl.js"></script>
+    <style>
+        @media only screen and (max-width: 600px) {
+            iframe{
+                height:400px;
+            }
+}
+    </style>
 </head>
 
 <body>

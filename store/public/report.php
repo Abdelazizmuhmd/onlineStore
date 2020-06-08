@@ -61,7 +61,14 @@ text {
         opacity: 0.8;
         /* #fff; */
     }
-</style>    
+</style>  
+    <style>
+        @media only screen and (max-width: 600px) {
+            iframe{
+                height:400px;
+            }
+}
+    </style>
 </head>
 <body>
    
