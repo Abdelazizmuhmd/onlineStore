@@ -114,13 +114,14 @@ text {
             </div>
             
     </center>
-    <br>;
-            <br>;
-            <br>;
-            <br>;
-            <br>;
-            <br>;
-            <br>;
+            <br>
+            <br>
+            <br>
+            <center><h1> Most Sold</h1> </center>
+            <br>
+            <br>
+            <br>
+            <br>
             
     <?php
            $a=$model2->getSell()->getSelled();
@@ -133,6 +134,12 @@ text {
          <?php
           for($j=0;$j<3;$j++)
           {
+            
+            if(empty($a[$j]))
+            {
+              
+            }
+            else{
             $imgs_arr = [];
             $imgs_arr=unserialize($b[$j]);
             
@@ -143,11 +150,11 @@ text {
 
 
 
-  $bana="$imgs_arr[$i]";
+
 
   echo"
   <div class='box'>
-  <img src='{$imgs_arr[$i]}grande.jpeg' >
+  <img src='{$imgs_arr[0]}grande.jpeg' >
   ";
  
   
@@ -160,7 +167,7 @@ text {
                        
 <h1 style='color:white;'>$a[$j]</h1>
 </div>
-";
+";}
 ?>
                        </div>
                        <?php
