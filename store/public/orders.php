@@ -26,13 +26,10 @@ include_once("../other/sessioncheck.php");
     <script src="../js/ordertbl.js"></script>
 </head>
 
-<body><!--
+<body>
     <center>
         <iframe src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
-    </center>-->
-        <?php
-      include_once("../public/header.php");
-      ?>
+    </center>
     <?php
      $model = new user();
      $controller = new userOrderController($model);

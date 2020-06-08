@@ -24,12 +24,10 @@ require_once("../controller/userOrder.php");
 
 <body>    
     
-<!--    <center>
+  <center>
  <iframe  src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
-</center>-->
-        <?php
-      include_once("../public/header.php");
-      ?>
+</center>
+  
     <?php
     //echo $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."?userid=".$_REQUEST['userid']."&orderid=".$_REQUEST['orderid']."";
     $id='';

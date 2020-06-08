@@ -54,19 +54,12 @@ Pat
     
     
 <body >
-  <div>
-<!--
-     
+       
         <center>
  <iframe  src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
         </center>
--->
-          <?php
-      include_once("../public/header.php");
-      ?>
 
-    </div>
-
+  
 
 
     <div class="site-wrapper">

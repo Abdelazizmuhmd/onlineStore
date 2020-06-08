@@ -60,14 +60,13 @@ Pat
     
     
 <body >
-  <div>
- <!--
+ 
   <center>
  <iframe  src="../public/header.php" height="110" width="100%" style="border:none;"></iframe>
-</center>-->
-      <?php
-      include_once("../public/header.php");
-      ?>
+</center>
+    <div>
+
+  
     </div>
 
 <div class="site-wrapper">

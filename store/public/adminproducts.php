@@ -89,15 +89,15 @@ $view= new adminproductsView($model,$controller);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body><!--
+<body>
+    
+    
     <center>
         <iframe src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
     </center>
--->
+
     
-<?php
-    include_once("../public/header.php");
-    ?>
+
     <br />
     
  
