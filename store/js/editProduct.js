@@ -26,10 +26,22 @@ $(document).ready(function () {
     }*/
     $(this).keyup(function (e) {
       var test = $(this).text();
-      if (name == "name" || name == "color") {
+      if (/*name == "name" ||*/ name == "color") {
         if (
           !test.match(/^[A-Za-z]+$/) ||
           test.match(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
+        ) {
+          $(this).removeClass("input");
+          $(this).addClass("wr");
+          error = "Input must include letters only";
+        } else {
+          $(this).removeClass("wr");
+          $(this).addClass("input");
+        }
+      } else if (name == "name") {
+        if (
+          test == "" ||
+          test.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
         ) {
           $(this).removeClass("input");
           $(this).addClass("wr");

@@ -81,7 +81,14 @@ include_once("../other/sessioncheck.php");
                     <th>Status</th>
                     <th>createdtime</th>
                     <th>editStatus</th>
+                    <?php
+                    if($_SESSION['usertype'] == 'admin')
+                    {
+                    ?>
                     <th>Action</th>
+                    <?php
+                    }
+                    ?>
                     <th>Delete</th>
                 </tr>
                 <?php
