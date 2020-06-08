@@ -115,18 +115,18 @@ $view= new adminproductsView($model,$controller);
 
 <div>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#categoryEdit"
-                    style="margin-left: 7px;  overflow: hidden;" >Edit Category</button>
+                    style="margin-left: 7px;  overflow: hidden;" >Edit </button>
 
 
                 <button class="btn btn-primary" data-toggle="modal" style="margin-left: 7px;  overflow: hidden;"
-                    data-target="#categoryAdd">Add Category </button>
+                    data-target="#categoryAdd">Add  </button>
 </div>
                 
                 
                 <form action="../public/adminproducts.php?action=deletecategory" method="POST">
                     <input type="text" id="deletecategoryid" name="deletecategoryid" value="" hidden>
                     <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');"
-                        class="btn btn-primary" style="margin-left: 7px;  overflow: hidden;">Delete Category
+                        class="btn btn-primary" style="margin-left: 7px;  overflow: hidden;">Delete 
                     </button>
                 </form>
 
@@ -144,17 +144,17 @@ $view= new adminproductsView($model,$controller);
 
                 <div>
                 <button class="btn btn-primary" data-toggle="modal" style="margin-left: 7px;  overflow: hidden;"
-                    data-target="#subCategoryEdit" onclick="getsubid()"> Edit SubCategory </button>
+                    data-target="#subCategoryEdit" onclick="getsubid()"> Edit  </button>
                     
                 <button class="btn btn-primary" data-toggle="modal" style="margin-left: 7px;  overflow: hidden;"
-                    data-target="#subCategoryAdd">Add SubCategory </button>
+                    data-target="#subCategoryAdd">Add  </button>
 </div>
 
 
                 <form action="../public/adminproducts.php?action=deletesubcategory" method="POST">
                     <input type="text" id="deletesubcategoryid" name="deletesubcategoryid" value="" hidden>
                     <button type="submit" onclick="getsubidandconfirm()" class="btn btn-primary"
-                        style="margin-left: 1px;  overflow: hidden;">Delete SubCateg</button>
+                        style="margin-left: 7px;  overflow: hidden;">Delete </button>
 
                     
                 </form>
@@ -278,7 +278,7 @@ $view= new adminproductsView($model,$controller);
             <table class="table table-bordered" id="productstable"><br><br>
                 <tr>
                     <th>image</th>
-                    <th style="display:none">id</th>
+                    <th >id</th>
                     <th style="display:none">detailId</th>
                     <th>name</th>
                     <th>cost</th>
@@ -612,7 +612,6 @@ function toggle() {
                       type: 'POST',
                       data: {subcategoryid:subcategoryid,numRows:numRows},
                       success: function(response) {
-                          alert(response);
                           document.getElementById("loadmore").style.visibility="initial";
                       if(response==0){
                            document.getElementById("loadmore").style.visibility="hidden";
@@ -666,7 +665,7 @@ function toggle() {
                 }
 
 
-                else if (!productName.match(/^[a-zA-Z]+$/)) {
+                else if (!productName.match(/^[a-zA-Z ]+$/)) {
                     document.getElementById("Name").innerHTML = "Name must be Letters only";
 
                     document.getElementById("productName").style.borderColor = "red";
@@ -693,7 +692,7 @@ function toggle() {
                 }
 
 
-               else if (!productCode.match(/^\d*\.?\d*$/)) {
+               else if (!productCode.match(/^[a-zA-Z1-9 ]+$/)) {
                     document.getElementById("Code").innerHTML = "Code must be  numbers only";
                     return false;
                 }
@@ -807,7 +806,7 @@ function toggle() {
 
     
                 }
-                //---------------------------------------
+        //---------------------------------------
   
                 if(!photo=="")
   { if(!photo.endsWith(".png")&&!photo.endsWith(".jpg")&&!photo.endsWith(".jpeg")){

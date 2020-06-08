@@ -99,12 +99,11 @@ if(isset($_COOKIE['cook'])){
 $return=$_COOKIE['cook'];
 $arr=json_decode($return, true);
 $sub_total=0;
+   
 foreach($arr as $key1 => $values)
-{
-  //echo $key1.' : '.$values.'<br>';
+{ 
 $total=$values['price']*$values['quantity'];
 $sub_total+=$values['price']*$values['quantity'];
-
 
 
 

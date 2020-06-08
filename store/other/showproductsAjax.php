@@ -4,7 +4,6 @@ require_once("../model/menu.php");
 require_once("../controller/adminController.php");
 require_once("../view/adminproducts.php");
 if(!isset($_REQUEST['numRows']) || !isset($_REQUEST['subcategoryid']) ){
- echo "There is an error with showing the products";
  header("location:../public/products.php");
 
 }

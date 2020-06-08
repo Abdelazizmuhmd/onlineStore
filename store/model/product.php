@@ -102,7 +102,7 @@ function getProductDetails(){
  function insertProduct($name,$code,$cost,$profit,$description,$weight,$productdetail,$subcategoryid){
          $this->getvalidation();
      
-         $this->validation->validateString($name,1,100);
+         $this->validation->validateMixedString($name,1,100);
      
          $this->validation->validateMixedString($code,1,10000);
      
@@ -149,7 +149,7 @@ function getProductDetails(){
      function update($productid,$productdetailid,$name,$code,$cost,$profit,$description,$weight,$color,$s,$m,$l,$xl,$xxl,$xxxl,$imageurls){
          $this->getvalidation();
          
-        $this->validation->validateString($name,1,100);
+        $this->validation->validateMixedString($name,1,100);
         $this->validation->validateMixedString($code,1,10000);
         $this->validation->validateNumber($cost,1,10000);
      

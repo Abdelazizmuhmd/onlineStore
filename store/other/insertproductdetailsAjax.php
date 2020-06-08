@@ -17,21 +17,20 @@ if(!isset($_FILES['files']['name']) ||
 !isset($_REQUEST['2xLarge']) ||!isset($_REQUEST['3xLarge']) 
 
 ){
-echo "There is an error with inserting products Details";
 header("location:../public/adminproducts.php");
 
 
 }
 
-
+$flag=0;
 $imgArr=[];
  if(is_array($_FILES))   
  {  foreach ($_FILES['files']['name'] as $name => $value)  
       {  
      
-           $file_name = explode(".", $_FILES['files']['name'][$name]);  
+           $ext = pathinfo($_FILES['files']['name'][$name], PATHINFO_EXTENSION);
            $allowed_ext = array("jpg", "jpeg", "png", "gif");  
-           if(in_array($file_name[1], $allowed_ext))  
+           if(in_array($ext, $allowed_ext))  
            {  
                $sourcePath = $_FILES['files']['tmp_name'][$name];  
                $generalname = md5(rand());
@@ -63,11 +62,14 @@ $imgArr=[];
                 $imgArr[]=$targetPath;               
 
             }
+           } else{
+               $flag=1;
            }            
       }  
  } 
+if($flag==0){
 $model= new productDetails();
 
 $model->insert($_REQUEST['productid'],$_REQUEST['productColor'],$_REQUEST['small'],$_REQUEST['Medium'],$_REQUEST['Large'],$_REQUEST['xLarge'],$_REQUEST['2xLarge'],$_REQUEST['3xLarge'],$imgArr);
-
+}
 ?>

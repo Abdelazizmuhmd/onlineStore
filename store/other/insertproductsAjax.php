@@ -18,20 +18,20 @@ if(!isset($_FILES['files']['name']) ||
 !isset($_REQUEST['productWeight']) ||!isset($_REQUEST['subcategoryid']) 
 
 ){
-echo "There is an error with inserting products";
 header("location:../public/adminproducts.php");
 
 
 }
-
+$flag=0;
 $imgArr=[];
  if(is_array($_FILES))   
  {  foreach ($_FILES['files']['name'] as $name => $value)  
       {  
      
-           $file_name = explode(".", $_FILES['files']['name'][$name]);  
+         
+           $ext = pathinfo($_FILES['files']['name'][$name], PATHINFO_EXTENSION);
            $allowed_ext = array("jpg", "jpeg", "png", "gif");  
-           if(in_array($file_name[1], $allowed_ext))  
+           if(in_array($ext, $allowed_ext))  
            {  
                $sourcePath = $_FILES['files']['tmp_name'][$name];  
                $generalname = md5(rand());
@@ -63,17 +63,20 @@ $imgArr=[];
                 $imgArr[]=$targetPath;               
 
             }
+           }else{
+               $flag=1;
            }            
       }  
  } 
-
+if($flag==0){
 $productdetail=
 array("color"=>$_REQUEST['productColor'],"s"=>$_REQUEST['small'],"m"=>$_REQUEST['Medium'],"l"=>$_REQUEST['Large'],"xl"=>$_REQUEST['xLarge'],"xxl"=>$_REQUEST['2xLarge'],"xxxl"=>$_REQUEST['3xLarge'],"img"=>$imgArr);
 
 
 $model = new product();
 $productid=$model->insertProduct($_REQUEST['productName'],$_REQUEST['productCode'],$_REQUEST['productCost'],$_REQUEST['productProfit'],$_REQUEST['productDescription'],$_REQUEST['productWeight'],$productdetail,$_REQUEST['subcategoryid']);
+    echo trim($productid);
 
-echo trim($productid);
+}
 
  ?>  

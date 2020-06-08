@@ -190,7 +190,7 @@ if(isset($_COOKIE['cook'])){
 $return=$_COOKIE['cook'];
 $arr=json_decode($return, true);
 foreach($arr as $key1 => $values)
-{
+{ 
   echo $key1.' : '.$values.'<br>';
 
 echo "<table class='cart-table responsive-table table--no-border'>
@@ -237,8 +237,8 @@ echo "<table class='cart-table responsive-table table--no-border'>
           </tbody>
         </table>";
 
-        }
-}
+        }}
+
 ?>
         <footer class="cart__footer">
           <div class="grid">
