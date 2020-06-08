@@ -125,13 +125,24 @@ else if (!editcategoryname.match(/^[a-zA-Z]+$/))
         document.getElementById("editcategoryname").style.borderColor = "red";
         return false;
     }
-    else
-    {
-        document.getElementById("CategoryEdit").innerHTML = "";
-        document.getElementById("editcategoryname").style.borderColor = "green";
-        return true;
+   var categories = document.getElementById('catselection'), category, i;
+     for(i = 0; i < categories.length; i++) {
+         category = categories[i];
+         if(category.innerHTML.trim()==editcategoryname){
+             document.getElementById("CategoryEdit").innerHTML = "Category Name alreagy exist";
+             document.getElementById("editcategoryname").style.borderColor = "red";
+             return false;
 
-    }
+         }else{
+           document.getElementById("CategoryEdit").innerHTML = "";
+           document.getElementById("editcategoryname").style.borderColor = "green";             
+         }
+
+     }
+
+    
+    
+    return true;
 }
 //---------------------
 function editsubcategoryvalidate()
@@ -158,13 +169,21 @@ else if (!editsubcategoryname.match(/^[a-zA-Z]+$/))
         document.getElementById("editsubcategoryname").style.borderColor = "red";
         return false;
     }
-    else
-    {
-        document.getElementById("SubCategoryEdit").innerHTML = "";
-        document.getElementById("editsubcategoryname").style.borderColor = "green";
-        return true;
+  var subcategories = document.getElementById('subselections'), subcategory, i;
+     for(i = 0; i < subcategories.length; i++) {
+         subcategoryy = subcategories[i];
+         if(subcategoryy.innerHTML.trim()==editsubcategoryname){
+            document.getElementById("SubCategoryEdit").innerHTML = "Category alreay exist";
+            document.getElementById("editsubcategoryname").style.borderColor = "red";
+            return false;
 
-    }
+         }else{
+           document.getElementById("SubCategoryEdit").innerHTML = "";
+           document.getElementById("editsubcategoryname").style.borderColor = "green";    
+         }
+
+     }
+    return true;
 
 }
 function validate()

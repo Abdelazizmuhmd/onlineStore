@@ -48,11 +48,17 @@ Pat
 <body >
   <div>
  
-      <!--header here  -->
+    <!-- 
 <center>
  <iframe  src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
 </center>
-
+-->
+      <?php
+      
+      include("../public/header.php");
+      
+      ?>
+      
 
     
 

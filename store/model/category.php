@@ -80,16 +80,15 @@ class category extends Model
              $this->subCategories[]=new subCategory($row[$i]->id,$row[$i]->name);
                   
               
-              
-              
           }
         }
 
     }
     
 
-     function insertCategory($name)
-    {       $this->getvalidation();
+    function insertCategory($name)
+    {    $this-> validateNameIsUnique($name);
+         $this->getvalidation();
             $this->validation->validateString($name,1,30);
 
          $this->connect();
@@ -103,6 +102,22 @@ class category extends Model
       }
       else
        echo "THERE WAS AN ERROR";
+    }
+    
+    function validateNameIsUnique($name){
+                 $this->connect();
+
+    $sql= "select name from category where name=:name";
+    $this->db->query($sql);
+      $this->db->bind(':name',$name,PDO::PARAM_STR);
+      $this->db->execute();
+      if ($this->db->numRows() > 0){
+          
+          header("location: ../public/error.html");   
+          die();
+              
+      }
+        
     }
     function  updateCategory($id,$name)
     {   

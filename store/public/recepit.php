@@ -27,7 +27,10 @@ if(isset($_COOKIE['cook'])){
 $products=json_decode($_COOKIE['cook'], true);
 $sub_total=0;
 foreach($products as $key => $product)
-{   $sub_total+=$product['quantity']*$product['price'];
+   
+{  
+    
+    $sub_total =$sub_total+($product['quantity']*$product['price']);
            
                     echo'<tr>
                         <td class="quantity">'.$product['quantity'].'</td>

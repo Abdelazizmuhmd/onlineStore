@@ -1,4 +1,6 @@
-<?php
+<?php       
+ob_start(); 
+
 require_once("../model/user.php");
 require_once("../controller/checkoutController.php");
 require_once("../view/checkout.php");
@@ -161,9 +163,11 @@ if(isset($_COOKIE['cook'])){
 $return=$_COOKIE['cook'];
 $arr=json_decode($return, true);
 $sub_total=0;
+    if(count($arr)==0){
+        header("location:../public/products.php");
+    }
 foreach($arr as $key1 => $values)
 {
-    
     
     
     
@@ -354,3 +358,7 @@ if(isset($_COOKIE['cook'])){
       </div>
     </body>
     </html>
+<?php
+         ob_end_flush(); 
+
+?>

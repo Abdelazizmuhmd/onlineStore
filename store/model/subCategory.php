@@ -83,7 +83,7 @@ class subCategory extends Model
 
    function insertSubCategory($categoryid,$name)
 
-    {
+    { $this->validateNameIsUnique($name);
 
          $this->getvalidation();
          $this->validation->validateNumber($categoryid,1,100000);
@@ -107,6 +107,21 @@ class subCategory extends Model
 
 
 
+    }
+      function validateNameIsUnique($name){
+                   $this->connect();
+
+    $sql= "select name from subcategory where name=:name";
+    $this->db->query($sql);
+      $this->db->bind(':name',$name,PDO::PARAM_STR);
+      $this->db->execute();
+      if ($this->db->numRows() > 0){
+          
+          header("location: ../public/error.html");   
+          die();
+              
+      }
+        
     }
 
     function updateSubCategory($id,$name)
