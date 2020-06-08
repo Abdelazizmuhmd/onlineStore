@@ -64,9 +64,14 @@ text {
 </style>    
 </head>
 <body>
+    <!--
 <center>
+    
  <iframe  src="../public/header.php" height="100" width="100%" style="border:none;"></iframe>
-</center>
+</center>-->
+        <?php
+      include_once("../public/header.php");
+      ?>
     <center style="margin-top:4%">
         <div class="a">
       <h1> Cost</h1>  

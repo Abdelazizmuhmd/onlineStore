@@ -96,7 +96,7 @@ $view= new adminproductsView($model,$controller);
 -->
     
 <?php
-    include("../public/header.php");
+    include_once("../public/header.php");
     ?>
     <br />
     
