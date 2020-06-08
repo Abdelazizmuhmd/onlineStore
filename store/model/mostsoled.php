@@ -18,7 +18,7 @@ $this->getSell();
     
   function getSell(){
     $this->connect();
-    $query ="SELECT name from product INNER JOIN productdetails ON product.id=productdetails.productID ORDER BY sold DESC limit 3 ";     
+    $query ="SELECT name from product INNER JOIN productdetails ON product.id=productdetails.productID where sold!=0  ORDER BY sold DESC limit 3 ";     
     $this->db->query($query);
      $this->db->execute();
      if ($this->db->numRows() > 0){
@@ -35,7 +35,7 @@ $this->getSell();
 
 function getPhoto(){
     $this->connect();
-    $query ="SELECT imageUrl from productdetails ORDER BY sold DESC limit 3 ";     
+    $query ="SELECT imageUrl from productdetails where sold!=0 ORDER BY sold DESC limit 3 ";     
     $this->db->query($query);
      $this->db->execute();
      if ($this->db->numRows() > 0){
