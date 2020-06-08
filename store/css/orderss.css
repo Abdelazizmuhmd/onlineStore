@@ -44,7 +44,6 @@
 }
 table {
   position: relative;
-  border-collapse: collapse;
   width: 100%;
   color: black;
   font-family: monospace;
@@ -66,9 +65,13 @@ td,
 th {
   padding: 7 px;
   font-size: 0.4m;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 td {
   height: 70px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 tr:nth-child(even) {
