@@ -13,7 +13,7 @@
             <img src="../images/logo.png" alt="Logo">
             <p class="centered">RECEIPT 
                
-            <table style="margin-left:-73px;">
+            <table style="margin-left:-100px;">
                 <thead>
                     <tr>
                         <th class="quantity">Quantity</th>
