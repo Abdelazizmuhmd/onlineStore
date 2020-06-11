@@ -205,17 +205,17 @@ class menuView extends View{
                              <select class="single-option-selector quantity" data-option="option2"
                                  id="ProductSelect-product-template-option-1" name="sizes">';
 
-                                  if($productdetail->getSmall() != 0)
+                                  if($productdetail->getSmall() > 0)
                                     $str.='<option id ="'.$productdetail->getSmall().'"value="Small">Small</option>';
-                                  if($productdetail->getMedium() != 0)
+                                  if($productdetail->getMedium() > 0)
                                     $str.='<option id ="'.$productdetail->getMedium().'" value="Meduim">Meduim</option>';
-                                  if($productdetail->getLarge() != 0)
+                                  if($productdetail->getLarge() > 0)
                                     $str.='<option id ="'.$productdetail->getLarge().'" value="Large">Large</option>';
-                                  if($productdetail->getXl() != 0)
+                                  if($productdetail->getXl() > 0)
                                     $str.='<option id ="'.$productdetail->getXl().'" value="XL">XL</option>';
-                                  if($productdetail->getXxl() != 0)
+                                  if($productdetail->getXxl() > 0)
                                     $str.='<option id = "'.$productdetail->getXxl().'" value="XXL">XXL</option>';
-                                  if($productdetail->getXxxl() != 0)
+                                  if($productdetail->getXxxl() > 0)
                                     $str.='<option id = "'.$productdetail->getXxxl().'" value="XXXL">XXXL</option>';
                            $str.='</select></div>
 
