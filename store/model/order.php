@@ -113,9 +113,10 @@ function getorderdetails($orderid){
 function makeOrder ($userid,$productsdetails){
      $this->getvalidation();
      $this->validation->validateNumber($userid,1,1000000);
-    
+            $length = count($productsdetails);
+
         for ($i = 0; $i < $length; $i++) {
-            checkQuantity($productsdetails[$i]['id'],$productsdetails[$i]['size'],$productsdetails[$i]['quantity']);
+         $this->   checkQuantity($productsdetails[$i]['id'],$productsdetails[$i]['size'],$productsdetails[$i]['quantity']);
         }
     
     
@@ -131,7 +132,6 @@ function makeOrder ($userid,$productsdetails){
         $this->db->execute();
         $orderid=$this->db->lastInsertedId();
     
-        $length = count($productsdetails);
         for ($i = 0; $i < $length; $i++) {
             // assiarray
          $this->connect();
@@ -164,33 +164,36 @@ function checkQuantity($id,$size,$quantity){
     
     
     if($size=="Small"){
-    $sql="select id from productdetails where id =:id and s >=:size";
+    $sql="select id from productdetails where id =:id and s < :size";
     }
     else if($size=="Medium"){
-        $sql="select id from productdetails where id =:id and m >=:size";
+        $sql="select id from productdetails where id =:id and m <:size";
     }
       else if($size=="L"){
-        $sql="select id from productdetails where id =:id and l >=:size";
+        $sql="select id from productdetails where id =:id and l<:size";
     }
       else if($size=="XL"){
-        $sql="select id from productdetails where id =:id and xl >=:size";
+        $sql="select id from productdetails where id =:id and xl <:size";
     }
   else if($size=="XXL"){
-        $sql="select id from productdetails where id =:id and xxl >=:size";
+        $sql="select id from productdetails where id =:id and xxl <:size";
     }
     else if($size=="XXXL"){
-        $sql="select id from productdetails where id =:id and xxxl >=:size";
+        $sql="select id from productdetails where id =:id and xxxl <:size";
     }else{
         header("location: ../public/error.html");
     }
+   
   $this->connect();
-  $this->db->query($sqlOrderDetails);
+  $this->db->query($sql);
   $this->db->bind(':id',$id,PDO::PARAM_INT);
-  $this->db->bind(':size',$size,PDO::PARAM_STR);
-   if ($this->db->numRows() == 0){
-      header("location: ..public/error.html");
-      }
+  $this->db->bind(':size',$quantity,PDO::PARAM_INT);
+          $this->db->execute();
     
+   if ($this->db->numRows() > 0){
+      header("location: error.html");
+       die();
+      }
         
         
     

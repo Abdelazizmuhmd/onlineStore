@@ -138,7 +138,7 @@ function getordersArray(){
         
           $this->validation->validateMixedString($address,1,400);
         
-          $this->validation->validateMixedString($apartmant,1,300);
+          $this->validation->validateMixedString($apartment,1,300);
         
           $this->validation->validateString($city,1,100);
           $this->validation->validateNumber($phone,1,100);
