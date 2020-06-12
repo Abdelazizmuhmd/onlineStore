@@ -67,7 +67,7 @@ include_once("../other/sessioncheck.php");
             <div class="card-body" id="bod">
                 <label id="slbl">Status:</label><select name="CardiologyPassword"
                     placeholder="Enter Cardiology Password" class="form-control" required id="stat">
-                    <option val="0" disabled selected></option>
+                    <option val="" ></option>
                     <option>pending</option>
                     <option>prepared</option>
                     <option>finished</option>

@@ -659,7 +659,6 @@ function toggle() {
                     });
                 })
             };
-
             function addcolor() {
                 var productName = document.getElementById("productName").value;
                 var productCode = document.getElementById("productCode").value;
