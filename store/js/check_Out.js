@@ -182,16 +182,21 @@ else if (!city.match(/^[a-zA-Z]+$/))
 
 
 //--------------------------------------------------
+var etislat = "011";
+var vodafone = "010";
+var orange = "012";
+var we = "015";
+
 if (phone == "") {
         
   document.getElementById("Phone").innerHTML = "Phone is empty";
   document.getElementById("phoneNumber").style.borderColor = "red";
     return false;
-   
   }
 
-  else if(phone.length<11)
+  else if(phone.length < 11)
 {
+
   document.getElementById("Phone").innerHTML = "Phone is to Small";
   document.getElementById("phoneNumber").style.borderColor = "red";
     return false;
@@ -199,6 +204,10 @@ if (phone == "") {
 else if (!phone.match('^[0-9]+$')) 
     {
       document.getElementById("Phone").innerHTML = "Phone are only numbers allowed";
+      document.getElementById("phoneNumber").style.borderColor = "red";
+        return false;
+    }else if(phone.substring(0, 3) != '011' && phone.substring(0, 3) != '010' && phone.substring(0, 3) != '015' && phone.substring(0, 3) != '012'){
+       document.getElementById("Phone").innerHTML = "Phone Number Must start with 011 or 010 or 012 or 015";
       document.getElementById("phoneNumber").style.borderColor = "red";
         return false;
     }
