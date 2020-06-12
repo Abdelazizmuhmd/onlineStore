@@ -1,3 +1,3 @@
 <?php
-header("location: public/products.php");
+header("location: products.php");
 ?>

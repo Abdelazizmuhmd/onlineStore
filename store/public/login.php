@@ -18,10 +18,15 @@ $controller2 = new loginController($model2);
 
 if(isset($_GET['action']) && !empty($_GET['action'])){
 $controller2->{$_GET['action']}();
+if($_GET['action'] == 'login'){
 if($model2->getID()!=""){
     header("location:../public/products.php");
 }{
     echo"wrong user";
+}
+}
+else if ($_GET['action'] == 'forgetPassword'){
+echo "mail sent successfully";
 }
      
 }
@@ -135,7 +140,7 @@ Pat
       <p>We will send you an email to reset your password.</p>
 
       <div class="form-vertical">
-        <form method="post" action="/account/recover" accept-charset="UTF-8"><input type="hidden" name="form_type" value="recover_customer_password"><input type="hidden" name="utf8" value="✓">
+        <form method="post" action="../public/login.php?action=forgetPassword" accept-charset="UTF-8"><input type="hidden" name="form_type" value="recover_customer_password"><input type="hidden" name="utf8" value="✓">
 
           <label for="RecoverEmail" class="label--hidden">Email</label>
           <input type="email" value="" name="email" id="RecoverEmail" placeholder="Email" autocorrect="off" autocapitalize="off">
