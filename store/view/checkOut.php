@@ -72,13 +72,19 @@ function userdetails(){
        </div>
    </div>
                  
-     <div  class='field field--required'>
-       <div class='field__input-wrapper'>
-         <input value='".$this->model->getCity()."' name='city' placeholder='City'  class='field__input'  type='text' id='city' maxlength='20' onkeyup='validate()' required />
-         <p id='City' style='color:red;'></p>
-
-         </div>
-   </div>
+   <div  class='field field--required'>
+   <div class='field__input-wrapper'>
+     <input class='field__input'  type='text' value='Cairo' maxlength='20' disabled/>
+     <p id='City' style='color:red;'></p>
+     </div>
+</div>
+                
+ <div  class='field field--required'>
+   <div class='field__input-wrapper'>
+     <input name='city'  class='field__input'  type='hidden' id='city' value='Cairo' maxlength='20'/>
+     <p id='City' style='color:red;'></p>
+     </div>
+</div>
                  
                  
    

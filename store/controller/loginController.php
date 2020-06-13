@@ -13,6 +13,12 @@ class loginController extends Controller{
      $this->model->login($email,$password);
 
  }
+ public function forgetPassword(){
+  if(isset($_REQUEST['email']))
+  $email = $_REQUEST['email'];
+  $this->model->forgetPassword($email);
+
+ }
 
 
 

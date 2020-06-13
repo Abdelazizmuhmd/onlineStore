@@ -236,6 +236,54 @@ function getordersArray(){
     function generateReport(){
         $this->report=new report();
     }
+    function generatePassword($length = 6) 
+    {
+      $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      $count = mb_strlen($chars);
+    
+      for ($i = 0, $result = ''; $i < $length; $i++) {
+          $index = rand(0, $count - 1);
+          $result .= mb_substr($chars, $index, 1);
+      }
+    
+      return $result;
+    }
+function sendErrorByMail($message,$to){
+        include_once("../other/mailer/PHPMailerAutoload.php");
+        $mail = new PHPMailer(TRUE);
+        $mail->SMTPOptions = array('ssl'=>array('verify_peer'=>false, 'verify_peer_name'=>false, 'allow_self_signed'=>true));
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com';               // Specify main and backup SMTP servers
+        $mail->Port = 587;  
+        $mail->SMTPAuth = true;  
+        $mail->SMTPSecure = 'tls';                                // Enable SMTP authentication
+        $mail->Username = 'move20miu2020@gmail.com';                 // SMTP username
+        $mail->Password = 'rywuqlxruswomhuj';                           // SMTP password
+        /*bbgysbwvhdvmaxn*/                        
+                                         
+        
+        $mail->setFrom('hrcompany213@gmail.com', 'Mailer');
+        $mail->AddAddress($to);
+        $mail->isHTML(true);                                  // Set email format to HTML
+        
+        $mail->Subject = 'PatStore ForgetPassword';
+        $mail->Body    = ''.$message;
+        if(!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        }
+        }
+function forgetPassword($email){
+$this->connect();
+$fpassowrd = $this->generatePassword();
+if($this->checkEmail($email) > 0){
+$fsql = "update user set password='".sha1($fpassowrd)."' where email = :email ";
+$this->db->query($fsql);
+$this->db->bind(':email',$email,PDO::PARAM_STR);
+$this->db->execute($fsql);
+$this->sendErrorByMail("Your new password is ".$fpassowrd."",$email);
+}
+}
 function getreport(){
     return $this->report;
 }
