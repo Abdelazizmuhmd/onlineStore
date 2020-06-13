@@ -34,10 +34,11 @@ Pat
     </title>
 
 <link rel="stylesheet" media="all" href="../css/home.css" />  
-<script src="../js/j.js" type="text/javascript"></script>
+  <script src="../js/j.js" type="text/javascript"></script>
   <script src="../js/s.js" type="text/javascript"></script>
   <script src="../js/home.js" type="text/javascript"></script>
-  <script src="../s/j2.js" type="text/javascript"></script> 
+  <script src="../js/j2.js" type="text/javascript"></script>
+
   <script src="../js/signUp.js" type="text/javascript" ></script> 
 
     <style>

@@ -309,18 +309,18 @@ function validate()
     if (productWeight == "") {
        
         document.getElementById("productWeight").style.borderColor = "red";
-        document.getElementById("Weight ").innerHTML = "Weight  is empty";
+        document.getElementById("Weight").innerHTML = "Weight  is empty";
         return false;
 
     } else if (productWeight.length < 1) {
-        document.getElementById("Weight ").innerHTML = "Weight  is to short";
+        document.getElementById("Weight").innerHTML = "Weight  is to short";
         document.getElementById("productWeight").style.borderColor = "red";
         return false;
     }
 
 
     else if (!productWeight.match(/^\d*\.?\d*$/)) {
-        document.getElementById("Weight ").innerHTML = "Weight  must be numbers only";
+        document.getElementById("Weight").innerHTML = "Weight  must be numbers only";
         return false;
     }
     else

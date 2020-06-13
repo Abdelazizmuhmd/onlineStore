@@ -5,6 +5,7 @@ require_once("../model/user.php");
 require_once("../controller/checkoutController.php");
 require_once("../view/checkout.php");
 session_start();
+ 
 
 $model = new user();
 

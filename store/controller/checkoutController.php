@@ -8,6 +8,7 @@ $this->model->getuser($userid);
         
 }
 function makeorderclient(){
+    
     if (isset($_REQUEST['firstname']) && isset($_REQUEST['lastname']) && 
         isset($_REQUEST['address']) && isset($_REQUEST['apartmant']) &&
         isset($_REQUEST['city']) && isset($_REQUEST['phone'])) {
@@ -49,6 +50,7 @@ $this->makeorder();
     
     
 function makeorder(){
+  
  if(isset($_COOKIE['cook'])){
      $productdetails=array();
 $products=json_decode($_COOKIE['cook'], true);

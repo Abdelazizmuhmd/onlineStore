@@ -147,6 +147,7 @@ function getMedium(){
 
 
   function insert($productid,$color,$s,$m,$l,$xl,$xxl,$xxxl,$Imagearray){
+      
         $check=$this->checkcolor($productid,$color);
       if($check==0){
          $this->getvalidation();

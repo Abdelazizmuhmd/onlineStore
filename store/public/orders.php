@@ -29,7 +29,7 @@ include_once("../other/sessioncheck.php");
             iframe{
                 height:400px;
             }
-}
+}a
     </style>
 </head>
 
