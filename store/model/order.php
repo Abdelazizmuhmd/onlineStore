@@ -111,6 +111,7 @@ function getorderdetails($orderid){
 
 
 function makeOrder ($userid,$productsdetails){
+        
      $this->getvalidation();
      $this->validation->validateNumber($userid,1,1000000);
             $length = count($productsdetails);
@@ -139,7 +140,7 @@ function makeOrder ($userid,$productsdetails){
          $productdetailid=$productsdetails[$i]['id'];
          $productdetailsize=$productsdetails[$i]['size'];
          $productdetailquantity=$productsdetails[$i]['quantity'];
-            
+        
          $sqlOrderDetails = "INSERT INTO orderdetails (orderid,productdetailid,size,quantity) VALUES (:orderid ,:productdetailid,:size,:quantity)";
             
           $this->validation->validateNumber($orderid,1,1000000);
@@ -151,6 +152,8 @@ function makeOrder ($userid,$productsdetails){
            $this->db->bind(':size',$productdetailsize,PDO::PARAM_STR);
            $this->db->bind(':quantity',$productdetailquantity,PDO::PARAM_INT);
            $this->db->execute();
+         
+            
 
       }}
 function checkQuantity($id,$size,$quantity){
@@ -169,7 +172,7 @@ function checkQuantity($id,$size,$quantity){
     else if($size=="Medium"){
         $sql="select id from productdetails where id =:id and m <:size";
     }
-      else if($size=="L"){
+      else if($size=="Large"){
         $sql="select id from productdetails where id =:id and l<:size";
     }
       else if($size=="XL"){
@@ -191,7 +194,7 @@ function checkQuantity($id,$size,$quantity){
           $this->db->execute();
     
    if ($this->db->numRows() > 0){
-      header("location: error.html");
+      header("location: ../public/error.html");
        die();
       }
         

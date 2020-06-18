@@ -180,10 +180,14 @@ $view= new adminproductsView($model,$controller);
 
                   if(b != 0){
                         document.getElementById("bigDiv2").innerHTML = "<input type='submit' name='AddProduct' value='Add Product' onclick='toggle()' class='btn btn-primary'>";
+
+                         document.getElementById("show_button").innerHTML = "<input type='submit'  value='Show Products' onclick='getsubid(1)' class='btn btn-primary showproducts'>";
+
+
                   }   
                 }
             
-             
+              
             </script>
     <div id="bigDiv2">
        
@@ -282,9 +286,9 @@ $view= new adminproductsView($model,$controller);
 -->
 
         <input type="text" id="subproductid" name="subproductid" hidden>
-        <center>
-            <button type="button" class="btn btn-primary showproducts" onclick="getsubid(1)">Show Products</button>
-        </center>
+        <div id="show_button">
+     
+        </div>
 
 
 
@@ -772,19 +776,19 @@ function toggle() {
                 //-----------------------------
                 //weight
                 if (productWeight == "") {
-                    document.getElementById("Weight ").innerHTML = "Weight  is empty";
+                    document.getElementById("Weight").innerHTML = "Weight  is empty";
                     document.getElementById("productWeight").style.borderColor = "red";
                     return false;
 
                 } else if (productWeight.length < 1) {
-                    document.getElementById("Weight ").innerHTML = "Weight  is to short";
+                    document.getElementById("Weight").innerHTML = "Weight  is to short";
                     document.getElementById("productWeight").style.borderColor = "red";
                     return false;
                 }
 
 
                 else if (!productWeight.match(/^\d*\.?\d*$/)) {
-                    document.getElementById("Weight ").innerHTML = "Weight  must be numbers only";
+                    document.getElementById("Weight").innerHTML = "Weight  must be numbers only";
                     return false;
                 }
                 else
@@ -925,6 +929,7 @@ else{
                         contentType: false,
                         processData: false,
                         success: function(response) {
+                            
                             document.getElementById("productid").value =response.trim();
 
                             document.getElementById("productName").disabled = true;

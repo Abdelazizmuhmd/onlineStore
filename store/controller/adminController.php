@@ -55,7 +55,6 @@ function addsubcategory(){
 
     $subCategoryName = $_REQUEST['newsubcategoryname'];
     $subCategoryId = $_REQUEST['editsubcatgoryid'];
-    echo $subCategoryId;
     $this->model->getCategories()[0]->getSubcategories()[0]->updateSubCategory($subCategoryId,$subCategoryName);
 }}
 

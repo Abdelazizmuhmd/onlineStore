@@ -96,7 +96,10 @@ function validateNumber($value,$min,$max){
 
                
 function validateLength($value,$min,$max){
-  
+  if($value<-1){
+       header("location: erro.html");
+          die();
+  }
      $length=strlen($value);
        $min=$min-1;
      if($length<$min ||$length>$max){
