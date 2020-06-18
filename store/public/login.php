@@ -137,7 +137,7 @@ Pat
     <div id="RecoverPasswordForm" class="hide">
 
       <h2 class="small--text-center">Reset your password</h2>
-      <p>We will send you an email to reset your password.</p>
+      <p>We will send you an email with a new password.</p>
 
       <div class="form-vertical">
         <form method="post" action="../public/login.php?action=forgetPassword" accept-charset="UTF-8"><input type="hidden" name="form_type" value="recover_customer_password"><input type="hidden" name="utf8" value="✓">

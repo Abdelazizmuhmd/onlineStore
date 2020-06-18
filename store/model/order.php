@@ -221,10 +221,33 @@ function checkQuantity($id,$size,$quantity){
          $this->getvalidation();
      $this->validation->validateNumber($orderid,1,1000000);
         $this->connect();
+        if($_SESSION['usertype'] == 'admin'){
         $sql = "update `order` set isdeleted=1 where id=:id";
         $this->db->query($sql);
         $this->db->bind(':id',$orderid,PDO::PARAM_INT);
         $this->db->execute();
+        }
+        else
+        {
+        $sql = "select userid from `order` where id=:id";
+        $this->db->query($sql);
+        $this->db->bind(':id',$orderid,PDO::PARAM_INT);
+        $this->db->execute();
+         if($this->db->getdata()[0]->userid == $_SESSION['id'] )
+         {
+          $sql = "update `order` set isdeleted=1 where id=:id";
+          $this->db->query($sql);
+          $this->db->bind(':id',$orderid,PDO::PARAM_INT);
+          $this->db->execute();
+         }
+         else
+         {
+          header("location: ../public/error.html");
+          die();
+         }
+
+
+        }
      }
      function updateStat($orderid,$status){
            $this->getvalidation();
